@@ -1,0 +1,2580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FE0B74151AC29396005E6CD2 /* KGCDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0B74131AC29396005E6CD2 /* KGCDataObject.m */; };
+		FE241F9A1AC97E060095F76B /* KGCDADShapeEventsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE241F881AC97E060095F76B /* KGCDADShapeEventsController.m */; };
+		FE241F9E1AC97E060095F76B /* KGCDADShapeInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = FE241F8D1AC97E060095F76B /* KGCDADShapeInspector.m */; };
+		FE241FA01AC97E060095F76B /* KGCDADShapeSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE241F901AC97E060095F76B /* KGCDADShapeSceneController.m */; };
+		FE241FA21AC97E060095F76B /* KGCDADShapeSpriteController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE241F931AC97E060095F76B /* KGCDADShapeSpriteController.m */; };
+		FE241FB11AC982710095F76B /* KGCDADShapeInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE241FAF1AC982710095F76B /* KGCDADShapeInspector.xib */; };
+		FE241FB91AC984270095F76B /* KGCDADShapeEventsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE241FB31AC984270095F76B /* KGCDADShapeEventsController.xib */; };
+		FE241FBA1AC984270095F76B /* KGCDADShapeSceneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE241FB51AC984270095F76B /* KGCDADShapeSceneController.xib */; };
+		FE241FBB1AC984270095F76B /* KGCDADShapeSpriteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE241FB71AC984270095F76B /* KGCDADShapeSpriteController.xib */; };
+		FE241FC31ACA744A0095F76B /* KGCGridAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE241FC11ACA744A0095F76B /* KGCGridAnswer.m */; };
+		FE2C91041AB4B925004FD211 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91031AB4B925004FD211 /* main.m */; };
+		FE2C910C1AB4B925004FD211 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE2C910B1AB4B925004FD211 /* Images.xcassets */; };
+		FE2C911B1AB4B926004FD211 /* GameCreatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C911A1AB4B926004FD211 /* GameCreatorTests.m */; };
+		FE2C91AC1AB4BAA8004FD211 /* ScreenTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2C91261AB4BAA8004FD211 /* ScreenTemplate.png */; };
+		FE2C91AD1AB4BAA8004FD211 /* ScreenTemplate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2C91271AB4BAA8004FD211 /* ScreenTemplate@2x.png */; };
+		FE2C91E11AB4BAA8004FD211 /* CALayer+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91831AB4BAA8004FD211 /* CALayer+Animation.m */; };
+		FE2C91E21AB4BAA8004FD211 /* CAShapeLayer+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91851AB4BAA8004FD211 /* CAShapeLayer+Animation.m */; };
+		FE2C91E31AB4BAA8004FD211 /* NSBezierPath+CGPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91871AB4BAA8004FD211 /* NSBezierPath+CGPath.m */; };
+		FE2C91E41AB4BAA8004FD211 /* KGCHelperMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C918A1AB4BAA8004FD211 /* KGCHelperMethods.m */; };
+		FE2C91E51AB4BAA8004FD211 /* KGCSettingsViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C918C1AB4BAA8004FD211 /* KGCSettingsViewManager.m */; };
+		FE2C91EA1AB4BAA8004FD211 /* KGCSceneContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91981AB4BAA8004FD211 /* KGCSceneContentView.m */; };
+		FE2C91EB1AB4BAA8004FD211 /* KGCSpriteLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C919A1AB4BAA8004FD211 /* KGCSpriteLayer.m */; };
+		FE2C91EC1AB4BAA8004FD211 /* KGCFileDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C919D1AB4BAA8004FD211 /* KGCFileDropView.m */; };
+		FE2C91ED1AB4BAA8004FD211 /* KGCImageLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C919F1AB4BAA8004FD211 /* KGCImageLayer.m */; };
+		FE2C91EE1AB4BAA8004FD211 /* KGCImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91A11AB4BAA8004FD211 /* KGCImageView.m */; };
+		FE2C91EF1AB4BAA8004FD211 /* KGCInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91A31AB4BAA8004FD211 /* KGCInspector.m */; };
+		FE2C91F01AB4BAA8004FD211 /* KGCInspectorContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91A51AB4BAA8004FD211 /* KGCInspectorContentView.m */; };
+		FE2C91F11AB4BAA8004FD211 /* KGCInspectorWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91A71AB4BAA8004FD211 /* KGCInspectorWindow.m */; };
+		FE2C91F21AB4BAA8004FD211 /* KGCSceneTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91A91AB4BAA8004FD211 /* KGCSceneTableCell.m */; };
+		FE2C91F31AB4BAA8004FD211 /* KGCSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91AB1AB4BAA8004FD211 /* KGCSettingsView.m */; };
+		FE2C91F51AB4BAC2004FD211 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2C91F41AB4BAC2004FD211 /* QuartzCore.framework */; };
+		FE2C91F71AB4BACB004FD211 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2C91F61AB4BACA004FD211 /* AVFoundation.framework */; };
+		FE2C91FB1AB4BF68004FD211 /* KGCDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91FA1AB4BF68004FD211 /* KGCDocument.m */; };
+		FE2C91FE1AB4BF84004FD211 /* KGCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91FD1AB4BF84004FD211 /* KGCAppDelegate.m */; };
+		FE2ED2511AD544F20086BB84 /* KGCTPlayHintemplateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2ED24F1AD544F20086BB84 /* KGCTPlayHintemplateAction.m */; };
+		FE30ABF41AE3BCD000093338 /* KGCWobbleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FE30ABEF1AE3BCD000093338 /* KGCWobbleAnimation.m */; };
+		FE30ABF51AE3BCD000093338 /* KGCWobbleAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE30ABF31AE3BCD000093338 /* KGCWobbleAnimationView.m */; };
+		FE30ABF81AE3BDCD00093338 /* KGCWobbleAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE30ABF61AE3BDCD00093338 /* KGCWobbleAnimation.xib */; };
+		FE30AC041AE3BF1D00093338 /* KGCStopAnimationAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE30AC021AE3BF1D00093338 /* KGCStopAnimationAction.xib */; };
+		FE30AC0C1AE3CA1F00093338 /* KGCStopAnimationAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FE30AC081AE3CA1F00093338 /* KGCStopAnimationAction.m */; };
+		FE30AC0D1AE3CA1F00093338 /* KGCStopAnimationActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE30AC0B1AE3CA1F00093338 /* KGCStopAnimationActionView.m */; };
+		FE30AC1C1AE3CB9500093338 /* KGCRandomPositionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FE30AC181AE3CB9500093338 /* KGCRandomPositionAnimation.m */; };
+		FE30AC1D1AE3CB9500093338 /* KGCRandomPositionAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE30AC1B1AE3CB9500093338 /* KGCRandomPositionAnimationView.m */; };
+		FE30AC201AE3CE2100093338 /* KGCRandomPositionAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE30AC1E1AE3CE2100093338 /* KGCRandomPositionAnimation.xib */; };
+		FE342FC71AE1806B008596F4 /* KGCShadowAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FE342FC21AE1806B008596F4 /* KGCShadowAnimation.m */; };
+		FE342FC91AE1806B008596F4 /* KGCShadowAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE342FC51AE1806B008596F4 /* KGCShadowAnimationView.m */; };
+		FE342FD11AE181CB008596F4 /* KGCShadowAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE342FCF1AE181CB008596F4 /* KGCShadowAnimation.xib */; };
+		FE479E581AC2D146008CD28E /* KGCActionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E1A1AC2D146008CD28E /* KGCActionController.xib */; };
+		FE479E591AC2D146008CD28E /* KGCAnimationAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E1C1AC2D146008CD28E /* KGCAnimationAction.xib */; };
+		FE479E5A1AC2D146008CD28E /* KGCAnimationsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E1E1AC2D146008CD28E /* KGCAnimationsController.xib */; };
+		FE479E5B1AC2D146008CD28E /* KGCAnimationTemplateAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E201AC2D146008CD28E /* KGCAnimationTemplateAction.xib */; };
+		FE479E5C1AC2D146008CD28E /* KGCAudioEffectAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E221AC2D146008CD28E /* KGCAudioEffectAction.xib */; };
+		FE479E5D1AC2D146008CD28E /* KGCBackgroundMusicAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E241AC2D146008CD28E /* KGCBackgroundMusicAction.xib */; };
+		FE479E5E1AC2D146008CD28E /* KGCBasicInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E261AC2D146008CD28E /* KGCBasicInspector.xib */; };
+		FE479E5F1AC2D146008CD28E /* KGCCombinedAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E281AC2D146008CD28E /* KGCCombinedAction.xib */; };
+		FE479E601AC2D146008CD28E /* KGCCombinedAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E2A1AC2D146008CD28E /* KGCCombinedAnimation.xib */; };
+		FE479E611AC2D146008CD28E /* KGCDADEventsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E2C1AC2D146008CD28E /* KGCDADEventsController.xib */; };
+		FE479E621AC2D146008CD28E /* KGCDADInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E2E1AC2D146008CD28E /* KGCDADInspector.xib */; };
+		FE479E631AC2D146008CD28E /* KGCDADSceneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E301AC2D146008CD28E /* KGCDADSceneController.xib */; };
+		FE479E641AC2D146008CD28E /* KGCDADSpriteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E321AC2D146008CD28E /* KGCDADSpriteController.xib */; };
+		FE479E651AC2D146008CD28E /* KGCDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E341AC2D146008CD28E /* KGCDocument.xib */; };
+		FE479E661AC2D146008CD28E /* KGCFadeAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E361AC2D146008CD28E /* KGCFadeAnimation.xib */; };
+		FE479E671AC2D146008CD28E /* KGCImageAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E381AC2D146008CD28E /* KGCImageAnimation.xib */; };
+		FE479E681AC2D146008CD28E /* KGCNotificationAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E3A1AC2D146008CD28E /* KGCNotificationAction.xib */; };
+		FE479E691AC2D146008CD28E /* KGCPathAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E3C1AC2D146008CD28E /* KGCPathAnimation.xib */; };
+		FE479E6A1AC2D146008CD28E /* KGCPositionAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E3E1AC2D146008CD28E /* KGCPositionAnimation.xib */; };
+		FE479E6B1AC2D146008CD28E /* KGCPropertiesAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E401AC2D146008CD28E /* KGCPropertiesAction.xib */; };
+		FE479E6C1AC2D146008CD28E /* KGCRotationAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E421AC2D146008CD28E /* KGCRotationAnimation.xib */; };
+		FE479E6D1AC2D146008CD28E /* KGCScaleAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E441AC2D146008CD28E /* KGCScaleAnimation.xib */; };
+		FE479E6E1AC2D146008CD28E /* KGCSceneAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E461AC2D146008CD28E /* KGCSceneAction.xib */; };
+		FE479E6F1AC2D146008CD28E /* KGCSceneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E481AC2D146008CD28E /* KGCSceneController.xib */; };
+		FE479E701AC2D146008CD28E /* KGCSceneTemplateAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E4A1AC2D146008CD28E /* KGCSceneTemplateAction.xib */; };
+		FE479E711AC2D146008CD28E /* KGCSequenceAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E4C1AC2D146008CD28E /* KGCSequenceAction.xib */; };
+		FE479E721AC2D146008CD28E /* KGCSequenceAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E4E1AC2D146008CD28E /* KGCSequenceAnimation.xib */; };
+		FE479E731AC2D146008CD28E /* KGCSoundTemplateAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E501AC2D146008CD28E /* KGCSoundTemplateAction.xib */; };
+		FE479E741AC2D146008CD28E /* KGCSpriteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E521AC2D146008CD28E /* KGCSpriteController.xib */; };
+		FE479E751AC2D146008CD28E /* KGCTargetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E541AC2D146008CD28E /* KGCTargetView.xib */; };
+		FE479E761AC2D146008CD28E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE479E561AC2D146008CD28E /* MainMenu.xib */; };
+		FE479EA21AC2E402008CD28E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE479EA41AC2E402008CD28E /* InfoPlist.strings */; };
+		FE479EA81AC2E4B3008CD28E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE479EAA1AC2E4B3008CD28E /* Localizable.strings */; };
+		FE479EAF1AC2F24A008CD28E /* KGCSceneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE479EAD1AC2F24A008CD28E /* KGCSceneObject.m */; };
+		FE479EB51AC45AA9008CD28E /* KGCGame.m in Sources */ = {isa = PBXBuildFile; fileRef = FE479EB31AC45AA9008CD28E /* KGCGame.m */; };
+		FE49CA6A1AFCBF7F009A0CA2 /* KGCDelayTemplateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FE49CA691AFCBF7F009A0CA2 /* KGCDelayTemplateAction.m */; };
+		FE4B15FB1AF0A84D009A2147 /* KGCMenuInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4B15F31AF0A84D009A2147 /* KGCMenuInspector.m */; };
+		FE4B15FD1AF0A84D009A2147 /* KGCMenuSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4B15F61AF0A84D009A2147 /* KGCMenuSceneController.m */; };
+		FE4B15FF1AF0A84D009A2147 /* KGCMenuSpriteController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4B15F91AF0A84D009A2147 /* KGCMenuSpriteController.m */; };
+		FE4B16061AF0A898009A2147 /* KGCMenuInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE4B16001AF0A898009A2147 /* KGCMenuInspector.xib */; };
+		FE4B16071AF0A898009A2147 /* KGCMenuSceneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE4B16021AF0A898009A2147 /* KGCMenuSceneController.xib */; };
+		FE4B16081AF0A898009A2147 /* KGCMenuSpriteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE4B16041AF0A898009A2147 /* KGCMenuSpriteController.xib */; };
+		FE4B16661AF388B8009A2147 /* KGCSoundEffectTableCellView.h in Sources */ = {isa = PBXBuildFile; fileRef = FE4B16641AF388B8009A2147 /* KGCSoundEffectTableCellView.h */; };
+		FE4B16671AF388B8009A2147 /* KGCSoundEffectTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4B16651AF388B8009A2147 /* KGCSoundEffectTableCellView.m */; };
+		FE5DACAB1AC0814900525550 /* KGCBasicTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5DACA91AC0814900525550 /* KGCBasicTableCell.m */; };
+		FE6488A21AB855AA007DCB74 /* GameCreator.icns in Resources */ = {isa = PBXBuildFile; fileRef = FE6488A11AB855AA007DCB74 /* GameCreator.icns */; };
+		FE6488A41AB85847007DCB74 /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FE6488A31AB85847007DCB74 /* DocumentIcon.icns */; };
+		FE755FA91AB5AA10001FC422 /* KGCResourceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE755FA81AB5AA10001FC422 /* KGCResourceController.m */; };
+		FE755FB51AB5D102001FC422 /* KGCResourceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FE755FB41AB5D102001FC422 /* KGCResourceInfo.m */; };
+		FE7D6A5F1ABED3CC00A78308 /* KGCSceneLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7D6A5E1ABED3CC00A78308 /* KGCSceneLayer.m */; };
+		FE7D6A6F1ABEE9BC00A78308 /* KGCInspectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7D6A6E1ABEE9BC00A78308 /* KGCInspectorViewController.m */; };
+		FE87B6841AF7469D00A0DBB1 /* KGCGameTransitionAction.h in Sources */ = {isa = PBXBuildFile; fileRef = FE87B67F1AF7469D00A0DBB1 /* KGCGameTransitionAction.h */; };
+		FE87B6851AF7469D00A0DBB1 /* KGCGameTransitionAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FE87B6801AF7469D00A0DBB1 /* KGCGameTransitionAction.m */; };
+		FE87B6861AF7469D00A0DBB1 /* KGCGameTransitionActionView.h in Sources */ = {isa = PBXBuildFile; fileRef = FE87B6821AF7469D00A0DBB1 /* KGCGameTransitionActionView.h */; };
+		FE87B6871AF7469D00A0DBB1 /* KGCGameTransitionActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE87B6831AF7469D00A0DBB1 /* KGCGameTransitionActionView.m */; };
+		FE87B68A1AF7470700A0DBB1 /* KGCGameTransitionAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE87B6881AF7470700A0DBB1 /* KGCGameTransitionAction.xib */; };
+		FE87B6921AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.h in Sources */ = {isa = PBXBuildFile; fileRef = FE87B68D1AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.h */; };
+		FE87B6931AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FE87B68E1AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.m */; };
+		FE87B6941AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.h in Sources */ = {isa = PBXBuildFile; fileRef = FE87B6901AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.h */; };
+		FE87B6951AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE87B6911AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.m */; };
+		FE87B6981AF74D5F00A0DBB1 /* KGCGameTransitionTemplateAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE87B6961AF74D5F00A0DBB1 /* KGCGameTransitionTemplateAction.xib */; };
+		FE9182571ABC03B4001D2682 /* KGCTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9182551ABC03B4001D2682 /* KGCTableView.m */; };
+		FED00F631ABDC8C60059D0A2 /* KGCTableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FED00F621ABDC8C60059D0A2 /* KGCTableTextField.m */; };
+		FED0FF361AC85F9B00ABC3D7 /* KGCGameSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FED0FF351AC85F9B00ABC3D7 /* KGCGameSet.m */; };
+		FEEBE5321AC2C4F7002370D9 /* KGCActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5051AC2C4F7002370D9 /* KGCActionController.m */; };
+		FEEBE5351AC2C4F7002370D9 /* KGCAnimationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5091AC2C4F7002370D9 /* KGCAnimationsController.m */; };
+		FEEBE5381AC2C4F7002370D9 /* KGCBasicInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE50C1AC2C4F7002370D9 /* KGCBasicInspector.m */; };
+		FEEBE53B1AC2C4F7002370D9 /* KGCSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5101AC2C4F7002370D9 /* KGCSceneController.m */; };
+		FEEBE53E1AC2C4F7002370D9 /* KGCSpriteController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5141AC2C4F7002370D9 /* KGCSpriteController.m */; };
+		FEEBE5411AC2C4F7002370D9 /* KGCDADEventsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5191AC2C4F7002370D9 /* KGCDADEventsController.m */; };
+		FEEBE5441AC2C4F7002370D9 /* KGCEventTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE51D1AC2C4F7002370D9 /* KGCEventTableCell.m */; };
+		FEEBE5471AC2C4F7002370D9 /* KGCDADInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5201AC2C4F7002370D9 /* KGCDADInspector.m */; };
+		FEEBE54A1AC2C4F7002370D9 /* KGCDADSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5241AC2C4F7002370D9 /* KGCDADSceneController.m */; };
+		FEEBE54D1AC2C4F7002370D9 /* KGCDADSpriteController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5281AC2C4F7002370D9 /* KGCDADSpriteController.m */; };
+		FEEBE5501AC2C4F7002370D9 /* KGCAnswerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE52C1AC2C4F7002370D9 /* KGCAnswerCell.m */; };
+		FEEBE5521AC2C4F7002370D9 /* KGCAnswerPointsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE52E1AC2C4F7002370D9 /* KGCAnswerPointsCell.m */; };
+		FEEBE5541AC2C4F7002370D9 /* KGCInspectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5301AC2C4F7002370D9 /* KGCInspectorController.m */; };
+		FEEBE5FD1AC2C791002370D9 /* KGCAnimationAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5591AC2C791002370D9 /* KGCAnimationAction.m */; };
+		FEEBE6001AC2C791002370D9 /* KGCAnimationActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE55D1AC2C791002370D9 /* KGCAnimationActionView.m */; };
+		FEEBE6021AC2C791002370D9 /* KGCAudioEffectAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5601AC2C791002370D9 /* KGCAudioEffectAction.m */; };
+		FEEBE6051AC2C791002370D9 /* KGCAudioEffectActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5641AC2C791002370D9 /* KGCAudioEffectActionView.m */; };
+		FEEBE6071AC2C791002370D9 /* KGCBackgroundMusicAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5671AC2C791002370D9 /* KGCBackgroundMusicAction.m */; };
+		FEEBE60A1AC2C791002370D9 /* KGCBackgroundMusicActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE56B1AC2C791002370D9 /* KGCBackgroundMusicActionView.m */; };
+		FEEBE60C1AC2C791002370D9 /* KGCCombinedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE56E1AC2C791002370D9 /* KGCCombinedAction.m */; };
+		FEEBE60F1AC2C791002370D9 /* KGCCombinedActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5721AC2C791002370D9 /* KGCCombinedActionView.m */; };
+		FEEBE6111AC2C791002370D9 /* KGCEmptyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5751AC2C791002370D9 /* KGCEmptyAction.m */; };
+		FEEBE6131AC2C791002370D9 /* KGCAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5771AC2C791002370D9 /* KGCAction.m */; };
+		FEEBE6151AC2C791002370D9 /* KGCNotificationAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE57A1AC2C791002370D9 /* KGCNotificationAction.m */; };
+		FEEBE6181AC2C791002370D9 /* KGCNotificationActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE57E1AC2C791002370D9 /* KGCNotificationActionView.m */; };
+		FEEBE61A1AC2C791002370D9 /* KGCPropertiesAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5811AC2C791002370D9 /* KGCPropertiesAction.m */; };
+		FEEBE61D1AC2C791002370D9 /* KGCPropertiesActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5851AC2C791002370D9 /* KGCPropertiesActionView.m */; };
+		FEEBE61F1AC2C791002370D9 /* KGCRemoveSpriteAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5881AC2C791002370D9 /* KGCRemoveSpriteAction.m */; };
+		FEEBE6211AC2C791002370D9 /* KGCSceneAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE58B1AC2C791002370D9 /* KGCSceneAction.m */; };
+		FEEBE6241AC2C791002370D9 /* KGCSceneActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE58F1AC2C791002370D9 /* KGCSceneActionView.m */; };
+		FEEBE6261AC2C791002370D9 /* KGCSequenceAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5921AC2C791002370D9 /* KGCSequenceAction.m */; };
+		FEEBE6291AC2C791002370D9 /* KGCSequenceActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5961AC2C791002370D9 /* KGCSequenceActionView.m */; };
+		FEEBE62B1AC2C791002370D9 /* KGCCombinedAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE59A1AC2C791002370D9 /* KGCCombinedAnimation.m */; };
+		FEEBE62E1AC2C791002370D9 /* KGCCombinedAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE59E1AC2C791002370D9 /* KGCCombinedAnimationView.m */; };
+		FEEBE6301AC2C791002370D9 /* KGCFadeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5A11AC2C791002370D9 /* KGCFadeAnimation.m */; };
+		FEEBE6331AC2C791002370D9 /* KGCFadeAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5A51AC2C791002370D9 /* KGCFadeAnimationView.m */; };
+		FEEBE6351AC2C791002370D9 /* KGCImageAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5A81AC2C791002370D9 /* KGCImageAnimation.m */; };
+		FEEBE6381AC2C791002370D9 /* KGCImageAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5AC1AC2C791002370D9 /* KGCImageAnimationView.m */; };
+		FEEBE63A1AC2C791002370D9 /* KGCAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5AE1AC2C791002370D9 /* KGCAnimation.m */; };
+		FEEBE63C1AC2C791002370D9 /* KGCMoveBackAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5B11AC2C791002370D9 /* KGCMoveBackAnimation.m */; };
+		FEEBE63E1AC2C791002370D9 /* KGCPathAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5B41AC2C791002370D9 /* KGCPathAnimation.m */; };
+		FEEBE6411AC2C791002370D9 /* KGCPathAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5B81AC2C791002370D9 /* KGCPathAnimationView.m */; };
+		FEEBE6431AC2C791002370D9 /* KGCPositionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5BB1AC2C791002370D9 /* KGCPositionAnimation.m */; };
+		FEEBE6461AC2C791002370D9 /* KGCPositionAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5BF1AC2C791002370D9 /* KGCPositionAnimationView.m */; };
+		FEEBE6481AC2C791002370D9 /* KGCRotationAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5C21AC2C791002370D9 /* KGCRotationAnimation.m */; };
+		FEEBE64B1AC2C791002370D9 /* KGCRotationAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5C61AC2C791002370D9 /* KGCRotationAnimationView.m */; };
+		FEEBE64D1AC2C791002370D9 /* KGCScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5C91AC2C791002370D9 /* KGCScaleAnimation.m */; };
+		FEEBE6501AC2C791002370D9 /* KGCScaleAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5CD1AC2C791002370D9 /* KGCScaleAnimationView.m */; };
+		FEEBE6521AC2C791002370D9 /* KGCSequenceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5D01AC2C791002370D9 /* KGCSequenceAnimation.m */; };
+		FEEBE6551AC2C791002370D9 /* KGCSequenceAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5D41AC2C791002370D9 /* KGCSequenceAnimationView.m */; };
+		FEEBE6571AC2C791002370D9 /* KGCAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5D71AC2C791002370D9 /* KGCAnswer.m */; };
+		FEEBE6591AC2C791002370D9 /* KGCEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5DA1AC2C791002370D9 /* KGCEvent.m */; };
+		FEEBE65B1AC2C791002370D9 /* KGCScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5DD1AC2C791002370D9 /* KGCScene.m */; };
+		FEEBE65D1AC2C791002370D9 /* KGCSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5E01AC2C791002370D9 /* KGCSprite.m */; };
+		FEEBE65F1AC2C791002370D9 /* KGCAnimationTemplateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5E41AC2C791002370D9 /* KGCAnimationTemplateAction.m */; };
+		FEEBE6621AC2C791002370D9 /* KGCAnimationTemplateActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5E81AC2C791002370D9 /* KGCAnimationTemplateActionView.m */; };
+		FEEBE6641AC2C791002370D9 /* KGCConfirmAnswerTemplateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5EB1AC2C791002370D9 /* KGCConfirmAnswerTemplateAction.m */; };
+		FEEBE6661AC2C791002370D9 /* KGCTemplateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5ED1AC2C791002370D9 /* KGCTemplateAction.m */; };
+		FEEBE6681AC2C791002370D9 /* KGCSceneTemplateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5F01AC2C791002370D9 /* KGCSceneTemplateAction.m */; };
+		FEEBE66B1AC2C791002370D9 /* KGCSceneTemplateActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5F41AC2C791002370D9 /* KGCSceneTemplateActionView.m */; };
+		FEEBE66D1AC2C791002370D9 /* KGCSoundTemplateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5F71AC2C791002370D9 /* KGCSoundTemplateAction.m */; };
+		FEEBE6701AC2C791002370D9 /* KGCSoundTemplateActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5FB1AC2C791002370D9 /* KGCSoundTemplateActionView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FE2C91151AB4B926004FD211 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE2C90F31AB4B925004FD211 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE2C90FA1AB4B925004FD211;
+			remoteInfo = GameCreator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FE0B74121AC29396005E6CD2 /* KGCDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDataObject.h; sourceTree = "<group>"; };
+		FE0B74131AC29396005E6CD2 /* KGCDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDataObject.m; sourceTree = "<group>"; };
+		FE241F871AC97E060095F76B /* KGCDADShapeEventsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADShapeEventsController.h; sourceTree = "<group>"; };
+		FE241F881AC97E060095F76B /* KGCDADShapeEventsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADShapeEventsController.m; sourceTree = "<group>"; };
+		FE241F8C1AC97E060095F76B /* KGCDADShapeInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADShapeInspector.h; sourceTree = "<group>"; };
+		FE241F8D1AC97E060095F76B /* KGCDADShapeInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADShapeInspector.m; sourceTree = "<group>"; };
+		FE241F8F1AC97E060095F76B /* KGCDADShapeSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADShapeSceneController.h; sourceTree = "<group>"; };
+		FE241F901AC97E060095F76B /* KGCDADShapeSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADShapeSceneController.m; sourceTree = "<group>"; };
+		FE241F921AC97E060095F76B /* KGCDADShapeSpriteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADShapeSpriteController.h; sourceTree = "<group>"; };
+		FE241F931AC97E060095F76B /* KGCDADShapeSpriteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADShapeSpriteController.m; sourceTree = "<group>"; };
+		FE241FB01AC982710095F76B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = GameCreator/English.lproj/KGCDADShapeInspector.xib; sourceTree = "<group>"; };
+		FE241FB21AC982740095F76B /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = GameCreator/nl.lproj/KGCDADShapeInspector.xib; sourceTree = "<group>"; };
+		FE241FB41AC984270095F76B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = GameCreator/English.lproj/KGCDADShapeEventsController.xib; sourceTree = "<group>"; };
+		FE241FB61AC984270095F76B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = GameCreator/English.lproj/KGCDADShapeSceneController.xib; sourceTree = "<group>"; };
+		FE241FB81AC984270095F76B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = GameCreator/English.lproj/KGCDADShapeSpriteController.xib; sourceTree = "<group>"; };
+		FE241FBC1AC9842B0095F76B /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = GameCreator/nl.lproj/KGCDADShapeEventsController.xib; sourceTree = "<group>"; };
+		FE241FBD1AC9842F0095F76B /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = GameCreator/nl.lproj/KGCDADShapeSceneController.xib; sourceTree = "<group>"; };
+		FE241FBE1AC984330095F76B /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = GameCreator/nl.lproj/KGCDADShapeSpriteController.xib; sourceTree = "<group>"; };
+		FE241FC01ACA744A0095F76B /* KGCGridAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCGridAnswer.h; sourceTree = "<group>"; };
+		FE241FC11ACA744A0095F76B /* KGCGridAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCGridAnswer.m; sourceTree = "<group>"; };
+		FE2C90FB1AB4B925004FD211 /* GameCreator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameCreator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE2C91031AB4B925004FD211 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FE2C910B1AB4B925004FD211 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FE2C91141AB4B926004FD211 /* GameCreatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameCreatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE2C91191AB4B926004FD211 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE2C911A1AB4B926004FD211 /* GameCreatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameCreatorTests.m; sourceTree = "<group>"; };
+		FE2C91261AB4BAA8004FD211 /* ScreenTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScreenTemplate.png; sourceTree = "<group>"; };
+		FE2C91271AB4BAA8004FD211 /* ScreenTemplate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScreenTemplate@2x.png"; sourceTree = "<group>"; };
+		FE2C91821AB4BAA8004FD211 /* CALayer+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Animation.h"; sourceTree = "<group>"; };
+		FE2C91831AB4BAA8004FD211 /* CALayer+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Animation.m"; sourceTree = "<group>"; };
+		FE2C91841AB4BAA8004FD211 /* CAShapeLayer+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAShapeLayer+Animation.h"; sourceTree = "<group>"; };
+		FE2C91851AB4BAA8004FD211 /* CAShapeLayer+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAShapeLayer+Animation.m"; sourceTree = "<group>"; };
+		FE2C91861AB4BAA8004FD211 /* NSBezierPath+CGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBezierPath+CGPath.h"; sourceTree = "<group>"; };
+		FE2C91871AB4BAA8004FD211 /* NSBezierPath+CGPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBezierPath+CGPath.m"; sourceTree = "<group>"; };
+		FE2C91891AB4BAA8004FD211 /* KGCHelperMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCHelperMethods.h; sourceTree = "<group>"; };
+		FE2C918A1AB4BAA8004FD211 /* KGCHelperMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCHelperMethods.m; sourceTree = "<group>"; };
+		FE2C918B1AB4BAA8004FD211 /* KGCSettingsViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSettingsViewManager.h; sourceTree = "<group>"; };
+		FE2C918C1AB4BAA8004FD211 /* KGCSettingsViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSettingsViewManager.m; sourceTree = "<group>"; };
+		FE2C91971AB4BAA8004FD211 /* KGCSceneContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSceneContentView.h; sourceTree = "<group>"; };
+		FE2C91981AB4BAA8004FD211 /* KGCSceneContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSceneContentView.m; sourceTree = "<group>"; };
+		FE2C91991AB4BAA8004FD211 /* KGCSpriteLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSpriteLayer.h; sourceTree = "<group>"; };
+		FE2C919A1AB4BAA8004FD211 /* KGCSpriteLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSpriteLayer.m; sourceTree = "<group>"; };
+		FE2C919C1AB4BAA8004FD211 /* KGCFileDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCFileDropView.h; sourceTree = "<group>"; };
+		FE2C919D1AB4BAA8004FD211 /* KGCFileDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCFileDropView.m; sourceTree = "<group>"; };
+		FE2C919E1AB4BAA8004FD211 /* KGCImageLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCImageLayer.h; sourceTree = "<group>"; };
+		FE2C919F1AB4BAA8004FD211 /* KGCImageLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCImageLayer.m; sourceTree = "<group>"; };
+		FE2C91A01AB4BAA8004FD211 /* KGCImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCImageView.h; sourceTree = "<group>"; };
+		FE2C91A11AB4BAA8004FD211 /* KGCImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCImageView.m; sourceTree = "<group>"; };
+		FE2C91A21AB4BAA8004FD211 /* KGCInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCInspector.h; sourceTree = "<group>"; };
+		FE2C91A31AB4BAA8004FD211 /* KGCInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCInspector.m; sourceTree = "<group>"; };
+		FE2C91A41AB4BAA8004FD211 /* KGCInspectorContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCInspectorContentView.h; sourceTree = "<group>"; };
+		FE2C91A51AB4BAA8004FD211 /* KGCInspectorContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCInspectorContentView.m; sourceTree = "<group>"; };
+		FE2C91A61AB4BAA8004FD211 /* KGCInspectorWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCInspectorWindow.h; sourceTree = "<group>"; };
+		FE2C91A71AB4BAA8004FD211 /* KGCInspectorWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCInspectorWindow.m; sourceTree = "<group>"; };
+		FE2C91A81AB4BAA8004FD211 /* KGCSceneTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSceneTableCell.h; sourceTree = "<group>"; };
+		FE2C91A91AB4BAA8004FD211 /* KGCSceneTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSceneTableCell.m; sourceTree = "<group>"; };
+		FE2C91AA1AB4BAA8004FD211 /* KGCSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSettingsView.h; sourceTree = "<group>"; };
+		FE2C91AB1AB4BAA8004FD211 /* KGCSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSettingsView.m; sourceTree = "<group>"; };
+		FE2C91F41AB4BAC2004FD211 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FE2C91F61AB4BACA004FD211 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FE2C91F91AB4BF68004FD211 /* KGCDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCDocument.h; sourceTree = "<group>"; };
+		FE2C91FA1AB4BF68004FD211 /* KGCDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDocument.m; sourceTree = "<group>"; };
+		FE2C91FC1AB4BF84004FD211 /* KGCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCAppDelegate.h; sourceTree = "<group>"; };
+		FE2C91FD1AB4BF84004FD211 /* KGCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAppDelegate.m; sourceTree = "<group>"; };
+		FE2ED24E1AD544F20086BB84 /* KGCTPlayHintemplateAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCTPlayHintemplateAction.h; sourceTree = "<group>"; };
+		FE2ED24F1AD544F20086BB84 /* KGCTPlayHintemplateAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCTPlayHintemplateAction.m; sourceTree = "<group>"; };
+		FE30ABEF1AE3BCD000093338 /* KGCWobbleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCWobbleAnimation.m; sourceTree = "<group>"; };
+		FE30ABF01AE3BCD000093338 /* KGCWobbleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCWobbleAnimation.h; sourceTree = "<group>"; };
+		FE30ABF21AE3BCD000093338 /* KGCWobbleAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCWobbleAnimationView.h; sourceTree = "<group>"; };
+		FE30ABF31AE3BCD000093338 /* KGCWobbleAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCWobbleAnimationView.m; sourceTree = "<group>"; };
+		FE30ABF71AE3BDCD00093338 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCWobbleAnimation.xib; sourceTree = "<group>"; };
+		FE30ABF91AE3BDDE00093338 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCWobbleAnimation.xib; sourceTree = "<group>"; };
+		FE30AC031AE3BF1D00093338 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCStopAnimationAction.xib; sourceTree = "<group>"; };
+		FE30AC051AE3BF2200093338 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCStopAnimationAction.xib; sourceTree = "<group>"; };
+		FE30AC071AE3CA1F00093338 /* KGCStopAnimationAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCStopAnimationAction.h; sourceTree = "<group>"; };
+		FE30AC081AE3CA1F00093338 /* KGCStopAnimationAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCStopAnimationAction.m; sourceTree = "<group>"; };
+		FE30AC0A1AE3CA1F00093338 /* KGCStopAnimationActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCStopAnimationActionView.h; sourceTree = "<group>"; };
+		FE30AC0B1AE3CA1F00093338 /* KGCStopAnimationActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCStopAnimationActionView.m; sourceTree = "<group>"; };
+		FE30AC171AE3CB9500093338 /* KGCRandomPositionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCRandomPositionAnimation.h; sourceTree = "<group>"; };
+		FE30AC181AE3CB9500093338 /* KGCRandomPositionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCRandomPositionAnimation.m; sourceTree = "<group>"; };
+		FE30AC1A1AE3CB9500093338 /* KGCRandomPositionAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCRandomPositionAnimationView.h; sourceTree = "<group>"; };
+		FE30AC1B1AE3CB9500093338 /* KGCRandomPositionAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCRandomPositionAnimationView.m; sourceTree = "<group>"; };
+		FE30AC1F1AE3CE2100093338 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCRandomPositionAnimation.xib; sourceTree = "<group>"; };
+		FE30AC211AE3CE2800093338 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCRandomPositionAnimation.xib; sourceTree = "<group>"; };
+		FE342FC11AE1806B008596F4 /* KGCShadowAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCShadowAnimation.h; sourceTree = "<group>"; };
+		FE342FC21AE1806B008596F4 /* KGCShadowAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCShadowAnimation.m; sourceTree = "<group>"; };
+		FE342FC41AE1806B008596F4 /* KGCShadowAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCShadowAnimationView.h; sourceTree = "<group>"; };
+		FE342FC51AE1806B008596F4 /* KGCShadowAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCShadowAnimationView.m; sourceTree = "<group>"; };
+		FE342FD01AE181CB008596F4 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCShadowAnimation.xib; sourceTree = "<group>"; };
+		FE342FD21AE181CE008596F4 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCShadowAnimation.xib; sourceTree = "<group>"; };
+		FE479E1B1AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCActionController.xib; sourceTree = "<group>"; };
+		FE479E1D1AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCAnimationAction.xib; sourceTree = "<group>"; };
+		FE479E1F1AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCAnimationsController.xib; sourceTree = "<group>"; };
+		FE479E211AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCAnimationTemplateAction.xib; sourceTree = "<group>"; };
+		FE479E231AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCAudioEffectAction.xib; sourceTree = "<group>"; };
+		FE479E251AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCBackgroundMusicAction.xib; sourceTree = "<group>"; };
+		FE479E271AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCBasicInspector.xib; sourceTree = "<group>"; };
+		FE479E291AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCCombinedAction.xib; sourceTree = "<group>"; };
+		FE479E2B1AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCCombinedAnimation.xib; sourceTree = "<group>"; };
+		FE479E2D1AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCDADEventsController.xib; sourceTree = "<group>"; };
+		FE479E2F1AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCDADInspector.xib; sourceTree = "<group>"; };
+		FE479E311AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCDADSceneController.xib; sourceTree = "<group>"; };
+		FE479E331AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCDADSpriteController.xib; sourceTree = "<group>"; };
+		FE479E351AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCDocument.xib; sourceTree = "<group>"; };
+		FE479E371AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCFadeAnimation.xib; sourceTree = "<group>"; };
+		FE479E391AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCImageAnimation.xib; sourceTree = "<group>"; };
+		FE479E3B1AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCNotificationAction.xib; sourceTree = "<group>"; };
+		FE479E3D1AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCPathAnimation.xib; sourceTree = "<group>"; };
+		FE479E3F1AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCPositionAnimation.xib; sourceTree = "<group>"; };
+		FE479E411AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCPropertiesAction.xib; sourceTree = "<group>"; };
+		FE479E431AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCRotationAnimation.xib; sourceTree = "<group>"; };
+		FE479E451AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCScaleAnimation.xib; sourceTree = "<group>"; };
+		FE479E471AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCSceneAction.xib; sourceTree = "<group>"; };
+		FE479E491AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCSceneController.xib; sourceTree = "<group>"; };
+		FE479E4B1AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCSceneTemplateAction.xib; sourceTree = "<group>"; };
+		FE479E4D1AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCSequenceAction.xib; sourceTree = "<group>"; };
+		FE479E4F1AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCSequenceAnimation.xib; sourceTree = "<group>"; };
+		FE479E511AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCSoundTemplateAction.xib; sourceTree = "<group>"; };
+		FE479E531AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCSpriteController.xib; sourceTree = "<group>"; };
+		FE479E551AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCTargetView.xib; sourceTree = "<group>"; };
+		FE479E571AC2D146008CD28E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FE479E781AC2D193008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCActionController.xib; sourceTree = "<group>"; };
+		FE479E791AC2D193008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCAnimationAction.xib; sourceTree = "<group>"; };
+		FE479E7A1AC2D193008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCAnimationsController.xib; sourceTree = "<group>"; };
+		FE479E7B1AC2D193008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCAnimationTemplateAction.xib; sourceTree = "<group>"; };
+		FE479E7C1AC2D193008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCAudioEffectAction.xib; sourceTree = "<group>"; };
+		FE479E7D1AC2D193008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCBackgroundMusicAction.xib; sourceTree = "<group>"; };
+		FE479E7E1AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCBasicInspector.xib; sourceTree = "<group>"; };
+		FE479E7F1AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCCombinedAction.xib; sourceTree = "<group>"; };
+		FE479E801AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCCombinedAnimation.xib; sourceTree = "<group>"; };
+		FE479E811AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCDADEventsController.xib; sourceTree = "<group>"; };
+		FE479E821AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCDADInspector.xib; sourceTree = "<group>"; };
+		FE479E831AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCDADSceneController.xib; sourceTree = "<group>"; };
+		FE479E841AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCDADSpriteController.xib; sourceTree = "<group>"; };
+		FE479E851AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCDocument.xib; sourceTree = "<group>"; };
+		FE479E861AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCFadeAnimation.xib; sourceTree = "<group>"; };
+		FE479E871AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCImageAnimation.xib; sourceTree = "<group>"; };
+		FE479E881AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCNotificationAction.xib; sourceTree = "<group>"; };
+		FE479E891AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCPathAnimation.xib; sourceTree = "<group>"; };
+		FE479E8A1AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCPositionAnimation.xib; sourceTree = "<group>"; };
+		FE479E8B1AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCPropertiesAction.xib; sourceTree = "<group>"; };
+		FE479E8C1AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCRotationAnimation.xib; sourceTree = "<group>"; };
+		FE479E8D1AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCScaleAnimation.xib; sourceTree = "<group>"; };
+		FE479E8E1AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCSceneAction.xib; sourceTree = "<group>"; };
+		FE479E8F1AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCSceneController.xib; sourceTree = "<group>"; };
+		FE479E901AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCSceneTemplateAction.xib; sourceTree = "<group>"; };
+		FE479E911AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCSequenceAction.xib; sourceTree = "<group>"; };
+		FE479E921AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCSequenceAnimation.xib; sourceTree = "<group>"; };
+		FE479E931AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCSoundTemplateAction.xib; sourceTree = "<group>"; };
+		FE479E941AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCSpriteController.xib; sourceTree = "<group>"; };
+		FE479E951AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCTargetView.xib; sourceTree = "<group>"; };
+		FE479E961AC2D194008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FE479E9A1AC2E1DF008CD28E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE479EA31AC2E402008CD28E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FE479EA51AC2E403008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FE479EA91AC2E4B3008CD28E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FE479EAB1AC2E4B4008CD28E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FE479EAC1AC2F24A008CD28E /* KGCSceneObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSceneObject.h; sourceTree = "<group>"; };
+		FE479EAD1AC2F24A008CD28E /* KGCSceneObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSceneObject.m; sourceTree = "<group>"; };
+		FE479EB21AC45AA9008CD28E /* KGCGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KGCGame.h; path = Game/KGCGame.h; sourceTree = "<group>"; };
+		FE479EB31AC45AA9008CD28E /* KGCGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KGCGame.m; path = Game/KGCGame.m; sourceTree = "<group>"; };
+		FE49CA681AFCBF7F009A0CA2 /* KGCDelayTemplateAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCDelayTemplateAction.h; sourceTree = "<group>"; };
+		FE49CA691AFCBF7F009A0CA2 /* KGCDelayTemplateAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDelayTemplateAction.m; sourceTree = "<group>"; };
+		FE4B15F21AF0A84D009A2147 /* KGCMenuInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCMenuInspector.h; sourceTree = "<group>"; };
+		FE4B15F31AF0A84D009A2147 /* KGCMenuInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCMenuInspector.m; sourceTree = "<group>"; };
+		FE4B15F51AF0A84D009A2147 /* KGCMenuSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCMenuSceneController.h; sourceTree = "<group>"; };
+		FE4B15F61AF0A84D009A2147 /* KGCMenuSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCMenuSceneController.m; sourceTree = "<group>"; };
+		FE4B15F81AF0A84D009A2147 /* KGCMenuSpriteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCMenuSpriteController.h; sourceTree = "<group>"; };
+		FE4B15F91AF0A84D009A2147 /* KGCMenuSpriteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCMenuSpriteController.m; sourceTree = "<group>"; };
+		FE4B16011AF0A898009A2147 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCMenuInspector.xib; sourceTree = "<group>"; };
+		FE4B16031AF0A898009A2147 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCMenuSceneController.xib; sourceTree = "<group>"; };
+		FE4B16051AF0A898009A2147 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCMenuSpriteController.xib; sourceTree = "<group>"; };
+		FE4B16091AF0A89D009A2147 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCMenuInspector.xib; sourceTree = "<group>"; };
+		FE4B160A1AF0A8A1009A2147 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCMenuSceneController.xib; sourceTree = "<group>"; };
+		FE4B160B1AF0A8A5009A2147 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCMenuSpriteController.xib; sourceTree = "<group>"; };
+		FE4B16641AF388B8009A2147 /* KGCSoundEffectTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSoundEffectTableCellView.h; sourceTree = "<group>"; };
+		FE4B16651AF388B8009A2147 /* KGCSoundEffectTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSoundEffectTableCellView.m; sourceTree = "<group>"; };
+		FE5DACA81AC0814900525550 /* KGCBasicTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCBasicTableCell.h; sourceTree = "<group>"; };
+		FE5DACA91AC0814900525550 /* KGCBasicTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCBasicTableCell.m; sourceTree = "<group>"; };
+		FE6488A11AB855AA007DCB74 /* GameCreator.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = GameCreator.icns; sourceTree = "<group>"; };
+		FE6488A31AB85847007DCB74 /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DocumentIcon.icns; sourceTree = "<group>"; };
+		FE755FA71AB5AA10001FC422 /* KGCResourceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCResourceController.h; sourceTree = "<group>"; };
+		FE755FA81AB5AA10001FC422 /* KGCResourceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCResourceController.m; sourceTree = "<group>"; };
+		FE755FB31AB5D102001FC422 /* KGCResourceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCResourceInfo.h; sourceTree = "<group>"; };
+		FE755FB41AB5D102001FC422 /* KGCResourceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCResourceInfo.m; sourceTree = "<group>"; };
+		FE7D6A5D1ABED3CC00A78308 /* KGCSceneLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCSceneLayer.h; sourceTree = "<group>"; };
+		FE7D6A5E1ABED3CC00A78308 /* KGCSceneLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSceneLayer.m; sourceTree = "<group>"; };
+		FE7D6A6D1ABEE9BC00A78308 /* KGCInspectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCInspectorViewController.h; sourceTree = "<group>"; };
+		FE7D6A6E1ABEE9BC00A78308 /* KGCInspectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCInspectorViewController.m; sourceTree = "<group>"; };
+		FE87B67F1AF7469D00A0DBB1 /* KGCGameTransitionAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCGameTransitionAction.h; sourceTree = "<group>"; };
+		FE87B6801AF7469D00A0DBB1 /* KGCGameTransitionAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCGameTransitionAction.m; sourceTree = "<group>"; };
+		FE87B6821AF7469D00A0DBB1 /* KGCGameTransitionActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCGameTransitionActionView.h; sourceTree = "<group>"; };
+		FE87B6831AF7469D00A0DBB1 /* KGCGameTransitionActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCGameTransitionActionView.m; sourceTree = "<group>"; };
+		FE87B6891AF7470700A0DBB1 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCGameTransitionAction.xib; sourceTree = "<group>"; };
+		FE87B68B1AF7471500A0DBB1 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCGameTransitionAction.xib; sourceTree = "<group>"; };
+		FE87B68D1AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCGameTransitionTemplateAction.h; sourceTree = "<group>"; };
+		FE87B68E1AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCGameTransitionTemplateAction.m; sourceTree = "<group>"; };
+		FE87B6901AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCGameTransitionTemplateActionView.h; sourceTree = "<group>"; };
+		FE87B6911AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCGameTransitionTemplateActionView.m; sourceTree = "<group>"; };
+		FE87B6971AF74D5F00A0DBB1 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCGameTransitionTemplateAction.xib; sourceTree = "<group>"; };
+		FE87B6991AF74D6400A0DBB1 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCGameTransitionTemplateAction.xib; sourceTree = "<group>"; };
+		FE9182541ABC03B4001D2682 /* KGCTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCTableView.h; sourceTree = "<group>"; };
+		FE9182551ABC03B4001D2682 /* KGCTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCTableView.m; sourceTree = "<group>"; };
+		FED00F611ABDC8C60059D0A2 /* KGCTableTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCTableTextField.h; sourceTree = "<group>"; };
+		FED00F621ABDC8C60059D0A2 /* KGCTableTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCTableTextField.m; sourceTree = "<group>"; };
+		FED0FF341AC85F9B00ABC3D7 /* KGCGameSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KGCGameSet.h; path = GameSet/KGCGameSet.h; sourceTree = "<group>"; };
+		FED0FF351AC85F9B00ABC3D7 /* KGCGameSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KGCGameSet.m; path = GameSet/KGCGameSet.m; sourceTree = "<group>"; };
+		FEEBE5041AC2C4F7002370D9 /* KGCActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCActionController.h; sourceTree = "<group>"; };
+		FEEBE5051AC2C4F7002370D9 /* KGCActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCActionController.m; sourceTree = "<group>"; };
+		FEEBE5081AC2C4F7002370D9 /* KGCAnimationsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCAnimationsController.h; sourceTree = "<group>"; };
+		FEEBE5091AC2C4F7002370D9 /* KGCAnimationsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAnimationsController.m; sourceTree = "<group>"; };
+		FEEBE50B1AC2C4F7002370D9 /* KGCBasicInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCBasicInspector.h; sourceTree = "<group>"; };
+		FEEBE50C1AC2C4F7002370D9 /* KGCBasicInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCBasicInspector.m; sourceTree = "<group>"; };
+		FEEBE50F1AC2C4F7002370D9 /* KGCSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSceneController.h; sourceTree = "<group>"; };
+		FEEBE5101AC2C4F7002370D9 /* KGCSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSceneController.m; sourceTree = "<group>"; };
+		FEEBE5131AC2C4F7002370D9 /* KGCSpriteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSpriteController.h; sourceTree = "<group>"; };
+		FEEBE5141AC2C4F7002370D9 /* KGCSpriteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSpriteController.m; sourceTree = "<group>"; };
+		FEEBE5181AC2C4F7002370D9 /* KGCDADEventsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADEventsController.h; sourceTree = "<group>"; };
+		FEEBE5191AC2C4F7002370D9 /* KGCDADEventsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADEventsController.m; sourceTree = "<group>"; };
+		FEEBE51C1AC2C4F7002370D9 /* KGCEventTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCEventTableCell.h; sourceTree = "<group>"; };
+		FEEBE51D1AC2C4F7002370D9 /* KGCEventTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCEventTableCell.m; sourceTree = "<group>"; };
+		FEEBE51F1AC2C4F7002370D9 /* KGCDADInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADInspector.h; sourceTree = "<group>"; };
+		FEEBE5201AC2C4F7002370D9 /* KGCDADInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADInspector.m; sourceTree = "<group>"; };
+		FEEBE5231AC2C4F7002370D9 /* KGCDADSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADSceneController.h; sourceTree = "<group>"; };
+		FEEBE5241AC2C4F7002370D9 /* KGCDADSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADSceneController.m; sourceTree = "<group>"; };
+		FEEBE5271AC2C4F7002370D9 /* KGCDADSpriteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADSpriteController.h; sourceTree = "<group>"; };
+		FEEBE5281AC2C4F7002370D9 /* KGCDADSpriteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADSpriteController.m; sourceTree = "<group>"; };
+		FEEBE52B1AC2C4F7002370D9 /* KGCAnswerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCAnswerCell.h; sourceTree = "<group>"; };
+		FEEBE52C1AC2C4F7002370D9 /* KGCAnswerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAnswerCell.m; sourceTree = "<group>"; };
+		FEEBE52D1AC2C4F7002370D9 /* KGCAnswerPointsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCAnswerPointsCell.h; sourceTree = "<group>"; };
+		FEEBE52E1AC2C4F7002370D9 /* KGCAnswerPointsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAnswerPointsCell.m; sourceTree = "<group>"; };
+		FEEBE52F1AC2C4F7002370D9 /* KGCInspectorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCInspectorController.h; sourceTree = "<group>"; };
+		FEEBE5301AC2C4F7002370D9 /* KGCInspectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCInspectorController.m; sourceTree = "<group>"; };
+		FEEBE5581AC2C791002370D9 /* KGCAnimationAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCAnimationAction.h; sourceTree = "<group>"; };
+		FEEBE5591AC2C791002370D9 /* KGCAnimationAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAnimationAction.m; sourceTree = "<group>"; };
+		FEEBE55C1AC2C791002370D9 /* KGCAnimationActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCAnimationActionView.h; sourceTree = "<group>"; };
+		FEEBE55D1AC2C791002370D9 /* KGCAnimationActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAnimationActionView.m; sourceTree = "<group>"; };
+		FEEBE55F1AC2C791002370D9 /* KGCAudioEffectAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCAudioEffectAction.h; sourceTree = "<group>"; };
+		FEEBE5601AC2C791002370D9 /* KGCAudioEffectAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAudioEffectAction.m; sourceTree = "<group>"; };
+		FEEBE5631AC2C791002370D9 /* KGCAudioEffectActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCAudioEffectActionView.h; sourceTree = "<group>"; };
+		FEEBE5641AC2C791002370D9 /* KGCAudioEffectActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAudioEffectActionView.m; sourceTree = "<group>"; };
+		FEEBE5661AC2C791002370D9 /* KGCBackgroundMusicAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCBackgroundMusicAction.h; sourceTree = "<group>"; };
+		FEEBE5671AC2C791002370D9 /* KGCBackgroundMusicAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCBackgroundMusicAction.m; sourceTree = "<group>"; };
+		FEEBE56A1AC2C791002370D9 /* KGCBackgroundMusicActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCBackgroundMusicActionView.h; sourceTree = "<group>"; };
+		FEEBE56B1AC2C791002370D9 /* KGCBackgroundMusicActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCBackgroundMusicActionView.m; sourceTree = "<group>"; };
+		FEEBE56D1AC2C791002370D9 /* KGCCombinedAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCCombinedAction.h; sourceTree = "<group>"; };
+		FEEBE56E1AC2C791002370D9 /* KGCCombinedAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCCombinedAction.m; sourceTree = "<group>"; };
+		FEEBE5711AC2C791002370D9 /* KGCCombinedActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCCombinedActionView.h; sourceTree = "<group>"; };
+		FEEBE5721AC2C791002370D9 /* KGCCombinedActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCCombinedActionView.m; sourceTree = "<group>"; };
+		FEEBE5741AC2C791002370D9 /* KGCEmptyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCEmptyAction.h; sourceTree = "<group>"; };
+		FEEBE5751AC2C791002370D9 /* KGCEmptyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCEmptyAction.m; sourceTree = "<group>"; };
+		FEEBE5761AC2C791002370D9 /* KGCAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCAction.h; sourceTree = "<group>"; };
+		FEEBE5771AC2C791002370D9 /* KGCAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAction.m; sourceTree = "<group>"; };
+		FEEBE5791AC2C791002370D9 /* KGCNotificationAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCNotificationAction.h; sourceTree = "<group>"; };
+		FEEBE57A1AC2C791002370D9 /* KGCNotificationAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCNotificationAction.m; sourceTree = "<group>"; };
+		FEEBE57D1AC2C791002370D9 /* KGCNotificationActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCNotificationActionView.h; sourceTree = "<group>"; };
+		FEEBE57E1AC2C791002370D9 /* KGCNotificationActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCNotificationActionView.m; sourceTree = "<group>"; };
+		FEEBE5801AC2C791002370D9 /* KGCPropertiesAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCPropertiesAction.h; sourceTree = "<group>"; };
+		FEEBE5811AC2C791002370D9 /* KGCPropertiesAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCPropertiesAction.m; sourceTree = "<group>"; };
+		FEEBE5841AC2C791002370D9 /* KGCPropertiesActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCPropertiesActionView.h; sourceTree = "<group>"; };
+		FEEBE5851AC2C791002370D9 /* KGCPropertiesActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCPropertiesActionView.m; sourceTree = "<group>"; };
+		FEEBE5871AC2C791002370D9 /* KGCRemoveSpriteAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCRemoveSpriteAction.h; sourceTree = "<group>"; };
+		FEEBE5881AC2C791002370D9 /* KGCRemoveSpriteAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCRemoveSpriteAction.m; sourceTree = "<group>"; };
+		FEEBE58A1AC2C791002370D9 /* KGCSceneAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSceneAction.h; sourceTree = "<group>"; };
+		FEEBE58B1AC2C791002370D9 /* KGCSceneAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSceneAction.m; sourceTree = "<group>"; };
+		FEEBE58E1AC2C791002370D9 /* KGCSceneActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSceneActionView.h; sourceTree = "<group>"; };
+		FEEBE58F1AC2C791002370D9 /* KGCSceneActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSceneActionView.m; sourceTree = "<group>"; };
+		FEEBE5911AC2C791002370D9 /* KGCSequenceAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSequenceAction.h; sourceTree = "<group>"; };
+		FEEBE5921AC2C791002370D9 /* KGCSequenceAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSequenceAction.m; sourceTree = "<group>"; };
+		FEEBE5951AC2C791002370D9 /* KGCSequenceActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSequenceActionView.h; sourceTree = "<group>"; };
+		FEEBE5961AC2C791002370D9 /* KGCSequenceActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSequenceActionView.m; sourceTree = "<group>"; };
+		FEEBE5991AC2C791002370D9 /* KGCCombinedAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCCombinedAnimation.h; sourceTree = "<group>"; };
+		FEEBE59A1AC2C791002370D9 /* KGCCombinedAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCCombinedAnimation.m; sourceTree = "<group>"; };
+		FEEBE59D1AC2C791002370D9 /* KGCCombinedAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCCombinedAnimationView.h; sourceTree = "<group>"; };
+		FEEBE59E1AC2C791002370D9 /* KGCCombinedAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCCombinedAnimationView.m; sourceTree = "<group>"; };
+		FEEBE5A01AC2C791002370D9 /* KGCFadeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCFadeAnimation.h; sourceTree = "<group>"; };
+		FEEBE5A11AC2C791002370D9 /* KGCFadeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCFadeAnimation.m; sourceTree = "<group>"; };
+		FEEBE5A41AC2C791002370D9 /* KGCFadeAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCFadeAnimationView.h; sourceTree = "<group>"; };
+		FEEBE5A51AC2C791002370D9 /* KGCFadeAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCFadeAnimationView.m; sourceTree = "<group>"; };
+		FEEBE5A71AC2C791002370D9 /* KGCImageAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCImageAnimation.h; sourceTree = "<group>"; };
+		FEEBE5A81AC2C791002370D9 /* KGCImageAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCImageAnimation.m; sourceTree = "<group>"; };
+		FEEBE5AB1AC2C791002370D9 /* KGCImageAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCImageAnimationView.h; sourceTree = "<group>"; };
+		FEEBE5AC1AC2C791002370D9 /* KGCImageAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCImageAnimationView.m; sourceTree = "<group>"; };
+		FEEBE5AD1AC2C791002370D9 /* KGCAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCAnimation.h; sourceTree = "<group>"; };
+		FEEBE5AE1AC2C791002370D9 /* KGCAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAnimation.m; sourceTree = "<group>"; };
+		FEEBE5B01AC2C791002370D9 /* KGCMoveBackAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCMoveBackAnimation.h; sourceTree = "<group>"; };
+		FEEBE5B11AC2C791002370D9 /* KGCMoveBackAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCMoveBackAnimation.m; sourceTree = "<group>"; };
+		FEEBE5B31AC2C791002370D9 /* KGCPathAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCPathAnimation.h; sourceTree = "<group>"; };
+		FEEBE5B41AC2C791002370D9 /* KGCPathAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCPathAnimation.m; sourceTree = "<group>"; };
+		FEEBE5B71AC2C791002370D9 /* KGCPathAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCPathAnimationView.h; sourceTree = "<group>"; };
+		FEEBE5B81AC2C791002370D9 /* KGCPathAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCPathAnimationView.m; sourceTree = "<group>"; };
+		FEEBE5BA1AC2C791002370D9 /* KGCPositionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCPositionAnimation.h; sourceTree = "<group>"; };
+		FEEBE5BB1AC2C791002370D9 /* KGCPositionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCPositionAnimation.m; sourceTree = "<group>"; };
+		FEEBE5BE1AC2C791002370D9 /* KGCPositionAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCPositionAnimationView.h; sourceTree = "<group>"; };
+		FEEBE5BF1AC2C791002370D9 /* KGCPositionAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCPositionAnimationView.m; sourceTree = "<group>"; };
+		FEEBE5C11AC2C791002370D9 /* KGCRotationAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCRotationAnimation.h; sourceTree = "<group>"; };
+		FEEBE5C21AC2C791002370D9 /* KGCRotationAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCRotationAnimation.m; sourceTree = "<group>"; };
+		FEEBE5C51AC2C791002370D9 /* KGCRotationAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCRotationAnimationView.h; sourceTree = "<group>"; };
+		FEEBE5C61AC2C791002370D9 /* KGCRotationAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCRotationAnimationView.m; sourceTree = "<group>"; };
+		FEEBE5C81AC2C791002370D9 /* KGCScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCScaleAnimation.h; sourceTree = "<group>"; };
+		FEEBE5C91AC2C791002370D9 /* KGCScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCScaleAnimation.m; sourceTree = "<group>"; };
+		FEEBE5CC1AC2C791002370D9 /* KGCScaleAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCScaleAnimationView.h; sourceTree = "<group>"; };
+		FEEBE5CD1AC2C791002370D9 /* KGCScaleAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCScaleAnimationView.m; sourceTree = "<group>"; };
+		FEEBE5CF1AC2C791002370D9 /* KGCSequenceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSequenceAnimation.h; sourceTree = "<group>"; };
+		FEEBE5D01AC2C791002370D9 /* KGCSequenceAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSequenceAnimation.m; sourceTree = "<group>"; };
+		FEEBE5D31AC2C791002370D9 /* KGCSequenceAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSequenceAnimationView.h; sourceTree = "<group>"; };
+		FEEBE5D41AC2C791002370D9 /* KGCSequenceAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSequenceAnimationView.m; sourceTree = "<group>"; };
+		FEEBE5D61AC2C791002370D9 /* KGCAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCAnswer.h; sourceTree = "<group>"; };
+		FEEBE5D71AC2C791002370D9 /* KGCAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAnswer.m; sourceTree = "<group>"; };
+		FEEBE5D91AC2C791002370D9 /* KGCEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCEvent.h; sourceTree = "<group>"; };
+		FEEBE5DA1AC2C791002370D9 /* KGCEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCEvent.m; sourceTree = "<group>"; };
+		FEEBE5DC1AC2C791002370D9 /* KGCScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCScene.h; sourceTree = "<group>"; };
+		FEEBE5DD1AC2C791002370D9 /* KGCScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCScene.m; sourceTree = "<group>"; };
+		FEEBE5DF1AC2C791002370D9 /* KGCSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSprite.h; sourceTree = "<group>"; };
+		FEEBE5E01AC2C791002370D9 /* KGCSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSprite.m; sourceTree = "<group>"; };
+		FEEBE5E31AC2C791002370D9 /* KGCAnimationTemplateAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCAnimationTemplateAction.h; sourceTree = "<group>"; };
+		FEEBE5E41AC2C791002370D9 /* KGCAnimationTemplateAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAnimationTemplateAction.m; sourceTree = "<group>"; };
+		FEEBE5E71AC2C791002370D9 /* KGCAnimationTemplateActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCAnimationTemplateActionView.h; sourceTree = "<group>"; };
+		FEEBE5E81AC2C791002370D9 /* KGCAnimationTemplateActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAnimationTemplateActionView.m; sourceTree = "<group>"; };
+		FEEBE5EA1AC2C791002370D9 /* KGCConfirmAnswerTemplateAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCConfirmAnswerTemplateAction.h; sourceTree = "<group>"; };
+		FEEBE5EB1AC2C791002370D9 /* KGCConfirmAnswerTemplateAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCConfirmAnswerTemplateAction.m; sourceTree = "<group>"; };
+		FEEBE5EC1AC2C791002370D9 /* KGCTemplateAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCTemplateAction.h; sourceTree = "<group>"; };
+		FEEBE5ED1AC2C791002370D9 /* KGCTemplateAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCTemplateAction.m; sourceTree = "<group>"; };
+		FEEBE5EF1AC2C791002370D9 /* KGCSceneTemplateAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSceneTemplateAction.h; sourceTree = "<group>"; };
+		FEEBE5F01AC2C791002370D9 /* KGCSceneTemplateAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSceneTemplateAction.m; sourceTree = "<group>"; };
+		FEEBE5F31AC2C791002370D9 /* KGCSceneTemplateActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSceneTemplateActionView.h; sourceTree = "<group>"; };
+		FEEBE5F41AC2C791002370D9 /* KGCSceneTemplateActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSceneTemplateActionView.m; sourceTree = "<group>"; };
+		FEEBE5F61AC2C791002370D9 /* KGCSoundTemplateAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSoundTemplateAction.h; sourceTree = "<group>"; };
+		FEEBE5F71AC2C791002370D9 /* KGCSoundTemplateAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSoundTemplateAction.m; sourceTree = "<group>"; };
+		FEEBE5FA1AC2C791002370D9 /* KGCSoundTemplateActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSoundTemplateActionView.h; sourceTree = "<group>"; };
+		FEEBE5FB1AC2C791002370D9 /* KGCSoundTemplateActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSoundTemplateActionView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FE2C90F81AB4B925004FD211 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE2C91F71AB4BACB004FD211 /* AVFoundation.framework in Frameworks */,
+				FE2C91F51AB4BAC2004FD211 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE2C91111AB4B926004FD211 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FE241F851AC97E060095F76B /* Shape Inspector */ = {
+			isa = PBXGroup;
+			children = (
+				FE241F8C1AC97E060095F76B /* KGCDADShapeInspector.h */,
+				FE241F8D1AC97E060095F76B /* KGCDADShapeInspector.m */,
+				FE241FAF1AC982710095F76B /* KGCDADShapeInspector.xib */,
+				FE241F8E1AC97E060095F76B /* Scene */,
+				FE241F911AC97E060095F76B /* Sprite */,
+				FE241F861AC97E060095F76B /* Events */,
+			);
+			path = "Shape Inspector";
+			sourceTree = "<group>";
+		};
+		FE241F861AC97E060095F76B /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				FE241F871AC97E060095F76B /* KGCDADShapeEventsController.h */,
+				FE241F881AC97E060095F76B /* KGCDADShapeEventsController.m */,
+				FE241FB31AC984270095F76B /* KGCDADShapeEventsController.xib */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		FE241F8E1AC97E060095F76B /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				FE241F8F1AC97E060095F76B /* KGCDADShapeSceneController.h */,
+				FE241F901AC97E060095F76B /* KGCDADShapeSceneController.m */,
+				FE241FB51AC984270095F76B /* KGCDADShapeSceneController.xib */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		FE241F911AC97E060095F76B /* Sprite */ = {
+			isa = PBXGroup;
+			children = (
+				FE241F921AC97E060095F76B /* KGCDADShapeSpriteController.h */,
+				FE241F931AC97E060095F76B /* KGCDADShapeSpriteController.m */,
+				FE241FB71AC984270095F76B /* KGCDADShapeSpriteController.xib */,
+			);
+			path = Sprite;
+			sourceTree = "<group>";
+		};
+		FE241FBF1ACA742E0095F76B /* GridAnswer */ = {
+			isa = PBXGroup;
+			children = (
+				FE241FC01ACA744A0095F76B /* KGCGridAnswer.h */,
+				FE241FC11ACA744A0095F76B /* KGCGridAnswer.m */,
+			);
+			name = GridAnswer;
+			path = "GameCreator/Sources/Data Model/GridAnswer";
+			sourceTree = SOURCE_ROOT;
+		};
+		FE2C90F21AB4B925004FD211 = {
+			isa = PBXGroup;
+			children = (
+				FE2C90FD1AB4B925004FD211 /* GameCreator */,
+				FE2C91171AB4B926004FD211 /* GameCreatorTests */,
+				FE2C90FC1AB4B925004FD211 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FE2C90FC1AB4B925004FD211 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C90FB1AB4B925004FD211 /* GameCreator.app */,
+				FE2C91141AB4B926004FD211 /* GameCreatorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE2C90FD1AB4B925004FD211 /* GameCreator */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C91281AB4BAA8004FD211 /* Sources */,
+				FE2C91241AB4BAA8004FD211 /* Resources */,
+				FE2C910B1AB4B925004FD211 /* Images.xcassets */,
+				FE2C90FE1AB4B925004FD211 /* Supporting Files */,
+			);
+			path = GameCreator;
+			sourceTree = "<group>";
+		};
+		FE2C90FE1AB4B925004FD211 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FE479EAA1AC2E4B3008CD28E /* Localizable.strings */,
+				FE479EA41AC2E402008CD28E /* InfoPlist.strings */,
+				FE2C91031AB4B925004FD211 /* main.m */,
+				FE479E9A1AC2E1DF008CD28E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FE2C91171AB4B926004FD211 /* GameCreatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C911A1AB4B926004FD211 /* GameCreatorTests.m */,
+				FE2C91181AB4B926004FD211 /* Supporting Files */,
+			);
+			path = GameCreatorTests;
+			sourceTree = "<group>";
+		};
+		FE2C91181AB4B926004FD211 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C91191AB4B926004FD211 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FE2C91241AB4BAA8004FD211 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C91251AB4BAA8004FD211 /* Images */,
+				FE2C91F81AB4BAD2004FD211 /* Frameworks */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FE2C91251AB4BAA8004FD211 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FE6488A11AB855AA007DCB74 /* GameCreator.icns */,
+				FE6488A31AB85847007DCB74 /* DocumentIcon.icns */,
+				FE2C91261AB4BAA8004FD211 /* ScreenTemplate.png */,
+				FE2C91271AB4BAA8004FD211 /* ScreenTemplate@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		FE2C91281AB4BAA8004FD211 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C91FC1AB4BF84004FD211 /* KGCAppDelegate.h */,
+				FE2C91FD1AB4BF84004FD211 /* KGCAppDelegate.m */,
+				FE479E561AC2D146008CD28E /* MainMenu.xib */,
+				FE2C918D1AB4BAA8004FD211 /* Main Window */,
+				FEEBE5551AC2C791002370D9 /* Data Model */,
+				FE2C91811AB4BAA8004FD211 /* Categories */,
+				FE2C91881AB4BAA8004FD211 /* Helpers */,
+				FE2C919B1AB4BAA8004FD211 /* Subclasses */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		FE2C91811AB4BAA8004FD211 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C91821AB4BAA8004FD211 /* CALayer+Animation.h */,
+				FE2C91831AB4BAA8004FD211 /* CALayer+Animation.m */,
+				FE2C91841AB4BAA8004FD211 /* CAShapeLayer+Animation.h */,
+				FE2C91851AB4BAA8004FD211 /* CAShapeLayer+Animation.m */,
+				FE2C91861AB4BAA8004FD211 /* NSBezierPath+CGPath.h */,
+				FE2C91871AB4BAA8004FD211 /* NSBezierPath+CGPath.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		FE2C91881AB4BAA8004FD211 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C91891AB4BAA8004FD211 /* KGCHelperMethods.h */,
+				FE2C918A1AB4BAA8004FD211 /* KGCHelperMethods.m */,
+				FE2C918B1AB4BAA8004FD211 /* KGCSettingsViewManager.h */,
+				FE2C918C1AB4BAA8004FD211 /* KGCSettingsViewManager.m */,
+				FE755FA71AB5AA10001FC422 /* KGCResourceController.h */,
+				FE755FA81AB5AA10001FC422 /* KGCResourceController.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FE2C918D1AB4BAA8004FD211 /* Main Window */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C91F91AB4BF68004FD211 /* KGCDocument.h */,
+				FE2C91FA1AB4BF68004FD211 /* KGCDocument.m */,
+				FE479E341AC2D146008CD28E /* KGCDocument.xib */,
+				FE4B16641AF388B8009A2147 /* KGCSoundEffectTableCellView.h */,
+				FE4B16651AF388B8009A2147 /* KGCSoundEffectTableCellView.m */,
+				FEEBE5011AC2C4F7002370D9 /* Inspector */,
+				FE2C91961AB4BAA8004FD211 /* Scene View */,
+			);
+			path = "Main Window";
+			sourceTree = "<group>";
+		};
+		FE2C91961AB4BAA8004FD211 /* Scene View */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C91971AB4BAA8004FD211 /* KGCSceneContentView.h */,
+				FE2C91981AB4BAA8004FD211 /* KGCSceneContentView.m */,
+				FE2C91991AB4BAA8004FD211 /* KGCSpriteLayer.h */,
+				FE2C919A1AB4BAA8004FD211 /* KGCSpriteLayer.m */,
+			);
+			path = "Scene View";
+			sourceTree = "<group>";
+		};
+		FE2C919B1AB4BAA8004FD211 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C919C1AB4BAA8004FD211 /* KGCFileDropView.h */,
+				FE2C919D1AB4BAA8004FD211 /* KGCFileDropView.m */,
+				FE2C919E1AB4BAA8004FD211 /* KGCImageLayer.h */,
+				FE2C919F1AB4BAA8004FD211 /* KGCImageLayer.m */,
+				FE2C91A01AB4BAA8004FD211 /* KGCImageView.h */,
+				FE2C91A11AB4BAA8004FD211 /* KGCImageView.m */,
+				FE2C91A21AB4BAA8004FD211 /* KGCInspector.h */,
+				FE2C91A31AB4BAA8004FD211 /* KGCInspector.m */,
+				FE2C91A41AB4BAA8004FD211 /* KGCInspectorContentView.h */,
+				FE2C91A51AB4BAA8004FD211 /* KGCInspectorContentView.m */,
+				FE2C91A61AB4BAA8004FD211 /* KGCInspectorWindow.h */,
+				FE2C91A71AB4BAA8004FD211 /* KGCInspectorWindow.m */,
+				FE2C91A81AB4BAA8004FD211 /* KGCSceneTableCell.h */,
+				FE2C91A91AB4BAA8004FD211 /* KGCSceneTableCell.m */,
+				FE2C91AA1AB4BAA8004FD211 /* KGCSettingsView.h */,
+				FE2C91AB1AB4BAA8004FD211 /* KGCSettingsView.m */,
+				FE755FB31AB5D102001FC422 /* KGCResourceInfo.h */,
+				FE755FB41AB5D102001FC422 /* KGCResourceInfo.m */,
+				FE9182541ABC03B4001D2682 /* KGCTableView.h */,
+				FE9182551ABC03B4001D2682 /* KGCTableView.m */,
+				FED00F611ABDC8C60059D0A2 /* KGCTableTextField.h */,
+				FED00F621ABDC8C60059D0A2 /* KGCTableTextField.m */,
+				FE479EAC1AC2F24A008CD28E /* KGCSceneObject.h */,
+				FE479EAD1AC2F24A008CD28E /* KGCSceneObject.m */,
+				FE7D6A5D1ABED3CC00A78308 /* KGCSceneLayer.h */,
+				FE7D6A5E1ABED3CC00A78308 /* KGCSceneLayer.m */,
+				FE7D6A6D1ABEE9BC00A78308 /* KGCInspectorViewController.h */,
+				FE7D6A6E1ABEE9BC00A78308 /* KGCInspectorViewController.m */,
+				FE5DACA81AC0814900525550 /* KGCBasicTableCell.h */,
+				FE5DACA91AC0814900525550 /* KGCBasicTableCell.m */,
+				FE0B74121AC29396005E6CD2 /* KGCDataObject.h */,
+				FE0B74131AC29396005E6CD2 /* KGCDataObject.m */,
+			);
+			path = Subclasses;
+			sourceTree = "<group>";
+		};
+		FE2C91F81AB4BAD2004FD211 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C91F61AB4BACA004FD211 /* AVFoundation.framework */,
+				FE2C91F41AB4BAC2004FD211 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FE2ED24C1AD544DE0086BB84 /* Play Hint */ = {
+			isa = PBXGroup;
+			children = (
+				FE2ED24E1AD544F20086BB84 /* KGCTPlayHintemplateAction.h */,
+				FE2ED24F1AD544F20086BB84 /* KGCTPlayHintemplateAction.m */,
+			);
+			path = "Play Hint";
+			sourceTree = "<group>";
+		};
+		FE30ABEE1AE3BCD000093338 /* Wobble */ = {
+			isa = PBXGroup;
+			children = (
+				FE30ABF01AE3BCD000093338 /* KGCWobbleAnimation.h */,
+				FE30ABEF1AE3BCD000093338 /* KGCWobbleAnimation.m */,
+				FE30ABF11AE3BCD000093338 /* Settings View */,
+			);
+			path = Wobble;
+			sourceTree = "<group>";
+		};
+		FE30ABF11AE3BCD000093338 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FE30ABF21AE3BCD000093338 /* KGCWobbleAnimationView.h */,
+				FE30ABF31AE3BCD000093338 /* KGCWobbleAnimationView.m */,
+				FE30ABF61AE3BDCD00093338 /* KGCWobbleAnimation.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FE30AC061AE3CA1F00093338 /* Stop Animation */ = {
+			isa = PBXGroup;
+			children = (
+				FE30AC071AE3CA1F00093338 /* KGCStopAnimationAction.h */,
+				FE30AC081AE3CA1F00093338 /* KGCStopAnimationAction.m */,
+				FE30AC091AE3CA1F00093338 /* Settings View */,
+			);
+			name = "Stop Animation";
+			path = "GameCreator/Sources/Data Model/Actions/Stop Animation";
+			sourceTree = SOURCE_ROOT;
+		};
+		FE30AC091AE3CA1F00093338 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FE30AC0A1AE3CA1F00093338 /* KGCStopAnimationActionView.h */,
+				FE30AC0B1AE3CA1F00093338 /* KGCStopAnimationActionView.m */,
+				FE30AC021AE3BF1D00093338 /* KGCStopAnimationAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FE30AC161AE3CB9500093338 /* Random Position */ = {
+			isa = PBXGroup;
+			children = (
+				FE30AC171AE3CB9500093338 /* KGCRandomPositionAnimation.h */,
+				FE30AC181AE3CB9500093338 /* KGCRandomPositionAnimation.m */,
+				FE30AC191AE3CB9500093338 /* Settings View */,
+			);
+			name = "Random Position";
+			path = "GameCreator/Sources/Data Model/Animations/Random Position";
+			sourceTree = SOURCE_ROOT;
+		};
+		FE30AC191AE3CB9500093338 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FE30AC1A1AE3CB9500093338 /* KGCRandomPositionAnimationView.h */,
+				FE30AC1B1AE3CB9500093338 /* KGCRandomPositionAnimationView.m */,
+				FE30AC1E1AE3CE2100093338 /* KGCRandomPositionAnimation.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FE342FC01AE1806B008596F4 /* Shadow */ = {
+			isa = PBXGroup;
+			children = (
+				FE342FC11AE1806B008596F4 /* KGCShadowAnimation.h */,
+				FE342FC21AE1806B008596F4 /* KGCShadowAnimation.m */,
+				FE342FC31AE1806B008596F4 /* Settings View */,
+			);
+			path = Shadow;
+			sourceTree = "<group>";
+		};
+		FE342FC31AE1806B008596F4 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FE342FCF1AE181CB008596F4 /* KGCShadowAnimation.xib */,
+				FE342FC41AE1806B008596F4 /* KGCShadowAnimationView.h */,
+				FE342FC51AE1806B008596F4 /* KGCShadowAnimationView.m */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FE479EB01AC45A33008CD28E /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				FE479EB21AC45AA9008CD28E /* KGCGame.h */,
+				FE479EB31AC45AA9008CD28E /* KGCGame.m */,
+				FEEBE5DB1AC2C791002370D9 /* Scene */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+		FE479EB11AC45A4C008CD28E /* GameSet */ = {
+			isa = PBXGroup;
+			children = (
+				FED0FF341AC85F9B00ABC3D7 /* KGCGameSet.h */,
+				FED0FF351AC85F9B00ABC3D7 /* KGCGameSet.m */,
+				FE479EB01AC45A33008CD28E /* Game */,
+			);
+			name = GameSet;
+			sourceTree = "<group>";
+		};
+		FE49CA671AFCBF69009A0CA2 /* Delay */ = {
+			isa = PBXGroup;
+			children = (
+				FE49CA681AFCBF7F009A0CA2 /* KGCDelayTemplateAction.h */,
+				FE49CA691AFCBF7F009A0CA2 /* KGCDelayTemplateAction.m */,
+			);
+			name = Delay;
+			path = "GameCreator/Sources/Data Model/Template Actions/Delay";
+			sourceTree = SOURCE_ROOT;
+		};
+		FE4B15F11AF0A84D009A2147 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				FE4B15F21AF0A84D009A2147 /* KGCMenuInspector.h */,
+				FE4B15F31AF0A84D009A2147 /* KGCMenuInspector.m */,
+				FE4B16001AF0A898009A2147 /* KGCMenuInspector.xib */,
+				FE4B15F41AF0A84D009A2147 /* Scene */,
+				FE4B15F71AF0A84D009A2147 /* Sprite */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		FE4B15F41AF0A84D009A2147 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				FE4B15F51AF0A84D009A2147 /* KGCMenuSceneController.h */,
+				FE4B15F61AF0A84D009A2147 /* KGCMenuSceneController.m */,
+				FE4B16021AF0A898009A2147 /* KGCMenuSceneController.xib */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		FE4B15F71AF0A84D009A2147 /* Sprite */ = {
+			isa = PBXGroup;
+			children = (
+				FE4B15F81AF0A84D009A2147 /* KGCMenuSpriteController.h */,
+				FE4B15F91AF0A84D009A2147 /* KGCMenuSpriteController.m */,
+				FE4B16041AF0A898009A2147 /* KGCMenuSpriteController.xib */,
+			);
+			path = Sprite;
+			sourceTree = "<group>";
+		};
+		FE87B67E1AF7469D00A0DBB1 /* Game Transition */ = {
+			isa = PBXGroup;
+			children = (
+				FE87B67F1AF7469D00A0DBB1 /* KGCGameTransitionAction.h */,
+				FE87B6801AF7469D00A0DBB1 /* KGCGameTransitionAction.m */,
+				FE87B6811AF7469D00A0DBB1 /* Settings View */,
+			);
+			path = "Game Transition";
+			sourceTree = "<group>";
+		};
+		FE87B6811AF7469D00A0DBB1 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FE87B6821AF7469D00A0DBB1 /* KGCGameTransitionActionView.h */,
+				FE87B6831AF7469D00A0DBB1 /* KGCGameTransitionActionView.m */,
+				FE87B6881AF7470700A0DBB1 /* KGCGameTransitionAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FE87B68C1AF74CC800A0DBB1 /* Game Transition */ = {
+			isa = PBXGroup;
+			children = (
+				FE87B68D1AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.h */,
+				FE87B68E1AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.m */,
+				FE87B68F1AF74CC800A0DBB1 /* Settings View */,
+			);
+			path = "Game Transition";
+			sourceTree = "<group>";
+		};
+		FE87B68F1AF74CC800A0DBB1 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FE87B6901AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.h */,
+				FE87B6911AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.m */,
+				FE87B6961AF74D5F00A0DBB1 /* KGCGameTransitionTemplateAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5011AC2C4F7002370D9 /* Inspector */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE52F1AC2C4F7002370D9 /* KGCInspectorController.h */,
+				FEEBE5301AC2C4F7002370D9 /* KGCInspectorController.m */,
+				FEEBE5021AC2C4F7002370D9 /* Basic Inspector */,
+				FE4B15F11AF0A84D009A2147 /* Menu */,
+				FEEBE5161AC2C4F7002370D9 /* Drag and Drop */,
+				FE241F851AC97E060095F76B /* Shape Inspector */,
+			);
+			path = Inspector;
+			sourceTree = "<group>";
+		};
+		FEEBE5021AC2C4F7002370D9 /* Basic Inspector */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE50B1AC2C4F7002370D9 /* KGCBasicInspector.h */,
+				FEEBE50C1AC2C4F7002370D9 /* KGCBasicInspector.m */,
+				FE479E261AC2D146008CD28E /* KGCBasicInspector.xib */,
+				FEEBE5031AC2C4F7002370D9 /* Action */,
+				FEEBE5071AC2C4F7002370D9 /* Animations */,
+				FEEBE50E1AC2C4F7002370D9 /* Scene */,
+				FEEBE5121AC2C4F7002370D9 /* Sprite */,
+			);
+			path = "Basic Inspector";
+			sourceTree = "<group>";
+		};
+		FEEBE5031AC2C4F7002370D9 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5041AC2C4F7002370D9 /* KGCActionController.h */,
+				FEEBE5051AC2C4F7002370D9 /* KGCActionController.m */,
+				FE479E1A1AC2D146008CD28E /* KGCActionController.xib */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		FEEBE5071AC2C4F7002370D9 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5081AC2C4F7002370D9 /* KGCAnimationsController.h */,
+				FEEBE5091AC2C4F7002370D9 /* KGCAnimationsController.m */,
+				FE479E1E1AC2D146008CD28E /* KGCAnimationsController.xib */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		FEEBE50E1AC2C4F7002370D9 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE50F1AC2C4F7002370D9 /* KGCSceneController.h */,
+				FEEBE5101AC2C4F7002370D9 /* KGCSceneController.m */,
+				FE479E481AC2D146008CD28E /* KGCSceneController.xib */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		FEEBE5121AC2C4F7002370D9 /* Sprite */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5131AC2C4F7002370D9 /* KGCSpriteController.h */,
+				FEEBE5141AC2C4F7002370D9 /* KGCSpriteController.m */,
+				FE479E521AC2D146008CD28E /* KGCSpriteController.xib */,
+			);
+			path = Sprite;
+			sourceTree = "<group>";
+		};
+		FEEBE5161AC2C4F7002370D9 /* Drag and Drop */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE51F1AC2C4F7002370D9 /* KGCDADInspector.h */,
+				FEEBE5201AC2C4F7002370D9 /* KGCDADInspector.m */,
+				FE479E2E1AC2D146008CD28E /* KGCDADInspector.xib */,
+				FEEBE5171AC2C4F7002370D9 /* Events */,
+				FEEBE5221AC2C4F7002370D9 /* Scene */,
+				FEEBE5261AC2C4F7002370D9 /* Sprite */,
+			);
+			path = "Drag and Drop";
+			sourceTree = "<group>";
+		};
+		FEEBE5171AC2C4F7002370D9 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5181AC2C4F7002370D9 /* KGCDADEventsController.h */,
+				FEEBE5191AC2C4F7002370D9 /* KGCDADEventsController.m */,
+				FE479E2C1AC2D146008CD28E /* KGCDADEventsController.xib */,
+				FEEBE51B1AC2C4F7002370D9 /* Table Cell Views */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		FEEBE51B1AC2C4F7002370D9 /* Table Cell Views */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE51C1AC2C4F7002370D9 /* KGCEventTableCell.h */,
+				FEEBE51D1AC2C4F7002370D9 /* KGCEventTableCell.m */,
+				FE479E541AC2D146008CD28E /* KGCTargetView.xib */,
+			);
+			path = "Table Cell Views";
+			sourceTree = "<group>";
+		};
+		FEEBE5221AC2C4F7002370D9 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5231AC2C4F7002370D9 /* KGCDADSceneController.h */,
+				FEEBE5241AC2C4F7002370D9 /* KGCDADSceneController.m */,
+				FE479E301AC2D146008CD28E /* KGCDADSceneController.xib */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		FEEBE5261AC2C4F7002370D9 /* Sprite */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5271AC2C4F7002370D9 /* KGCDADSpriteController.h */,
+				FEEBE5281AC2C4F7002370D9 /* KGCDADSpriteController.m */,
+				FE479E321AC2D146008CD28E /* KGCDADSpriteController.xib */,
+				FEEBE52A1AC2C4F7002370D9 /* Table Cell Views */,
+			);
+			path = Sprite;
+			sourceTree = "<group>";
+		};
+		FEEBE52A1AC2C4F7002370D9 /* Table Cell Views */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE52B1AC2C4F7002370D9 /* KGCAnswerCell.h */,
+				FEEBE52C1AC2C4F7002370D9 /* KGCAnswerCell.m */,
+				FEEBE52D1AC2C4F7002370D9 /* KGCAnswerPointsCell.h */,
+				FEEBE52E1AC2C4F7002370D9 /* KGCAnswerPointsCell.m */,
+			);
+			path = "Table Cell Views";
+			sourceTree = "<group>";
+		};
+		FEEBE5551AC2C791002370D9 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE479EB11AC45A4C008CD28E /* GameSet */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		FEEBE5561AC2C791002370D9 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5761AC2C791002370D9 /* KGCAction.h */,
+				FEEBE5771AC2C791002370D9 /* KGCAction.m */,
+				FEEBE5571AC2C791002370D9 /* Animation */,
+				FEEBE55E1AC2C791002370D9 /* Audio Effect */,
+				FEEBE5651AC2C791002370D9 /* Background Music */,
+				FEEBE56C1AC2C791002370D9 /* Combined */,
+				FEEBE5731AC2C791002370D9 /* Empty */,
+				FEEBE5781AC2C791002370D9 /* Notification */,
+				FEEBE57F1AC2C791002370D9 /* Properties */,
+				FEEBE5861AC2C791002370D9 /* Remove Sprite */,
+				FEEBE5891AC2C791002370D9 /* Scene */,
+				FE87B67E1AF7469D00A0DBB1 /* Game Transition */,
+				FEEBE5901AC2C791002370D9 /* Sequence */,
+				FE30AC061AE3CA1F00093338 /* Stop Animation */,
+			);
+			name = Actions;
+			path = ../Actions;
+			sourceTree = "<group>";
+		};
+		FEEBE5571AC2C791002370D9 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5581AC2C791002370D9 /* KGCAnimationAction.h */,
+				FEEBE5591AC2C791002370D9 /* KGCAnimationAction.m */,
+				FEEBE55A1AC2C791002370D9 /* Settings View */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		FEEBE55A1AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE55C1AC2C791002370D9 /* KGCAnimationActionView.h */,
+				FEEBE55D1AC2C791002370D9 /* KGCAnimationActionView.m */,
+				FE479E1C1AC2D146008CD28E /* KGCAnimationAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE55E1AC2C791002370D9 /* Audio Effect */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE55F1AC2C791002370D9 /* KGCAudioEffectAction.h */,
+				FEEBE5601AC2C791002370D9 /* KGCAudioEffectAction.m */,
+				FEEBE5611AC2C791002370D9 /* Settings View */,
+			);
+			path = "Audio Effect";
+			sourceTree = "<group>";
+		};
+		FEEBE5611AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5631AC2C791002370D9 /* KGCAudioEffectActionView.h */,
+				FEEBE5641AC2C791002370D9 /* KGCAudioEffectActionView.m */,
+				FE479E221AC2D146008CD28E /* KGCAudioEffectAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5651AC2C791002370D9 /* Background Music */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5661AC2C791002370D9 /* KGCBackgroundMusicAction.h */,
+				FEEBE5671AC2C791002370D9 /* KGCBackgroundMusicAction.m */,
+				FEEBE5681AC2C791002370D9 /* Settings View */,
+			);
+			path = "Background Music";
+			sourceTree = "<group>";
+		};
+		FEEBE5681AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE56A1AC2C791002370D9 /* KGCBackgroundMusicActionView.h */,
+				FEEBE56B1AC2C791002370D9 /* KGCBackgroundMusicActionView.m */,
+				FE479E241AC2D146008CD28E /* KGCBackgroundMusicAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE56C1AC2C791002370D9 /* Combined */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE56D1AC2C791002370D9 /* KGCCombinedAction.h */,
+				FEEBE56E1AC2C791002370D9 /* KGCCombinedAction.m */,
+				FEEBE56F1AC2C791002370D9 /* Settings View */,
+			);
+			path = Combined;
+			sourceTree = "<group>";
+		};
+		FEEBE56F1AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5711AC2C791002370D9 /* KGCCombinedActionView.h */,
+				FEEBE5721AC2C791002370D9 /* KGCCombinedActionView.m */,
+				FE479E281AC2D146008CD28E /* KGCCombinedAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5731AC2C791002370D9 /* Empty */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5741AC2C791002370D9 /* KGCEmptyAction.h */,
+				FEEBE5751AC2C791002370D9 /* KGCEmptyAction.m */,
+			);
+			path = Empty;
+			sourceTree = "<group>";
+		};
+		FEEBE5781AC2C791002370D9 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5791AC2C791002370D9 /* KGCNotificationAction.h */,
+				FEEBE57A1AC2C791002370D9 /* KGCNotificationAction.m */,
+				FEEBE57B1AC2C791002370D9 /* Settings View */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		FEEBE57B1AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE57D1AC2C791002370D9 /* KGCNotificationActionView.h */,
+				FEEBE57E1AC2C791002370D9 /* KGCNotificationActionView.m */,
+				FE479E3A1AC2D146008CD28E /* KGCNotificationAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE57F1AC2C791002370D9 /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5801AC2C791002370D9 /* KGCPropertiesAction.h */,
+				FEEBE5811AC2C791002370D9 /* KGCPropertiesAction.m */,
+				FEEBE5821AC2C791002370D9 /* Settings View */,
+			);
+			path = Properties;
+			sourceTree = "<group>";
+		};
+		FEEBE5821AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5841AC2C791002370D9 /* KGCPropertiesActionView.h */,
+				FEEBE5851AC2C791002370D9 /* KGCPropertiesActionView.m */,
+				FE479E401AC2D146008CD28E /* KGCPropertiesAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5861AC2C791002370D9 /* Remove Sprite */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5871AC2C791002370D9 /* KGCRemoveSpriteAction.h */,
+				FEEBE5881AC2C791002370D9 /* KGCRemoveSpriteAction.m */,
+			);
+			path = "Remove Sprite";
+			sourceTree = "<group>";
+		};
+		FEEBE5891AC2C791002370D9 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE58A1AC2C791002370D9 /* KGCSceneAction.h */,
+				FEEBE58B1AC2C791002370D9 /* KGCSceneAction.m */,
+				FEEBE58C1AC2C791002370D9 /* Settings View */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		FEEBE58C1AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE58E1AC2C791002370D9 /* KGCSceneActionView.h */,
+				FEEBE58F1AC2C791002370D9 /* KGCSceneActionView.m */,
+				FE479E461AC2D146008CD28E /* KGCSceneAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5901AC2C791002370D9 /* Sequence */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5911AC2C791002370D9 /* KGCSequenceAction.h */,
+				FEEBE5921AC2C791002370D9 /* KGCSequenceAction.m */,
+				FEEBE5931AC2C791002370D9 /* Settings View */,
+			);
+			path = Sequence;
+			sourceTree = "<group>";
+		};
+		FEEBE5931AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5951AC2C791002370D9 /* KGCSequenceActionView.h */,
+				FEEBE5961AC2C791002370D9 /* KGCSequenceActionView.m */,
+				FE479E4C1AC2D146008CD28E /* KGCSequenceAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5971AC2C791002370D9 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5AD1AC2C791002370D9 /* KGCAnimation.h */,
+				FEEBE5AE1AC2C791002370D9 /* KGCAnimation.m */,
+				FEEBE5981AC2C791002370D9 /* Combined */,
+				FEEBE59F1AC2C791002370D9 /* Fade */,
+				FEEBE5A61AC2C791002370D9 /* Image */,
+				FEEBE5AF1AC2C791002370D9 /* Move Back */,
+				FEEBE5B21AC2C791002370D9 /* Path */,
+				FEEBE5B91AC2C791002370D9 /* Position */,
+				FE30AC161AE3CB9500093338 /* Random Position */,
+				FEEBE5C01AC2C791002370D9 /* Rotation */,
+				FEEBE5C71AC2C791002370D9 /* Scale */,
+				FE30ABEE1AE3BCD000093338 /* Wobble */,
+				FE342FC01AE1806B008596F4 /* Shadow */,
+				FEEBE5CE1AC2C791002370D9 /* Sequence */,
+			);
+			name = Animations;
+			path = ../Animations;
+			sourceTree = "<group>";
+		};
+		FEEBE5981AC2C791002370D9 /* Combined */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5991AC2C791002370D9 /* KGCCombinedAnimation.h */,
+				FEEBE59A1AC2C791002370D9 /* KGCCombinedAnimation.m */,
+				FEEBE59B1AC2C791002370D9 /* Settings View */,
+			);
+			path = Combined;
+			sourceTree = "<group>";
+		};
+		FEEBE59B1AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE59D1AC2C791002370D9 /* KGCCombinedAnimationView.h */,
+				FEEBE59E1AC2C791002370D9 /* KGCCombinedAnimationView.m */,
+				FE479E2A1AC2D146008CD28E /* KGCCombinedAnimation.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE59F1AC2C791002370D9 /* Fade */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5A01AC2C791002370D9 /* KGCFadeAnimation.h */,
+				FEEBE5A11AC2C791002370D9 /* KGCFadeAnimation.m */,
+				FEEBE5A21AC2C791002370D9 /* Settings View */,
+			);
+			path = Fade;
+			sourceTree = "<group>";
+		};
+		FEEBE5A21AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5A41AC2C791002370D9 /* KGCFadeAnimationView.h */,
+				FEEBE5A51AC2C791002370D9 /* KGCFadeAnimationView.m */,
+				FE479E361AC2D146008CD28E /* KGCFadeAnimation.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5A61AC2C791002370D9 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5A71AC2C791002370D9 /* KGCImageAnimation.h */,
+				FEEBE5A81AC2C791002370D9 /* KGCImageAnimation.m */,
+				FEEBE5A91AC2C791002370D9 /* Settings View */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		FEEBE5A91AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5AB1AC2C791002370D9 /* KGCImageAnimationView.h */,
+				FEEBE5AC1AC2C791002370D9 /* KGCImageAnimationView.m */,
+				FE479E381AC2D146008CD28E /* KGCImageAnimation.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5AF1AC2C791002370D9 /* Move Back */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5B01AC2C791002370D9 /* KGCMoveBackAnimation.h */,
+				FEEBE5B11AC2C791002370D9 /* KGCMoveBackAnimation.m */,
+			);
+			path = "Move Back";
+			sourceTree = "<group>";
+		};
+		FEEBE5B21AC2C791002370D9 /* Path */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5B31AC2C791002370D9 /* KGCPathAnimation.h */,
+				FEEBE5B41AC2C791002370D9 /* KGCPathAnimation.m */,
+				FEEBE5B51AC2C791002370D9 /* Settings View */,
+			);
+			path = Path;
+			sourceTree = "<group>";
+		};
+		FEEBE5B51AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5B71AC2C791002370D9 /* KGCPathAnimationView.h */,
+				FEEBE5B81AC2C791002370D9 /* KGCPathAnimationView.m */,
+				FE479E3C1AC2D146008CD28E /* KGCPathAnimation.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5B91AC2C791002370D9 /* Position */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5BA1AC2C791002370D9 /* KGCPositionAnimation.h */,
+				FEEBE5BB1AC2C791002370D9 /* KGCPositionAnimation.m */,
+				FEEBE5BC1AC2C791002370D9 /* Settings View */,
+			);
+			path = Position;
+			sourceTree = "<group>";
+		};
+		FEEBE5BC1AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5BE1AC2C791002370D9 /* KGCPositionAnimationView.h */,
+				FEEBE5BF1AC2C791002370D9 /* KGCPositionAnimationView.m */,
+				FE479E3E1AC2D146008CD28E /* KGCPositionAnimation.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5C01AC2C791002370D9 /* Rotation */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5C11AC2C791002370D9 /* KGCRotationAnimation.h */,
+				FEEBE5C21AC2C791002370D9 /* KGCRotationAnimation.m */,
+				FEEBE5C31AC2C791002370D9 /* Settings View */,
+			);
+			path = Rotation;
+			sourceTree = "<group>";
+		};
+		FEEBE5C31AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5C51AC2C791002370D9 /* KGCRotationAnimationView.h */,
+				FEEBE5C61AC2C791002370D9 /* KGCRotationAnimationView.m */,
+				FE479E421AC2D146008CD28E /* KGCRotationAnimation.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5C71AC2C791002370D9 /* Scale */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5C81AC2C791002370D9 /* KGCScaleAnimation.h */,
+				FEEBE5C91AC2C791002370D9 /* KGCScaleAnimation.m */,
+				FEEBE5CA1AC2C791002370D9 /* Settings View */,
+			);
+			path = Scale;
+			sourceTree = "<group>";
+		};
+		FEEBE5CA1AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5CC1AC2C791002370D9 /* KGCScaleAnimationView.h */,
+				FEEBE5CD1AC2C791002370D9 /* KGCScaleAnimationView.m */,
+				FE479E441AC2D146008CD28E /* KGCScaleAnimation.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5CE1AC2C791002370D9 /* Sequence */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5CF1AC2C791002370D9 /* KGCSequenceAnimation.h */,
+				FEEBE5D01AC2C791002370D9 /* KGCSequenceAnimation.m */,
+				FEEBE5D11AC2C791002370D9 /* Settings View */,
+			);
+			path = Sequence;
+			sourceTree = "<group>";
+		};
+		FEEBE5D11AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5D31AC2C791002370D9 /* KGCSequenceAnimationView.h */,
+				FEEBE5D41AC2C791002370D9 /* KGCSequenceAnimationView.m */,
+				FE479E4E1AC2D146008CD28E /* KGCSequenceAnimation.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5D51AC2C791002370D9 /* Answer */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5D61AC2C791002370D9 /* KGCAnswer.h */,
+				FEEBE5D71AC2C791002370D9 /* KGCAnswer.m */,
+			);
+			name = Answer;
+			path = ../Answer;
+			sourceTree = "<group>";
+		};
+		FEEBE5D81AC2C791002370D9 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5D91AC2C791002370D9 /* KGCEvent.h */,
+				FEEBE5DA1AC2C791002370D9 /* KGCEvent.m */,
+				FEEBE5E11AC2C791002370D9 /* Template Actions */,
+			);
+			name = Event;
+			path = ../Event;
+			sourceTree = "<group>";
+		};
+		FEEBE5DB1AC2C791002370D9 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5DC1AC2C791002370D9 /* KGCScene.h */,
+				FEEBE5DD1AC2C791002370D9 /* KGCScene.m */,
+				FEEBE5DE1AC2C791002370D9 /* Sprite */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		FEEBE5DE1AC2C791002370D9 /* Sprite */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5DF1AC2C791002370D9 /* KGCSprite.h */,
+				FEEBE5E01AC2C791002370D9 /* KGCSprite.m */,
+				FEEBE5971AC2C791002370D9 /* Animations */,
+				FEEBE5561AC2C791002370D9 /* Actions */,
+				FEEBE5D81AC2C791002370D9 /* Event */,
+				FEEBE5D51AC2C791002370D9 /* Answer */,
+				FE241FBF1ACA742E0095F76B /* GridAnswer */,
+			);
+			name = Sprite;
+			path = ../Sprite;
+			sourceTree = "<group>";
+		};
+		FEEBE5E11AC2C791002370D9 /* Template Actions */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5EC1AC2C791002370D9 /* KGCTemplateAction.h */,
+				FEEBE5ED1AC2C791002370D9 /* KGCTemplateAction.m */,
+				FEEBE5E21AC2C791002370D9 /* Animation */,
+				FEEBE5E91AC2C791002370D9 /* Confirm */,
+				FE87B68C1AF74CC800A0DBB1 /* Game Transition */,
+				FEEBE5EE1AC2C791002370D9 /* Scene */,
+				FEEBE5F51AC2C791002370D9 /* Sound */,
+				FE2ED24C1AD544DE0086BB84 /* Play Hint */,
+				FE49CA671AFCBF69009A0CA2 /* Delay */,
+			);
+			name = "Template Actions";
+			path = "../Template Actions";
+			sourceTree = "<group>";
+		};
+		FEEBE5E21AC2C791002370D9 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5E31AC2C791002370D9 /* KGCAnimationTemplateAction.h */,
+				FEEBE5E41AC2C791002370D9 /* KGCAnimationTemplateAction.m */,
+				FEEBE5E51AC2C791002370D9 /* Settings View */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		FEEBE5E51AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5E71AC2C791002370D9 /* KGCAnimationTemplateActionView.h */,
+				FEEBE5E81AC2C791002370D9 /* KGCAnimationTemplateActionView.m */,
+				FE479E201AC2D146008CD28E /* KGCAnimationTemplateAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5E91AC2C791002370D9 /* Confirm */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5EA1AC2C791002370D9 /* KGCConfirmAnswerTemplateAction.h */,
+				FEEBE5EB1AC2C791002370D9 /* KGCConfirmAnswerTemplateAction.m */,
+			);
+			path = Confirm;
+			sourceTree = "<group>";
+		};
+		FEEBE5EE1AC2C791002370D9 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5EF1AC2C791002370D9 /* KGCSceneTemplateAction.h */,
+				FEEBE5F01AC2C791002370D9 /* KGCSceneTemplateAction.m */,
+				FEEBE5F11AC2C791002370D9 /* Settings View */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		FEEBE5F11AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5F31AC2C791002370D9 /* KGCSceneTemplateActionView.h */,
+				FEEBE5F41AC2C791002370D9 /* KGCSceneTemplateActionView.m */,
+				FE479E4A1AC2D146008CD28E /* KGCSceneTemplateAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+		FEEBE5F51AC2C791002370D9 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5F61AC2C791002370D9 /* KGCSoundTemplateAction.h */,
+				FEEBE5F71AC2C791002370D9 /* KGCSoundTemplateAction.m */,
+				FEEBE5F81AC2C791002370D9 /* Settings View */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		FEEBE5F81AC2C791002370D9 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBE5FA1AC2C791002370D9 /* KGCSoundTemplateActionView.h */,
+				FEEBE5FB1AC2C791002370D9 /* KGCSoundTemplateActionView.m */,
+				FE479E501AC2D146008CD28E /* KGCSoundTemplateAction.xib */,
+			);
+			path = "Settings View";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FE2C90FA1AB4B925004FD211 /* GameCreator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE2C911E1AB4B926004FD211 /* Build configuration list for PBXNativeTarget "GameCreator" */;
+			buildPhases = (
+				FE2C90F71AB4B925004FD211 /* Sources */,
+				FE2C90F81AB4B925004FD211 /* Frameworks */,
+				FE2C90F91AB4B925004FD211 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GameCreator;
+			productName = GameCreator;
+			productReference = FE2C90FB1AB4B925004FD211 /* GameCreator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FE2C91131AB4B926004FD211 /* GameCreatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE2C91211AB4B926004FD211 /* Build configuration list for PBXNativeTarget "GameCreatorTests" */;
+			buildPhases = (
+				FE2C91101AB4B926004FD211 /* Sources */,
+				FE2C91111AB4B926004FD211 /* Frameworks */,
+				FE2C91121AB4B926004FD211 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE2C91161AB4B926004FD211 /* PBXTargetDependency */,
+			);
+			name = GameCreatorTests;
+			productName = GameCreatorTests;
+			productReference = FE2C91141AB4B926004FD211 /* GameCreatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FE2C90F31AB4B925004FD211 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = KGC;
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Kiwi Fruitware";
+				TargetAttributes = {
+					FE2C90FA1AB4B925004FD211 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					FE2C91131AB4B926004FD211 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = FE2C90FA1AB4B925004FD211;
+					};
+				};
+			};
+			buildConfigurationList = FE2C90F61AB4B925004FD211 /* Build configuration list for PBXProject "GameCreator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Dutch,
+				nl,
+				en,
+			);
+			mainGroup = FE2C90F21AB4B925004FD211;
+			productRefGroup = FE2C90FC1AB4B925004FD211 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FE2C90FA1AB4B925004FD211 /* GameCreator */,
+				FE2C91131AB4B926004FD211 /* GameCreatorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE2C90F91AB4B925004FD211 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE241FB91AC984270095F76B /* KGCDADShapeEventsController.xib in Resources */,
+				FE479E5B1AC2D146008CD28E /* KGCAnimationTemplateAction.xib in Resources */,
+				FE479E5D1AC2D146008CD28E /* KGCBackgroundMusicAction.xib in Resources */,
+				FE479E5A1AC2D146008CD28E /* KGCAnimationsController.xib in Resources */,
+				FE241FBA1AC984270095F76B /* KGCDADShapeSceneController.xib in Resources */,
+				FE6488A41AB85847007DCB74 /* DocumentIcon.icns in Resources */,
+				FE479E6E1AC2D146008CD28E /* KGCSceneAction.xib in Resources */,
+				FE479EA21AC2E402008CD28E /* InfoPlist.strings in Resources */,
+				FE30AC041AE3BF1D00093338 /* KGCStopAnimationAction.xib in Resources */,
+				FE4B16061AF0A898009A2147 /* KGCMenuInspector.xib in Resources */,
+				FE479E681AC2D146008CD28E /* KGCNotificationAction.xib in Resources */,
+				FE479E751AC2D146008CD28E /* KGCTargetView.xib in Resources */,
+				FE342FD11AE181CB008596F4 /* KGCShadowAnimation.xib in Resources */,
+				FE241FBB1AC984270095F76B /* KGCDADShapeSpriteController.xib in Resources */,
+				FE241FB11AC982710095F76B /* KGCDADShapeInspector.xib in Resources */,
+				FE479E5E1AC2D146008CD28E /* KGCBasicInspector.xib in Resources */,
+				FE479E631AC2D146008CD28E /* KGCDADSceneController.xib in Resources */,
+				FE2C91AC1AB4BAA8004FD211 /* ScreenTemplate.png in Resources */,
+				FE479E671AC2D146008CD28E /* KGCImageAnimation.xib in Resources */,
+				FE479E5F1AC2D146008CD28E /* KGCCombinedAction.xib in Resources */,
+				FE479E641AC2D146008CD28E /* KGCDADSpriteController.xib in Resources */,
+				FE479E601AC2D146008CD28E /* KGCCombinedAnimation.xib in Resources */,
+				FE479E6F1AC2D146008CD28E /* KGCSceneController.xib in Resources */,
+				FE2C910C1AB4B925004FD211 /* Images.xcassets in Resources */,
+				FE479E621AC2D146008CD28E /* KGCDADInspector.xib in Resources */,
+				FE30AC201AE3CE2100093338 /* KGCRandomPositionAnimation.xib in Resources */,
+				FE87B6981AF74D5F00A0DBB1 /* KGCGameTransitionTemplateAction.xib in Resources */,
+				FE479E6C1AC2D146008CD28E /* KGCRotationAnimation.xib in Resources */,
+				FE479E651AC2D146008CD28E /* KGCDocument.xib in Resources */,
+				FE6488A21AB855AA007DCB74 /* GameCreator.icns in Resources */,
+				FE2C91AD1AB4BAA8004FD211 /* ScreenTemplate@2x.png in Resources */,
+				FE30ABF81AE3BDCD00093338 /* KGCWobbleAnimation.xib in Resources */,
+				FE479E741AC2D146008CD28E /* KGCSpriteController.xib in Resources */,
+				FE479E701AC2D146008CD28E /* KGCSceneTemplateAction.xib in Resources */,
+				FE479E581AC2D146008CD28E /* KGCActionController.xib in Resources */,
+				FE479E731AC2D146008CD28E /* KGCSoundTemplateAction.xib in Resources */,
+				FE479E611AC2D146008CD28E /* KGCDADEventsController.xib in Resources */,
+				FE479E721AC2D146008CD28E /* KGCSequenceAnimation.xib in Resources */,
+				FE479E711AC2D146008CD28E /* KGCSequenceAction.xib in Resources */,
+				FE87B68A1AF7470700A0DBB1 /* KGCGameTransitionAction.xib in Resources */,
+				FE479E6A1AC2D146008CD28E /* KGCPositionAnimation.xib in Resources */,
+				FE4B16081AF0A898009A2147 /* KGCMenuSpriteController.xib in Resources */,
+				FE4B16071AF0A898009A2147 /* KGCMenuSceneController.xib in Resources */,
+				FE479E591AC2D146008CD28E /* KGCAnimationAction.xib in Resources */,
+				FE479E691AC2D146008CD28E /* KGCPathAnimation.xib in Resources */,
+				FE479E6D1AC2D146008CD28E /* KGCScaleAnimation.xib in Resources */,
+				FE479E6B1AC2D146008CD28E /* KGCPropertiesAction.xib in Resources */,
+				FE479E661AC2D146008CD28E /* KGCFadeAnimation.xib in Resources */,
+				FE479EA81AC2E4B3008CD28E /* Localizable.strings in Resources */,
+				FE479E5C1AC2D146008CD28E /* KGCAudioEffectAction.xib in Resources */,
+				FE479E761AC2D146008CD28E /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE2C91121AB4B926004FD211 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FE2C90F71AB4B925004FD211 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEEBE6351AC2C791002370D9 /* KGCImageAnimation.m in Sources */,
+				FE2C91E11AB4BAA8004FD211 /* CALayer+Animation.m in Sources */,
+				FE7D6A5F1ABED3CC00A78308 /* KGCSceneLayer.m in Sources */,
+				FEEBE62B1AC2C791002370D9 /* KGCCombinedAnimation.m in Sources */,
+				FEEBE5321AC2C4F7002370D9 /* KGCActionController.m in Sources */,
+				FEEBE5351AC2C4F7002370D9 /* KGCAnimationsController.m in Sources */,
+				FEEBE6461AC2C791002370D9 /* KGCPositionAnimationView.m in Sources */,
+				FEEBE6001AC2C791002370D9 /* KGCAnimationActionView.m in Sources */,
+				FE2C91E41AB4BAA8004FD211 /* KGCHelperMethods.m in Sources */,
+				FEEBE65D1AC2C791002370D9 /* KGCSprite.m in Sources */,
+				FEEBE5FD1AC2C791002370D9 /* KGCAnimationAction.m in Sources */,
+				FE87B6921AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.h in Sources */,
+				FEEBE6431AC2C791002370D9 /* KGCPositionAnimation.m in Sources */,
+				FE2C91F21AB4BAA8004FD211 /* KGCSceneTableCell.m in Sources */,
+				FE2C91E21AB4BAA8004FD211 /* CAShapeLayer+Animation.m in Sources */,
+				FE2C91EC1AB4BAA8004FD211 /* KGCFileDropView.m in Sources */,
+				FE87B6931AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.m in Sources */,
+				FEEBE64D1AC2C791002370D9 /* KGCScaleAnimation.m in Sources */,
+				FEEBE6501AC2C791002370D9 /* KGCScaleAnimationView.m in Sources */,
+				FEEBE54D1AC2C4F7002370D9 /* KGCDADSpriteController.m in Sources */,
+				FE30ABF41AE3BCD000093338 /* KGCWobbleAnimation.m in Sources */,
+				FEEBE53B1AC2C4F7002370D9 /* KGCSceneController.m in Sources */,
+				FE342FC71AE1806B008596F4 /* KGCShadowAnimation.m in Sources */,
+				FE2C91F31AB4BAA8004FD211 /* KGCSettingsView.m in Sources */,
+				FEEBE65B1AC2C791002370D9 /* KGCScene.m in Sources */,
+				FEEBE6291AC2C791002370D9 /* KGCSequenceActionView.m in Sources */,
+				FEEBE5501AC2C4F7002370D9 /* KGCAnswerCell.m in Sources */,
+				FEEBE60C1AC2C791002370D9 /* KGCCombinedAction.m in Sources */,
+				FE241FA21AC97E060095F76B /* KGCDADShapeSpriteController.m in Sources */,
+				FEEBE6301AC2C791002370D9 /* KGCFadeAnimation.m in Sources */,
+				FEEBE6681AC2C791002370D9 /* KGCSceneTemplateAction.m in Sources */,
+				FE2C91EF1AB4BAA8004FD211 /* KGCInspector.m in Sources */,
+				FEEBE6551AC2C791002370D9 /* KGCSequenceAnimationView.m in Sources */,
+				FE87B6861AF7469D00A0DBB1 /* KGCGameTransitionActionView.h in Sources */,
+				FE2C91FB1AB4BF68004FD211 /* KGCDocument.m in Sources */,
+				FEEBE66D1AC2C791002370D9 /* KGCSoundTemplateAction.m in Sources */,
+				FE2C91EE1AB4BAA8004FD211 /* KGCImageView.m in Sources */,
+				FE9182571ABC03B4001D2682 /* KGCTableView.m in Sources */,
+				FE2C91ED1AB4BAA8004FD211 /* KGCImageLayer.m in Sources */,
+				FEEBE61D1AC2C791002370D9 /* KGCPropertiesActionView.m in Sources */,
+				FE4B15FD1AF0A84D009A2147 /* KGCMenuSceneController.m in Sources */,
+				FE87B6841AF7469D00A0DBB1 /* KGCGameTransitionAction.h in Sources */,
+				FEEBE6051AC2C791002370D9 /* KGCAudioEffectActionView.m in Sources */,
+				FE2C91F11AB4BAA8004FD211 /* KGCInspectorWindow.m in Sources */,
+				FEEBE6111AC2C791002370D9 /* KGCEmptyAction.m in Sources */,
+				FEEBE61A1AC2C791002370D9 /* KGCPropertiesAction.m in Sources */,
+				FEEBE6641AC2C791002370D9 /* KGCConfirmAnswerTemplateAction.m in Sources */,
+				FE755FB51AB5D102001FC422 /* KGCResourceInfo.m in Sources */,
+				FEEBE5411AC2C4F7002370D9 /* KGCDADEventsController.m in Sources */,
+				FE30AC0D1AE3CA1F00093338 /* KGCStopAnimationActionView.m in Sources */,
+				FE342FC91AE1806B008596F4 /* KGCShadowAnimationView.m in Sources */,
+				FEEBE64B1AC2C791002370D9 /* KGCRotationAnimationView.m in Sources */,
+				FE479EB51AC45AA9008CD28E /* KGCGame.m in Sources */,
+				FE87B6871AF7469D00A0DBB1 /* KGCGameTransitionActionView.m in Sources */,
+				FEEBE63A1AC2C791002370D9 /* KGCAnimation.m in Sources */,
+				FED0FF361AC85F9B00ABC3D7 /* KGCGameSet.m in Sources */,
+				FE2C91FE1AB4BF84004FD211 /* KGCAppDelegate.m in Sources */,
+				FE4B16671AF388B8009A2147 /* KGCSoundEffectTableCellView.m in Sources */,
+				FEEBE60A1AC2C791002370D9 /* KGCBackgroundMusicActionView.m in Sources */,
+				FE241F9E1AC97E060095F76B /* KGCDADShapeInspector.m in Sources */,
+				FEEBE6381AC2C791002370D9 /* KGCImageAnimationView.m in Sources */,
+				FE241FA01AC97E060095F76B /* KGCDADShapeSceneController.m in Sources */,
+				FE2C91EB1AB4BAA8004FD211 /* KGCSpriteLayer.m in Sources */,
+				FEEBE6151AC2C791002370D9 /* KGCNotificationAction.m in Sources */,
+				FE2C91E51AB4BAA8004FD211 /* KGCSettingsViewManager.m in Sources */,
+				FEEBE5441AC2C4F7002370D9 /* KGCEventTableCell.m in Sources */,
+				FE5DACAB1AC0814900525550 /* KGCBasicTableCell.m in Sources */,
+				FEEBE6071AC2C791002370D9 /* KGCBackgroundMusicAction.m in Sources */,
+				FEEBE63E1AC2C791002370D9 /* KGCPathAnimation.m in Sources */,
+				FEEBE54A1AC2C4F7002370D9 /* KGCDADSceneController.m in Sources */,
+				FE241FC31ACA744A0095F76B /* KGCGridAnswer.m in Sources */,
+				FEEBE6521AC2C791002370D9 /* KGCSequenceAnimation.m in Sources */,
+				FEEBE5541AC2C4F7002370D9 /* KGCInspectorController.m in Sources */,
+				FE4B15FF1AF0A84D009A2147 /* KGCMenuSpriteController.m in Sources */,
+				FE2C91EA1AB4BAA8004FD211 /* KGCSceneContentView.m in Sources */,
+				FEEBE5381AC2C4F7002370D9 /* KGCBasicInspector.m in Sources */,
+				FEEBE6021AC2C791002370D9 /* KGCAudioEffectAction.m in Sources */,
+				FEEBE6481AC2C791002370D9 /* KGCRotationAnimation.m in Sources */,
+				FE49CA6A1AFCBF7F009A0CA2 /* KGCDelayTemplateAction.m in Sources */,
+				FEEBE6701AC2C791002370D9 /* KGCSoundTemplateActionView.m in Sources */,
+				FE2C91041AB4B925004FD211 /* main.m in Sources */,
+				FE87B6941AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.h in Sources */,
+				FE479EAF1AC2F24A008CD28E /* KGCSceneObject.m in Sources */,
+				FEEBE6241AC2C791002370D9 /* KGCSceneActionView.m in Sources */,
+				FE87B6951AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.m in Sources */,
+				FED00F631ABDC8C60059D0A2 /* KGCTableTextField.m in Sources */,
+				FE30AC0C1AE3CA1F00093338 /* KGCStopAnimationAction.m in Sources */,
+				FEEBE63C1AC2C791002370D9 /* KGCMoveBackAnimation.m in Sources */,
+				FEEBE6261AC2C791002370D9 /* KGCSequenceAction.m in Sources */,
+				FEEBE5471AC2C4F7002370D9 /* KGCDADInspector.m in Sources */,
+				FE2C91F01AB4BAA8004FD211 /* KGCInspectorContentView.m in Sources */,
+				FE241F9A1AC97E060095F76B /* KGCDADShapeEventsController.m in Sources */,
+				FEEBE6181AC2C791002370D9 /* KGCNotificationActionView.m in Sources */,
+				FE30ABF51AE3BCD000093338 /* KGCWobbleAnimationView.m in Sources */,
+				FE7D6A6F1ABEE9BC00A78308 /* KGCInspectorViewController.m in Sources */,
+				FEEBE6621AC2C791002370D9 /* KGCAnimationTemplateActionView.m in Sources */,
+				FE2C91E31AB4BAA8004FD211 /* NSBezierPath+CGPath.m in Sources */,
+				FEEBE6331AC2C791002370D9 /* KGCFadeAnimationView.m in Sources */,
+				FEEBE65F1AC2C791002370D9 /* KGCAnimationTemplateAction.m in Sources */,
+				FE87B6851AF7469D00A0DBB1 /* KGCGameTransitionAction.m in Sources */,
+				FE4B16661AF388B8009A2147 /* KGCSoundEffectTableCellView.h in Sources */,
+				FEEBE6411AC2C791002370D9 /* KGCPathAnimationView.m in Sources */,
+				FEEBE62E1AC2C791002370D9 /* KGCCombinedAnimationView.m in Sources */,
+				FE30AC1D1AE3CB9500093338 /* KGCRandomPositionAnimationView.m in Sources */,
+				FE30AC1C1AE3CB9500093338 /* KGCRandomPositionAnimation.m in Sources */,
+				FE4B15FB1AF0A84D009A2147 /* KGCMenuInspector.m in Sources */,
+				FEEBE61F1AC2C791002370D9 /* KGCRemoveSpriteAction.m in Sources */,
+				FEEBE60F1AC2C791002370D9 /* KGCCombinedActionView.m in Sources */,
+				FE2ED2511AD544F20086BB84 /* KGCTPlayHintemplateAction.m in Sources */,
+				FEEBE6131AC2C791002370D9 /* KGCAction.m in Sources */,
+				FE0B74151AC29396005E6CD2 /* KGCDataObject.m in Sources */,
+				FEEBE6571AC2C791002370D9 /* KGCAnswer.m in Sources */,
+				FEEBE6661AC2C791002370D9 /* KGCTemplateAction.m in Sources */,
+				FEEBE5521AC2C4F7002370D9 /* KGCAnswerPointsCell.m in Sources */,
+				FE755FA91AB5AA10001FC422 /* KGCResourceController.m in Sources */,
+				FEEBE6591AC2C791002370D9 /* KGCEvent.m in Sources */,
+				FEEBE6211AC2C791002370D9 /* KGCSceneAction.m in Sources */,
+				FEEBE53E1AC2C4F7002370D9 /* KGCSpriteController.m in Sources */,
+				FEEBE66B1AC2C791002370D9 /* KGCSceneTemplateActionView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE2C91101AB4B926004FD211 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE2C911B1AB4B926004FD211 /* GameCreatorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FE2C91161AB4B926004FD211 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE2C90FA1AB4B925004FD211 /* GameCreator */;
+			targetProxy = FE2C91151AB4B926004FD211 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FE241FAF1AC982710095F76B /* KGCDADShapeInspector.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE241FB01AC982710095F76B /* English */,
+				FE241FB21AC982740095F76B /* nl */,
+			);
+			name = KGCDADShapeInspector.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE241FB31AC984270095F76B /* KGCDADShapeEventsController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE241FB41AC984270095F76B /* English */,
+				FE241FBC1AC9842B0095F76B /* nl */,
+			);
+			name = KGCDADShapeEventsController.xib;
+			path = ../../../../../..;
+			sourceTree = "<group>";
+		};
+		FE241FB51AC984270095F76B /* KGCDADShapeSceneController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE241FB61AC984270095F76B /* English */,
+				FE241FBD1AC9842F0095F76B /* nl */,
+			);
+			name = KGCDADShapeSceneController.xib;
+			path = ../../../../../..;
+			sourceTree = "<group>";
+		};
+		FE241FB71AC984270095F76B /* KGCDADShapeSpriteController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE241FB81AC984270095F76B /* English */,
+				FE241FBE1AC984330095F76B /* nl */,
+			);
+			name = KGCDADShapeSpriteController.xib;
+			path = ../../../../../..;
+			sourceTree = "<group>";
+		};
+		FE30ABF61AE3BDCD00093338 /* KGCWobbleAnimation.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE30ABF71AE3BDCD00093338 /* English */,
+				FE30ABF91AE3BDDE00093338 /* nl */,
+			);
+			name = KGCWobbleAnimation.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE30AC021AE3BF1D00093338 /* KGCStopAnimationAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE30AC031AE3BF1D00093338 /* English */,
+				FE30AC051AE3BF2200093338 /* nl */,
+			);
+			name = KGCStopAnimationAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE30AC1E1AE3CE2100093338 /* KGCRandomPositionAnimation.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE30AC1F1AE3CE2100093338 /* English */,
+				FE30AC211AE3CE2800093338 /* nl */,
+			);
+			name = KGCRandomPositionAnimation.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE342FCF1AE181CB008596F4 /* KGCShadowAnimation.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE342FD01AE181CB008596F4 /* English */,
+				FE342FD21AE181CE008596F4 /* nl */,
+			);
+			name = KGCShadowAnimation.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E1A1AC2D146008CD28E /* KGCActionController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E1B1AC2D146008CD28E /* English */,
+				FE479E781AC2D193008CD28E /* nl */,
+			);
+			name = KGCActionController.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E1C1AC2D146008CD28E /* KGCAnimationAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E1D1AC2D146008CD28E /* English */,
+				FE479E791AC2D193008CD28E /* nl */,
+			);
+			name = KGCAnimationAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E1E1AC2D146008CD28E /* KGCAnimationsController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E1F1AC2D146008CD28E /* English */,
+				FE479E7A1AC2D193008CD28E /* nl */,
+			);
+			name = KGCAnimationsController.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E201AC2D146008CD28E /* KGCAnimationTemplateAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E211AC2D146008CD28E /* English */,
+				FE479E7B1AC2D193008CD28E /* nl */,
+			);
+			name = KGCAnimationTemplateAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E221AC2D146008CD28E /* KGCAudioEffectAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E231AC2D146008CD28E /* English */,
+				FE479E7C1AC2D193008CD28E /* nl */,
+			);
+			name = KGCAudioEffectAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E241AC2D146008CD28E /* KGCBackgroundMusicAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E251AC2D146008CD28E /* English */,
+				FE479E7D1AC2D193008CD28E /* nl */,
+			);
+			name = KGCBackgroundMusicAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E261AC2D146008CD28E /* KGCBasicInspector.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E271AC2D146008CD28E /* English */,
+				FE479E7E1AC2D194008CD28E /* nl */,
+			);
+			name = KGCBasicInspector.xib;
+			path = ../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E281AC2D146008CD28E /* KGCCombinedAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E291AC2D146008CD28E /* English */,
+				FE479E7F1AC2D194008CD28E /* nl */,
+			);
+			name = KGCCombinedAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E2A1AC2D146008CD28E /* KGCCombinedAnimation.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E2B1AC2D146008CD28E /* English */,
+				FE479E801AC2D194008CD28E /* nl */,
+			);
+			name = KGCCombinedAnimation.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E2C1AC2D146008CD28E /* KGCDADEventsController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E2D1AC2D146008CD28E /* English */,
+				FE479E811AC2D194008CD28E /* nl */,
+			);
+			name = KGCDADEventsController.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E2E1AC2D146008CD28E /* KGCDADInspector.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E2F1AC2D146008CD28E /* English */,
+				FE479E821AC2D194008CD28E /* nl */,
+			);
+			name = KGCDADInspector.xib;
+			path = ../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E301AC2D146008CD28E /* KGCDADSceneController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E311AC2D146008CD28E /* English */,
+				FE479E831AC2D194008CD28E /* nl */,
+			);
+			name = KGCDADSceneController.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E321AC2D146008CD28E /* KGCDADSpriteController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E331AC2D146008CD28E /* English */,
+				FE479E841AC2D194008CD28E /* nl */,
+			);
+			name = KGCDADSpriteController.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E341AC2D146008CD28E /* KGCDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E351AC2D146008CD28E /* English */,
+				FE479E851AC2D194008CD28E /* nl */,
+			);
+			name = KGCDocument.xib;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		FE479E361AC2D146008CD28E /* KGCFadeAnimation.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E371AC2D146008CD28E /* English */,
+				FE479E861AC2D194008CD28E /* nl */,
+			);
+			name = KGCFadeAnimation.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E381AC2D146008CD28E /* KGCImageAnimation.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E391AC2D146008CD28E /* English */,
+				FE479E871AC2D194008CD28E /* nl */,
+			);
+			name = KGCImageAnimation.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E3A1AC2D146008CD28E /* KGCNotificationAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E3B1AC2D146008CD28E /* English */,
+				FE479E881AC2D194008CD28E /* nl */,
+			);
+			name = KGCNotificationAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E3C1AC2D146008CD28E /* KGCPathAnimation.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E3D1AC2D146008CD28E /* English */,
+				FE479E891AC2D194008CD28E /* nl */,
+			);
+			name = KGCPathAnimation.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E3E1AC2D146008CD28E /* KGCPositionAnimation.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E3F1AC2D146008CD28E /* English */,
+				FE479E8A1AC2D194008CD28E /* nl */,
+			);
+			name = KGCPositionAnimation.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E401AC2D146008CD28E /* KGCPropertiesAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E411AC2D146008CD28E /* English */,
+				FE479E8B1AC2D194008CD28E /* nl */,
+			);
+			name = KGCPropertiesAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E421AC2D146008CD28E /* KGCRotationAnimation.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E431AC2D146008CD28E /* English */,
+				FE479E8C1AC2D194008CD28E /* nl */,
+			);
+			name = KGCRotationAnimation.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E441AC2D146008CD28E /* KGCScaleAnimation.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E451AC2D146008CD28E /* English */,
+				FE479E8D1AC2D194008CD28E /* nl */,
+			);
+			name = KGCScaleAnimation.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E461AC2D146008CD28E /* KGCSceneAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E471AC2D146008CD28E /* English */,
+				FE479E8E1AC2D194008CD28E /* nl */,
+			);
+			name = KGCSceneAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E481AC2D146008CD28E /* KGCSceneController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E491AC2D146008CD28E /* English */,
+				FE479E8F1AC2D194008CD28E /* nl */,
+			);
+			name = KGCSceneController.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E4A1AC2D146008CD28E /* KGCSceneTemplateAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E4B1AC2D146008CD28E /* English */,
+				FE479E901AC2D194008CD28E /* nl */,
+			);
+			name = KGCSceneTemplateAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E4C1AC2D146008CD28E /* KGCSequenceAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E4D1AC2D146008CD28E /* English */,
+				FE479E911AC2D194008CD28E /* nl */,
+			);
+			name = KGCSequenceAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E4E1AC2D146008CD28E /* KGCSequenceAnimation.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E4F1AC2D146008CD28E /* English */,
+				FE479E921AC2D194008CD28E /* nl */,
+			);
+			name = KGCSequenceAnimation.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E501AC2D146008CD28E /* KGCSoundTemplateAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E511AC2D146008CD28E /* English */,
+				FE479E931AC2D194008CD28E /* nl */,
+			);
+			name = KGCSoundTemplateAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E521AC2D146008CD28E /* KGCSpriteController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E531AC2D146008CD28E /* English */,
+				FE479E941AC2D194008CD28E /* nl */,
+			);
+			name = KGCSpriteController.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E541AC2D146008CD28E /* KGCTargetView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E551AC2D146008CD28E /* English */,
+				FE479E951AC2D194008CD28E /* nl */,
+			);
+			name = KGCTargetView.xib;
+			path = ../../../../../..;
+			sourceTree = "<group>";
+		};
+		FE479E561AC2D146008CD28E /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479E571AC2D146008CD28E /* English */,
+				FE479E961AC2D194008CD28E /* nl */,
+			);
+			name = MainMenu.xib;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		FE479EA41AC2E402008CD28E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479EA31AC2E402008CD28E /* en */,
+				FE479EA51AC2E403008CD28E /* nl */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FE479EAA1AC2E4B3008CD28E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE479EA91AC2E4B3008CD28E /* en */,
+				FE479EAB1AC2E4B4008CD28E /* nl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		FE4B16001AF0A898009A2147 /* KGCMenuInspector.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE4B16011AF0A898009A2147 /* English */,
+				FE4B16091AF0A89D009A2147 /* nl */,
+			);
+			name = KGCMenuInspector.xib;
+			path = ../../../..;
+			sourceTree = "<group>";
+		};
+		FE4B16021AF0A898009A2147 /* KGCMenuSceneController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE4B16031AF0A898009A2147 /* English */,
+				FE4B160A1AF0A8A1009A2147 /* nl */,
+			);
+			name = KGCMenuSceneController.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE4B16041AF0A898009A2147 /* KGCMenuSpriteController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE4B16051AF0A898009A2147 /* English */,
+				FE4B160B1AF0A8A5009A2147 /* nl */,
+			);
+			name = KGCMenuSpriteController.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE87B6881AF7470700A0DBB1 /* KGCGameTransitionAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE87B6891AF7470700A0DBB1 /* English */,
+				FE87B68B1AF7471500A0DBB1 /* nl */,
+			);
+			name = KGCGameTransitionAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE87B6961AF74D5F00A0DBB1 /* KGCGameTransitionTemplateAction.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE87B6971AF74D5F00A0DBB1 /* English */,
+				FE87B6991AF74D6400A0DBB1 /* nl */,
+			);
+			name = KGCGameTransitionTemplateAction.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FE2C911C1AB4B926004FD211 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IBC_ERRORS = NO;
+				IBC_NOTICES = NO;
+				IBC_WARNINGS = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FE2C911D1AB4B926004FD211 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IBC_ERRORS = NO;
+				IBC_NOTICES = NO;
+				IBC_WARNINGS = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FE2C911F1AB4B926004FD211 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				IBC_ERRORS = NO;
+				IBC_NOTICES = NO;
+				IBC_WARNINGS = NO;
+				INFOPLIST_FILE = GameCreator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FE2C91201AB4B926004FD211 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				IBC_ERRORS = NO;
+				IBC_NOTICES = NO;
+				IBC_WARNINGS = NO;
+				INFOPLIST_FILE = GameCreator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FE2C91221AB4B926004FD211 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GameCreatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameCreator.app/Contents/MacOS/GameCreator";
+			};
+			name = Debug;
+		};
+		FE2C91231AB4B926004FD211 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GameCreatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameCreator.app/Contents/MacOS/GameCreator";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FE2C90F61AB4B925004FD211 /* Build configuration list for PBXProject "GameCreator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE2C911C1AB4B926004FD211 /* Debug */,
+				FE2C911D1AB4B926004FD211 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE2C911E1AB4B926004FD211 /* Build configuration list for PBXNativeTarget "GameCreator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE2C911F1AB4B926004FD211 /* Debug */,
+				FE2C91201AB4B926004FD211 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE2C91211AB4B926004FD211 /* Build configuration list for PBXNativeTarget "GameCreatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE2C91221AB4B926004FD211 /* Debug */,
+				FE2C91231AB4B926004FD211 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FE2C90F31AB4B925004FD211 /* Project object */;
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="KGCMenuInspector">
+            <connections>
+                <outlet property="inspectorChooser" destination="ugB-0K-car" id="duI-VG-mjP"/>
+                <outlet property="inspectorContentView" destination="var-5U-v8Z" id="1uk-fW-XdJ"/>
+                <outlet property="inspectorView" destination="c22-O7-iKe" id="t8I-9g-Ep3"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" userLabel="InspectorView">
+            <rect key="frame" x="0.0" y="0.0" width="294" height="591"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView id="var-5U-v8Z">
+                    <rect key="frame" x="0.0" y="0.0" width="294" height="540"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </customView>
+                <segmentedControl verticalHuggingPriority="750" id="ugB-0K-car">
+                    <rect key="frame" x="20" y="551" width="255" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="7iY-SB-H1I">
+                        <font key="font" metaFont="smallSystem"/>
+                        <segments>
+                            <segment label="Info" width="80"/>
+                            <segment label="Gebeurtenissen" selected="YES" tag="1"/>
+                            <segment label="Animaties" tag="2"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="selectInspector:" target="-2" id="Aew-Sc-zG9"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <point key="canvasLocation" x="-3697" y="-4620.5"/>
+        </customView>
+    </objects>
+</document>

@@ -1,0 +1,10 @@
+/* 
+	InfoPlist.strings
+	GameCreator
+
+	Created by Maarten Foukhar on 25-03-15.
+	Copyright (c) 2015 Kiwi Fruitware. All rights reserved.
+*/
+
+CFBundleName = "GameCreator";
+CFBundleDisplayName = "GameCreator";

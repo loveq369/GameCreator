@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner">
+            <connections>
+                <outlet property="view" destination="WDJ-cv-alw" id="fyd-iC-5nq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="WDJ-cv-alw" userLabel="Settings" customClass="KGCSceneTemplateActionView">
+            <rect key="frame" x="0.0" y="-2" width="294" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="D1Q-Fd-Ld6">
+                    <rect key="frame" x="10" y="22" width="45" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scene:" id="cjA-uT-zib">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" id="CBd-QI-g5W">
+                    <rect key="frame" x="59" y="17" width="218" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="HCL-AC-INW">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="Jd3-7f-AeV">
+                            <items>
+                                <menuItem title="Item 1" id="iuQ-M9-NP4"/>
+                                <menuItem title="Item 2" id="zNR-FA-pgU"/>
+                                <menuItem title="Item 3" id="cjQ-Y8-6ub"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changeScene:" target="WDJ-cv-alw" id="Oad-mT-TPl"/>
+                    </connections>
+                </popUpButton>
+            </subviews>
+            <connections>
+                <outlet property="scenePopUp" destination="CBd-QI-g5W" id="Oeo-Vu-eUu"/>
+            </connections>
+            <point key="canvasLocation" x="75" y="-666"/>
+        </customView>
+    </objects>
+</document>

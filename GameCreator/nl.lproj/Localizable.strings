@@ -1,0 +1,208 @@
+/* 
+	Localizable.strings
+	GameCreator
+
+	Created by Maarten Foukhar on 25-03-15.
+	Copyright (c) 2015 Kiwi Fruitware. All rights reserved.
+*/
+
+/* No comment provided by engineer. */
+"Animation Action" = "Animatie actie";
+
+/* No comment provided by engineer. */
+"Audio Effect Action" = "Audio effect actie";
+
+/* No comment provided by engineer. */
+"Background Music Action" = "Achtergrond muziek actie";
+
+/* No comment provided by engineer. */
+"Change Properties Action" = "Verander instellingen actie";
+
+/* No comment provided by engineer. */
+"Combine Action" = "Combineer actie";
+
+/* No comment provided by engineer. */
+"Combine Animation" = "Combineer animatie";
+
+/* No comment provided by engineer. */
+"Confirm Answer Action" = "Bevestig antwoord actie";
+
+/* No comment provided by engineer. */
+"Empty Action" = "Lege actie";
+
+/* No comment provided by engineer. */
+"Fade Animation" = "Fade animatie";
+
+/* No comment provided by engineer. */
+"Image Animation" = "Afbeeldingreeks animatie";
+
+/* No comment provided by engineer. */
+"Move Back Animation" = "Herstel positie animatie";
+
+/* No comment provided by engineer. */
+"New Event" = "Nieuwe gebeurtenis";
+
+/* No comment provided by engineer. */
+"Notification Action" = "Notificatie actie";
+
+/* No comment provided by engineer. */
+"Position Animation" = "Positie animatie";
+
+/* No comment provided by engineer. */
+"Remove Sprite Action" = "Verwijder sprite actie";
+
+/* No comment provided by engineer. */
+"Rotate Animation" = "Rotatie animatie";
+
+/* No comment provided by engineer. */
+"Scale Animation" = "Schaal animatie";
+
+/* No comment provided by engineer. */
+"Scene Action" = "Scène actie";
+
+/* No comment provided by engineer. */
+"Sequence Action" = "Opeenvolgende actie";
+
+/* No comment provided by engineer. */
+"Sequence Animation" = "Opeenvolgende animatie";
+
+/* No comment provided by engineer. */
+"Shape Animation" = "Vorm animatie";
+
+/* No comment provided by engineer. */
+"Sound Action" = "Geluid actie";
+
+/* No comment provided by engineer. */
+"Untitled Scene" = "Naamloze Scène";
+
+/* No comment provided by engineer. */
+"None" = "Geen";
+
+/* No comment provided by engineer. */
+"Sprite Frame" = "Afbeeldingreeks";
+
+/* No comment provided by engineer. */
+"Position" = "Positie";
+
+/* No comment provided by engineer. */
+"Rotate" = "Rotatie";
+
+/* No comment provided by engineer. */
+"Fade" = "Fade";
+
+/* No comment provided by engineer. */
+"Scale" = "Schaal"
+
+/* No comment provided by engineer. */;
+"Sequence" = "Opeenvolgend";
+
+/* No comment provided by engineer. */
+"Combine" = "Combineer";
+
+/* No comment provided by engineer. */
+"Path" = "Pad";
+
+/* No comment provided by engineer. */
+"Move Back" = "Herstel positie";
+
+/* No comment provided by engineer. */
+"Empty" = "Leeg";
+
+/* No comment provided by engineer. */
+"Notification" = "Notificatie";
+
+/* No comment provided by engineer. */
+"Animate" = "Animatie";
+
+/* No comment provided by engineer. */
+"Audio Effect" = "Geluidseffect";
+
+/* No comment provided by engineer. */
+"Scene Transition" = "Scène transitie";
+
+/* No comment provided by engineer. */
+"Background Music" = "Achtergrond muziek";
+
+/* No comment provided by engineer. */
+"Remove Sprite" = "Verwijder Sprite";
+
+/* No comment provided by engineer. */
+"Properties" = "Eigenschappen";
+
+/* No comment provided by engineer. */
+"Combine" = "Combineer";
+
+/* No comment provided by engineer. */
+"Sequence" = "Volgorde";
+
+/* No comment provided by engineer. */
+"Untitled Game" = "Naamloos Spel";
+
+/* No comment provided by engineer. */
+"Basic Template" = "Basis sjabloon";
+
+/* No comment provided by engineer. */
+"Drag and Drop Template" = "Sleep/neerzet sjabloon";
+
+/* No comment provided by engineer. */
+"Drag and Drop Shape Template" = "Sleep/neerzet vorm sjabloon";
+
+/* No comment provided by engineer. */
+"Row" = "Rij";
+
+/* No comment provided by engineer. */
+"Column" = "kolom";
+
+/* No comment provided by engineer. */
+"Points" = "punten";
+
+/* No comment provided by engineer. */
+"New Action" = "Nieuwe actie";
+
+/* No comment provided by engineer. */
+"Edit…" = "Wijzig…";
+
+/* No comment provided by engineer. */
+"New Game" = "Nieuw spel";
+
+/* No comment provided by engineer. */
+"Stop" = "Stop";
+
+/* No comment provided by engineer. */
+"all rows and columns" = "alle rijen en kolummen";
+
+/* No comment provided by engineer. */
+"Shadow Animation" = "Schaduw animatie";
+
+/* No comment provided by engineer. */
+"Wobble Animation" = "Wiebel animatie";
+
+/* No comment provided by engineer. */
+"Random Position Animation" = "Willekeurige positie animatie";
+
+/* No comment provided by engineer. */
+"All Animations" = "Alle animaties";
+
+/* No comment provided by engineer. */
+"Stop Animation" = "Stop animatie";
+
+/* No comment provided by engineer. */
+"Menu Template" = "Menu sjabloon";
+
+/* No comment provided by engineer. */
+"Draggable Sprite Mouse Click" = "Versleepbare sprite muisklik";
+
+/* No comment provided by engineer. */
+"Draggable Sprite Mouse Drag" = "Versleepbare sprite muis slepen";
+
+/* No comment provided by engineer. */
+"Achievement" = "Beloning";
+
+/* No comment provided by engineer. */
+"Game Transition" = "Spel Transitie";
+
+/* No comment provided by engineer. */
+"Game Transition Action" = "Spel transitie actie";
+
+/* No comment provided by engineer. */
+"Delay Action" = "Vertraging actie";

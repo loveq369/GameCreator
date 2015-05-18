@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner">
+            <connections>
+                <outlet property="view" destination="WDJ-cv-alw" id="fyd-iC-5nq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="WDJ-cv-alw" userLabel="Settings" customClass="KGCGameTransitionActionView">
+            <rect key="frame" x="0.0" y="1" width="294" height="117"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="NOi-Vo-4Jm">
+                    <rect key="frame" x="6" y="63" width="73" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scene:" id="l9q-E9-Mhz">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" id="FMD-el-iXo">
+                    <rect key="frame" x="83" y="58" width="194" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="6oh-b9-Lil">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="AyZ-WF-FlS">
+                            <items>
+                                <menuItem title="Item 1" id="rWN-sU-73Y"/>
+                                <menuItem title="Item 2" id="CFd-hY-asH"/>
+                                <menuItem title="Item 3" id="heH-js-BNR"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changeSceneName:" target="WDJ-cv-alw" id="LC9-DI-Ge2"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wC6-qs-zE3">
+                    <rect key="frame" x="6" y="36" width="73" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Transition:" id="Q8L-vx-9l9">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" id="XZ2-ig-17i">
+                    <rect key="frame" x="83" y="31" width="157" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="je7-K7-7E0">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="2id-xZ-Is5">
+                            <items>
+                                <menuItem title="Push" id="qG7-1a-1Kx"/>
+                                <menuItem title="Move" id="8SV-IH-HDz"/>
+                                <menuItem title="Fade" id="YCk-Mv-2Zf"/>
+                                <menuItem title="Cross Fade" id="A5j-qT-joy"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changeTransition:" target="WDJ-cv-alw" id="Naa-Fr-kfN"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7aV-1u-mbC">
+                    <rect key="frame" x="6" y="9" width="73" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Direction:" id="gPG-Vr-91t">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" id="6QN-nf-fCB">
+                    <rect key="frame" x="83" y="4" width="106" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="3r1-pq-YyH">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="Rlv-VH-HD8">
+                            <items>
+                                <menuItem title="Up" id="o8B-Qd-kbz"/>
+                                <menuItem title="Down" id="NQH-oV-c2W"/>
+                                <menuItem title="Right" id="uH2-mc-9BZ"/>
+                                <menuItem title="Left" id="tnm-py-Ytc"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changeDirection:" target="WDJ-cv-alw" id="I0Q-ve-9Ic"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wT2-vV-2ZH">
+                    <rect key="frame" x="6" y="92" width="73" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Game:" id="GwS-WJ-ckt">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" id="nYX-q4-8ce">
+                    <rect key="frame" x="83" y="87" width="194" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="8DE-Y2-7bC">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="XWi-nb-hk9">
+                            <items>
+                                <menuItem title="Item 1" state="on" id="b4W-tf-GCF"/>
+                                <menuItem title="Item 2" id="l24-B9-AOB"/>
+                                <menuItem title="Item 3" id="rZa-no-Y34"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changeGameIdentifier:" target="WDJ-cv-alw" id="MB7-DS-6sM"/>
+                    </connections>
+                </popUpButton>
+            </subviews>
+            <connections>
+                <outlet property="gameIdentifierPopUp" destination="nYX-q4-8ce" id="im6-mV-QWM"/>
+                <outlet property="sceneNamePopup" destination="FMD-el-iXo" id="VNv-Qz-FzU"/>
+                <outlet property="transitionDirectionPopup" destination="6QN-nf-fCB" id="yzZ-1o-WkM"/>
+                <outlet property="transitionTypePopup" destination="XZ2-ig-17i" id="Wi2-wr-qmd"/>
+            </connections>
+            <point key="canvasLocation" x="75" y="-632.5"/>
+        </customView>
+    </objects>
+</document>

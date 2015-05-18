@@ -1,0 +1,211 @@
+/* 
+	Localizable.strings
+	GameCreator
+
+	Created by Maarten Foukhar on 25-03-15.
+	Copyright (c) 2015 Kiwi Fruitware. All rights reserved.
+*/
+
+/* No comment provided by engineer. */
+"Animation Action" = "Animation Action";
+
+/* No comment provided by engineer. */
+"Audio Effect Action" = "Audio Effect Action";
+
+/* No comment provided by engineer. */
+"Background Music Action" = "Background Music Action";
+
+/* No comment provided by engineer. */
+"Change Properties Action" = "Change Properties Action";
+
+/* No comment provided by engineer. */
+"Combine Action" = "Combine Action";
+
+/* No comment provided by engineer. */
+"Combine Animation" = "Combine Animation";
+
+/* No comment provided by engineer. */
+"Confirm Answer Action" = "Confirm Answer Action";
+
+/* No comment provided by engineer. */
+"Empty Action" = "Empty Action";
+
+/* No comment provided by engineer. */
+"Fade Animation" = "Fade Animation";
+
+/* No comment provided by engineer. */
+"Image Animation" = "Image Animation";
+
+/* No comment provided by engineer. */
+"Move Back Animation" = "Move Back Animation";
+
+/* No comment provided by engineer. */
+"New Event" = "New Event";
+
+/* No comment provided by engineer. */
+"Notification Action" = "Notification Action";
+
+/* No comment provided by engineer. */
+"Position Animation" = "Position Animation";
+
+/* No comment provided by engineer. */
+"Remove Sprite Action" = "Remove Sprite Action";
+
+/* No comment provided by engineer. */
+"Rotate Animation" = "Rotate Animation";
+
+/* No comment provided by engineer. */
+"Scale Animation" = "Scale Animation";
+
+/* No comment provided by engineer. */
+"Scene Action" = "Scene Action";
+
+/* No comment provided by engineer. */
+"Sequence Action" = "Sequence Action";
+
+/* No comment provided by engineer. */
+"Sequence Animation" = "Sequence Animation";
+
+/* No comment provided by engineer. */
+"Shape Animation" = "Shape Animation";
+
+/* No comment provided by engineer. */
+"Sound Action" = "Sound Action";
+
+/* No comment provided by engineer. */
+"Untitled Scene" = "Untitled Scene";
+
+/* No comment provided by engineer. */
+"None" = "None";
+
+/* No comment provided by engineer. */
+"Sprite Frame" = "Sprite Frame";
+
+/* No comment provided by engineer. */
+"Position" = "Position";
+
+/* No comment provided by engineer. */
+"Rotate" = "Rotate";
+
+/* No comment provided by engineer. */
+"Fade" = "Fade";
+
+/* No comment provided by engineer. */
+"Scale" = "Scale";
+
+/* No comment provided by engineer. */
+"Sequence" = "Sequence";
+
+/* No comment provided by engineer. */
+"Combine" = "Combine";
+
+/* No comment provided by engineer. */
+"Path" = "Path";
+
+/* No comment provided by engineer. */
+"Move Back" = "Move Back";
+
+/* No comment provided by engineer. */
+"None" = "None";
+
+/* No comment provided by engineer. */
+"Empty" = "Empty";
+
+/* No comment provided by engineer. */
+"Notification" = "Notification";
+
+/* No comment provided by engineer. */
+"Animate" = "Animate";
+
+/* No comment provided by engineer. */
+"Audio Effect" = "Audio Effect";
+
+/* No comment provided by engineer. */
+"Scene Transition" = "Scene Transition";
+
+/* No comment provided by engineer. */
+"Background Music" = "Background Music";
+
+/* No comment provided by engineer. */
+"Remove Sprite" = "Remove Sprite";
+
+/* No comment provided by engineer. */
+"Properties" = "Properties";
+
+/* No comment provided by engineer. */
+"Combine" = "Combine";
+
+/* No comment provided by engineer. */
+"Sequence" = "Sequence";
+
+/* No comment provided by engineer. */
+"Untitled Game" = "Untitled Game";
+
+/* No comment provided by engineer. */
+"Basic Template" = "Basic Template";
+
+/* No comment provided by engineer. */
+"Drag and Drop Template" = "Drag and Drop Template";
+
+/* No comment provided by engineer. */
+"Drag and Drop Shape Template" = "Drag and Drop Shape Template";
+
+/* No comment provided by engineer. */
+"Row" = "Row";
+
+/* No comment provided by engineer. */
+"Column" = "Column";
+
+/* No comment provided by engineer. */
+"Points" = "Points";
+
+/* No comment provided by engineer. */
+"New Action" = "New Action";
+
+/* No comment provided by engineer. */
+"Edit…" = "Edit…";
+
+/* No comment provided by engineer. */
+"New Game" = "New Game";
+
+/* No comment provided by engineer. */
+"Stop" = "Stop";
+
+/* No comment provided by engineer. */
+"all rows and columns" = "all rows and columns";
+
+/* No comment provided by engineer. */
+"Shadow Animation" = "Shadow Animation";
+
+/* No comment provided by engineer. */
+"Wobble Animation" = "Wobble Animation";
+
+/* No comment provided by engineer. */
+"Random Position Animation" = "Random Position Animation";
+
+/* No comment provided by engineer. */
+"All Animations" = "All Animations";
+
+/* No comment provided by engineer. */
+"Stop Animation" = "Stop Animation";
+
+/* No comment provided by engineer. */
+"Menu Template" = "Menu Template";
+
+/* No comment provided by engineer. */
+"Draggable Sprite Mouse Click" = "Draggable Sprite Mouse Click";
+
+/* No comment provided by engineer. */
+"Draggable Sprite Mouse Drag" = "Draggable Sprite Mouse Drag";
+
+/* No comment provided by engineer. */
+"Achievement" = "Achievement";
+
+/* No comment provided by engineer. */
+"Game Transition" = "Game Transition";
+
+/* No comment provided by engineer. */
+"Game Transition Action" = "Game Transition Action";
+
+/* No comment provided by engineer. */
+"Delay Action" = "Delay Action";

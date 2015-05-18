@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner">
+            <connections>
+                <outlet property="view" destination="WDJ-cv-alw" id="fyd-iC-5nq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="WDJ-cv-alw" userLabel="Settings" customClass="KGCAnimationTemplateActionView">
+            <rect key="frame" x="0.0" y="-5" width="294" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="e0E-Gq-z66">
+                    <rect key="frame" x="13" y="51" width="73" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Animation:" id="aO5-02-jOS">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" id="fyG-nD-LeJ">
+                    <rect key="frame" x="90" y="46" width="187" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Mwt-Of-6pI">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="Nu1-Jr-jcf">
+                            <items>
+                                <menuItem title="Item 1" id="RSG-jH-LHx"/>
+                                <menuItem title="Item 2" id="8kI-1O-uHS"/>
+                                <menuItem title="Item 3" id="Y12-yE-4yH"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="chooseAnimation:" target="WDJ-cv-alw" id="B0g-XU-6rq"/>
+                    </connections>
+                </popUpButton>
+                <button verticalHuggingPriority="750" id="eDq-HV-b6t">
+                    <rect key="frame" x="147" y="11" width="88" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Preview" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NiC-5L-FQb">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="preview:" target="WDJ-cv-alw" id="FAg-Bs-EwA"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="29n-u1-xZq">
+                    <rect key="frame" x="59" y="11" width="88" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dZ6-Wt-OzK">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="stopPreview:" target="WDJ-cv-alw" id="fyy-sm-EnG"/>
+                    </connections>
+                </button>
+                <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="RkS-fF-STh">
+                    <rect key="frame" x="237" y="20" width="16" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </progressIndicator>
+            </subviews>
+            <connections>
+                <outlet property="activityIndicator" destination="RkS-fF-STh" id="ViU-iK-bMV"/>
+                <outlet property="animationPopup" destination="fyG-nD-LeJ" id="W4c-U2-EJ9"/>
+                <outlet property="previewButton" destination="eDq-HV-b6t" id="reM-lg-in0"/>
+                <outlet property="resetButton" destination="29n-u1-xZq" id="bEr-ve-NCn"/>
+            </connections>
+            <point key="canvasLocation" x="325" y="-714"/>
+        </customView>
+    </objects>
+</document>
