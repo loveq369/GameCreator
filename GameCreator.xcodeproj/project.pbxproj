@@ -39,7 +39,7 @@
 		FE2C91F31AB4BAA8004FD211 /* KGCSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91AB1AB4BAA8004FD211 /* KGCSettingsView.m */; };
 		FE2C91F51AB4BAC2004FD211 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2C91F41AB4BAC2004FD211 /* QuartzCore.framework */; };
 		FE2C91F71AB4BACB004FD211 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2C91F61AB4BACA004FD211 /* AVFoundation.framework */; };
-		FE2C91FB1AB4BF68004FD211 /* 6.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91FA1AB4BF68004FD211 /* 6.m */; };
+		FE2C91FB1AB4BF68004FD211 /* KGCDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91FA1AB4BF68004FD211 /* KGCDocument.m */; };
 		FE2C91FE1AB4BF84004FD211 /* KGCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91FD1AB4BF84004FD211 /* KGCAppDelegate.m */; };
 		FE2ED2511AD544F20086BB84 /* KGCTPlayHintemplateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2ED24F1AD544F20086BB84 /* KGCTPlayHintemplateAction.m */; };
 		FE30ABF41AE3BCD000093338 /* KGCWobbleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FE30ABEF1AE3BCD000093338 /* KGCWobbleAnimation.m */; };
@@ -256,7 +256,7 @@
 		FE2C91F41AB4BAC2004FD211 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FE2C91F61AB4BACA004FD211 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FE2C91F91AB4BF68004FD211 /* KGCDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCDocument.h; sourceTree = "<group>"; };
-		FE2C91FA1AB4BF68004FD211 /* 6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = 6.m; sourceTree = "<group>"; };
+		FE2C91FA1AB4BF68004FD211 /* KGCDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDocument.m; sourceTree = "<group>"; };
 		FE2C91FC1AB4BF84004FD211 /* KGCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCAppDelegate.h; sourceTree = "<group>"; };
 		FE2C91FD1AB4BF84004FD211 /* KGCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCAppDelegate.m; sourceTree = "<group>"; };
 		FE2ED24E1AD544F20086BB84 /* KGCTPlayHintemplateAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCTPlayHintemplateAction.h; sourceTree = "<group>"; };
@@ -727,7 +727,7 @@
 			isa = PBXGroup;
 			children = (
 				FE2C91F91AB4BF68004FD211 /* KGCDocument.h */,
-				FE2C91FA1AB4BF68004FD211 /* 6.m */,
+				FE2C91FA1AB4BF68004FD211 /* KGCDocument.m */,
 				FE479E341AC2D146008CD28E /* KGCDocument.xib */,
 				FE4B16641AF388B8009A2147 /* KGCSoundEffectTableCellView.h */,
 				FE4B16651AF388B8009A2147 /* KGCSoundEffectTableCellView.m */,
@@ -1840,7 +1840,7 @@
 				FE2C91EF1AB4BAA8004FD211 /* KGCInspector.m in Sources */,
 				FEEBE6551AC2C791002370D9 /* KGCSequenceAnimationView.m in Sources */,
 				FE87B6861AF7469D00A0DBB1 /* KGCGameTransitionActionView.h in Sources */,
-				FE2C91FB1AB4BF68004FD211 /* 6.m in Sources */,
+				FE2C91FB1AB4BF68004FD211 /* KGCDocument.m in Sources */,
 				FEEBE66D1AC2C791002370D9 /* KGCSoundTemplateAction.m in Sources */,
 				FE2C91EE1AB4BAA8004FD211 /* KGCImageView.m in Sources */,
 				FE9182571ABC03B4001D2682 /* KGCTableView.m in Sources */,
