@@ -38,7 +38,6 @@
 			[imageInfoFileWrapper setPreferredFilename:@"ImageInfo.json"];
 			[_imageFileWrapper addFileWrapper:imageInfoFileWrapper];
 		}
-		else
 		
 		for (NSFileWrapper *imageWrapper in [imageFileWrappers allValues])
 		{
@@ -49,12 +48,9 @@
 				continue;
 			}
 			
-			NSData *data = [imageWrapper regularFileContents];
-			
 			KGCResourceInfo *resourceInfo = [[KGCResourceInfo alloc] initWithName:name type:KGCResourceInfoTypeImage resourceFileWrapper:_imageFileWrapper];
 			[resourceInfo setFileWrapper:imageWrapper];
 			_imageInfoObjects[name] = resourceInfo;
-			[resourceInfo setContent:[[NSImage alloc] initWithData:data]];
 		}
 		
 		_audioFileWrapper = audioFileWrapper;
@@ -80,8 +76,6 @@
 		
 			KGCResourceInfo *resourceInfo = [[KGCResourceInfo alloc] initWithName:name type:KGCResourceInfoTypeAudio resourceFileWrapper:_audioFileWrapper];
 			[resourceInfo setFileWrapper:audioWrapper];
-			[resourceInfo setContent:[audioWrapper regularFileContents]];
-			
 			_audioInfoObjects[name] = resourceInfo;
 		}
 	}
@@ -146,7 +140,6 @@
 	
 	if (type == KGCResourceInfoTypeImage)
 	{
-		[resourceInfo setContent:[[NSImage alloc] initWithData:data]];
 		_imageInfoObjects[name] = resourceInfo;
 		[_imageFileWrapper addFileWrapper:fileWrapper];
 	}
@@ -167,7 +160,7 @@
 	if ([[_imageInfoObjects allKeys] containsObject:imageName])
 	{
 		KGCResourceInfo *resourceInfo = _imageInfoObjects[imageName];
-		return [resourceInfo content];
+		return [[NSImage alloc] initWithData:[[resourceInfo fileWrapper] regularFileContents]];
 	}
 
 	return nil;
@@ -279,7 +272,6 @@
 		}
 	
 		NSString *name = [resourceInfo name];
-		
 		if (![imageNames containsObject:name])
 		{
 			[resourceInfo prepareForRemoval];

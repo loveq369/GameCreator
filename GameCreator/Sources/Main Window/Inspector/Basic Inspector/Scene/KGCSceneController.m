@@ -66,10 +66,13 @@
 - (IBAction)chooseSceneImage:(id)sender
 {
 	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-	[openPanel setAllowedFileTypes:@[@"png"]];
+	[openPanel setAllowedFileTypes:@[@"png", @"jpg"]];
 	[openPanel beginSheetModalForWindow:[[self view] window] completionHandler:^ (NSModalResponse returnCode)
 	{
-		[[self scene] setImageURL:[openPanel URL]];
+		if (returnCode == NSOKButton)
+		{
+			[[self scene] setImageURL:[openPanel URL]];
+		}
 	}];
 }
 

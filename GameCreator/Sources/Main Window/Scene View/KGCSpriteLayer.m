@@ -33,13 +33,22 @@
 	[sprite setDelegate:self];
 	
 	NSString *imageName = [sprite imageName];
+	NSImage *image;
 	if (imageName)
 	{
+		NSString *retinaString = [[[imageName stringByDeletingPathExtension] stringByAppendingString:@"@2x"] stringByAppendingPathExtension:[imageName pathExtension]];
+	
 		KGCResourceController *resourceController = [self resourceController];
-		NSImage *image = [resourceController imageNamed:imageName];
-		[self setContents:(id)[image CGImageForProposedRect:NULL context:[NSGraphicsContext currentContext] hints:nil]];
-		[self setImage:image];
+		image = [resourceController imageNamed:retinaString];
 	}
+	
+	if (!image)
+	{
+		image = [NSImage imageNamed:@"No Image"];
+	}
+	
+	[self setContents:(id)[image CGImageForProposedRect:NULL context:[NSGraphicsContext currentContext] hints:nil]];
+	[self setImage:image];
 	
 	[self update];
 }

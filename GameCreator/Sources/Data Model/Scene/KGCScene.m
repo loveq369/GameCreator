@@ -129,7 +129,6 @@
 		{
 			NSString *md5 = [resourceController md5ForImageName:imageName];
 			NSData *data = [resourceController imageDataForImageName:imageName];
-			NSLog(@"%@ %@ %i", imageName, md5, (int)[data length]);
 			
 			if (data)
 			{
@@ -149,7 +148,6 @@
 		{
 			NSString *md5 = [resourceController md5ForAudioName:soundName];
 			NSData *data = [resourceController audioDataForName:soundName];
-			NSLog(@"%@ %@ %i [2]", soundName, md5, (int)[data length]);
 			
 			if (data)
 			{
@@ -214,6 +212,10 @@
 	KGCResourceController *resourceController = [[self document] resourceController];
 	NSString *resourceName = [resourceController resourceNameForURL:imageURL type:KGCResourceInfoTypeImage];
 	[self setObject:resourceName forKey:@"ImageName"];
+	
+	NSString *retinaPath = [[[[imageURL path] stringByDeletingPathExtension] stringByAppendingString:@"@2x"] stringByAppendingPathExtension:[imageURL pathExtension]];
+	NSURL *retinaURL = [NSURL fileURLWithPath:retinaPath];
+	[resourceController resourceNameForURL:retinaURL type:KGCResourceInfoTypeImage];
 }
 
 - (void)setRequiredPoints:(NSInteger)requiredPoints

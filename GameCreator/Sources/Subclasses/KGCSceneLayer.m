@@ -47,6 +47,8 @@
 	if (image)
 	{
 		CGSize imageSize = [image size];
+		imageSize.width /= 2.0;
+		imageSize.height /= 2.0;
 		return CGRectMake(0.0, 0.0, imageSize.width, imageSize.height);
 	}
 

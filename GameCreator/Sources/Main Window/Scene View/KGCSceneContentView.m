@@ -106,8 +106,9 @@
 	NSString *imageName = [scene imageName];
 	if (imageName)
 	{
+		NSString *retinaString = [[[imageName stringByDeletingPathExtension] stringByAppendingString:@"@2x"] stringByAppendingPathExtension:[imageName pathExtension]];
 		KGCResourceController *resourceController = [[self document] resourceController];
-		NSImage *backgroundImage = [resourceController imageNamed:imageName];
+		NSImage *backgroundImage = [resourceController imageNamed:retinaString];
 		[contentLayer setImage:backgroundImage];
 	}
 	else

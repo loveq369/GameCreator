@@ -200,6 +200,10 @@
 				if (imageNames && ![imageNames containsObject:imageName])
 				{
 					[imageNames addObject:imageName];
+					
+					NSString *pathExtension = [imageName pathExtension];
+					NSString *retinaName = [[[imageName stringByDeletingPathExtension] stringByAppendingString:@"@2x"] stringByAppendingPathExtension:pathExtension];
+					[imageNames addObject:retinaName];
 				}
 			}
 			else if ([key isEqualToString:@"AudioName"])

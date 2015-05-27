@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, KGCResourceInfoType)
 @property (nonatomic, strong) NSFileWrapper *fileWrapper;
 @property (nonatomic, copy) NSString *md5String;
 @property (nonatomic) NSTimeInterval duration; // Only audio (maybe video in the future)
-@property (nonatomic, strong) id content;
+//@property (nonatomic, strong) id content;
 @property (nonatomic, readonly) KGCResourceInfoType type;
 
 @end

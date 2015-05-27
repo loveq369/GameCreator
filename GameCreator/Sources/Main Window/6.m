@@ -20,6 +20,7 @@
 #import "KGCGame.h"
 #import "KGCShadowAnimation.h"
 #import "KGCSoundEffectTableCellView.h"
+#import "KGCImageAnimation.h"
 
 @interface KGCDocument () <KGCTableViewMenuDelegate, KGCBasicTableCellDelegate, KGCDataObjectDelegate>
 
@@ -754,14 +755,54 @@ struct Pixel
 	
 	for (KGCGame *game in [gameSet games])
 	{
+		NSMutableArray *sceneImageDictionaries = [[NSMutableArray alloc] init];
+	
 		NSMutableArray *images = [[NSMutableArray alloc] init];
 		NSMutableArray *audio = [[NSMutableArray alloc] init];
+		NSMutableArray *retinaImages = [[NSMutableArray alloc] init];
 		[game imageNames:images audioNames:audio];
 	
 		for (KGCScene *scene in [game scenes])
 		{
+			NSMutableArray *sceneImageArray = [[NSMutableArray alloc] init];
+		
+			NSString *imageName = [scene imageName];
+			NSString *retinaImageName = [[[imageName stringByDeletingPathExtension] stringByAppendingString:@"@2x"] stringByAppendingPathExtension:[imageName pathExtension]];
+			if (![retinaImages containsObject:retinaImageName])
+			{
+				[retinaImages addObject:retinaImageName];
+			}
+			
+			if (![sceneImageArray containsObject:@{@"ImageName": imageName}])
+			{
+				[sceneImageArray addObject:@{@"ImageName": imageName}];
+			}
+		
 			for (KGCSprite *sprite in [scene sprites])
 			{
+				NSArray *animations = [sprite animations];
+				for (KGCAnimation *animation in animations)
+				{
+					if ([animation isKindOfClass:[KGCImageAnimation class]])
+					{
+						NSArray *imageDictionaries = [(KGCImageAnimation *)animation spriteImageNames];
+						for (NSDictionary *imageDictionary in imageDictionaries)
+						{
+							NSString *imageName = imageDictionary[@"ImageName"];
+							NSString *retinaImageName = [[[imageName stringByDeletingPathExtension] stringByAppendingString:@"@2x"] stringByAppendingPathExtension:[imageName pathExtension]];
+							if (![retinaImages containsObject:retinaImageName])
+							{
+								[retinaImages addObject:retinaImageName];
+							}
+							
+							if (![sceneImageArray containsObject:@{@"ImageName": imageName}])
+							{
+								[sceneImageArray addObject:@{@"ImageName": imageName}];
+							}
+						}
+					}
+				}
+			
 				NSString *imageName = [sprite imageName];
 				
 				BOOL shadowAnimation = NO;
@@ -775,70 +816,162 @@ struct Pixel
 				
 				if ([sprite isDraggable] || shadowAnimation)
 				{
-					NSImage *image = [[self resourceController] imageNamed:imageName];
-					
-					NSImage *shadowImage = [self shadowImageWithImage:image excludeImage:image blurRadius:2.0];
-					NSBitmapImageRep *imageRep = [[NSBitmapImageRep alloc] initWithData:[shadowImage TIFFRepresentation]];
-					NSData *shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
-					NSFileWrapper *shadowFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
-					
-					NSImage *largeRadiusShadowImage = [self shadowImageWithImage:image excludeImage:image blurRadius:6.0];
-					imageRep = [[NSBitmapImageRep alloc] initWithData:[largeRadiusShadowImage TIFFRepresentation]];
-					shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
-					NSFileWrapper *largeRadiusShadowFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
-					
-					NSFileWrapper *redOutlineImageFileWrapper;
-					
-					if ([sprite isAnswerSprite])
+					NSArray *extensions = @[@"", @"@2x"];
+					CGFloat scales[2] = {2.0, 1.0};
+					for (NSUInteger i = 0; i < 2; i ++)
 					{
-						NSImage *redOutlineImage = [self redOutlineImageWithImage:image excludeImage:image outlineSize:2.0];
-						imageRep = [[NSBitmapImageRep alloc] initWithData:[redOutlineImage TIFFRepresentation]];
-						shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
-						redOutlineImageFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
-					}
-					
-					NSFileWrapper *imageFileWrapper = [_fileWrapper fileWrappers][@"Images"];
-					
-					NSString *newImageName = [NSString stringWithFormat:@"%@-shadow.%@", [imageName stringByDeletingPathExtension], [imageName pathExtension]];
-					[imageFileWrapper removeFileWrapper:[imageFileWrapper fileWrappers][newImageName]];
-					[shadowFileWrapper setPreferredFilename:newImageName];
-					[images addObject:newImageName];
-					[imageFileWrapper addFileWrapper:shadowFileWrapper];
-					if (![imageNames containsObject:newImageName])
-					{
-						[imageNames addObject:newImageName];
-					}
-					
-					newImageName = [NSString stringWithFormat:@"%@-shadowLargeRadius.%@", [imageName stringByDeletingPathExtension], [imageName pathExtension]];
-					[imageFileWrapper removeFileWrapper:[imageFileWrapper fileWrappers][newImageName]];
-					[largeRadiusShadowFileWrapper setPreferredFilename:newImageName];
-					[images addObject:newImageName];
-					[imageFileWrapper addFileWrapper:largeRadiusShadowFileWrapper];
-					if (![imageNames containsObject:newImageName])
-					{
-						[imageNames addObject:newImageName];
-					}
-					
-					if (redOutlineImageFileWrapper)
-					{
-						newImageName = [NSString stringWithFormat:@"%@-redOutline.%@", [imageName stringByDeletingPathExtension], [imageName pathExtension]];
-						[imageFileWrapper removeFileWrapper:[imageFileWrapper fileWrappers][newImageName]];
-						[redOutlineImageFileWrapper setPreferredFilename:newImageName];
-						[images addObject:newImageName];
-						[imageFileWrapper addFileWrapper:redOutlineImageFileWrapper];
-						if (![imageNames containsObject:newImageName])
+						CGFloat scale = scales[i];
+						NSString *extension = extensions[i];
+						NSString *scaleImageName = [[[imageName stringByDeletingPathExtension] stringByAppendingString:extension] stringByAppendingPathExtension:[imageName pathExtension]];
+						if (i == 0)
 						{
-							[imageNames addObject:newImageName];
+							if (![sceneImageArray containsObject:@{@"ImageName": scaleImageName}])
+							{
+								[sceneImageArray addObject:@{@"ImageName": scaleImageName}];
+							}
+						}
+						else if (i == 1)
+						{
+							[retinaImages addObject:scaleImageName];
+						}
+						
+						NSImage *image = [[self resourceController] imageNamed:scaleImageName];
+					
+						NSImage *shadowImage = [self shadowImageWithImage:image excludeImage:image blurRadius:2.0 scale:scale];
+						NSBitmapImageRep *imageRep = [[NSBitmapImageRep alloc] initWithData:[shadowImage TIFFRepresentation]];
+						NSData *shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
+						NSFileWrapper *shadowFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
+						
+						NSImage *largeRadiusShadowImage = [self shadowImageWithImage:image excludeImage:image blurRadius:6.0 scale:scale];
+						imageRep = [[NSBitmapImageRep alloc] initWithData:[largeRadiusShadowImage TIFFRepresentation]];
+						shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
+						NSFileWrapper *largeRadiusShadowFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
+						
+						NSFileWrapper *redOutlineImageFileWrapper;
+						
+						if ([sprite isAnswerSprite])
+						{
+							NSImage *redOutlineImage = [self redOutlineImageWithImage:image excludeImage:image outlineSize:2.0 scale:scale];
+							imageRep = [[NSBitmapImageRep alloc] initWithData:[redOutlineImage TIFFRepresentation]];
+							shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
+							redOutlineImageFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
+						}
+						
+						NSFileWrapper *imageFileWrapper = [_fileWrapper fileWrappers][@"Images"];
+						
+						NSString *newImageName = [NSString stringWithFormat:@"%@-shadow%@.%@", [imageName stringByDeletingPathExtension], extension, [imageName pathExtension]];
+						[imageFileWrapper removeFileWrapper:[imageFileWrapper fileWrappers][newImageName]];
+						[shadowFileWrapper setPreferredFilename:newImageName];
+						[images addObject:newImageName];
+						[imageFileWrapper addFileWrapper:shadowFileWrapper];
+						
+						if (i == 0)
+						{
+							if (![imageNames containsObject:newImageName])
+							{
+								[imageNames addObject:newImageName];
+							}
+							
+							if (![sceneImageArray containsObject:@{@"ImageName": newImageName}])
+							{
+								[sceneImageArray addObject:@{@"ImageName": newImageName}];
+							}
+						}
+						else
+						{
+							if (![retinaImages containsObject:newImageName])
+							{
+								[retinaImages addObject:newImageName];
+							}
+						}
+						
+						newImageName = [NSString stringWithFormat:@"%@-shadowLargeRadius%@.%@", [imageName stringByDeletingPathExtension], extension, [imageName pathExtension]];
+						[imageFileWrapper removeFileWrapper:[imageFileWrapper fileWrappers][newImageName]];
+						[largeRadiusShadowFileWrapper setPreferredFilename:newImageName];
+						[images addObject:newImageName];
+						[imageFileWrapper addFileWrapper:largeRadiusShadowFileWrapper];
+						if (i == 0)
+						{
+							if (![imageNames containsObject:newImageName])
+							{
+								[imageNames addObject:newImageName];
+							}
+							
+							if (![sceneImageArray containsObject:@{@"ImageName": newImageName}])
+							{
+								[sceneImageArray addObject:@{@"ImageName": newImageName}];
+							}
+						}
+						else
+						{
+							if (![retinaImages containsObject:newImageName])
+							{
+								[retinaImages addObject:newImageName];
+							}
+						}
+						
+						if (redOutlineImageFileWrapper)
+						{
+							newImageName = [NSString stringWithFormat:@"%@-redOutline%@.%@", [imageName stringByDeletingPathExtension], extension, [imageName pathExtension]];
+							[imageFileWrapper removeFileWrapper:[imageFileWrapper fileWrappers][newImageName]];
+							[redOutlineImageFileWrapper setPreferredFilename:newImageName];
+							[images addObject:newImageName];
+							[imageFileWrapper addFileWrapper:redOutlineImageFileWrapper];
+							if (i == 0)
+							{
+								if (![imageNames containsObject:newImageName])
+								{
+									[imageNames addObject:newImageName];
+								}
+								
+								if (![sceneImageArray containsObject:@{@"ImageName": newImageName}])
+								{
+									[sceneImageArray addObject:@{@"ImageName": newImageName}];
+								}
+							}
+							else
+							{
+								if (![retinaImages containsObject:newImageName])
+								{
+									[retinaImages addObject:newImageName];
+								}
+							}
 						}
 					}
 				}
+				else
+				{
+					NSString *retinaImageName = [[[imageName stringByDeletingPathExtension] stringByAppendingString:@"@2x"] stringByAppendingPathExtension:[imageName pathExtension]];
+					if (![retinaImages containsObject:retinaImageName])
+					{
+						[retinaImages addObject:retinaImageName];
+					}
+					
+					if (![sceneImageArray containsObject:@{@"ImageName": imageName}])
+					{
+						[sceneImageArray addObject:@{@"ImageName": imageName}];
+					}
+				}
 			}
+			
+			[sceneImageDictionaries addObject:@{@"Images": sceneImageArray}];
 		}
 		
+		for (KGCScene *scene in [game scenes])
+		{
+			[scene dictionary][@"SceneImages"] = sceneImageDictionaries;
+			[scene updateDictionary];
+		}
 		
+		NSArray *sortedRetinaImages = [retinaImages sortedArrayWithOptions:NSSortConcurrent usingComparator:^ NSComparisonResult(NSString *imageName1, NSString *imageName2) {
+			NSData *data1 = [[self resourceController] imageDataForImageName:imageName1];
+			NSData *data2 = [[self resourceController] imageDataForImageName:imageName2];
+			return [data1 length] < [data2 length];
+		}];
 		
 		[game dictionary][@"Images"] = images;
 		[game dictionary][@"Audio"] = audio;
+		[game dictionary][@"RetinaImages"] = sortedRetinaImages;
 		[game updateDictionary];
 	}
 	
@@ -847,11 +980,14 @@ struct Pixel
 	[gameSet updateDictionary];
 }
 
-- (NSImage *)redOutlineImageWithImage:(NSImage *)image excludeImage:(NSImage *)excludeImage outlineSize:(CGFloat)blurRadius
+- (NSImage *)redOutlineImageWithImage:(NSImage *)image excludeImage:(NSImage *)excludeImage outlineSize:(CGFloat)blurRadius scale:(CGFloat)scale
 {
 	NSSize imageSize = [image size];
-	imageSize.width /= 2.0;
-	imageSize.height /= 2.0;
+//	if (scale == 1.0)
+//	{
+		imageSize.width /= 2.0;
+		imageSize.height /= 2.0;
+//	}
 	NSRect imageDrawRect = NSMakeRect(blurRadius, blurRadius, imageSize.width, imageSize.height);
 	NSRect newRect = NSMakeRect(0.0, 0.0, imageSize.width, imageSize.height);
 	newRect = NSInsetRect(newRect, - blurRadius, - blurRadius);
@@ -885,11 +1021,14 @@ struct Pixel
 	return newImage;
 }
 
-- (NSImage *)shadowImageWithImage:(NSImage *)image excludeImage:(NSImage *)excludeImage blurRadius:(CGFloat)blurRadius
+- (NSImage *)shadowImageWithImage:(NSImage *)image excludeImage:(NSImage *)excludeImage blurRadius:(CGFloat)blurRadius scale:(CGFloat)scale
 {
 	NSSize imageSize = [image size];
-	imageSize.width /= 2.0;
-	imageSize.height /= 2.0;
+//	if (scale == 1.0)
+//	{
+		imageSize.width /= 2.0;
+		imageSize.height /= 2.0;
+//	}
 	NSRect imageDrawRect = NSMakeRect(blurRadius, blurRadius, imageSize.width, imageSize.height);
 	NSRect newRect = NSMakeRect(0.0, 0.0, imageSize.width, imageSize.height);
 	newRect = NSInsetRect(newRect, - blurRadius, - blurRadius);
