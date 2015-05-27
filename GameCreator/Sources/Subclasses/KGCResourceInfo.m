@@ -119,7 +119,7 @@
 
 - (void)updateWithNewDictionaries:(NSMutableArray *)newDictionaries
 {
-	NSString *infoName = [self type] == KGCResourceInfoTypeAudio ? @"AudioInfo.json" : @"imageInfo.json";
+	NSString *infoName = [self type] == KGCResourceInfoTypeAudio ? @"AudioInfo.json" : @"ImageInfo.json";
 
 	[_resourceFileWrapper removeFileWrapper:[_resourceFileWrapper fileWrappers][infoName]];
 	NSData *data = [NSJSONSerialization dataWithJSONObject:newDictionaries options:NSJSONWritingPrettyPrinted error:nil];
