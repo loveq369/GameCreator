@@ -58,6 +58,14 @@
  */
 - (void)setImageURL:(NSURL *)imageURL;
 
+/** The sprite background image name */
+@property (nonatomic, readonly) NSString *backgroundImageName;
+
+/** Change the background image of the sprite
+ *	@param imageURL The image url to set a new image with
+ */
+- (void)setBackgroundImageURL:(NSURL *)imageURL;
+
 /** The draggability of the sprite */
 @property (nonatomic, getter = isDraggable) BOOL draggable;
 

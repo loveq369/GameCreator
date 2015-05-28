@@ -747,6 +747,8 @@ struct Pixel
 {
 	KGCGameSet *gameSet = [self gameSet];
 	
+	NSMutableArray *shadowedImageNames = [[NSMutableArray alloc] init];
+	
 	NSMutableArray *imageNames = [[NSMutableArray alloc] init];
 	NSMutableArray *audioNames = [[NSMutableArray alloc] init];
 	
@@ -756,13 +758,23 @@ struct Pixel
 	{
 		NSMutableArray *images = [[NSMutableArray alloc] init];
 		NSMutableArray *audio = [[NSMutableArray alloc] init];
-		[game imageNames:images audioNames:audio];
+		NSMutableDictionary *sceneImagesDictionary = [[NSMutableDictionary alloc] init];
+		[game imageNames:images audioNames:audio sceneImageDictionary:sceneImagesDictionary];
 	
 		for (KGCScene *scene in [game scenes])
 		{
 			for (KGCSprite *sprite in [scene sprites])
 			{
-				NSString *imageName = [sprite imageName];
+				NSString *imageName;
+				NSString *backgroundImageName = [sprite backgroundImageName];
+				if (backgroundImageName)
+				{
+					imageName = backgroundImageName;
+				}
+				else
+				{
+					imageName = [sprite imageName];
+				}
 				
 				BOOL shadowAnimation = NO;
 				for (KGCAnimation *animation in [sprite animations])
@@ -775,6 +787,11 @@ struct Pixel
 				
 				if ([sprite isDraggable] || shadowAnimation)
 				{
+					if ([shadowedImageNames containsObject:imageName])
+					{
+						continue;
+					}
+				
 					NSImage *image = [[self resourceController] imageNamed:imageName];
 					
 					NSImage *shadowImage = [self shadowImageWithImage:image excludeImage:image blurRadius:2.0];
@@ -833,9 +850,10 @@ struct Pixel
 					}
 				}
 			}
+			
+			[scene dictionary][@"Images"] = sceneImagesDictionary[[scene identifier]];
+			[scene updateDictionary];
 		}
-		
-		
 		
 		[game dictionary][@"Images"] = images;
 		[game dictionary][@"Audio"] = audio;

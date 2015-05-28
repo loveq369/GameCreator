@@ -22,6 +22,7 @@
                 <outlet property="spriteImageNameLabel" destination="Kmt-PS-OIT" id="TS5-c8-CNW"/>
                 <outlet property="spriteImagePositionXField" destination="cFi-u2-Ifw" id="CCG-sp-OKS"/>
                 <outlet property="spriteImagePositionYField" destination="lM2-KB-CfJ" id="b5k-x4-pL0"/>
+                <outlet property="spriteImageTypePopUp" destination="f6Z-DK-hQ6" id="iTk-JO-Ax5"/>
                 <outlet property="spriteMaxItemsField" destination="wCD-Q2-aHH" id="bsp-n4-aPd"/>
                 <outlet property="spriteNameField" destination="XLl-OX-L26" id="JxC-aq-qnL"/>
                 <outlet property="spriteOpacityField" destination="f3e-JK-aBB" id="lVg-Ax-g0I"/>
@@ -258,7 +259,7 @@
                     </connections>
                 </popUpButton>
                 <button verticalHuggingPriority="750" id="2fY-vG-syV">
-                    <rect key="frame" x="77" y="598" width="98" height="28"/>
+                    <rect key="frame" x="181" y="598" width="98" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Choose…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nNE-WC-QFg">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -591,6 +592,23 @@
                         <action selector="changeSpriteZOrder:" target="-2" id="y2o-WK-KZW"/>
                     </connections>
                 </textField>
+                <popUpButton verticalHuggingPriority="750" id="f6Z-DK-hQ6">
+                    <rect key="frame" x="80" y="601" width="101" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Normal" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="rtd-1l-3Wk" id="KGq-j5-apH">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" id="oPq-xx-NlS">
+                            <items>
+                                <menuItem title="Normal" state="on" id="rtd-1l-3Wk"/>
+                                <menuItem title="Background" id="421-2L-wke"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changeSpriteImageType:" target="-2" id="iXQ-fF-OnO"/>
+                    </connections>
+                </popUpButton>
             </subviews>
             <point key="canvasLocation" x="-2132" y="-4332"/>
         </customView>

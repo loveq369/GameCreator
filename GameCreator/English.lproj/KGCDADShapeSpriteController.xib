@@ -25,6 +25,7 @@
                 <outlet property="spriteImageNameLabel" destination="Kmt-PS-OIT" id="TS5-c8-CNW"/>
                 <outlet property="spriteImagePositionXField" destination="cFi-u2-Ifw" id="CCG-sp-OKS"/>
                 <outlet property="spriteImagePositionYField" destination="lM2-KB-CfJ" id="b5k-x4-pL0"/>
+                <outlet property="spriteImageTypePopUp" destination="Sz3-IE-vQ8" id="GS8-G1-qvh"/>
                 <outlet property="spriteNameField" destination="XLl-OX-L26" id="JxC-aq-qnL"/>
                 <outlet property="spriteOpacityField" destination="f3e-JK-aBB" id="lVg-Ax-g0I"/>
                 <outlet property="spriteOpacitySlider" destination="g1v-m8-z5G" id="w3K-86-eoj"/>
@@ -524,17 +525,6 @@
                         </tabViewItem>
                     </tabViewItems>
                 </tabView>
-                <button verticalHuggingPriority="750" id="2fY-vG-syV">
-                    <rect key="frame" x="77" y="598" width="98" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Choose…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nNE-WC-QFg">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="chooseSpriteImage:" target="-2" id="MgD-Cf-Flq"/>
-                    </connections>
-                </button>
                 <textField verticalHuggingPriority="750" id="IAD-iP-biy">
                     <rect key="frame" x="82" y="571" width="190" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -544,6 +534,34 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" id="l2C-76-YjB">
+                    <rect key="frame" x="184" y="598" width="98" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Choose…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dZn-AQ-sTm">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="chooseSpriteImage:" target="-2" id="Ic4-Ca-6dR"/>
+                    </connections>
+                </button>
+                <popUpButton verticalHuggingPriority="750" id="Sz3-IE-vQ8">
+                    <rect key="frame" x="83" y="601" width="101" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Normal" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="0bh-yX-RB9">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" id="2eo-ZV-Ju8">
+                            <items>
+                                <menuItem title="Normal" state="on" id="Ss4-7m-ufB"/>
+                                <menuItem title="Background" id="N6r-jA-sDM"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changeSpriteImageType:" target="-2" id="VSG-cI-ASF"/>
+                    </connections>
+                </popUpButton>
                 <popUpButton verticalHuggingPriority="750" id="pLa-dK-EjL">
                     <rect key="frame" x="81" y="650" width="159" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>

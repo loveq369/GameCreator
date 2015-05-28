@@ -25,6 +25,7 @@
                 <outlet property="spriteImageNameLabel" destination="Kmt-PS-OIT" id="TS5-c8-CNW"/>
                 <outlet property="spriteImagePositionXField" destination="cFi-u2-Ifw" id="CCG-sp-OKS"/>
                 <outlet property="spriteImagePositionYField" destination="lM2-KB-CfJ" id="b5k-x4-pL0"/>
+                <outlet property="spriteImageTypePopUp" destination="aLI-vh-cCn" id="Ren-t7-Pdg"/>
                 <outlet property="spriteNameField" destination="XLl-OX-L26" id="JxC-aq-qnL"/>
                 <outlet property="spriteOpacityField" destination="f3e-JK-aBB" id="lVg-Ax-g0I"/>
                 <outlet property="spriteOpacitySlider" destination="g1v-m8-z5G" id="w3K-86-eoj"/>
@@ -269,7 +270,7 @@
                     </connections>
                 </popUpButton>
                 <button verticalHuggingPriority="750" id="2fY-vG-syV">
-                    <rect key="frame" x="77" y="598" width="98" height="28"/>
+                    <rect key="frame" x="181" y="598" width="98" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Kies…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nNE-WC-QFg">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -279,6 +280,23 @@
                         <action selector="chooseSpriteImage:" target="-2" id="MgD-Cf-Flq"/>
                     </connections>
                 </button>
+                <popUpButton verticalHuggingPriority="750" id="aLI-vh-cCn">
+                    <rect key="frame" x="80" y="602" width="101" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Normaal" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="9aq-rJ-RgJ" id="J7r-2P-o66">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" id="vFk-8U-MQf">
+                            <items>
+                                <menuItem title="Normaal" state="on" id="9aq-rJ-RgJ"/>
+                                <menuItem title="Achtergrond" id="Fg7-O0-6H0"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changeSpriteImageType:" target="-2" id="K7Z-fb-YNT"/>
+                    </connections>
+                </popUpButton>
                 <tabView drawsBackground="NO" type="noTabsNoBorder" id="tSG-ZL-39c">
                     <rect key="frame" x="0.0" y="0.0" width="296" height="440"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

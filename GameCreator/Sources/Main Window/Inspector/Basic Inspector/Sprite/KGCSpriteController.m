@@ -16,7 +16,7 @@
 @property (nonatomic, weak) IBOutlet KGCFileDropView *spriteDropField;
 @property (nonatomic, weak) IBOutlet NSImageView *spriteIconView;
 @property (nonatomic, weak) IBOutlet NSTextField *spriteImageNameLabel;
-@property (nonatomic, weak) IBOutlet NSTextField *spriteLabelField;
+@property (nonatomic, weak) IBOutlet NSPopUpButton *spriteImageTypePopUp;
 @property (nonatomic, weak) IBOutlet NSTextField *spriteImagePositionXField;
 @property (nonatomic, weak) IBOutlet NSTextField *spriteImagePositionYField;
 @property (nonatomic, weak) IBOutlet NSTextField *spriteScaleField;
@@ -44,7 +44,12 @@
 	KGCSprite *sprite = [self sprite];
 		
 	[[self spriteNameField] setStringValue:[sprite name]];
-	[[self spriteImageNameLabel] setStringValue:[sprite imageName]];
+	
+	NSInteger lastSpriteImageType = [[NSUserDefaults standardUserDefaults] integerForKey:@"KGCInspectorLastSelectedSpriteImageType"];
+	[[self spriteImageTypePopUp] selectItemAtIndex:lastSpriteImageType];
+	
+	NSString *spriteImageName = lastSpriteImageType == 0 ? [sprite imageName] : [sprite backgroundImageName];
+	[[self spriteImageNameLabel] setStringValue:spriteImageName ? spriteImageName : NSLocalizedString(@"None", nil)];
 	
 	NSPoint position = [sprite position];
 	[[self spriteImagePositionXField] setDoubleValue:position.x];
@@ -82,8 +87,33 @@
 	[openPanel setAllowedFileTypes:@[@"png"]];
 	[openPanel beginSheetModalForWindow:[[self view] window] completionHandler:^ (NSModalResponse returnCode)
 	{
-		[[self sprite] setImageURL:[openPanel URL]];
+		if (returnCode == NSOKButton)
+		{
+			KGCSprite *sprite = [self sprite];
+			BOOL normalImage = [[self spriteImageTypePopUp] indexOfSelectedItem] == 0;
+			if (normalImage)
+			{
+				[sprite setImageURL:[openPanel URL]];
+			}
+			else
+			{
+				[sprite setBackgroundImageURL:[openPanel URL]];
+			}
+			
+			NSString *spriteImageName = normalImage ? [sprite imageName] : [sprite backgroundImageName];
+			[[self spriteImageNameLabel] setStringValue:spriteImageName ? spriteImageName : NSLocalizedString(@"None", nil)];
+		}
 	}];
+}
+
+- (IBAction)changeSpriteImageType:(id)sender
+{
+	NSUInteger index = [sender indexOfSelectedItem];
+	[[NSUserDefaults standardUserDefaults] setInteger:index forKey:@"KGCInspectorLastSelectedSpriteImageType"];
+
+	KGCSprite *sprite = [self sprite];
+	NSString *spriteImageName = index == 0 ? [sprite imageName] : [sprite backgroundImageName];
+	[[self spriteImageNameLabel] setStringValue:spriteImageName ? spriteImageName : NSLocalizedString(@"None", nil)];
 }
 
 - (IBAction)changeSpritePosition:(id)sender
@@ -185,8 +215,18 @@
 		NSURL *url = [[NSURL alloc] initFileURLWithPath:filePaths[0]];
 		
 		KGCSprite *sprite = [self sprite];
-		[[self sprite] setImageURL:url];
-		[[self spriteImageNameLabel] setStringValue:[sprite imageName]];
+		BOOL normalImage = [[self spriteImageTypePopUp] indexOfSelectedItem] == 0;
+		if (normalImage)
+		{
+			[sprite setImageURL:url];
+		}
+		else
+		{
+			[sprite setBackgroundImageURL:url];
+		}
+		
+		NSString *spriteImageName = normalImage ? [sprite imageName] : [sprite backgroundImageName];
+		[[self spriteImageNameLabel] setStringValue:spriteImageName ? spriteImageName : NSLocalizedString(@"None", nil)];
 	}
 }
 

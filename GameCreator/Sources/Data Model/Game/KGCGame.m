@@ -152,11 +152,17 @@
 	}
 }
 
-- (void)imageNames:(NSMutableArray *)imageNames audioNames:(NSMutableArray *)audioNames
+- (void)imageNames:(NSMutableArray *)imageNames audioNames:(NSMutableArray *)audioNames sceneImageDictionary:(NSMutableDictionary *)sceneImageDictionary
 {
 	for (KGCScene *scene in [self scenes])
 	{
-		[self resourceNamesInObject:[scene dictionary] imageNames:imageNames audioNames:audioNames];
+		NSMutableArray *sceneImageNames = [[NSMutableArray alloc] init];
+		[self resourceNamesInObject:[scene dictionary] imageNames:sceneImageNames audioNames:audioNames];
+		if (sceneImageDictionary)
+		{
+			sceneImageDictionary[[scene identifier]] = sceneImageNames;
+		}
+		[imageNames addObjectsFromArray:sceneImageNames];
 	}
 }
 

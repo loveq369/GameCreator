@@ -249,6 +249,25 @@
 	[self setObject:resourceName forKey:@"ImageName"];
 }
 
+- (NSString *)backgroundImageName
+{
+	NSDictionary *backgroundImageInfo = [self objectForKey:@"BackgroundImage"];
+
+	if (backgroundImageInfo && [[backgroundImageInfo allKeys] containsObject:@"ImageName"])
+	{
+		return backgroundImageInfo[@"ImageName"];
+	}
+	
+	return nil;
+}
+
+- (void)setBackgroundImageURL:(NSURL *)imageURL
+{
+	KGCResourceController *resourceController = [[self document] resourceController];
+	NSString *resourceName = [resourceController resourceNameForURL:imageURL type:KGCResourceInfoTypeImage];
+	[self setObject:@{@"ImageName": resourceName} forKey:@"BackgroundImage"];
+}
+
 - (void)setDraggable:(BOOL)draggable
 {
 	[self setBool:draggable forKey:@"Draggable"];
@@ -463,7 +482,8 @@
 	return @[	@"zOrder", @"InitialZOrder", 
 				@"Scale", @"InitialScale", 
 				@"Alpha", @"InitialAlpha",
-				@"Position", @"InitialPosition"];;
+				@"Position", @"InitialPosition",
+				@"BackgroundImage"];
 }
 
 @end

@@ -13,6 +13,7 @@
                 <outlet property="spriteImageNameLabel" destination="XJ7-8D-VIG" id="SW0-8V-5Gs"/>
                 <outlet property="spriteImagePositionXField" destination="MET-El-SHv" id="7rz-Gw-AEV"/>
                 <outlet property="spriteImagePositionYField" destination="DGj-G2-9hf" id="b4X-2S-bUY"/>
+                <outlet property="spriteImageTypePopUp" destination="urR-BL-aba" id="8nH-9g-2sR"/>
                 <outlet property="spriteInteractionDisabledCheckBox" destination="399-YQ-0eN" id="U7P-zI-vIT"/>
                 <outlet property="spriteMaxLinksTextField" destination="5wt-yJ-XIK" id="huU-PN-zs2"/>
                 <outlet property="spriteNameField" destination="TA7-Ss-OLf" id="W78-Bm-RMi"/>
@@ -80,7 +81,7 @@
                     </textFieldCell>
                 </textField>
                 <customView id="iIt-gC-dd0" customClass="KGCFileDropView">
-                    <rect key="frame" x="2" y="582" width="292" height="148"/>
+                    <rect key="frame" x="1" y="582" width="292" height="148"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <connections>
                         <outlet property="delegate" destination="-2" id="6NC-f2-Ujn"/>
@@ -200,7 +201,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" id="x8L-Ru-vTs">
-                    <rect key="frame" x="77" y="624" width="98" height="28"/>
+                    <rect key="frame" x="181" y="624" width="98" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Choose…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PZe-MN-cIt">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -210,6 +211,23 @@
                         <action selector="chooseSpriteImage:" target="-2" id="MSE-r2-cPc"/>
                     </connections>
                 </button>
+                <popUpButton verticalHuggingPriority="750" id="urR-BL-aba">
+                    <rect key="frame" x="79" y="627" width="101" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Normal" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="3F8-ZR-bfH" id="lSC-gg-AaM">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" id="XGB-5P-sPJ">
+                            <items>
+                                <menuItem title="Normal" state="on" id="3F8-ZR-bfH"/>
+                                <menuItem title="Background" id="9mW-dM-1zT"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changeSpriteImageType:" target="-2" id="Axf-5T-sHe"/>
+                    </connections>
+                </popUpButton>
                 <textField verticalHuggingPriority="750" id="DGj-G2-9hf">
                     <rect key="frame" x="156" y="552" width="60" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>

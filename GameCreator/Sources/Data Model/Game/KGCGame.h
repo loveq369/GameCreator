@@ -18,6 +18,6 @@
 - (void)addScene:(KGCScene *)scene;
 - (void)removeScene:(KGCScene *)scene;
 
-- (void)imageNames:(NSMutableArray *)imageNames audioNames:(NSMutableArray *)audioNames;
+- (void)imageNames:(NSMutableArray *)imageNames audioNames:(NSMutableArray *)audioNames sceneImageDictionary:(NSMutableDictionary *)sceneImageDictionary;
 
 @end

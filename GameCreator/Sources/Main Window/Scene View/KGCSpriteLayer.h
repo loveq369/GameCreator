@@ -15,7 +15,6 @@
 - (void)update;
 
 @property (nonatomic, getter = isSelected) BOOL selected;
-@property (nonatomic, readonly) NSImage *image;
 
 - (void)setPosition:(CGPoint)position animated:(BOOL)animated;
 

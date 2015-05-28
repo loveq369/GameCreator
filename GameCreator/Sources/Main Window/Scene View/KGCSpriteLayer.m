@@ -32,14 +32,7 @@
 	KGCSprite *sprite = [self sprite];
 	[sprite setDelegate:self];
 	
-	NSString *imageName = [sprite imageName];
-	if (imageName)
-	{
-		KGCResourceController *resourceController = [self resourceController];
-		NSImage *image = [resourceController imageNamed:imageName];
-		[self setContents:(id)[image CGImageForProposedRect:NULL context:[NSGraphicsContext currentContext] hints:nil]];
-		[self setImage:image];
-	}
+	[self setImage:[self combinedImage]];
 	
 	[self update];
 }
@@ -107,17 +100,15 @@
 
 - (void)dataObject:(KGCDataObject *)dataObject valueChangedForKey:(NSString *)key visualChange:(BOOL)visualChange
 {
-	if ([key isEqualToString:@"ImageName"])
+	if ([key isEqualToString:@"ImageName"] || [key isEqualToString:@"BackgroundImage"])
 	{
 		KGCSprite *sprite = [self sprite];
 		KGCDocument *document = [sprite document];
 		KGCDocumentEditMode editMode = [document editMode];
 		BOOL normalMode = (editMode == KGCDocumentEditModeNormal) || ![document previewInitialMode];
 		
-		KGCResourceController *resourceController = [[sprite document] resourceController];
-		NSImage *image = [resourceController imageNamed:[sprite imageName]];
-		[self setContents:(id)[image CGImageForProposedRect:NULL context:[NSGraphicsContext currentContext] hints:nil]];
-		[self setImage:image];
+		[self setImage:[self combinedImage]];
+		
 		[self updateBoundsWithScale:normalMode ? [sprite scale] : [sprite initialScale] notify:YES];
 		
 		return;
@@ -130,6 +121,44 @@
 }
 
 #pragma mark - Convenient Methods
+
+- (NSImage *)combinedImage
+{
+	KGCResourceController *resourceController = [self resourceController];
+
+	KGCSprite *sprite = [self sprite];
+	NSImage *backgroundImage = [resourceController imageNamed:[sprite backgroundImageName]];
+	NSImage *normalImage = [resourceController imageNamed:[sprite imageName]];
+	
+	NSImage *image;
+	if (backgroundImage)
+	{
+		NSSize backgroundImageSize = [backgroundImage size];
+		NSSize normalImageSize = [normalImage size];
+		
+		CGFloat width = backgroundImageSize.width > normalImageSize.width ? backgroundImageSize.width : normalImageSize.width;
+		CGFloat height = backgroundImageSize.height > normalImageSize.height ? backgroundImageSize.height : normalImageSize.height;
+		image = [[NSImage alloc] initWithSize:NSMakeSize(width, height)];
+		
+		[image lockFocus];
+		
+		CGFloat x = backgroundImageSize.width > normalImageSize.width ? 0.0 : (normalImageSize.width - backgroundImageSize.width) / 2.0;
+		CGFloat y = backgroundImageSize.height > normalImageSize.height ? 0.0 : (normalImageSize.height - backgroundImageSize.height) / 2.0;
+		[backgroundImage drawInRect:NSMakeRect(x, y, backgroundImageSize.width, backgroundImageSize.height)];
+		
+		x = normalImageSize.width > backgroundImageSize.width ? 0.0 : (backgroundImageSize.width - normalImageSize.width) / 2.0;
+		y = normalImageSize.height > backgroundImageSize.height ? 0.0 : (backgroundImageSize.height - normalImageSize.height) / 2.0;
+		[normalImage drawInRect:NSMakeRect(x, y, normalImageSize.width, normalImageSize.height)];
+		
+		[image unlockFocus];
+	}
+	else
+	{
+		image = normalImage;
+	}
+	
+	return image;
+}
 
 - (void)updateBoundsWithScale:(CGFloat)scale notify:(BOOL)notify
 {

@@ -13,6 +13,7 @@
                 <outlet property="spriteImageNameLabel" destination="XJ7-8D-VIG" id="SW0-8V-5Gs"/>
                 <outlet property="spriteImagePositionXField" destination="MET-El-SHv" id="7rz-Gw-AEV"/>
                 <outlet property="spriteImagePositionYField" destination="DGj-G2-9hf" id="b4X-2S-bUY"/>
+                <outlet property="spriteImageTypePopUp" destination="0qd-Ue-MJP" id="vcp-FK-Ws7"/>
                 <outlet property="spriteInteractionDisabledCheckBox" destination="399-YQ-0eN" id="U7P-zI-vIT"/>
                 <outlet property="spriteMaxLinksTextField" destination="5wt-yJ-XIK" id="huU-PN-zs2"/>
                 <outlet property="spriteNameField" destination="TA7-Ss-OLf" id="W78-Bm-RMi"/>
@@ -182,7 +183,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" id="x8L-Ru-vTs">
-                    <rect key="frame" x="77" y="624" width="98" height="28"/>
+                    <rect key="frame" x="181" y="624" width="98" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Kies…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PZe-MN-cIt">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -192,6 +193,23 @@
                         <action selector="chooseSpriteImage:" target="-2" id="MSE-r2-cPc"/>
                     </connections>
                 </button>
+                <popUpButton verticalHuggingPriority="750" id="0qd-Ue-MJP">
+                    <rect key="frame" x="79" y="627" width="101" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Normaal" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="aeJ-Xl-2bC" id="b4m-38-AV2">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" id="hu4-hJ-vlO">
+                            <items>
+                                <menuItem title="Normaal" state="on" id="aeJ-Xl-2bC"/>
+                                <menuItem title="Achtergrond" id="1KE-j4-moR"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changeSpriteImageType:" target="-2" id="3Rf-KV-Yk1"/>
+                    </connections>
+                </popUpButton>
                 <textField verticalHuggingPriority="750" id="DGj-G2-9hf">
                     <rect key="frame" x="156" y="554" width="60" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
