@@ -27,16 +27,17 @@
 	KGCInspector *_inspector;
 }
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers
 {
 	NSView *inspectorContainerView = [self inspectorContainerView];
 	[[inspectorContainerView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
-	if (sceneLayer)
+	if (sceneLayers && (![sceneLayers[0] isKindOfClass:[KGCScene class]] || ([sceneLayers[0] isKindOfClass:[KGCScene class]] && [sceneLayers count] == 1)))
 	{
 		[[self noScenesField] setHidden:YES];
 	
-		KGCSceneObject *sceneObject = [sceneLayer sceneObject];
+		KGCSceneObject *sceneObject = [sceneLayers[0] sceneObject];
+		
 		KGCScene *scene;
 		if ([sceneObject isKindOfClass:[KGCScene class]])
 		{
@@ -56,7 +57,7 @@
 		[inspectorView setFrame:[inspectorContainerView bounds]];
 		[inspectorContainerView addSubview:inspectorView];
 		
-		[_inspector setupWithSceneLayer:sceneLayer];
+		[_inspector setupWithSceneLayers:sceneLayers];
 	}
 	else
 	{

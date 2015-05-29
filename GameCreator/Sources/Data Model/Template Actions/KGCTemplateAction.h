@@ -47,9 +47,9 @@ typedef NS_ENUM(NSUInteger, KGCTemplateActionType)
 @property (nonatomic) CGFloat delay;
 
 /** The info view of the template action
-	@param layer The layer to use to get the settings
+	@param layers The layers to use to get the settings
  *	@return Returns an info view for the inspectors
  */
-- (KGCSettingsView *)infoViewForLayer:(KGCSceneLayer *)layer;
+- (KGCSettingsView *)infoViewForLayers:(NSArray *)layers;
 
 @end

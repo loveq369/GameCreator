@@ -56,10 +56,10 @@
 	return action;
 }
 
-- (KGCSettingsView *)infoViewForSceneLayer:(KGCSceneLayer *)sceneLayer
+- (KGCSettingsView *)infoViewForSceneLayers:(NSArray *)sceneLayers
 {
 	KGCSettingsView *view = (KGCSettingsView *)[[KGCSettingsViewManager sharedManager] viewForBundleName:NSStringFromClass([self class])];
-	[view setupWithSceneLayer:sceneLayer withSettingsObject:self];
+	[view setupWithSceneLayers:sceneLayers withSettingsObject:self];
 	
 	return view;
 }

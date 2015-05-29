@@ -58,13 +58,17 @@
  */
 - (void)setImageURL:(NSURL *)imageURL;
 
+- (void)clearImage;
+
 /** The sprite background image name */
 @property (nonatomic, readonly) NSString *backgroundImageName;
 
-/** Change the background image of the sprite
+/** Change the image of the sprite
  *	@param imageURL The image url to set a new image with
  */
 - (void)setBackgroundImageURL:(NSURL *)imageURL;
+
+- (void)clearBackgroundImage;
 
 /** The draggability of the sprite */
 @property (nonatomic, getter = isDraggable) BOOL draggable;
@@ -139,6 +143,11 @@
  *	@param grid The grid answer object to remove
  */
 - (void)removeGridAnswer:(KGCGridAnswer *)gridAnswer;
+
+// Physics
+@property (nonatomic, getter = isPhysicsEnabled) BOOL physicsEnabled;
+@property (nonatomic, getter = isGravityEnabled) BOOL gravityEnabled;
+@property (nonatomic) CGPoint velocity;
 
 
 @end

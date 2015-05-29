@@ -214,7 +214,7 @@
                 <popUpButton verticalHuggingPriority="750" id="XRB-0c-H5z">
                     <rect key="frame" x="66" y="431" width="212" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="On Scene Transition" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="p7D-64-5zS" id="lHe-aa-93z">
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="lHe-aa-93z">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="p5U-dW-HIy">
@@ -232,7 +232,7 @@
                                 <menuItem title="On Mouse Hover" id="svx-RI-skM"/>
                                 <menuItem title="On Mouse Enter" id="bz4-2Y-ZTc"/>
                                 <menuItem title="On Mouse Exit" id="q1M-YT-kJ2"/>
-                                <menuItem title="On Scene Transition" state="on" id="p7D-64-5zS"/>
+                                <menuItem title="On Scene Transition" id="p7D-64-5zS"/>
                             </items>
                         </menu>
                     </popUpButtonCell>

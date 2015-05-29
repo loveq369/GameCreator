@@ -12,12 +12,14 @@
 
 @interface KGCInspector : NSObject
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer;
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers;
 - (void)update;
 
-@property (nonatomic, weak, readonly) KGCSceneLayer *sceneLayer;
+@property (nonatomic, weak, readonly) NSArray *sceneLayers;
 @property (nonatomic, weak) NSWindow *window;
 
+- (void)setup;
 - (NSView *)inspectorView;
+- (NSArray *)inspectorControllers;
 
 @end

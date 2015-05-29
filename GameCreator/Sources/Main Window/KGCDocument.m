@@ -142,7 +142,13 @@ struct Pixel
 
 - (void)reloadScenes
 {
-	[[self sceneTableView] reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:[[self sceneTableView] selectedRow]] columnIndexes:[NSIndexSet indexSetWithIndex:0]];
+	KGCSceneTableCell *cellView = [[self sceneTableView] viewAtColumn:0 row:[[self sceneTableView] selectedRow] makeIfNecessary:NO];
+	if (cellView)
+	{
+		KGCScene *scene = [_currentGame scenes][[[self sceneTableView] selectedRow]];
+		NSImage *image = [scene thumbnailImage];
+		[[cellView sceneImageView] setImage:image];
+	}
 }
 
 - (NSArray *)sceneNames
@@ -298,6 +304,7 @@ struct Pixel
 	{
 		NSInteger index = [gamesPopUpButton indexOfSelectedItem];
 		_currentGame = [[self gameSet] games][index];
+		[_gameSet setLastSelectedGameIdentifier:[_currentGame identifier]];
 		[[self sceneTableView] reloadData];
 		[self tableViewSelectionDidChange:nil];
 	}
@@ -432,15 +439,8 @@ struct Pixel
 		[tableCellView setDelegate:self];
 		[tableCellView setRow:row];
 		
-		NSMutableDictionary *sceneDictionary = [scene dictionary];
-		NSImage *image;
-		if ([[sceneDictionary allKeys] containsObject:@"ThumbnailImage"])
-		{
-			NSString *thumbnailImageString = sceneDictionary[@"ThumbnailImage"];
-			NSData *data = [[NSData alloc] initWithBase64EncodedString:thumbnailImageString options:0];
-			image = [[NSImage alloc] initWithData:data];
-		}
-		else
+		NSImage *image = [scene thumbnailImage];
+		if (!image)
 		{
 			image = [NSImage imageNamed:@"ScreenTemplate"];
 		}
@@ -486,13 +486,15 @@ struct Pixel
 	if (selectedRow != -1)
 	{
 		KGCSceneContentView *sceneView = [self sceneView];
-		[sceneView setupWithScene:[_currentGame scenes][selectedRow]];
-		[[self inspectorController] setupWithSceneLayer:[sceneView contentLayer]];
+		KGCScene *scene = [_currentGame scenes][selectedRow];
+		[_gameSet setLastSelectedSceneIdentifier:[scene identifier]];
+		[sceneView setupWithScene:scene];
+		[[self inspectorController] setupWithSceneLayers:@[[sceneView contentLayer]]];
 	}
 	else if (selectedRow == -1)
 	{
 		[[self sceneView] setupWithScene:nil];
-		[[self inspectorController] setupWithSceneLayer:nil];
+		[[self inspectorController] setupWithSceneLayers:nil];
 	}
 }
 
@@ -624,11 +626,11 @@ struct Pixel
 	
 	if ([selectedSpriteLayers count] > 0)
 	{
-		[inspectorController setupWithSceneLayer:selectedSpriteLayers[0]];
+		[inspectorController setupWithSceneLayers:selectedSpriteLayers];
 	}
 	else
 	{
-		[inspectorController setupWithSceneLayer:[[self sceneView] contentLayer]];
+		[inspectorController setupWithSceneLayers:@[[[self sceneView] contentLayer]]];
 	}
 }
 
@@ -646,7 +648,7 @@ struct Pixel
 
 - (NSFileWrapper *)fileWrapperOfType:(NSString *)typeName error:(NSError **)outError
 {
-	[self finalizeGameset];
+	[self finalizeGamesetWithCreatingShadowOutlineImages:NO];
 	return _fileWrapper;
 }
 
@@ -743,7 +745,7 @@ struct Pixel
 
 #pragma mark - Convenient Methods
 
-- (void)finalizeGameset
+- (void)finalizeGamesetWithCreatingShadowOutlineImages:(BOOL)createShadowOutlineImage
 {
 	KGCGameSet *gameSet = [self gameSet];
 	
@@ -763,89 +765,92 @@ struct Pixel
 	
 		for (KGCScene *scene in [game scenes])
 		{
-			for (KGCSprite *sprite in [scene sprites])
+			if (createShadowOutlineImage)
 			{
-				NSString *imageName;
-				NSString *backgroundImageName = [sprite backgroundImageName];
-				if (backgroundImageName)
+				for (KGCSprite *sprite in [scene sprites])
 				{
-					imageName = backgroundImageName;
-				}
-				else
-				{
-					imageName = [sprite imageName];
-				}
-				
-				BOOL shadowAnimation = NO;
-				for (KGCAnimation *animation in [sprite animations])
-				{
-					if ([animation isKindOfClass:[KGCShadowAnimation class]])
+					NSString *imageName;
+					NSString *backgroundImageName = [sprite backgroundImageName];
+					if (backgroundImageName)
 					{
-						shadowAnimation = YES;
+						imageName = backgroundImageName;
 					}
-				}
-				
-				if ([sprite isDraggable] || shadowAnimation)
-				{
-					if ([shadowedImageNames containsObject:imageName])
+					else
 					{
-						continue;
+						imageName = [sprite imageName];
 					}
-				
-					NSImage *image = [[self resourceController] imageNamed:imageName];
 					
-					NSImage *shadowImage = [self shadowImageWithImage:image excludeImage:image blurRadius:2.0];
-					NSBitmapImageRep *imageRep = [[NSBitmapImageRep alloc] initWithData:[shadowImage TIFFRepresentation]];
-					NSData *shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
-					NSFileWrapper *shadowFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
-					
-					NSImage *largeRadiusShadowImage = [self shadowImageWithImage:image excludeImage:image blurRadius:6.0];
-					imageRep = [[NSBitmapImageRep alloc] initWithData:[largeRadiusShadowImage TIFFRepresentation]];
-					shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
-					NSFileWrapper *largeRadiusShadowFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
-					
-					NSFileWrapper *redOutlineImageFileWrapper;
-					
-					if ([sprite isAnswerSprite])
+					BOOL shadowAnimation = NO;
+					for (KGCAnimation *animation in [sprite animations])
 					{
-						NSImage *redOutlineImage = [self redOutlineImageWithImage:image excludeImage:image outlineSize:2.0];
-						imageRep = [[NSBitmapImageRep alloc] initWithData:[redOutlineImage TIFFRepresentation]];
+						if ([animation isKindOfClass:[KGCShadowAnimation class]])
+						{
+							shadowAnimation = YES;
+						}
+					}
+					
+					if ([sprite isDraggable] || shadowAnimation)
+					{
+						if ([shadowedImageNames containsObject:imageName])
+						{
+							continue;
+						}
+					
+						NSImage *image = [[self resourceController] imageNamed:imageName];
+						
+						NSImage *shadowImage = [self shadowImageWithImage:image excludeImage:image blurRadius:2.0];
+						NSBitmapImageRep *imageRep = [[NSBitmapImageRep alloc] initWithData:[shadowImage TIFFRepresentation]];
+						NSData *shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
+						NSFileWrapper *shadowFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
+						
+						NSImage *largeRadiusShadowImage = [self shadowImageWithImage:image excludeImage:image blurRadius:6.0];
+						imageRep = [[NSBitmapImageRep alloc] initWithData:[largeRadiusShadowImage TIFFRepresentation]];
 						shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
-						redOutlineImageFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
-					}
-					
-					NSFileWrapper *imageFileWrapper = [_fileWrapper fileWrappers][@"Images"];
-					
-					NSString *newImageName = [NSString stringWithFormat:@"%@-shadow.%@", [imageName stringByDeletingPathExtension], [imageName pathExtension]];
-					[imageFileWrapper removeFileWrapper:[imageFileWrapper fileWrappers][newImageName]];
-					[shadowFileWrapper setPreferredFilename:newImageName];
-					[images addObject:newImageName];
-					[imageFileWrapper addFileWrapper:shadowFileWrapper];
-					if (![imageNames containsObject:newImageName])
-					{
-						[imageNames addObject:newImageName];
-					}
-					
-					newImageName = [NSString stringWithFormat:@"%@-shadowLargeRadius.%@", [imageName stringByDeletingPathExtension], [imageName pathExtension]];
-					[imageFileWrapper removeFileWrapper:[imageFileWrapper fileWrappers][newImageName]];
-					[largeRadiusShadowFileWrapper setPreferredFilename:newImageName];
-					[images addObject:newImageName];
-					[imageFileWrapper addFileWrapper:largeRadiusShadowFileWrapper];
-					if (![imageNames containsObject:newImageName])
-					{
-						[imageNames addObject:newImageName];
-					}
-					
-					if (redOutlineImageFileWrapper)
-					{
-						newImageName = [NSString stringWithFormat:@"%@-redOutline.%@", [imageName stringByDeletingPathExtension], [imageName pathExtension]];
+						NSFileWrapper *largeRadiusShadowFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
+						
+						NSFileWrapper *redOutlineImageFileWrapper;
+						
+						if ([sprite isAnswerSprite])
+						{
+							NSImage *redOutlineImage = [self redOutlineImageWithImage:image excludeImage:image outlineSize:2.0];
+							imageRep = [[NSBitmapImageRep alloc] initWithData:[redOutlineImage TIFFRepresentation]];
+							shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
+							redOutlineImageFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
+						}
+						
+						NSFileWrapper *imageFileWrapper = [_fileWrapper fileWrappers][@"Images"];
+						
+						NSString *newImageName = [NSString stringWithFormat:@"%@-shadow.%@", [imageName stringByDeletingPathExtension], [imageName pathExtension]];
 						[imageFileWrapper removeFileWrapper:[imageFileWrapper fileWrappers][newImageName]];
-						[redOutlineImageFileWrapper setPreferredFilename:newImageName];
+						[shadowFileWrapper setPreferredFilename:newImageName];
 						[images addObject:newImageName];
-						[imageFileWrapper addFileWrapper:redOutlineImageFileWrapper];
+						[imageFileWrapper addFileWrapper:shadowFileWrapper];
 						if (![imageNames containsObject:newImageName])
 						{
 							[imageNames addObject:newImageName];
+						}
+						
+						newImageName = [NSString stringWithFormat:@"%@-shadowLargeRadius.%@", [imageName stringByDeletingPathExtension], [imageName pathExtension]];
+						[imageFileWrapper removeFileWrapper:[imageFileWrapper fileWrappers][newImageName]];
+						[largeRadiusShadowFileWrapper setPreferredFilename:newImageName];
+						[images addObject:newImageName];
+						[imageFileWrapper addFileWrapper:largeRadiusShadowFileWrapper];
+						if (![imageNames containsObject:newImageName])
+						{
+							[imageNames addObject:newImageName];
+						}
+						
+						if (redOutlineImageFileWrapper)
+						{
+							newImageName = [NSString stringWithFormat:@"%@-redOutline.%@", [imageName stringByDeletingPathExtension], [imageName pathExtension]];
+							[imageFileWrapper removeFileWrapper:[imageFileWrapper fileWrappers][newImageName]];
+							[redOutlineImageFileWrapper setPreferredFilename:newImageName];
+							[images addObject:newImageName];
+							[imageFileWrapper addFileWrapper:redOutlineImageFileWrapper];
+							if (![imageNames containsObject:newImageName])
+							{
+								[imageNames addObject:newImageName];
+							}
 						}
 					}
 				}

@@ -18,11 +18,11 @@
  *	@param layer The layer where the settings are for
  *	@param object The settings object (like an action, animation and more)
  */
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer withSettingsObject:(id)object;
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers withSettingsObject:(id)object;
 
 /** The layer where the settings are for */
-@property (nonatomic, weak, readonly) KGCSceneLayer *sceneLayer;
+@property (nonatomic, weak, readonly) NSArray *sceneLayers;
 
-- (KGCSceneObject *)sceneObject;
+- (NSArray *)sceneObjects;
 
 @end

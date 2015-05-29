@@ -6,8 +6,8 @@
 //	Copyright (c) 2015 Kiwi Fruitware. All rights reserved.
 //
 
-#import "KGCInspectorViewController.h"
+#import "KGCSpriteController.h"
 
-@interface KGCDADShapeSpriteController : KGCInspectorViewController
+@interface KGCDADShapeSpriteController : KGCSpriteController
 
 @end

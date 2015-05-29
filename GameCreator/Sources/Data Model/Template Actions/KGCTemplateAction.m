@@ -40,10 +40,10 @@
 
 #pragma mark - Main Methods
 
-- (KGCSettingsView *)infoViewForLayer:(KGCSceneLayer *)layer
+- (KGCSettingsView *)infoViewForLayers:(NSArray *)layers
 {
 	KGCSettingsView *view = (KGCSettingsView *)[[KGCSettingsViewManager sharedManager] viewForBundleName:NSStringFromClass([self class])];
-	[view setupWithSceneLayer:layer withSettingsObject:self];
+	[view setupWithSceneLayers:layers withSettingsObject:self];
 	
 	return view;
 }

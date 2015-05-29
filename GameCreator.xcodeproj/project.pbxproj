@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		FE0B74151AC29396005E6CD2 /* KGCDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0B74131AC29396005E6CD2 /* KGCDataObject.m */; };
-		FE241F9A1AC97E060095F76B /* KGCDADShapeEventsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE241F881AC97E060095F76B /* KGCDADShapeEventsController.m */; };
+		FE19CAD91B1753B6000BB172 /* KGCGlobalSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE19CAD71B1753B6000BB172 /* KGCGlobalSceneController.m */; };
+		FE19CADC1B184A28000BB172 /* ClearButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FE19CADA1B184A28000BB172 /* ClearButton.png */; };
+		FE19CADD1B184A28000BB172 /* ClearButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE19CADB1B184A28000BB172 /* ClearButton@2x.png */; };
+		FE19CAE21B187360000BB172 /* KGCScenePhysicsController.h in Sources */ = {isa = PBXBuildFile; fileRef = FE19CAE01B187360000BB172 /* KGCScenePhysicsController.h */; };
+		FE19CAE31B187360000BB172 /* KGCScenePhysicsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE19CAE11B187360000BB172 /* KGCScenePhysicsController.m */; };
+		FE19CAE61B187388000BB172 /* KGCScenePhysicsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE19CAE41B187388000BB172 /* KGCScenePhysicsController.xib */; };
+		FE19CAEA1B18848E000BB172 /* KGCSpritePhysicsController.h in Sources */ = {isa = PBXBuildFile; fileRef = FE19CAE81B18848E000BB172 /* KGCSpritePhysicsController.h */; };
+		FE19CAEB1B18848E000BB172 /* KGCSpritePhysicsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE19CAE91B18848E000BB172 /* KGCSpritePhysicsController.m */; };
+		FE19CAEE1B1884B1000BB172 /* KGCSpritePhysicsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE19CAEC1B1884B1000BB172 /* KGCSpritePhysicsController.xib */; };
 		FE241F9E1AC97E060095F76B /* KGCDADShapeInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = FE241F8D1AC97E060095F76B /* KGCDADShapeInspector.m */; };
-		FE241FA01AC97E060095F76B /* KGCDADShapeSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE241F901AC97E060095F76B /* KGCDADShapeSceneController.m */; };
 		FE241FA21AC97E060095F76B /* KGCDADShapeSpriteController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE241F931AC97E060095F76B /* KGCDADShapeSpriteController.m */; };
 		FE241FB11AC982710095F76B /* KGCDADShapeInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE241FAF1AC982710095F76B /* KGCDADShapeInspector.xib */; };
-		FE241FB91AC984270095F76B /* KGCDADShapeEventsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE241FB31AC984270095F76B /* KGCDADShapeEventsController.xib */; };
-		FE241FBA1AC984270095F76B /* KGCDADShapeSceneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE241FB51AC984270095F76B /* KGCDADShapeSceneController.xib */; };
 		FE241FBB1AC984270095F76B /* KGCDADShapeSpriteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE241FB71AC984270095F76B /* KGCDADShapeSpriteController.xib */; };
 		FE241FC31ACA744A0095F76B /* KGCGridAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE241FC11ACA744A0095F76B /* KGCGridAnswer.m */; };
 		FE2C91041AB4B925004FD211 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C91031AB4B925004FD211 /* main.m */; };
@@ -96,7 +101,6 @@
 		FE4B16061AF0A898009A2147 /* KGCMenuInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE4B16001AF0A898009A2147 /* KGCMenuInspector.xib */; };
 		FE4B16071AF0A898009A2147 /* KGCMenuSceneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE4B16021AF0A898009A2147 /* KGCMenuSceneController.xib */; };
 		FE4B16081AF0A898009A2147 /* KGCMenuSpriteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE4B16041AF0A898009A2147 /* KGCMenuSpriteController.xib */; };
-		FE4B16661AF388B8009A2147 /* KGCSoundEffectTableCellView.h in Sources */ = {isa = PBXBuildFile; fileRef = FE4B16641AF388B8009A2147 /* KGCSoundEffectTableCellView.h */; };
 		FE4B16671AF388B8009A2147 /* KGCSoundEffectTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE4B16651AF388B8009A2147 /* KGCSoundEffectTableCellView.m */; };
 		FE5DACAB1AC0814900525550 /* KGCBasicTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5DACA91AC0814900525550 /* KGCBasicTableCell.m */; };
 		FE6488A21AB855AA007DCB74 /* GameCreator.icns in Resources */ = {isa = PBXBuildFile; fileRef = FE6488A11AB855AA007DCB74 /* GameCreator.icns */; };
@@ -105,14 +109,10 @@
 		FE755FB51AB5D102001FC422 /* KGCResourceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FE755FB41AB5D102001FC422 /* KGCResourceInfo.m */; };
 		FE7D6A5F1ABED3CC00A78308 /* KGCSceneLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7D6A5E1ABED3CC00A78308 /* KGCSceneLayer.m */; };
 		FE7D6A6F1ABEE9BC00A78308 /* KGCInspectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7D6A6E1ABEE9BC00A78308 /* KGCInspectorViewController.m */; };
-		FE87B6841AF7469D00A0DBB1 /* KGCGameTransitionAction.h in Sources */ = {isa = PBXBuildFile; fileRef = FE87B67F1AF7469D00A0DBB1 /* KGCGameTransitionAction.h */; };
 		FE87B6851AF7469D00A0DBB1 /* KGCGameTransitionAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FE87B6801AF7469D00A0DBB1 /* KGCGameTransitionAction.m */; };
-		FE87B6861AF7469D00A0DBB1 /* KGCGameTransitionActionView.h in Sources */ = {isa = PBXBuildFile; fileRef = FE87B6821AF7469D00A0DBB1 /* KGCGameTransitionActionView.h */; };
 		FE87B6871AF7469D00A0DBB1 /* KGCGameTransitionActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE87B6831AF7469D00A0DBB1 /* KGCGameTransitionActionView.m */; };
 		FE87B68A1AF7470700A0DBB1 /* KGCGameTransitionAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE87B6881AF7470700A0DBB1 /* KGCGameTransitionAction.xib */; };
-		FE87B6921AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.h in Sources */ = {isa = PBXBuildFile; fileRef = FE87B68D1AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.h */; };
 		FE87B6931AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FE87B68E1AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.m */; };
-		FE87B6941AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.h in Sources */ = {isa = PBXBuildFile; fileRef = FE87B6901AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.h */; };
 		FE87B6951AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE87B6911AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.m */; };
 		FE87B6981AF74D5F00A0DBB1 /* KGCGameTransitionTemplateAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE87B6961AF74D5F00A0DBB1 /* KGCGameTransitionTemplateAction.xib */; };
 		FE9182571ABC03B4001D2682 /* KGCTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9182551ABC03B4001D2682 /* KGCTableView.m */; };
@@ -195,21 +195,25 @@
 /* Begin PBXFileReference section */
 		FE0B74121AC29396005E6CD2 /* KGCDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDataObject.h; sourceTree = "<group>"; };
 		FE0B74131AC29396005E6CD2 /* KGCDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDataObject.m; sourceTree = "<group>"; };
-		FE241F871AC97E060095F76B /* KGCDADShapeEventsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADShapeEventsController.h; sourceTree = "<group>"; };
-		FE241F881AC97E060095F76B /* KGCDADShapeEventsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADShapeEventsController.m; sourceTree = "<group>"; };
+		FE19CAD61B1753B6000BB172 /* KGCGlobalSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCGlobalSceneController.h; sourceTree = "<group>"; };
+		FE19CAD71B1753B6000BB172 /* KGCGlobalSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCGlobalSceneController.m; sourceTree = "<group>"; };
+		FE19CADA1B184A28000BB172 /* ClearButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClearButton.png; sourceTree = "<group>"; };
+		FE19CADB1B184A28000BB172 /* ClearButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClearButton@2x.png"; sourceTree = "<group>"; };
+		FE19CAE01B187360000BB172 /* KGCScenePhysicsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCScenePhysicsController.h; sourceTree = "<group>"; };
+		FE19CAE11B187360000BB172 /* KGCScenePhysicsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCScenePhysicsController.m; sourceTree = "<group>"; };
+		FE19CAE51B187388000BB172 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCScenePhysicsController.xib; sourceTree = "<group>"; };
+		FE19CAE71B18738C000BB172 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCScenePhysicsController.xib; sourceTree = "<group>"; };
+		FE19CAE81B18848E000BB172 /* KGCSpritePhysicsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSpritePhysicsController.h; sourceTree = "<group>"; };
+		FE19CAE91B18848E000BB172 /* KGCSpritePhysicsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSpritePhysicsController.m; sourceTree = "<group>"; };
+		FE19CAED1B1884B1000BB172 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCSpritePhysicsController.xib; sourceTree = "<group>"; };
+		FE19CAEF1B1884B4000BB172 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCSpritePhysicsController.xib; sourceTree = "<group>"; };
 		FE241F8C1AC97E060095F76B /* KGCDADShapeInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADShapeInspector.h; sourceTree = "<group>"; };
 		FE241F8D1AC97E060095F76B /* KGCDADShapeInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADShapeInspector.m; sourceTree = "<group>"; };
-		FE241F8F1AC97E060095F76B /* KGCDADShapeSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADShapeSceneController.h; sourceTree = "<group>"; };
-		FE241F901AC97E060095F76B /* KGCDADShapeSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADShapeSceneController.m; sourceTree = "<group>"; };
 		FE241F921AC97E060095F76B /* KGCDADShapeSpriteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADShapeSpriteController.h; sourceTree = "<group>"; };
 		FE241F931AC97E060095F76B /* KGCDADShapeSpriteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADShapeSpriteController.m; sourceTree = "<group>"; };
 		FE241FB01AC982710095F76B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = GameCreator/English.lproj/KGCDADShapeInspector.xib; sourceTree = "<group>"; };
 		FE241FB21AC982740095F76B /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = GameCreator/nl.lproj/KGCDADShapeInspector.xib; sourceTree = "<group>"; };
-		FE241FB41AC984270095F76B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = GameCreator/English.lproj/KGCDADShapeEventsController.xib; sourceTree = "<group>"; };
-		FE241FB61AC984270095F76B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = GameCreator/English.lproj/KGCDADShapeSceneController.xib; sourceTree = "<group>"; };
 		FE241FB81AC984270095F76B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = GameCreator/English.lproj/KGCDADShapeSpriteController.xib; sourceTree = "<group>"; };
-		FE241FBC1AC9842B0095F76B /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = GameCreator/nl.lproj/KGCDADShapeEventsController.xib; sourceTree = "<group>"; };
-		FE241FBD1AC9842F0095F76B /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = GameCreator/nl.lproj/KGCDADShapeSceneController.xib; sourceTree = "<group>"; };
 		FE241FBE1AC984330095F76B /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = GameCreator/nl.lproj/KGCDADShapeSpriteController.xib; sourceTree = "<group>"; };
 		FE241FC01ACA744A0095F76B /* KGCGridAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCGridAnswer.h; sourceTree = "<group>"; };
 		FE241FC11ACA744A0095F76B /* KGCGridAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCGridAnswer.m; sourceTree = "<group>"; };
@@ -546,37 +550,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE19CAD51B1753B6000BB172 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				FE19CAD61B1753B6000BB172 /* KGCGlobalSceneController.h */,
+				FE19CAD71B1753B6000BB172 /* KGCGlobalSceneController.m */,
+			);
+			name = Global;
+			path = "GameCreator/Sources/Main Window/Inspector/Global";
+			sourceTree = SOURCE_ROOT;
+		};
+		FE19CADF1B187350000BB172 /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				FE19CAE01B187360000BB172 /* KGCScenePhysicsController.h */,
+				FE19CAE11B187360000BB172 /* KGCScenePhysicsController.m */,
+				FE19CAE41B187388000BB172 /* KGCScenePhysicsController.xib */,
+				FE19CAE81B18848E000BB172 /* KGCSpritePhysicsController.h */,
+				FE19CAE91B18848E000BB172 /* KGCSpritePhysicsController.m */,
+				FE19CAEC1B1884B1000BB172 /* KGCSpritePhysicsController.xib */,
+			);
+			path = Physics;
+			sourceTree = "<group>";
+		};
 		FE241F851AC97E060095F76B /* Shape Inspector */ = {
 			isa = PBXGroup;
 			children = (
 				FE241F8C1AC97E060095F76B /* KGCDADShapeInspector.h */,
 				FE241F8D1AC97E060095F76B /* KGCDADShapeInspector.m */,
 				FE241FAF1AC982710095F76B /* KGCDADShapeInspector.xib */,
-				FE241F8E1AC97E060095F76B /* Scene */,
 				FE241F911AC97E060095F76B /* Sprite */,
-				FE241F861AC97E060095F76B /* Events */,
 			);
 			path = "Shape Inspector";
-			sourceTree = "<group>";
-		};
-		FE241F861AC97E060095F76B /* Events */ = {
-			isa = PBXGroup;
-			children = (
-				FE241F871AC97E060095F76B /* KGCDADShapeEventsController.h */,
-				FE241F881AC97E060095F76B /* KGCDADShapeEventsController.m */,
-				FE241FB31AC984270095F76B /* KGCDADShapeEventsController.xib */,
-			);
-			path = Events;
-			sourceTree = "<group>";
-		};
-		FE241F8E1AC97E060095F76B /* Scene */ = {
-			isa = PBXGroup;
-			children = (
-				FE241F8F1AC97E060095F76B /* KGCDADShapeSceneController.h */,
-				FE241F901AC97E060095F76B /* KGCDADShapeSceneController.m */,
-				FE241FB51AC984270095F76B /* KGCDADShapeSceneController.xib */,
-			);
-			path = Scene;
 			sourceTree = "<group>";
 		};
 		FE241F911AC97E060095F76B /* Sprite */ = {
@@ -672,6 +677,8 @@
 				FE6488A31AB85847007DCB74 /* DocumentIcon.icns */,
 				FE2C91261AB4BAA8004FD211 /* ScreenTemplate.png */,
 				FE2C91271AB4BAA8004FD211 /* ScreenTemplate@2x.png */,
+				FE19CADA1B184A28000BB172 /* ClearButton.png */,
+				FE19CADB1B184A28000BB172 /* ClearButton@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -992,6 +999,7 @@
 				FE4B15F11AF0A84D009A2147 /* Menu */,
 				FEEBE5161AC2C4F7002370D9 /* Drag and Drop */,
 				FE241F851AC97E060095F76B /* Shape Inspector */,
+				FE19CAD51B1753B6000BB172 /* Global */,
 			);
 			path = Inspector;
 			sourceTree = "<group>";
@@ -1006,6 +1014,7 @@
 				FEEBE5071AC2C4F7002370D9 /* Animations */,
 				FEEBE50E1AC2C4F7002370D9 /* Scene */,
 				FEEBE5121AC2C4F7002370D9 /* Sprite */,
+				FE19CADF1B187350000BB172 /* Physics */,
 			);
 			path = "Basic Inspector";
 			sourceTree = "<group>";
@@ -1730,11 +1739,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE241FB91AC984270095F76B /* KGCDADShapeEventsController.xib in Resources */,
 				FE479E5B1AC2D146008CD28E /* KGCAnimationTemplateAction.xib in Resources */,
 				FE479E5D1AC2D146008CD28E /* KGCBackgroundMusicAction.xib in Resources */,
 				FE479E5A1AC2D146008CD28E /* KGCAnimationsController.xib in Resources */,
-				FE241FBA1AC984270095F76B /* KGCDADShapeSceneController.xib in Resources */,
 				FE6488A41AB85847007DCB74 /* DocumentIcon.icns in Resources */,
 				FE479E6E1AC2D146008CD28E /* KGCSceneAction.xib in Resources */,
 				FE479EA21AC2E402008CD28E /* InfoPlist.strings in Resources */,
@@ -1763,12 +1770,14 @@
 				FE2C91AD1AB4BAA8004FD211 /* ScreenTemplate@2x.png in Resources */,
 				FE30ABF81AE3BDCD00093338 /* KGCWobbleAnimation.xib in Resources */,
 				FE479E741AC2D146008CD28E /* KGCSpriteController.xib in Resources */,
+				FE19CAEE1B1884B1000BB172 /* KGCSpritePhysicsController.xib in Resources */,
 				FE479E701AC2D146008CD28E /* KGCSceneTemplateAction.xib in Resources */,
 				FE479E581AC2D146008CD28E /* KGCActionController.xib in Resources */,
 				FE479E731AC2D146008CD28E /* KGCSoundTemplateAction.xib in Resources */,
 				FE479E611AC2D146008CD28E /* KGCDADEventsController.xib in Resources */,
 				FE479E721AC2D146008CD28E /* KGCSequenceAnimation.xib in Resources */,
 				FE479E711AC2D146008CD28E /* KGCSequenceAction.xib in Resources */,
+				FE19CADC1B184A28000BB172 /* ClearButton.png in Resources */,
 				FE87B68A1AF7470700A0DBB1 /* KGCGameTransitionAction.xib in Resources */,
 				FE479E6A1AC2D146008CD28E /* KGCPositionAnimation.xib in Resources */,
 				FE4B16081AF0A898009A2147 /* KGCMenuSpriteController.xib in Resources */,
@@ -1777,8 +1786,10 @@
 				FE479E691AC2D146008CD28E /* KGCPathAnimation.xib in Resources */,
 				FE479E6D1AC2D146008CD28E /* KGCScaleAnimation.xib in Resources */,
 				FE479E6B1AC2D146008CD28E /* KGCPropertiesAction.xib in Resources */,
+				FE19CADD1B184A28000BB172 /* ClearButton@2x.png in Resources */,
 				FE479E661AC2D146008CD28E /* KGCFadeAnimation.xib in Resources */,
 				FE479EA81AC2E4B3008CD28E /* Localizable.strings in Resources */,
+				FE19CAE61B187388000BB172 /* KGCScenePhysicsController.xib in Resources */,
 				FE479E5C1AC2D146008CD28E /* KGCAudioEffectAction.xib in Resources */,
 				FE479E761AC2D146008CD28E /* MainMenu.xib in Resources */,
 			);
@@ -1808,8 +1819,8 @@
 				FEEBE6001AC2C791002370D9 /* KGCAnimationActionView.m in Sources */,
 				FE2C91E41AB4BAA8004FD211 /* KGCHelperMethods.m in Sources */,
 				FEEBE65D1AC2C791002370D9 /* KGCSprite.m in Sources */,
+				FE19CAE21B187360000BB172 /* KGCScenePhysicsController.h in Sources */,
 				FEEBE5FD1AC2C791002370D9 /* KGCAnimationAction.m in Sources */,
-				FE87B6921AF74CC800A0DBB1 /* KGCGameTransitionTemplateAction.h in Sources */,
 				FEEBE6431AC2C791002370D9 /* KGCPositionAnimation.m in Sources */,
 				FE2C91F21AB4BAA8004FD211 /* KGCSceneTableCell.m in Sources */,
 				FE2C91E21AB4BAA8004FD211 /* CAShapeLayer+Animation.m in Sources */,
@@ -1831,18 +1842,18 @@
 				FEEBE6681AC2C791002370D9 /* KGCSceneTemplateAction.m in Sources */,
 				FE2C91EF1AB4BAA8004FD211 /* KGCInspector.m in Sources */,
 				FEEBE6551AC2C791002370D9 /* KGCSequenceAnimationView.m in Sources */,
-				FE87B6861AF7469D00A0DBB1 /* KGCGameTransitionActionView.h in Sources */,
 				FE2C91FB1AB4BF68004FD211 /* KGCDocument.m in Sources */,
 				FEEBE66D1AC2C791002370D9 /* KGCSoundTemplateAction.m in Sources */,
 				FE2C91EE1AB4BAA8004FD211 /* KGCImageView.m in Sources */,
 				FE9182571ABC03B4001D2682 /* KGCTableView.m in Sources */,
+				FE19CAEA1B18848E000BB172 /* KGCSpritePhysicsController.h in Sources */,
 				FE2C91ED1AB4BAA8004FD211 /* KGCImageLayer.m in Sources */,
 				FEEBE61D1AC2C791002370D9 /* KGCPropertiesActionView.m in Sources */,
 				FE4B15FD1AF0A84D009A2147 /* KGCMenuSceneController.m in Sources */,
-				FE87B6841AF7469D00A0DBB1 /* KGCGameTransitionAction.h in Sources */,
 				FEEBE6051AC2C791002370D9 /* KGCAudioEffectActionView.m in Sources */,
 				FE2C91F11AB4BAA8004FD211 /* KGCInspectorWindow.m in Sources */,
 				FEEBE6111AC2C791002370D9 /* KGCEmptyAction.m in Sources */,
+				FE19CAE31B187360000BB172 /* KGCScenePhysicsController.m in Sources */,
 				FEEBE61A1AC2C791002370D9 /* KGCPropertiesAction.m in Sources */,
 				FEEBE6641AC2C791002370D9 /* KGCConfirmAnswerTemplateAction.m in Sources */,
 				FE755FB51AB5D102001FC422 /* KGCResourceInfo.m in Sources */,
@@ -1859,7 +1870,6 @@
 				FEEBE60A1AC2C791002370D9 /* KGCBackgroundMusicActionView.m in Sources */,
 				FE241F9E1AC97E060095F76B /* KGCDADShapeInspector.m in Sources */,
 				FEEBE6381AC2C791002370D9 /* KGCImageAnimationView.m in Sources */,
-				FE241FA01AC97E060095F76B /* KGCDADShapeSceneController.m in Sources */,
 				FE2C91EB1AB4BAA8004FD211 /* KGCSpriteLayer.m in Sources */,
 				FEEBE6151AC2C791002370D9 /* KGCNotificationAction.m in Sources */,
 				FE2C91E51AB4BAA8004FD211 /* KGCSettingsViewManager.m in Sources */,
@@ -1867,19 +1877,20 @@
 				FE5DACAB1AC0814900525550 /* KGCBasicTableCell.m in Sources */,
 				FEEBE6071AC2C791002370D9 /* KGCBackgroundMusicAction.m in Sources */,
 				FEEBE63E1AC2C791002370D9 /* KGCPathAnimation.m in Sources */,
+				FE19CAEB1B18848E000BB172 /* KGCSpritePhysicsController.m in Sources */,
 				FEEBE54A1AC2C4F7002370D9 /* KGCDADSceneController.m in Sources */,
 				FE241FC31ACA744A0095F76B /* KGCGridAnswer.m in Sources */,
 				FEEBE6521AC2C791002370D9 /* KGCSequenceAnimation.m in Sources */,
 				FEEBE5541AC2C4F7002370D9 /* KGCInspectorController.m in Sources */,
 				FE4B15FF1AF0A84D009A2147 /* KGCMenuSpriteController.m in Sources */,
 				FE2C91EA1AB4BAA8004FD211 /* KGCSceneContentView.m in Sources */,
+				FE19CAD91B1753B6000BB172 /* KGCGlobalSceneController.m in Sources */,
 				FEEBE5381AC2C4F7002370D9 /* KGCBasicInspector.m in Sources */,
 				FEEBE6021AC2C791002370D9 /* KGCAudioEffectAction.m in Sources */,
 				FEEBE6481AC2C791002370D9 /* KGCRotationAnimation.m in Sources */,
 				FE49CA6A1AFCBF7F009A0CA2 /* KGCDelayTemplateAction.m in Sources */,
 				FEEBE6701AC2C791002370D9 /* KGCSoundTemplateActionView.m in Sources */,
 				FE2C91041AB4B925004FD211 /* main.m in Sources */,
-				FE87B6941AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.h in Sources */,
 				FE479EAF1AC2F24A008CD28E /* KGCSceneObject.m in Sources */,
 				FEEBE6241AC2C791002370D9 /* KGCSceneActionView.m in Sources */,
 				FE87B6951AF74CC800A0DBB1 /* KGCGameTransitionTemplateActionView.m in Sources */,
@@ -1889,7 +1900,6 @@
 				FEEBE6261AC2C791002370D9 /* KGCSequenceAction.m in Sources */,
 				FEEBE5471AC2C4F7002370D9 /* KGCDADInspector.m in Sources */,
 				FE2C91F01AB4BAA8004FD211 /* KGCInspectorContentView.m in Sources */,
-				FE241F9A1AC97E060095F76B /* KGCDADShapeEventsController.m in Sources */,
 				FEEBE6181AC2C791002370D9 /* KGCNotificationActionView.m in Sources */,
 				FE30ABF51AE3BCD000093338 /* KGCWobbleAnimationView.m in Sources */,
 				FE7D6A6F1ABEE9BC00A78308 /* KGCInspectorViewController.m in Sources */,
@@ -1898,7 +1908,6 @@
 				FEEBE6331AC2C791002370D9 /* KGCFadeAnimationView.m in Sources */,
 				FEEBE65F1AC2C791002370D9 /* KGCAnimationTemplateAction.m in Sources */,
 				FE87B6851AF7469D00A0DBB1 /* KGCGameTransitionAction.m in Sources */,
-				FE4B16661AF388B8009A2147 /* KGCSoundEffectTableCellView.h in Sources */,
 				FEEBE6411AC2C791002370D9 /* KGCPathAnimationView.m in Sources */,
 				FEEBE62E1AC2C791002370D9 /* KGCCombinedAnimationView.m in Sources */,
 				FE30AC1D1AE3CB9500093338 /* KGCRandomPositionAnimationView.m in Sources */,
@@ -1939,6 +1948,26 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		FE19CAE41B187388000BB172 /* KGCScenePhysicsController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE19CAE51B187388000BB172 /* English */,
+				FE19CAE71B18738C000BB172 /* nl */,
+			);
+			name = KGCScenePhysicsController.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
+		FE19CAEC1B1884B1000BB172 /* KGCSpritePhysicsController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE19CAED1B1884B1000BB172 /* English */,
+				FE19CAEF1B1884B4000BB172 /* nl */,
+			);
+			name = KGCSpritePhysicsController.xib;
+			path = ../../../../..;
+			sourceTree = "<group>";
+		};
 		FE241FAF1AC982710095F76B /* KGCDADShapeInspector.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1947,26 +1976,6 @@
 			);
 			name = KGCDADShapeInspector.xib;
 			path = ../../../../..;
-			sourceTree = "<group>";
-		};
-		FE241FB31AC984270095F76B /* KGCDADShapeEventsController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FE241FB41AC984270095F76B /* English */,
-				FE241FBC1AC9842B0095F76B /* nl */,
-			);
-			name = KGCDADShapeEventsController.xib;
-			path = ../../../../../..;
-			sourceTree = "<group>";
-		};
-		FE241FB51AC984270095F76B /* KGCDADShapeSceneController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FE241FB61AC984270095F76B /* English */,
-				FE241FBD1AC9842F0095F76B /* nl */,
-			);
-			name = KGCDADShapeSceneController.xib;
-			path = ../../../../../..;
 			sourceTree = "<group>";
 		};
 		FE241FB71AC984270095F76B /* KGCDADShapeSpriteController.xib */ = {

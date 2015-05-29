@@ -27,13 +27,13 @@
 	KGCAnimation *_currentAnimation;
 }
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)layer withSettingsObject:(id)object
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers withSettingsObject:(id)object
 {
-	[super setupWithSceneLayer:layer withSettingsObject:object];
+	[super setupWithSceneLayers:sceneLayers withSettingsObject:object];
 
 	_action = (KGCAnimationAction *)object;
 	
-	NSArray *animations = [[self sceneObject] animations];
+	NSArray *animations = [self sceneObjectAnimations];
 	NSPopUpButton *animationPopup = [self animationPopup];
 	[animationPopup removeAllItems];
 	[animationPopup addItemWithTitle:NSLocalizedString(@"None", nil)];
@@ -68,8 +68,7 @@
 
 - (IBAction)chooseAnimation:(id)sender
 {
-	KGCSceneObject *sceneObject = [self sceneObject];
-	NSArray *animations = [sceneObject animations];
+	NSArray *animations = [self sceneObjectAnimations];
 	NSInteger index = [[self animationPopup] indexOfSelectedItem];
 	
 	if (index == 0)
@@ -98,22 +97,32 @@
 		
 		[sender setTitle:@"Stop"];
 		
-		KGCSceneLayer *sceneLayer = [self sceneLayer];
-		[sceneLayer setPreviewModeEnabled:YES];
-		
 		NSProgressIndicator *activityIndicator = [self activityIndicator];
 		[activityIndicator startAnimation:nil];
 		
-		KGCAnimation *animation = [[self sceneObject] animations][row];
+		KGCAnimation *animation = [self sceneObjectAnimations][row];
 		_currentAnimation = animation;
-		[animation startAnimationOnLayer:sceneLayer completion:^
-		{
-			[sender setTitle:@"Preview"];
-			[sender setEnabled:NO];
 		
-			[[self resetButton] setEnabled:YES];
-			[activityIndicator stopAnimation:nil];
-		}];
+		NSArray *sceneLayers = [self sceneLayers];
+		__block NSUInteger count = [sceneLayers count];
+		for (KGCSceneLayer *sceneLayer in [self sceneLayers])
+		{
+			[sceneLayer setPreviewModeEnabled:YES];
+			
+			[animation startAnimationOnLayer:sceneLayer completion:^
+			{
+				count -= 1;
+				
+				if (count == 0)
+				{
+					[sender setTitle:@"Preview"];
+					[sender setEnabled:NO];
+				
+					[[self resetButton] setEnabled:YES];
+					[activityIndicator stopAnimation:nil];
+				}
+			}];
+		}
 	}
 }
 
@@ -121,17 +130,26 @@
 {
 	[[self resetButton] setEnabled:NO];
 	
-	KGCSceneLayer *sceneLayer = [self sceneLayer];
-	
-	NSProgressIndicator *activityIndicator = [self activityIndicator];
-	[activityIndicator startAnimation:nil];
-	
-	[_currentAnimation resetAnimationOnLayer:sceneLayer completion:^
+	NSArray *sceneLayers = [self sceneLayers];
+	__block NSUInteger count = [sceneLayers count];
+	for (KGCSceneLayer *sceneLayer in sceneLayers)
 	{
-		[[self previewButton] setEnabled:YES];
-		[sceneLayer setPreviewModeEnabled:NO];
-		[activityIndicator stopAnimation:nil];
-	}];
+		NSProgressIndicator *activityIndicator = [self activityIndicator];
+		[activityIndicator startAnimation:nil];
+		
+		[_currentAnimation resetAnimationOnLayer:sceneLayer completion:^
+		{
+			[sceneLayer setPreviewModeEnabled:NO];
+		
+			count -= 1;
+			
+			if (count == 0)
+			{
+				[[self previewButton] setEnabled:YES];
+				[activityIndicator stopAnimation:nil];
+			}
+		}];
+	}
 }
 
 - (void)stopCurrentAnimation
@@ -142,14 +160,65 @@
 		[[self previewButton] setTitle:@"Preview"];
 		[[self resetButton] setEnabled:NO];
 		
-		KGCSceneLayer *sceneLayer = [self sceneLayer];
-		[sceneLayer setPreviewModeEnabled:NO];
-
-		[_currentAnimation abortAnimationOnLayer:sceneLayer completion:^
+		NSArray *sceneLayers = [self sceneLayers];
+		__block NSUInteger count = [sceneLayers count];
+		for (KGCSceneLayer *sceneLayer in sceneLayers)
 		{
-			_currentAnimation = nil;
-		}];
+			[sceneLayer setPreviewModeEnabled:NO];
+
+			[_currentAnimation abortAnimationOnLayer:sceneLayer completion:^
+			{
+				count -= 1;
+				if (count == 0)
+				{
+					_currentAnimation = nil;
+				}
+			}];
+		}
 	}
+}
+
+#pragma mark - Convenient Methods
+
+- (NSArray *)sceneObjectAnimations
+{
+	NSArray *sceneObjects = [self sceneObjects];
+	if ([sceneObjects count] == 1)
+	{
+		return [(KGCSceneObject *)sceneObjects[0] animations];
+	}
+	else
+	{
+		NSMutableArray *animations;
+		for (KGCSceneObject *sceneObject in [self sceneObjects])
+		{
+			if (animations)
+			{
+				for (KGCAnimation *animation in [animations copy])
+				{
+					BOOL keepAction = NO;
+					for (KGCAnimation *otherAnimation in [sceneObject animations])
+					{
+						if (animation == otherAnimation)
+						{
+							keepAction = YES;
+						}
+					}
+					
+					if (!keepAction)
+					{
+						[animations removeObject:animation];
+					}
+				}
+			}
+			else
+			{
+				animations = [[NSMutableArray alloc] initWithArray:[sceneObject animations]];
+			}
+		}
+	}
+	
+	return nil;
 }
 
 @end

@@ -15,11 +15,15 @@
 @interface KGCInspectorViewController : NSObject
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer;
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers;
 - (void)update;
-@property (nonatomic, weak, readonly) KGCSceneLayer *sceneLayer;
-- (KGCSceneObject *)sceneObject;
+@property (nonatomic, strong, readonly) NSArray *sceneLayers;
+@property (nonatomic, strong, readonly) NSArray *sceneObjects;
 - (KGCResourceController *)resourceController;
 @property (nonatomic, strong, readonly) NSView *view;
+- (id)objectForPropertyNamed:(NSString *)propertyName inArray:(NSArray *)objects;
+- (void)setObject:(id)object forPropertyNamed:(NSString *)propertyName inArray:(NSArray *)objects;
+- (void)setObjectValue:(id)objectValue inTextField:(NSTextField *)textField;
+- (void)setObjectValue:(id)objectValue inCheckBox:(NSButton *)checkBox;
 
 @end

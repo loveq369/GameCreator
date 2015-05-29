@@ -23,9 +23,9 @@
 	KGCCombinedAnimation *_animation;
 }
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer withSettingsObject:(id)object
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers withSettingsObject:(id)object
 {
-	[super setupWithSceneLayer:sceneLayer withSettingsObject:object];
+	[super setupWithSceneLayers:sceneLayers withSettingsObject:object];
 	
 	_animation = object;
 	[[self tableView] reloadData];
@@ -40,7 +40,7 @@
 	[addPopupButton addItemWithTitle:@""];
 	
 	NSArray *animations = [_animation animations];
-	NSArray *spriteAnimations = [[self sceneObject] animations];
+	NSArray *spriteAnimations = [self sceneObjectAnimations];
 	for (KGCAnimation *animation in spriteAnimations)
 	{
 		if (![animations containsObject:animation] && animation != _animation)
@@ -108,6 +108,47 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
 
+}
+
+- (NSArray *)sceneObjectAnimations
+{
+	NSArray *sceneObjects = [self sceneObjects];
+	if ([sceneObjects count] == 1)
+	{
+		return [(KGCSceneObject *)sceneObjects[0] animations];
+	}
+	else
+	{
+		NSMutableArray *animations;
+		for (KGCSceneObject *sceneObject in [self sceneObjects])
+		{
+			if (animations)
+			{
+				for (KGCAnimation *animation in [animations copy])
+				{
+					BOOL keepAction = NO;
+					for (KGCAnimation *otherAnimation in [sceneObject animations])
+					{
+						if (animation == otherAnimation)
+						{
+							keepAction = YES;
+						}
+					}
+					
+					if (!keepAction)
+					{
+						[animations removeObject:animation];
+					}
+				}
+			}
+			else
+			{
+				animations = [[NSMutableArray alloc] initWithArray:[sceneObject animations]];
+			}
+		}
+	}
+	
+	return nil;
 }
 
 @end

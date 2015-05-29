@@ -7,7 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="KGCDADInspector">
             <connections>
-                <outlet property="inspectorChooser" destination="ugB-0K-car" id="duI-VG-mjP"/>
+                <outlet property="inspectorChooserPopUp" destination="l3S-YB-IcX" id="eAv-Hh-81E"/>
                 <outlet property="inspectorContentView" destination="var-5U-v8Z" id="1uk-fW-XdJ"/>
                 <outlet property="inspectorView" destination="c22-O7-iKe" id="t8I-9g-Ep3"/>
             </connections>
@@ -22,21 +22,40 @@
                     <rect key="frame" x="0.0" y="0.0" width="294" height="540"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </customView>
-                <segmentedControl verticalHuggingPriority="750" id="ugB-0K-car">
-                    <rect key="frame" x="20" y="551" width="255" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="7iY-SB-H1I">
+                <popUpButton verticalHuggingPriority="750" id="l3S-YB-IcX">
+                    <rect key="frame" x="100" y="550" width="161" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Informatie" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TQd-Se-6gb" id="6ts-gV-Ws0">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
-                        <segments>
-                            <segment label="Info" width="80"/>
-                            <segment label="Gebeurtenissen" selected="YES" tag="1"/>
-                            <segment label="Animaties" tag="2"/>
-                        </segments>
-                    </segmentedCell>
+                        <menu key="menu" id="tCq-1s-OGL">
+                            <items>
+                                <menuItem title="Informatie" state="on" id="TQd-Se-6gb"/>
+                                <menuItem title="Gebeurtenissen" id="JJv-S4-CMr"/>
+                                <menuItem title="Animaties" id="bQR-83-qyi"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
                     <connections>
-                        <action selector="selectInspector:" target="-2" id="Aew-Sc-zG9"/>
+                        <action selector="selectInspector:" target="-2" id="cOb-I2-Gdu"/>
                     </connections>
-                </segmentedControl>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wMX-qQ-azf">
+                    <rect key="frame" x="34" y="555" width="63" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Inspecteer:" id="ftO-oM-KbK">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="Crn-Ah-goL">
+                    <rect key="frame" x="0.0" y="537" width="294" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
             </subviews>
             <point key="canvasLocation" x="-3697" y="-4620.5"/>
         </customView>

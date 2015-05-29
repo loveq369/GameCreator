@@ -19,6 +19,7 @@
                 <outlet property="spriteDropField" destination="Ces-A9-E9G" id="Zkv-Ry-ysW"/>
                 <outlet property="spriteGroupNameField" destination="ssY-3y-bub" id="RH7-OB-IwQ"/>
                 <outlet property="spriteIconView" destination="uMk-0p-PX3" id="ALJ-x0-15P"/>
+                <outlet property="spriteImageClearButton" destination="29n-6u-xMm" id="Mbr-gp-YbY"/>
                 <outlet property="spriteImageNameLabel" destination="Kmt-PS-OIT" id="TS5-c8-CNW"/>
                 <outlet property="spriteImagePositionXField" destination="cFi-u2-Ifw" id="CCG-sp-OKS"/>
                 <outlet property="spriteImagePositionYField" destination="lM2-KB-CfJ" id="b5k-x4-pL0"/>
@@ -267,6 +268,17 @@
                     </buttonCell>
                     <connections>
                         <action selector="chooseSpriteImage:" target="-2" id="MgD-Cf-Flq"/>
+                    </connections>
+                </button>
+                <button id="29n-6u-xMm">
+                    <rect key="frame" x="259" y="629" width="15" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ClearButton" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="baZ-50-un1">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="removeSpriteImage:" target="-2" id="ENA-1G-ww0"/>
                     </connections>
                 </button>
                 <tabView drawsBackground="NO" type="noTabsNoBorder" id="tSG-ZL-39c">
@@ -614,6 +626,7 @@
         </customView>
     </objects>
     <resources>
+        <image name="ClearButton" width="15" height="16"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
     </resources>
 </document>

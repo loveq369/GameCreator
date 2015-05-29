@@ -36,9 +36,9 @@
 
 #pragma mark - Main Method
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers
 {	
-	[super setupWithSceneLayer:sceneLayer];
+	[super setupWithSceneLayers:sceneLayers];
 	
 	[[self animationsTableView] reloadData];
 	[self updateCurrentAnimation];
@@ -54,15 +54,19 @@
 	}
 	else
 	{
-		KGCSceneObject *sceneObject = [self sceneObject];
+		NSArray *sceneObjects = [self sceneObjects];
 		
 		KGCAnimationType animationType = [sender indexOfSelectedItem];
-		KGCAnimation *newAnimation = [KGCAnimation newAnimationWithType:animationType document:[sceneObject document]];
-		[sceneObject addAnimation:newAnimation];
+		KGCAnimation *newAnimation = [KGCAnimation newAnimationWithType:animationType document:[sceneObjects[0] document]];
+		
+		for (KGCSceneObject *sceneObject in sceneObjects)
+		{
+			[sceneObject addAnimation:newAnimation];
+		}
 		
 		NSTableView *animationsTableView = [self animationsTableView];
 		[animationsTableView reloadData];
-		NSArray *animations = [sceneObject animations];
+		NSArray *animations = [self animations];
 		[animationsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:[animations count] -1] byExtendingSelection:NO];
 	}
 }
@@ -72,7 +76,10 @@
 	KGCAnimation *animation = [self currentAnimation];	
 	if (animation)
 	{
-		[[self sceneObject] removeAnimation:animation];
+		for (KGCSceneObject *sceneObject in [self sceneObjects])
+		{
+			[sceneObject removeAnimation:animation];
+		}
 		[[self animationsTableView] reloadData];
 	}
 	else
@@ -106,25 +113,27 @@
 	{
 		[sender setTitle:@"Stop"];
 		
-		KGCSceneObject *sceneObject = [self sceneObject];
-		KGCSceneLayer *sceneLayer = [self sceneLayer];
-		
-		[sceneLayer setPreviewModeEnabled:YES];
-		
-		NSProgressIndicator *activityIndicator = [self activityIndicator];
-		[activityIndicator startAnimation:nil];
-
-		NSUInteger row = [[self animationsTableView] selectedRow];
-		KGCAnimation *animation = [sceneObject animations][row];
-		_currentAnimation = animation;
-		[animation startAnimationOnLayer:sceneLayer completion:^
+		for (KGCSceneLayer *sceneLayer in [self sceneLayers])
 		{
-			[sender setTitle:@"Preview"];
-			[sender setEnabled:NO];
-		
-			[[self resetButton] setEnabled:YES];
-			[activityIndicator stopAnimation:nil];
-		}];
+			KGCSceneObject *sceneObject = [sceneLayer sceneObject];
+			
+			[sceneLayer setPreviewModeEnabled:YES];
+			
+			NSProgressIndicator *activityIndicator = [self activityIndicator];
+			[activityIndicator startAnimation:nil];
+
+			NSUInteger row = [[self animationsTableView] selectedRow];
+			KGCAnimation *animation = [sceneObject animations][row];
+			_currentAnimation = animation;
+			[animation startAnimationOnLayer:sceneLayer completion:^
+			{
+				[sender setTitle:@"Preview"];
+				[sender setEnabled:NO];
+			
+				[[self resetButton] setEnabled:YES];
+				[activityIndicator stopAnimation:nil];
+			}];
+		}
 	}
 }
 
@@ -132,24 +141,25 @@
 {
 	[[self resetButton] setEnabled:NO];
 	
-	KGCSceneLayer *sceneLayer = [self sceneLayer];
-	
-	NSProgressIndicator *activityIndicator = [self activityIndicator];
-	[activityIndicator startAnimation:nil];
-	
-	[_currentAnimation resetAnimationOnLayer:sceneLayer completion:^
+	for (KGCSceneLayer *sceneLayer in [self sceneLayers])
 	{
-		[[self previewButton] setEnabled:YES];
-		[sceneLayer setPreviewModeEnabled:NO];
-		[activityIndicator stopAnimation:nil];
-	}];
+		NSProgressIndicator *activityIndicator = [self activityIndicator];
+		[activityIndicator startAnimation:nil];
+		
+		[_currentAnimation resetAnimationOnLayer:sceneLayer completion:^
+		{
+			[[self previewButton] setEnabled:YES];
+			[sceneLayer setPreviewModeEnabled:NO];
+			[activityIndicator stopAnimation:nil];
+		}];
+	}
 }
 
 #pragma mark - TableView DataSource Methods
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-	return [[[self sceneObject] animations] count];
+	return [[self animations] count];
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -194,7 +204,7 @@
 		return nil;
 	}
 	
-	return [[self sceneObject] animations][row];
+	return [self animations][row];
 }
 
 - (KGCAnimation *)currentAnimation
@@ -209,8 +219,7 @@
 
 	if (row != -1)
 	{
-		KGCSceneObject *sceneObject = [self sceneObject];
-		KGCAnimation *animation = [sceneObject animations][row];
+		KGCAnimation *animation = [self animations][row];
 		
 		NSTextField *animationNameField = [self animationNameField];
 		[animationNameField setStringValue:[animation name]];
@@ -230,7 +239,7 @@
 		NSRect animationSettingsViewFrame = [animationSettingsView frame];
 		[[animationSettingsView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 		
-		NSView *animationInfoView = (NSView *)[animation infoViewForSceneLayer:[self sceneLayer]];
+		NSView *animationInfoView = (NSView *)[animation infoViewForSceneLayers:[self sceneLayers]];
 		if (animationInfoView)
 		{
 			NSRect animationInfoViewFrame = [animationInfoView frame];
@@ -239,7 +248,7 @@
 			[animationSettingsView addSubview:animationInfoView];
 		}
 		
-		BOOL isPreviewModeEnabled = [[self sceneLayer] isPreviewModeEnabled];
+		BOOL isPreviewModeEnabled = [[self sceneLayers][0] isPreviewModeEnabled];
 		[[self previewButton] setEnabled:!isPreviewModeEnabled && [animation hasPreview]];
 		[[self resetButton] setEnabled:isPreviewModeEnabled];
 	}
@@ -273,13 +282,58 @@
 		[[self activityIndicator] stopAnimation:nil];
 		[[self previewButton] setTitle:@"Preview"];
 		[[self resetButton] setEnabled:NO];
-		[[self sceneLayer] setPreviewModeEnabled:NO];
-
-		[_currentAnimation abortAnimationOnLayer:[self sceneLayer] completion:^
+		
+		for (KGCSceneLayer *sceneLayer in [self sceneLayers])
 		{
-			_currentAnimation = nil;
-		}];
+			[sceneLayer setPreviewModeEnabled:NO];
+
+			[_currentAnimation abortAnimationOnLayer:sceneLayer completion:^
+			{
+				_currentAnimation = nil;
+			}];
+		}
 	}
+}
+
+- (NSArray *)animations
+{
+	NSArray *sceneObjects = [self sceneObjects];
+	if ([sceneObjects count] == 1)
+	{
+		return [(KGCSceneObject *)sceneObjects[0] animations];
+	}
+	else
+	{
+		NSMutableArray *animations;
+		for (KGCSceneObject *sceneObject in [self sceneObjects])
+		{
+			if (animations)
+			{
+				for (KGCAnimation *animation in [animations copy])
+				{
+					BOOL keepAction = NO;
+					for (KGCAnimation *otherAnimation in [sceneObject animations])
+					{
+						if (animation == otherAnimation)
+						{
+							keepAction = YES;
+						}
+					}
+					
+					if (!keepAction)
+					{
+						[animations removeObject:animation];
+					}
+				}
+			}
+			else
+			{
+				animations = [[NSMutableArray alloc] initWithArray:[sceneObject animations]];
+			}
+		}
+	}
+	
+	return nil;
 }
 
 @end

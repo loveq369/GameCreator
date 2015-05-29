@@ -12,6 +12,7 @@
                 <outlet property="noInteractionDelayField" destination="Nx6-eA-Pr2" id="CUg-QR-TMS"/>
                 <outlet property="sceneDropField" destination="sDK-B7-QZA" id="de5-Hp-YZu"/>
                 <outlet property="sceneIconView" destination="eId-pt-A76" id="vvS-Iu-lgt"/>
+                <outlet property="sceneImageClearButton" destination="6MN-O1-nEU" id="uYX-gs-dbJ"/>
                 <outlet property="sceneImageNameLabel" destination="cju-Vy-88o" id="y99-jp-Fmh"/>
                 <outlet property="settingsTabView" destination="Hxi-ch-JI9" id="b0L-4J-wco"/>
                 <outlet property="soundPlayButton" destination="YAN-jI-khr" id="dAr-td-7Pq"/>
@@ -81,6 +82,17 @@
                     </buttonCell>
                     <connections>
                         <action selector="chooseSceneImage:" target="-2" id="fL9-oZ-zUA"/>
+                    </connections>
+                </button>
+                <button id="6MN-O1-nEU">
+                    <rect key="frame" x="265" y="686" width="15" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ClearButton" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="MI8-OF-w0V">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="removeSpriteImage:" target="-2" id="3A0-mC-2FJ"/>
                     </connections>
                 </button>
                 <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="ZnJ-9v-DUM">
@@ -308,6 +320,7 @@
         </customView>
     </objects>
     <resources>
+        <image name="ClearButton" width="15" height="16"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
     </resources>
 </document>

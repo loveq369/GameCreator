@@ -11,14 +11,20 @@
 
 @implementation KGCSettingsView
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer withSettingsObject:(id)object;
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers withSettingsObject:(id)object;
 {
-	_sceneLayer = sceneLayer;
+	_sceneLayers = sceneLayers;
 }
 
-- (KGCSceneObject *)sceneObject
+- (NSArray *)sceneObjects
 {
-	return [[self sceneLayer] sceneObject];
+	NSMutableArray *sceneObjects = [[NSMutableArray alloc] init];
+	for (KGCSceneLayer *sceneLayer in [self sceneLayers])
+	{
+		[sceneObjects addObject:[sceneLayer sceneObject]];
+	}
+
+	return [NSArray arrayWithArray:sceneObjects];
 }
 
 @end

@@ -70,10 +70,10 @@ typedef NS_ENUM(NSInteger, KGCActionLinkType)
 + (Class)actionClassForType:(KGCActionType)type;
 
 /** The info view of the action
-	@param layer The layer to use to get the settings
+	@param sceneLayers The layers to use to get the settings
  *	@return Returns an info view for the inspectors
  */
-- (KGCSettingsView *)infoViewForSceneLayer:(KGCSceneLayer *)sceneLayer;
+- (KGCSettingsView *)infoViewForSceneLayers:(NSArray *)sceneLayers;
 
 /** The action type display name
  *	@return Returns an action type display name base on the action type (integer)

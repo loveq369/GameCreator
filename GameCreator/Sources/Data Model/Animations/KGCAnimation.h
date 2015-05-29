@@ -80,10 +80,10 @@ typedef NS_ENUM(NSInteger, KGCAnimationType)
 - (void)abortAnimationOnLayer:(CALayer *)layer completion:(void (^)(void))completion;
 
 /** The info view of the animation
-	@param layer The layer to use to get the settings
+	@param sceneLayers The layers to use to get the settings
  *	@return Returns an info view for the inspectors
  */
-- (KGCSettingsView *)infoViewForSceneLayer:(KGCSceneLayer *)sceneLayer;
+- (KGCSettingsView *)infoViewForSceneLayers:(NSArray *)sceneLayers;
 
 /** Can the animation be previewed
  *	@return Returns YES or NO

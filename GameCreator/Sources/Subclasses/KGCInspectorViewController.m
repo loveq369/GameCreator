@@ -37,21 +37,81 @@
 	return self;
 }
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers
 {
-	_sceneLayer = sceneLayer;
-}
-
-- (KGCSceneObject *)sceneObject
-{
-	return [[self sceneLayer] sceneObject];
+	_sceneLayers = sceneLayers;
+	
+	NSMutableArray *sceneObjects = [[NSMutableArray alloc] init];
+	for (KGCSceneLayer *sceneLayer in [self sceneLayers])
+	{
+		[sceneObjects addObject:[sceneLayer sceneObject]];
+	}
+	_sceneObjects = [NSArray arrayWithArray:sceneObjects];
 }
 
 - (KGCResourceController *)resourceController
 {
-	return [[[self sceneObject] document] resourceController];
+	return [[[self sceneObjects][0] document] resourceController];
 }
 
 - (void)update {};
+
+- (void)setObject:(id)object forPropertyNamed:(NSString *)propertyName inArray:(NSArray *)objects
+{
+	for (id propertyObject in objects)
+	{
+		[propertyObject setValue:object forKey:propertyName];
+	}
+}
+
+- (id)objectForPropertyNamed:(NSString *)propertyName inArray:(NSArray *)objects
+{
+	if ([objects count] == 1)
+	{
+		return [objects[0] valueForKey:propertyName];
+	}
+	
+	id returnObject;
+	for (id object in objects)
+	{
+		if (!returnObject)
+		{
+			returnObject = [object valueForKey:propertyName];
+		}
+		else
+		{
+			if (![returnObject isEqualTo:[object valueForKey:propertyName]])
+			{
+				return nil;
+			}
+		}
+	}
+	
+	return returnObject;
+}
+
+- (void)setObjectValue:(id)objectValue inTextField:(NSTextField *)textField
+{
+	if (objectValue)
+	{
+		[textField setObjectValue:objectValue];
+	}
+	else
+	{
+		[textField setStringValue:@"--"];
+	}
+}
+
+- (void)setObjectValue:(id)objectValue inCheckBox:(NSButton *)checkBox
+{
+	if (objectValue)
+	{
+		[checkBox setState:[objectValue integerValue]];
+	}
+	else
+	{
+		[checkBox setState:NSMixedState];
+	}
+}
 
 @end

@@ -28,9 +28,9 @@
 	KGCGameTransitionAction *_action;
 }
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer withSettingsObject:(id)object
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers withSettingsObject:(id)object
 {
-	[super setupWithSceneLayer:sceneLayer withSettingsObject:object];
+	[super setupWithSceneLayers:sceneLayers withSettingsObject:object];
 	
 	_action = object;
 	
@@ -114,7 +114,7 @@
 		{
 			[_action setGameIdentifier:gameIdentifier];
 			[_action setSceneName:nil];
-			[self setupWithSceneLayer:[self sceneLayer] withSettingsObject:_action];
+			[self setupWithSceneLayers:[self sceneLayers] withSettingsObject:_action];
 		}
 	}
 }

@@ -44,9 +44,9 @@
 
 #pragma mark - Initial Methods
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers
 {
-	[super setupWithSceneLayer:sceneLayer];
+	[super setupWithSceneLayers:sceneLayers];
 
 	[[self actionTableView] reloadData];
 	[self updateCurrentAction];
@@ -62,15 +62,18 @@
 	}
 	else
 	{
-		KGCSceneObject *sceneObject = [self sceneObject];
-		
+		NSArray *sceneObjects = [self sceneObjects];
 		KGCActionType actionType = [sender indexOfSelectedItem];
-		KGCAction *newAction = [KGCAction newActionWithType:actionType document:[sceneObject document]];
-		[sceneObject addAction:newAction];
+		KGCAction *newAction = [KGCAction newActionWithType:actionType document:[sceneObjects[0] document]];
+			
+		for (KGCSceneObject *sceneObject in sceneObjects)
+		{
+			[sceneObject addAction:newAction];
+		}
 		
 		NSTableView *actionTableView = [self actionTableView];
 		[actionTableView reloadData];
-		NSArray *actions = [sceneObject actions];
+		NSArray *actions = [self actions];
 		[actionTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:[actions count] -1] byExtendingSelection:NO];
 	}
 }
@@ -80,7 +83,11 @@
 	KGCAction *action = [self currentAction];	
 	if (action)
 	{
-		[[self sceneObject] removeAction:action];
+		for (KGCSceneObject *sceneObject in [self sceneObjects])
+		{
+			[sceneObject removeAction:action];
+		}
+		
 		[[self actionTableView] reloadData];
 	}
 	else
@@ -127,7 +134,8 @@
 
 - (void)removeTriggerWindow
 {
-	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+	[[NSOperationQueue mainQueue] addOperationWithBlock:^
+	{
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResignKeyNotification object:_inspectorWindow];
 	
 		[_inspectorWindow orderOut:nil];
@@ -143,7 +151,8 @@
 		[actionTriggerSpritesAddPopUp removeAllItems];
 		[actionTriggerSpritesAddPopUp addItemWithTitle:@""];
 		
-		KGCSceneObject *sceneObject = [self sceneObject];
+		NSArray *sceneObjects = [self sceneObjects];
+		KGCSceneObject *sceneObject = sceneObjects[0];
 		KGCScene *scene;
 		if ([sceneObject isKindOfClass:[KGCScene class]])
 		{
@@ -161,7 +170,7 @@
 		for (KGCSprite *sprite in sprites)
 		{
 			NSString *identifier = [sprite identifier];
-			if (![triggerKeys containsObject:identifier] && sprite != sceneObject)
+			if (![triggerKeys containsObject:identifier] && ![sceneObjects containsObject:sprite])
 			{
 				[actionTriggerSpritesAddPopUp addItemWithTitle:[sprite name]];
 				titleAdded = YES;
@@ -240,7 +249,7 @@
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-	return [[[self sceneObject] actions] count];
+	return [[self actions] count];
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -269,7 +278,7 @@
 		return nil;
 	}
 	
-	return [[self sceneObject] actions][row];
+	return [self actions][row];
 }
 
 - (KGCAction *)currentAction
@@ -339,7 +348,7 @@
 		NSRect actionSettingsViewFrame = [actionSettingsView frame];
 		[[actionSettingsView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 		
-		NSView *actionInfoView = (NSView *)[spriteAction infoViewForSceneLayer:[self sceneLayer]];
+		NSView *actionInfoView = (NSView *)[spriteAction infoViewForSceneLayers:[self sceneLayers]];
 		if (actionInfoView)
 		{
 			NSRect actionInfoViewFrame = [actionInfoView frame];
@@ -384,6 +393,47 @@
 		
 		[[[self actionSettingsView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	}
+}
+
+- (NSArray *)actions
+{
+	NSArray *sceneObjects = [self sceneObjects];
+	if ([sceneObjects count] == 1)
+	{
+		return [(KGCSceneObject *)sceneObjects[0] actions];
+	}
+	else
+	{
+		NSMutableArray *actions;
+		for (KGCSceneObject *sceneObject in [self sceneObjects])
+		{
+			if (actions)
+			{
+				for (KGCAction *action in [actions copy])
+				{
+					BOOL keepAction = NO;
+					for (KGCAction *otherAction in [sceneObject actions])
+					{
+						if (action == otherAction)
+						{
+							keepAction = YES;
+						}
+					}
+					
+					if (!keepAction)
+					{
+						[actions removeObject:action];
+					}
+				}
+			}
+			else
+			{
+				actions = [[NSMutableArray alloc] initWithArray:[sceneObject actions]];
+			}
+		}
+	}
+	
+	return nil;
 }
 
 @end

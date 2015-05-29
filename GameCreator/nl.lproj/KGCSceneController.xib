@@ -11,6 +11,7 @@
                 <outlet property="autoFadeOutButton" destination="n5z-gY-jKH" id="Mys-UQ-vU2"/>
                 <outlet property="sceneDropField" destination="s9I-D4-vly" id="bED-gs-PjR"/>
                 <outlet property="sceneIconView" destination="jXk-bn-ExM" id="7U2-fz-wDd"/>
+                <outlet property="sceneImageClearButton" destination="fCc-Vc-Iav" id="wfT-Tt-qrL"/>
                 <outlet property="sceneImageNameLabel" destination="fn8-Y0-QYs" id="Wk4-fn-hpf"/>
                 <outlet property="sceneNameField" destination="i7C-9U-UPH" id="9dm-b5-Bes"/>
                 <outlet property="view" destination="gfv-D7-3iy" id="wxM-bS-8XJ"/>
@@ -88,6 +89,17 @@
                         <action selector="chooseSceneImage:" target="-2" id="LSv-Kn-hj4"/>
                     </connections>
                 </button>
+                <button id="fCc-Vc-Iav">
+                    <rect key="frame" x="259" y="655" width="15" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ClearButton" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="eyy-qR-WmG">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="removeSpriteImage:" target="-2" id="Fgs-Hi-xst"/>
+                    </connections>
+                </button>
                 <textField verticalHuggingPriority="750" id="i7C-9U-UPH">
                     <rect key="frame" x="82" y="682" width="192" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -100,16 +112,8 @@
                         <action selector="changeSceneIdentifier:" target="-2" id="3Mz-6K-lRd"/>
                     </connections>
                 </textField>
-                <button id="Xo6-fR-upT">
-                    <rect key="frame" x="18" y="594" width="217" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Interactie uitgeschakeld" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3bN-yu-q5T">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <button id="cDk-kA-xCi">
-                    <rect key="frame" x="18" y="574" width="258" height="18"/>
+                    <rect key="frame" x="18" y="594" width="258" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Fade in bij het openen" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qdI-iG-EZC">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -120,7 +124,7 @@
                     </connections>
                 </button>
                 <button id="n5z-gY-jKH">
-                    <rect key="frame" x="18" y="554" width="258" height="18"/>
+                    <rect key="frame" x="18" y="574" width="258" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Fade uit bij het verlaten" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2qM-AO-fza">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -135,6 +139,7 @@
         </customView>
     </objects>
     <resources>
+        <image name="ClearButton" width="15" height="16"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
     </resources>
 </document>

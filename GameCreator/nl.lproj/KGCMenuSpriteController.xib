@@ -12,6 +12,7 @@
                 <outlet property="soundTypePopUp" destination="0uy-iC-T5A" id="dNK-Pd-igQ"/>
                 <outlet property="spriteDropField" destination="Ces-A9-E9G" id="Zkv-Ry-ysW"/>
                 <outlet property="spriteIconView" destination="uMk-0p-PX3" id="ALJ-x0-15P"/>
+                <outlet property="spriteImageClearButton" destination="bYC-Ca-Ahp" id="lo1-Qe-Ze2"/>
                 <outlet property="spriteImageNameLabel" destination="Kmt-PS-OIT" id="TS5-c8-CNW"/>
                 <outlet property="spriteImagePositionXField" destination="cFi-u2-Ifw" id="CCG-sp-OKS"/>
                 <outlet property="spriteImagePositionYField" destination="lM2-KB-CfJ" id="b5k-x4-pL0"/>
@@ -30,13 +31,6 @@
             <rect key="frame" x="0.0" y="0.0" width="294" height="730"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <customView id="Ces-A9-E9G" customClass="KGCFileDropView">
-                    <rect key="frame" x="2" y="593" width="292" height="137"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <connections>
-                        <outlet property="delegate" destination="-2" id="SEE-H5-rD1"/>
-                    </connections>
-                </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="3g9-l3-QWT">
                     <rect key="frame" x="18" y="685" width="58" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -87,6 +81,13 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <customView id="Ces-A9-E9G" customClass="KGCFileDropView">
+                    <rect key="frame" x="2" y="593" width="292" height="137"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="-2" id="SEE-H5-rD1"/>
+                    </connections>
+                </customView>
                 <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="nUJ-XX-TPt">
                     <rect key="frame" x="0.0" y="593" width="294" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -95,7 +96,7 @@
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <textField verticalHuggingPriority="750" id="XLl-OX-L26">
-                    <rect key="frame" x="100" y="682" width="174" height="22"/>
+                    <rect key="frame" x="100" y="682" width="181" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Nyi-SF-RVi">
                         <font key="font" metaFont="system"/>
@@ -233,12 +234,12 @@
                 <popUpButton verticalHuggingPriority="750" id="pLa-dK-EjL">
                     <rect key="frame" x="99" y="650" width="159" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="Standaard sprite" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="X9b-Xj-Gcw" id="y05-KO-hWP">
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="y05-KO-hWP">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="ytb-Yz-gV3">
                             <items>
-                                <menuItem title="Standaard sprite" state="on" id="X9b-Xj-Gcw"/>
+                                <menuItem title="Standaard sprite" id="X9b-Xj-Gcw"/>
                                 <menuItem title="Knop" id="yBk-Cv-SHp"/>
                             </items>
                         </menu>
@@ -256,6 +257,17 @@
                     </buttonCell>
                     <connections>
                         <action selector="chooseSpriteImage:" target="-2" id="MgD-Cf-Flq"/>
+                    </connections>
+                </button>
+                <button id="bYC-Ca-Ahp">
+                    <rect key="frame" x="266" y="629" width="15" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ClearButton" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="qr1-AA-QQQ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="removeSpriteImage:" target="-2" id="hEQ-sZ-0M5"/>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Sqw-uN-rhy">
@@ -412,6 +424,7 @@
         </customView>
     </objects>
     <resources>
+        <image name="ClearButton" width="15" height="16"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
     </resources>
 </document>

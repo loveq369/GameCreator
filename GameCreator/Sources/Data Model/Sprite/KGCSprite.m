@@ -249,6 +249,11 @@
 	[self setObject:resourceName forKey:@"ImageName"];
 }
 
+- (void)clearImage
+{
+	[self setObject:nil forKey:@"ImageName"];
+}
+
 - (NSString *)backgroundImageName
 {
 	NSDictionary *backgroundImageInfo = [self objectForKey:@"BackgroundImage"];
@@ -266,6 +271,11 @@
 	KGCResourceController *resourceController = [[self document] resourceController];
 	NSString *resourceName = [resourceController resourceNameForURL:imageURL type:KGCResourceInfoTypeImage];
 	[self setObject:@{@"ImageName": resourceName} forKey:@"BackgroundImage"];
+}
+
+- (void)clearBackgroundImage
+{
+	[self setObject:nil forKey:@"BackgroundImage"];
 }
 
 - (void)setDraggable:(BOOL)draggable
@@ -475,6 +485,36 @@
 		[self notifyDelegateAboutKeyChange:@"GridAnswers"];
 		[self updateDictionary];
 	}
+}
+
+- (BOOL)isPhysicsEnabled
+{
+	return [self boolForKey:@"PhysicsEnabled"];
+}
+
+- (void)setPhysicsEnabled:(BOOL)physicsEnabled
+{
+	[self setBool:physicsEnabled forKey:@"PhysicsEnabled"];
+}
+
+- (BOOL)isGravityEnabled
+{
+	return [self boolForKey:@"PhysicsGravityEnabled"];
+}
+
+- (void)setGravityEnabled:(BOOL)gravityEnabled
+{
+	[self setBool:gravityEnabled forKey:@"PhysicsGravityEnabled"];
+}
+
+- (void)setVelocity:(CGPoint)velocity
+{
+	[self setPoint:velocity forKey:@"PhysicsVelocity"];
+}
+
+- (CGPoint)velocity
+{
+	return [self pointForKey:@"PhysicsVelocity"];
 }
 
 - (NSArray *)visualKeys

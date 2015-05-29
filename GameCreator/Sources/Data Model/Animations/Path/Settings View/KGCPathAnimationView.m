@@ -41,9 +41,9 @@
 	[[self subSettingsTabView] selectTabViewItemAtIndex:0];
 }
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer withSettingsObject:(id)object
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers withSettingsObject:(id)object
 {
-	[super setupWithSceneLayer:sceneLayer withSettingsObject:object];
+	[super setupWithSceneLayers:sceneLayers withSettingsObject:object];
 	
 	_animation = object;
 	KGCPathAnimatorShape shape = [_animation shape];

@@ -18,6 +18,7 @@
 @property (nonatomic, weak) IBOutlet KGCFileDropView *sceneDropField;
 @property (nonatomic, weak) IBOutlet NSImageView *sceneIconView;
 @property (nonatomic, weak) IBOutlet NSTextField *sceneImageNameLabel;
+@property (nonatomic, weak) IBOutlet NSButton *sceneImageClearButton;
 @property (nonatomic, weak) IBOutlet NSButton *autoFadeInButton;
 @property (nonatomic, weak) IBOutlet NSButton *autoFadeOutButton;
 
@@ -27,25 +28,38 @@
 
 #pragma mark - Initial Methods
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers
 {
-	[super setupWithSceneLayer:sceneLayer];
+	[super setupWithSceneLayers:sceneLayers];
 	
-	KGCSceneObject *sceneObject = [self sceneObject];
-	KGCScene *scene = [self scene];
-	
-	[[self sceneNameField] setStringValue:[sceneObject name]];
+	NSTextField *sceneNameField = [self sceneNameField];
+	NSArray *sceneObjects = [self sceneObjects];
+	if ([sceneObjects count] == 1)
+	{
+		[sceneNameField setStringValue:[(KGCScene *)[self sceneObjects][0] name]];
+		[sceneNameField setEnabled:YES];
+	}
+	else
+	{
+		[sceneNameField setStringValue:NSLocalizedString(@"<Multiple Items Selected>", nil)];
+		[sceneNameField setEnabled:NO];
+	}
 		
-	NSString *displayName = @"None";
-	NSString *imageName = [scene imageName];
+	NSString *displayName = NSLocalizedString(@"None", nil);
+	NSString *imageName = [self imageName];
 	if (imageName)
 	{
 		displayName = imageName;
 	}
 	
 	[[self sceneImageNameLabel] setStringValue:displayName];
-	[[self autoFadeInButton] setState:[scene autoFadeIn]];
-	[[self autoFadeOutButton] setState:[scene autoFadeOut]];
+	[[self sceneImageClearButton] setHidden:imageName == nil];
+	
+	NSNumber *number = [self objectForPropertyNamed:@"autoFadeIn" inArray:[self sceneObjects]];
+	[self setObjectValue:number inCheckBox:[self autoFadeInButton]];
+	
+	number = [self objectForPropertyNamed:@"autoFadeOut" inArray:[self sceneObjects]];
+	[self setObjectValue:number inCheckBox:[self autoFadeOutButton]];
 }
 
 - (void)awakeFromNib
@@ -60,7 +74,7 @@
 
 - (IBAction)changeSceneIdentifier:(id)sender
 {
-	[[self sceneObject] setName:[sender stringValue]];
+	[(KGCScene *)[self sceneObjects][0] setName:[sender stringValue]];
 }
 
 - (IBAction)chooseSceneImage:(id)sender
@@ -69,18 +83,31 @@
 	[openPanel setAllowedFileTypes:@[@"png"]];
 	[openPanel beginSheetModalForWindow:[[self view] window] completionHandler:^ (NSModalResponse returnCode)
 	{
-		[[self scene] setImageURL:[openPanel URL]];
+		if (returnCode == NSOKButton)
+		{
+			[self setImageAtURL:[openPanel URL]];
+			NSString *imageName = [self imageName];
+			[[self sceneImageNameLabel] setStringValue:imageName ? imageName : NSLocalizedString(@"None", nil)];
+			[[self sceneImageClearButton] setHidden:imageName == nil];
+		}
 	}];
+}
+
+- (IBAction)removeSpriteImage:(id)sender
+{
+	[[self sceneObjects] makeObjectsPerformSelector:@selector(clearImage)];
+	[[self sceneImageNameLabel] setStringValue:NSLocalizedString(@"None", nil)];
+	[[self sceneImageClearButton] setHidden:YES];
 }
 
 - (IBAction)changeAutoFadeIn:(id)sender
 {
-	[[self scene] setAutoFadeIn:[sender state]];
+	[self setAutoFadeIn:[sender state]];
 }
 
 - (IBAction)changeAutoFadeOut:(id)sender
 {
-	[[self scene] setAutoFadeOut:[sender state]];
+	[self setAutoFadeOut:[sender state]];
 }
 
 #pragma mark - File Drop View Delegate Methods
@@ -90,16 +117,37 @@
 	if ([filePaths count] > 0)
 	{
 		NSURL *url = [[NSURL alloc] initFileURLWithPath:filePaths[0]];
-		
-		KGCScene *scene = [self scene];
-		[scene setImageURL:url];
-		[[self sceneImageNameLabel] setStringValue:[scene imageName]];
+		[self setImageAtURL:url];
+		[[self sceneImageNameLabel] setStringValue:[self imageName]];
 	}
 }
 
-- (KGCScene *)scene
+#pragma mark - Multi getter/setter methods
+
+- (NSString *)imageName
 {
-	return (KGCScene *)[self sceneObject];
+	return [self objectForPropertyNamed:@"imageName" inArray:[self sceneObjects]];
+}
+
+- (void)setImageAtURL:(NSURL *)imageURL
+{
+	[[self sceneObjects] makeObjectsPerformSelector:@selector(setImageURL:) withObject:imageURL];
+}
+
+- (void)setAutoFadeIn:(BOOL)autoFadeIn
+{
+	for (KGCScene *scene in [self sceneObjects])
+	{
+		[scene setAutoFadeIn:autoFadeIn];
+	}
+}
+
+- (void)setAutoFadeOut:(BOOL)autoFadeOut
+{
+	for (KGCScene *scene in [self sceneObjects])
+	{
+		[scene setAutoFadeOut:autoFadeOut];
+	}
 }
 
 @end

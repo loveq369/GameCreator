@@ -59,9 +59,9 @@
 		NSMutableArray *soundSets = [self dictionary][@"SoundSets"];
 		for (id object in [soundSets copy])
 		{
-			if ([object isKindOfClass:[NSArray class]])
+			for (NSMutableDictionary *soundDictionary in object[@"Sounds"])
 			{
-				[soundSets removeObject:object];
+				soundDictionary[@"_id"] = [[NSUUID UUID] UUIDString];
 			}
 		}
 

@@ -22,6 +22,7 @@
                 <outlet property="spriteGridColumnsField" destination="tkT-ZR-WmG" id="HDn-a3-hXj"/>
                 <outlet property="spriteGridRowsField" destination="Gf2-zU-sVN" id="pWo-cQ-nXF"/>
                 <outlet property="spriteIconView" destination="uMk-0p-PX3" id="ALJ-x0-15P"/>
+                <outlet property="spriteImageClearButton" destination="ggh-60-9I6" id="HR0-mC-LnQ"/>
                 <outlet property="spriteImageNameLabel" destination="Kmt-PS-OIT" id="TS5-c8-CNW"/>
                 <outlet property="spriteImagePositionXField" destination="cFi-u2-Ifw" id="CCG-sp-OKS"/>
                 <outlet property="spriteImagePositionYField" destination="lM2-KB-CfJ" id="b5k-x4-pL0"/>
@@ -92,24 +93,15 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="VWe-04-fAf">
-                    <rect key="frame" x="18" y="575" width="42" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label:" id="GGp-JH-TyX">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <customView id="Ces-A9-E9G" customClass="KGCFileDropView">
-                    <rect key="frame" x="2" y="550" width="292" height="180"/>
+                    <rect key="frame" x="2" y="590" width="292" height="140"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <connections>
                         <outlet property="delegate" destination="-2" id="9h8-jz-EP7"/>
                     </connections>
                 </customView>
                 <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="nUJ-XX-TPt">
-                    <rect key="frame" x="0.0" y="550" width="294" height="5"/>
+                    <rect key="frame" x="0.0" y="588" width="294" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -128,14 +120,14 @@
                     </connections>
                 </textField>
                 <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="p6H-UU-fJ5">
-                    <rect key="frame" x="1" y="437" width="294" height="5"/>
+                    <rect key="frame" x="1" y="475" width="294" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <slider verticalHuggingPriority="750" id="g1v-m8-z5G">
-                    <rect key="frame" x="133" y="449" width="86" height="21"/>
+                    <rect key="frame" x="133" y="487" width="86" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="100" tickMarkPosition="above" sliderType="linear" id="nkF-4l-0WZ"/>
                     <connections>
@@ -143,7 +135,7 @@
                     </connections>
                 </slider>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="reU-kF-w8q">
-                    <rect key="frame" x="182" y="508" width="10" height="11"/>
+                    <rect key="frame" x="182" y="546" width="10" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Y" id="Zgn-Hw-iyY">
                         <font key="font" metaFont="miniSystem"/>
@@ -152,7 +144,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="o8e-dW-Ksf">
-                    <rect key="frame" x="105" y="508" width="13" height="11"/>
+                    <rect key="frame" x="105" y="546" width="13" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="X" id="Idm-xY-vuN">
                         <font key="font" metaFont="miniSystem"/>
@@ -161,7 +153,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="KNM-Me-zdn">
-                    <rect key="frame" x="20" y="451" width="110" height="17"/>
+                    <rect key="frame" x="20" y="489" width="110" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Doorzichtigheid:" id="K8n-s0-WvZ">
                         <font key="font" metaFont="system"/>
@@ -170,7 +162,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="xN6-aR-5C9">
-                    <rect key="frame" x="258" y="451" width="19" height="17"/>
+                    <rect key="frame" x="258" y="489" width="19" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="%" id="SrV-si-b2W">
                         <font key="font" metaFont="system"/>
@@ -179,7 +171,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dhK-KJ-M1a">
-                    <rect key="frame" x="19" y="481" width="58" height="17"/>
+                    <rect key="frame" x="19" y="519" width="58" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Schaal:" id="fWM-80-YZ5">
                         <font key="font" metaFont="system"/>
@@ -188,7 +180,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="IHn-J6-bX8">
-                    <rect key="frame" x="19" y="525" width="49" height="17"/>
+                    <rect key="frame" x="19" y="563" width="49" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Positie:" id="9Wz-KF-OcJ">
                         <font key="font" metaFont="system"/>
@@ -197,7 +189,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="lM2-KB-CfJ">
-                    <rect key="frame" x="157" y="522" width="60" height="22"/>
+                    <rect key="frame" x="157" y="560" width="60" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="44Y-U3-2eC">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="d5F-kW-gBP"/>
@@ -210,7 +202,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="f3e-JK-aBB">
-                    <rect key="frame" x="224" y="448" width="37" height="22"/>
+                    <rect key="frame" x="224" y="486" width="37" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="100" drawsBackground="YES" id="XnZ-dc-jl1">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="BVE-3Y-Bfr">
@@ -226,7 +218,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="UqQ-Nw-jUO">
-                    <rect key="frame" x="81" y="478" width="60" height="22"/>
+                    <rect key="frame" x="81" y="516" width="60" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="1.00" drawsBackground="YES" id="wfB-jd-HPn">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="42" minimumFractionDigits="2" maximumFractionDigits="2" id="0NS-BX-TeC"/>
@@ -239,7 +231,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="cFi-u2-Ifw">
-                    <rect key="frame" x="83" y="522" width="60" height="22"/>
+                    <rect key="frame" x="83" y="560" width="60" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="whZ-Vv-vSC">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="ki1-kn-iGP"/>
@@ -280,6 +272,17 @@
                         <action selector="chooseSpriteImage:" target="-2" id="MgD-Cf-Flq"/>
                     </connections>
                 </button>
+                <button id="ggh-60-9I6">
+                    <rect key="frame" x="259" y="629" width="15" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ClearButton" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="pNQ-4c-jhD">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="removeSpriteImage:" target="-2" id="zv0-AZ-3da"/>
+                    </connections>
+                </button>
                 <popUpButton verticalHuggingPriority="750" id="aLI-vh-cCn">
                     <rect key="frame" x="80" y="602" width="101" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -298,23 +301,23 @@
                     </connections>
                 </popUpButton>
                 <tabView drawsBackground="NO" type="noTabsNoBorder" id="tSG-ZL-39c">
-                    <rect key="frame" x="0.0" y="0.0" width="296" height="440"/>
+                    <rect key="frame" x="0.0" y="0.0" width="296" height="478"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Empty" identifier="1" id="HqG-sH-uWz" userLabel="Leeg">
                             <view key="view" id="5Jf-vB-N3t">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="440"/>
+                                <rect key="frame" x="0.0" y="0.0" width="296" height="478"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </view>
                         </tabViewItem>
                         <tabViewItem label="Empty" identifier="1" id="U9B-zN-NfK" userLabel="Drop Grid">
                             <view key="view" id="7tQ-Oe-blm">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="440"/>
+                                <rect key="frame" x="0.0" y="0.0" width="296" height="478"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="GK8-Cy-LdX">
-                                        <rect key="frame" x="18" y="401" width="35" height="17"/>
+                                        <rect key="frame" x="18" y="439" width="35" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Grid:" id="ecB-BE-LJO">
                                             <font key="font" metaFont="system"/>
@@ -323,7 +326,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="84u-IM-u9D">
-                                        <rect key="frame" x="138" y="384" width="51" height="11"/>
+                                        <rect key="frame" x="138" y="422" width="51" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="kolommen" id="fwG-zl-nOn">
                                             <font key="font" metaFont="miniSystem"/>
@@ -332,7 +335,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Aqg-En-Pa6">
-                                        <rect key="frame" x="77" y="384" width="24" height="11"/>
+                                        <rect key="frame" x="77" y="422" width="24" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="rijen" id="fkr-wd-uNI">
                                             <font key="font" metaFont="miniSystem"/>
@@ -341,7 +344,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="Oiu-gZ-0jL">
-                                        <rect key="frame" x="133" y="398" width="60" height="22"/>
+                                        <rect key="frame" x="133" y="436" width="60" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="uhQ-Ur-4fX">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="Q6B-i8-WZ1"/>
@@ -354,7 +357,7 @@
                                         </connections>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="iKz-sO-8HY">
-                                        <rect key="frame" x="59" y="398" width="60" height="22"/>
+                                        <rect key="frame" x="59" y="436" width="60" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="bub-sw-OTh">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="q95-dd-pf2"/>
@@ -367,7 +370,7 @@
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="A4a-F4-zZM">
-                                        <rect key="frame" x="18" y="357" width="162" height="17"/>
+                                        <rect key="frame" x="18" y="395" width="162" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Maximaal aantal vormen:" id="lLA-xE-fVG">
                                             <font key="font" metaFont="system"/>
@@ -376,7 +379,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="gzb-OG-xEJ">
-                                        <rect key="frame" x="186" y="354" width="67" height="22"/>
+                                        <rect key="frame" x="186" y="392" width="67" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="toj-0N-MKh">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="dQ2-Ms-o44"/>
@@ -393,11 +396,11 @@
                         </tabViewItem>
                         <tabViewItem label="Answer" identifier="2" id="AfP-WV-0Ik" userLabel="Vorm">
                             <view key="view" id="bsa-Ti-fty">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="440"/>
+                                <rect key="frame" x="0.0" y="0.0" width="296" height="478"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1qf-Dd-spY">
-                                        <rect key="frame" x="21" y="409" width="49" height="17"/>
+                                        <rect key="frame" x="21" y="447" width="49" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Aantal:" id="jjl-U5-b5Z">
                                             <font key="font" metaFont="system"/>
@@ -406,7 +409,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="BHa-Wy-0Bk">
-                                        <rect key="frame" x="76" y="406" width="69" height="22"/>
+                                        <rect key="frame" x="76" y="444" width="69" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="sQM-32-I6A">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="gKs-t0-NoQ"/>
@@ -419,7 +422,7 @@
                                         </connections>
                                     </textField>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="54x-mS-osr">
-                                        <rect key="frame" x="15" y="180" width="267" height="174"/>
+                                        <rect key="frame" x="15" y="218" width="267" height="174"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" id="u9P-cC-EyR">
                                             <rect key="frame" x="1" y="17" width="238" height="117"/>
@@ -487,7 +490,7 @@
                                         </tableHeaderView>
                                     </scrollView>
                                     <button verticalHuggingPriority="750" id="RKf-aJ-Kaz">
-                                        <rect key="frame" x="236" y="147" width="24" height="26"/>
+                                        <rect key="frame" x="236" y="185" width="24" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="-" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ksF-ld-21B">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -498,7 +501,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" id="eXd-X7-juz">
-                                        <rect key="frame" x="258" y="147" width="24" height="26"/>
+                                        <rect key="frame" x="258" y="185" width="24" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="+" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XSb-tV-nyk">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -509,7 +512,7 @@
                                         </connections>
                                     </button>
                                     <customView id="Ev2-af-8ul">
-                                        <rect key="frame" x="-20" y="-44" width="336" height="188"/>
+                                        <rect key="frame" x="-20" y="-6" width="336" height="188"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="xi4-Mc-0SF">
@@ -635,7 +638,7 @@
                                         </subviews>
                                     </customView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hVU-lF-5ez">
-                                        <rect key="frame" x="18" y="379" width="86" height="17"/>
+                                        <rect key="frame" x="18" y="417" width="86" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Grid grootte:" id="LMP-as-qYb">
                                             <font key="font" metaFont="system"/>
@@ -644,7 +647,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Eis-Kx-txG">
-                                        <rect key="frame" x="189" y="362" width="51" height="11"/>
+                                        <rect key="frame" x="189" y="400" width="51" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="kolommen" id="HzD-fA-0fS">
                                             <font key="font" metaFont="miniSystem"/>
@@ -653,7 +656,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OUe-4L-dQu">
-                                        <rect key="frame" x="128" y="362" width="24" height="11"/>
+                                        <rect key="frame" x="128" y="400" width="24" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="rijen" id="2X6-2I-uWU">
                                             <font key="font" metaFont="miniSystem"/>
@@ -662,7 +665,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="tkT-ZR-WmG">
-                                        <rect key="frame" x="184" y="376" width="60" height="22"/>
+                                        <rect key="frame" x="184" y="414" width="60" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="P6a-ma-dST">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="mgc-Sa-OdF"/>
@@ -675,7 +678,7 @@
                                         </connections>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="Gf2-zU-sVN">
-                                        <rect key="frame" x="110" y="376" width="60" height="22"/>
+                                        <rect key="frame" x="110" y="414" width="60" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="wG1-CF-iNa">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="9JQ-3u-2Aq"/>
@@ -692,17 +695,8 @@
                         </tabViewItem>
                     </tabViewItems>
                 </tabView>
-                <textField verticalHuggingPriority="750" id="zRY-sg-hYu">
-                    <rect key="frame" x="81" y="572" width="190" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="GO8-kU-Twe">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Sqw-uN-rhy">
-                    <rect key="frame" x="147" y="482" width="59" height="17"/>
+                    <rect key="frame" x="147" y="520" width="59" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Z-Index:" id="dq2-s9-vS9">
                         <font key="font" metaFont="system"/>
@@ -711,7 +705,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="TaE-z8-5Hp">
-                    <rect key="frame" x="209" y="479" width="60" height="22"/>
+                    <rect key="frame" x="209" y="517" width="60" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="1" drawsBackground="YES" id="v8g-cO-khT">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="FFx-su-4oS"/>
@@ -728,6 +722,7 @@
         </customView>
     </objects>
     <resources>
+        <image name="ClearButton" width="15" height="16"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
     </resources>
 </document>

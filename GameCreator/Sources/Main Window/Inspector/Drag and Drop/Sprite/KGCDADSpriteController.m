@@ -11,26 +11,14 @@
 #import "KGCSprite.h"
 #import "KGCScene.h"
 #import "KGCSceneContentView.h"
-#import "KGCFileDropView.h"
 #import "KGCAnswer.h"
 
 #import "KGCAnswerCell.h"
 #import "KGCAnswerPointsCell.h"
 
-@interface KGCDADSpriteController () <NSTableViewDataSource, NSTableViewDelegate, KGCFileDropViewDelegate>
+@interface KGCDADSpriteController () <NSTableViewDataSource, NSTableViewDelegate>
 
-@property (nonatomic, weak) IBOutlet NSTextField *spriteNameField;
-@property (nonatomic, weak) IBOutlet KGCFileDropView *spriteDropField;
-@property (nonatomic, weak) IBOutlet NSImageView *spriteIconView;
-@property (nonatomic, weak) IBOutlet NSTextField *spriteImageNameLabel;
-@property (nonatomic, weak) IBOutlet NSPopUpButton *spriteImageTypePopUp;
 @property (nonatomic, weak) IBOutlet NSPopUpButton *spriteTypePopUp;
-@property (nonatomic, weak) IBOutlet NSTextField *spriteImagePositionXField;
-@property (nonatomic, weak) IBOutlet NSTextField *spriteImagePositionYField;
-@property (nonatomic, weak) IBOutlet NSTextField *spriteScaleField;
-@property (nonatomic, weak) IBOutlet NSTextField *spriteZOrderField;
-@property (nonatomic, weak) IBOutlet NSTextField *spriteOpacityField;
-@property (nonatomic, weak) IBOutlet NSSlider *spriteOpacitySlider;
 @property (nonatomic, weak) IBOutlet NSTabView *spriteTypeTabView;
 @property (nonatomic, weak) IBOutlet NSTextField *spriteAnswerMaxField;
 @property (nonatomic, weak) IBOutlet NSTableView *spriteAnswerTableView;
@@ -58,45 +46,34 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)awakeFromNib
-{
-	[super awakeFromNib];
-	
-	NSImage *pngIconImage = [[NSWorkspace sharedWorkspace] iconForFileType:@"png"];
-	[[self spriteIconView] setImage:pngIconImage];
-}
-
 #pragma mark - Main Methods
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers
 {
-	[super setupWithSceneLayer:sceneLayer];
+	[super setupWithSceneLayers:sceneLayers];
 	[self update];
 }
 
 - (void)update
 {
-	KGCSprite *sprite = [self sprite];	
-	NSInteger spriteType = [sprite spriteType];
+	NSArray *sceneObjects = [self sceneObjects];
 	
-	[[self spriteNameField] setStringValue:[sprite name]];
+	NSNumber *spriteTypeNumber = [self objectForPropertyNamed:@"spriteType" inArray:sceneObjects];
+	NSInteger spriteType = [spriteTypeNumber integerValue];
+	
 	[[self spriteTypePopUp] selectItemAtIndex:spriteType];
-	
-	NSInteger lastSpriteImageType = [[NSUserDefaults standardUserDefaults] integerForKey:@"KGCInspectorLastSelectedSpriteImageType"];
-	[[self spriteImageTypePopUp] selectItemAtIndex:lastSpriteImageType];
-	
-	NSString *spriteImageName = lastSpriteImageType == 0 ? [sprite imageName] : [sprite backgroundImageName];
-	[[self spriteImageNameLabel] setStringValue:spriteImageName ? spriteImageName : NSLocalizedString(@"None", nil)];
-	
-	[self updateVisualProperties];	
-		
 	[[self spriteTypeTabView] selectTabViewItemAtIndex:spriteType];
-	[[self spriteAnswerMaxField] setIntegerValue:[sprite maxAnswerCount]];
-	[[self spriteMaxItemsField] setIntegerValue:[sprite maxGroupItems]];
 	[[self spriteAnswerSettingsView] setHidden:[[self spriteAnswerTableView] selectedRow] == -1];
 	
-	NSString *groupName = [sprite groupName];
-	[[self spriteGroupNameField] setStringValue:groupName ? groupName : @""];
+	NSArray *properties = @[@"maxAnswerCount", @"maxGroupItems", @"groupName"];
+	NSArray *textFields = @[[self spriteAnswerMaxField], [self spriteMaxItemsField], [self spriteGroupNameField]];
+	for (NSInteger i = 0; i < [properties count]; i ++)
+	{
+		NSString *propertyName = properties[i];
+		NSTextField *textField = textFields[i];
+		id object = [self objectForPropertyNamed:propertyName inArray:sceneObjects];
+		[self setObjectValue:object inTextField:textField];
+	}
 	
 	NSTableView *spriteAnswerTableView = [self spriteAnswerTableView];
 	NSInteger index = [spriteAnswerTableView selectedRow];
@@ -106,139 +83,36 @@
 
 #pragma mark - Interface Methods
 
-- (IBAction)changeSpriteIdentifier:(id)sender
-{
-	[[self sprite] setName:[sender stringValue]];
-}
-
-- (IBAction)chooseSpriteImage:(id)sender
-{
-	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-	[openPanel setAllowedFileTypes:@[@"png"]];
-	[openPanel beginSheetModalForWindow:[[self view] window] completionHandler:^ (NSModalResponse returnCode)
-	{
-		if (returnCode == NSOKButton)
-		{
-			KGCSprite *sprite = [self sprite];
-			BOOL normalImage = [[self spriteImageTypePopUp] indexOfSelectedItem] == 0;
-			if (normalImage)
-			{
-				[sprite setImageURL:[openPanel URL]];
-			}
-			else
-			{
-				[sprite setBackgroundImageURL:[openPanel URL]];
-			}
-			
-			NSString *spriteImageName = normalImage ? [sprite imageName] : [sprite backgroundImageName];
-			[[self spriteImageNameLabel] setStringValue:spriteImageName ? spriteImageName : NSLocalizedString(@"None", nil)];
-		}
-	}];
-}
-
-- (IBAction)changeSpriteImageType:(id)sender
-{
-	NSUInteger index = [sender indexOfSelectedItem];
-	[[NSUserDefaults standardUserDefaults] setInteger:index forKey:@"KGCInspectorLastSelectedSpriteImageType"];
-
-	KGCSprite *sprite = [self sprite];
-	NSString *spriteImageName = index == 0 ? [sprite imageName] : [sprite backgroundImageName];
-	[[self spriteImageNameLabel] setStringValue:spriteImageName ? spriteImageName : NSLocalizedString(@"None", nil)];
-}
-
 - (IBAction)changeSpriteType:(id)sender
 {	
 	NSInteger spriteType = [sender indexOfSelectedItem];
-	[[self sprite] setSpriteType:spriteType];	
+	
+	for (KGCSprite *sprite in [self sceneObjects])
+	{
+		[sprite setSpriteType:spriteType];
+	}
+	
 	[[self spriteTypeTabView] selectTabViewItemAtIndex:spriteType];
-}
-
-- (IBAction)changeSpritePosition:(id)sender
-{
-	CGFloat x = [[self spriteImagePositionXField] doubleValue];
-	CGFloat y = [[self spriteImagePositionYField] doubleValue];
-	
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	if (editMode == KGCDocumentEditModeNormal)
-	{
-		[sprite setPosition:CGPointMake(x, y)];
-	}
-	else
-	{
-		[sprite setInitialPosition:CGPointMake(x, y)];
-	}
-}
-
-- (IBAction)changeSpriteScale:(id)sender
-{
-	CGFloat scale = [sender doubleValue];
-	
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	if (editMode == KGCDocumentEditModeNormal)
-	{
-		[sprite setScale:scale];
-	}
-	else
-	{
-		[sprite setInitialScale:scale];
-	}
-}
-
-- (IBAction)changeSpriteZOrder:(id)sender
-{
-	NSInteger zOrder = [sender integerValue];
-	
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	if (editMode == KGCDocumentEditModeNormal)
-	{
-		[sprite setZOrder:zOrder];
-	}
-	else
-	{
-		[sprite setInitialZOrder:zOrder];
-	}
-}
-
-- (IBAction)changeSpriteAlpha:(id)sender
-{
-	CGFloat alpha;
-	if (sender == [self spriteOpacitySlider])
-	{
-		alpha = [[self spriteOpacitySlider] doubleValue];
-		[[self spriteOpacityField] setStringValue:[NSString stringWithFormat:@"%.0f", alpha]];
-	}
-	else
-	{
-		alpha = [[self spriteOpacityField] doubleValue];
-		[[self spriteOpacitySlider] setDoubleValue:alpha];
-	}
-	
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	if (editMode == KGCDocumentEditModeNormal)
-	{
-		[sprite setAlpha:alpha / 100.0];
-	}
-	else
-	{
-		[sprite setInitialAlpha:alpha / 100.0];
-	}
 }
 
 - (IBAction)changeSpriteMaxAnswerCount:(id)sender
 {
-	[[self sprite] setMaxAnswerCount:[sender integerValue]];
+	[self setObject:[sender objectValue] forPropertyNamed:@"maxAnswerCount" inArray:[self sceneObjects]];
 }
 
 - (IBAction)addSpriteAnswer:(id)sender
 {
+	NSArray *sceneObjects = [self sceneObjects];
+	BOOL multipleSprites = [sceneObjects count] > 1;
+	if (multipleSprites)
+	{
+		return;
+	}
+	
+	KGCSprite *sprite = sceneObjects[0];
+
 	if (sender == [self spriteAnswerAddButton])
 	{
-		KGCSprite *sprite = [self sprite];
-	
 		NSPopUpButton *spriteAnswerAddPopUp = [self spriteAnswerAddPopUp];
 		[spriteAnswerAddPopUp removeAllItems];
 		[spriteAnswerAddPopUp addItemWithTitle:@""];
@@ -273,17 +147,25 @@
 	{
 		KGCSprite *currentAnswerSprite = _currentAnswerSprites[[sender indexOfSelectedItem] -1];
 		KGCAnswer *answer = [KGCAnswer answerWithIdentifier:[currentAnswerSprite identifier] document:[currentAnswerSprite document]];
-		[[self sprite] addAnswer:answer];
+		[sprite addAnswer:answer];
 		[[self spriteAnswerTableView] reloadData];
 	}
 }
 
 - (IBAction)deleteSpriteAnswer:(id)sender
 {
+	NSArray *sceneObjects = [self sceneObjects];
+	BOOL multipleSprites = [sceneObjects count] > 1;
+	if (multipleSprites)
+	{
+		return;
+	}
+	
+	KGCSprite *sprite = sceneObjects[0];
+
 	NSTableView *spriteAnswerTableView = [self spriteAnswerTableView];
 	NSInteger row = [spriteAnswerTableView selectedRow];
 	
-	KGCSprite *sprite = [self sprite];
 	KGCAnswer *answer = [sprite answers][row];
 	[sprite removeAnswer:answer];
 	
@@ -292,12 +174,12 @@
 
 - (IBAction)changeMaxGroupItems:(id)sender
 {
-	[[self sprite] setMaxGroupItems:[sender integerValue]];
+	[self setObject:[sender objectValue] forPropertyNamed:@"maxGroupItems" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changeGroupName:(id)sender
 {
-	[[self sprite] setGroupName:[sender stringValue]];
+	[self setObject:[sender stringValue] forPropertyNamed:@"groupName" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changePoints:(id)sender
@@ -324,15 +206,33 @@
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-	return [[[self sprite] answers] count];
+	NSArray *sceneObjects = [self sceneObjects];
+	BOOL multipleSprites = [sceneObjects count] > 1;
+	if (multipleSprites)
+	{
+		return 0;
+	}
+	
+	KGCSprite *sprite = sceneObjects[0];
+
+	return [[sprite answers] count];
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	KGCAnswer *answer = [[self sprite] answers][row];
+	NSArray *sceneObjects = [self sceneObjects];
+	BOOL multipleSprites = [sceneObjects count] > 1;
+	if (multipleSprites)
+	{
+		return nil;
+	}
+	
+	KGCSprite *sprite = sceneObjects[0];
+
+	KGCAnswer *answer = [sprite answers][row];
 	NSString *name = @"Unknown";
 	
-	KGCScene *scene = (KGCScene *)[[self sprite] parentObject];
+	KGCScene *scene = (KGCScene *)[sprite parentObject];
 	for (KGCSprite *sprite in [scene sprites])
 	{
 		if ([[sprite identifier] isEqualToString:[answer answerIdentifier]])
@@ -378,80 +278,26 @@
 
 - (id <NSPasteboardWriting>)tableView:(NSTableView *)tableView pasteboardWriterForRow:(NSInteger)row
 {	
-		// Support for us being a dragging source	
-		return nil;
-}
-
-#pragma mark - File Drop View Delegate Methods
-
-- (void)fileDropView:(KGCFileDropView *)fileDropView droppedFileWithPaths:(NSArray *)filePaths
-{
-	if ([filePaths count] > 0)
-	{
-		NSURL *url = [[NSURL alloc] initFileURLWithPath:filePaths[0]];
-		
-		KGCSprite *sprite = [self sprite];
-		BOOL normalImage = [[self spriteImageTypePopUp] indexOfSelectedItem] == 0;
-		if (normalImage)
-		{
-			[sprite setImageURL:url];
-		}
-		else
-		{
-			[sprite setBackgroundImageURL:url];
-		}
-		
-		NSString *spriteImageName = normalImage ? [sprite imageName] : [sprite backgroundImageName];
-		[[self spriteImageNameLabel] setStringValue:spriteImageName ? spriteImageName : NSLocalizedString(@"None", nil)];
-	}
+	// Support for us being a dragging source	
+	return nil;
 }
 
 #pragma mark - Convenient Methods
 
-- (KGCSprite *)sprite
-{
-	return (KGCSprite *)[self sceneObject];
-}
-
-- (void)updatePosition:(NSNotification *)notification
-{
-	KGCSprite *sprite = [self sprite];
-	CGPoint position = [sprite position];
-
-	[[self spriteImagePositionXField] setDoubleValue:position.x];
-	[[self spriteImagePositionYField] setDoubleValue:position.y];
-}
-
-- (void)updateVisualProperties
-{
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	BOOL normalMode = (editMode == KGCDocumentEditModeNormal);
-	
-	CGPoint position = normalMode ? [sprite position] : [sprite initialPosition];
-	[[self spriteImagePositionXField] setDoubleValue:position.x];
-	[[self spriteImagePositionYField] setDoubleValue:position.y];
-	
-	[[self spriteScaleField] setDoubleValue:normalMode ? [sprite scale] : [sprite initialScale]];
-	[[self spriteZOrderField] setIntegerValue:normalMode ? [sprite zOrder] : [sprite initialZOrder]];
-	
-	NSWindow *window = [[self view] window];
-	NSEvent *currentEvent = [window currentEvent];
-	if ([currentEvent type] != NSLeftMouseDragged && [window isKeyWindow])
-	{
-		CGFloat alpha = (normalMode ? [sprite alpha] : [sprite initialAlpha]) * 100.0;
-		[[self spriteOpacityField] setDoubleValue:alpha];
-		[[self spriteOpacitySlider] setDoubleValue:alpha];
-	}
-}
-
 - (KGCAnswer *)currentAnswer
-{	
+{
+	NSArray *sceneObjects = [self sceneObjects];
+	BOOL multipleSprites = [sceneObjects count] > 1;
+	if (multipleSprites)
+	{
+		return nil;
+	}
+
 	NSUInteger row = [[self spriteAnswerTableView] selectedRow];
 	
 	if (row != -1)
 	{
-		return [[self sprite] answers][row];
+		return [sceneObjects[0] answers][row];
 	}
 	
 	return nil;

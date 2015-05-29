@@ -16,6 +16,7 @@
 @property (nonatomic, weak) IBOutlet KGCFileDropView *spriteDropField;
 @property (nonatomic, weak) IBOutlet NSImageView *spriteIconView;
 @property (nonatomic, weak) IBOutlet NSTextField *spriteImageNameLabel;
+@property (nonatomic, weak) IBOutlet NSButton *spriteImageClearButton;
 @property (nonatomic, weak) IBOutlet NSPopUpButton *spriteImageTypePopUp;
 @property (nonatomic, weak) IBOutlet NSTextField *spriteImagePositionXField;
 @property (nonatomic, weak) IBOutlet NSTextField *spriteImagePositionYField;
@@ -37,30 +38,59 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers
 {
-	[super setupWithSceneLayer:sceneLayer];
+	[super setupWithSceneLayers:sceneLayers];
 	
-	KGCSprite *sprite = [self sprite];
-		
-	[[self spriteNameField] setStringValue:[sprite name]];
+	NSTextField *spriteNameField = [self spriteNameField];
+	NSArray *sceneObjects = [self sceneObjects];
+	if ([sceneObjects count] == 1)
+	{
+		[spriteNameField setStringValue:[(KGCSprite *)[self sceneObjects][0] name]];
+		[spriteNameField setEnabled:YES];
+	}
+	else
+	{
+		[spriteNameField setStringValue:NSLocalizedString(@"<Multiple Items Selected>", nil)];
+		[spriteNameField setEnabled:NO];
+	}
 	
 	NSInteger lastSpriteImageType = [[NSUserDefaults standardUserDefaults] integerForKey:@"KGCInspectorLastSelectedSpriteImageType"];
 	[[self spriteImageTypePopUp] selectItemAtIndex:lastSpriteImageType];
 	
-	NSString *spriteImageName = lastSpriteImageType == 0 ? [sprite imageName] : [sprite backgroundImageName];
-	[[self spriteImageNameLabel] setStringValue:spriteImageName ? spriteImageName : NSLocalizedString(@"None", nil)];
+	NSString *imageName = [self imageName];
+	[[self spriteImageNameLabel] setStringValue:imageName ? imageName : NSLocalizedString(@"None", nil)];
+	[[self spriteImageClearButton] setHidden:imageName == nil];
 	
-	NSPoint position = [sprite position];
-	[[self spriteImagePositionXField] setDoubleValue:position.x];
-	[[self spriteImagePositionYField] setDoubleValue:position.y];
+	[self updatePosition:nil];
 	
-	[[self spriteScaleField] setDoubleValue:[sprite scale]];
-	[[self spriteZOrderField] setIntegerValue:[sprite zOrder]];
-	[[self spriteOpacityField] setDoubleValue:[sprite alpha] * 100.0];
-	[[self spriteOpacitySlider] setDoubleValue:[sprite alpha] * 100.0];
-	[[self spriteDraggableCheckBox] setState:[sprite isDraggable]];
-	[[self spriteInteractionDisabledCheckBox] setState:[sprite isInteractionDisabled]];
+	BOOL normalEditMode = [[[self sceneObjects][0] document] editMode] == KGCDocumentEditModeNormal;
+	
+	NSArray *properties = @[normalEditMode ? @"scale" : @"initialScale", normalEditMode ? @"zOrder" : @"initialZOrder", normalEditMode ? @"alpha" : @"initialAlpha"];
+	NSArray *textFields = @[[self spriteScaleField], [self spriteZOrderField], [self spriteOpacityField]];
+	for (NSInteger i = 0; i < [properties count]; i ++)
+	{
+		NSString *propertyName = properties[i];
+		NSTextField *textField = textFields[i];
+		id object = [self objectForPropertyNamed:propertyName inArray:[self sceneObjects]];
+		[self setObjectValue:object inTextField:textField];
+	}
+	
+	if ([self spriteDraggableCheckBox] && [self spriteInteractionDisabledCheckBox])
+	{
+		properties = @[@"draggable", @"interactionDisabled"];
+		NSArray *checkBoxes = @[[self spriteDraggableCheckBox], [self spriteInteractionDisabledCheckBox]];
+		for (NSInteger i = 0; i < [properties count]; i ++)
+		{
+			NSString *propertyName = properties[i];
+			NSButton *checkBox = checkBoxes[i];
+			id object = [self objectForPropertyNamed:propertyName inArray:[self sceneObjects]];
+			[self setObjectValue:object inCheckBox:checkBox];
+		}
+	}
+	
+	id object = [self objectForPropertyNamed:@"alpha" inArray:[self sceneObjects]];
+	[[self spriteOpacitySlider] setDoubleValue:object ? [object doubleValue] * 100.0 : 0.0];
 }
 
 - (void)awakeFromNib
@@ -78,7 +108,16 @@
 
 - (IBAction)changeSpriteIdentifier:(id)sender
 {
-	[[self sprite] setName:[sender stringValue]];
+	[(KGCSprite *)[self sceneObjects][0] setName:[sender stringValue]];
+}
+
+- (IBAction)removeSpriteImage:(id)sender
+{
+	BOOL normalImage = [[self spriteImageTypePopUp] indexOfSelectedItem] == 0;
+	SEL selector = normalImage ? @selector(clearImage) : @selector(clearBackgroundImage);
+	[[self sceneObjects] makeObjectsPerformSelector:selector];
+	[[self spriteImageNameLabel] setStringValue:NSLocalizedString(@"None", nil)];
+	[[self spriteImageClearButton] setHidden:YES];
 }
 
 - (IBAction)chooseSpriteImage:(id)sender
@@ -89,19 +128,11 @@
 	{
 		if (returnCode == NSOKButton)
 		{
-			KGCSprite *sprite = [self sprite];
-			BOOL normalImage = [[self spriteImageTypePopUp] indexOfSelectedItem] == 0;
-			if (normalImage)
-			{
-				[sprite setImageURL:[openPanel URL]];
-			}
-			else
-			{
-				[sprite setBackgroundImageURL:[openPanel URL]];
-			}
+			[self setImageAtURL:[openPanel URL]];
 			
-			NSString *spriteImageName = normalImage ? [sprite imageName] : [sprite backgroundImageName];
-			[[self spriteImageNameLabel] setStringValue:spriteImageName ? spriteImageName : NSLocalizedString(@"None", nil)];
+			NSString *imageName = [self imageName];
+			[[self spriteImageNameLabel] setStringValue:imageName ? imageName : NSLocalizedString(@"None", nil)];
+			[[self spriteImageClearButton] setHidden:imageName == nil];
 		}
 	}];
 }
@@ -110,59 +141,34 @@
 {
 	NSUInteger index = [sender indexOfSelectedItem];
 	[[NSUserDefaults standardUserDefaults] setInteger:index forKey:@"KGCInspectorLastSelectedSpriteImageType"];
-
-	KGCSprite *sprite = [self sprite];
-	NSString *spriteImageName = index == 0 ? [sprite imageName] : [sprite backgroundImageName];
-	[[self spriteImageNameLabel] setStringValue:spriteImageName ? spriteImageName : NSLocalizedString(@"None", nil)];
+	
+	NSString *imageName = [self imageName];
+	[[self spriteImageNameLabel] setStringValue:imageName ? imageName : NSLocalizedString(@"None", nil)];
+	[[self spriteImageClearButton] setHidden:imageName == nil];
 }
 
 - (IBAction)changeSpritePosition:(id)sender
 {
-	CGFloat x = [[self spriteImagePositionXField] doubleValue];
-	CGFloat y = [[self spriteImagePositionYField] doubleValue];
-	
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	if (editMode == KGCDocumentEditModeNormal)
+	if (sender == [self spriteImagePositionXField])
 	{
-		[sprite setPosition:CGPointMake(x, y)];
+		[self setPositionX:[sender doubleValue]];
 	}
-	else
+	else if (sender == [self spriteImagePositionYField])
 	{
-		[sprite setInitialPosition:CGPointMake(x, y)];
+		[self setPositionY:[sender doubleValue]];
 	}
 }
 
 - (IBAction)changeSpriteScale:(id)sender
 {
-	CGFloat scale = [sender doubleValue];
-	
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	if (editMode == KGCDocumentEditModeNormal)
-	{
-		[sprite setScale:scale];
-	}
-	else
-	{
-		[sprite setInitialScale:scale];
-	}
+	BOOL normalEditMode = [[[self sceneObjects][0] document] editMode] == KGCDocumentEditModeNormal;
+	[self setObject:[sender objectValue] forPropertyNamed:normalEditMode ? @"scale" : @"initialScale" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changeSpriteZOrder:(id)sender
 {
-	NSInteger zOrder = [sender integerValue];
-	
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	if (editMode == KGCDocumentEditModeNormal)
-	{
-		[sprite setZOrder:zOrder];
-	}
-	else
-	{
-		[sprite setInitialZOrder:zOrder];
-	}
+	BOOL normalEditMode = [[[self sceneObjects][0] document] editMode] == KGCDocumentEditModeNormal;
+	[self setObject:[sender objectValue] forPropertyNamed:normalEditMode ? @"zOrder" : @"initialZOrder" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changeSpriteAlpha:(id)sender
@@ -179,31 +185,23 @@
 		[[self spriteOpacitySlider] setDoubleValue:alpha];
 	}
 	
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	if (editMode == KGCDocumentEditModeNormal)
-	{
-		[sprite setAlpha:alpha / 100.0];
-	}
-	else
-	{
-		[sprite setInitialAlpha:alpha / 100.0];
-	}
+	BOOL normalEditMode = [[[self sceneObjects][0] document] editMode] == KGCDocumentEditModeNormal;
+	[self setObject:@(alpha / 100.0) forPropertyNamed:normalEditMode ? @"alpha" : @"initialAlpha" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changeMaxLinks:(id)sender
 {
-	[[self sprite] setMaxLinks:[sender integerValue]];
+	[self setObject:[sender objectValue] forPropertyNamed:@"maxLinks" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changeDraggable:(id)sender
 {
-	[[self sprite] setDraggable:[sender integerValue]];
+	[self setObject:[sender objectValue] forPropertyNamed:@"draggable" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changeInteractionDisable:(id)sender
 {
-	[[self sprite] setInteractionDisabled:[sender integerValue]];
+	[self setObject:[sender objectValue] forPropertyNamed:@"interactionDisabled" inArray:[self sceneObjects]];
 }
 
 #pragma mark - File Drop View Delegate Methods
@@ -213,36 +211,180 @@
 	if ([filePaths count] > 0)
 	{
 		NSURL *url = [[NSURL alloc] initFileURLWithPath:filePaths[0]];
+		[self setImageAtURL:url];
 		
-		KGCSprite *sprite = [self sprite];
-		BOOL normalImage = [[self spriteImageTypePopUp] indexOfSelectedItem] == 0;
-		if (normalImage)
+		NSString *imageName = [self imageName];
+		[[self spriteImageNameLabel] setStringValue:imageName ? imageName : NSLocalizedString(@"None", nil)];
+	}
+}
+
+#pragma mark - Multi getter/setter methods
+
+- (NSString *)imageName
+{
+	BOOL normalImage = [[self spriteImageTypePopUp] indexOfSelectedItem] == 0;
+	NSString *propertyName = normalImage ? @"imageName" : @"backgroundImageName";
+
+	NSArray *sceneObjects = [self sceneObjects];
+	if ([sceneObjects count] == 1)
+	{
+		return [(KGCSprite *)sceneObjects[0] valueForKey:propertyName];
+	}
+
+	NSString *imageName;
+	for (KGCSprite *sprite in sceneObjects)
+	{
+		if (!imageName)
 		{
-			[sprite setImageURL:url];
+			imageName = [sprite valueForKey:propertyName];
+		}
+		
+		if (![imageName isEqualToString:[sprite valueForKey:propertyName]])
+		{
+			return nil;
+		}
+	}
+	
+	return imageName;
+}
+
+- (void)setImageAtURL:(NSURL *)imageURL
+{
+	BOOL normalImage = [[self spriteImageTypePopUp] indexOfSelectedItem] == 0;
+	SEL selector = normalImage ? @selector(setImageAtURL:) : @selector(setBackgroundImageURL:);
+	[[self sceneObjects] makeObjectsPerformSelector:selector withObject:imageURL];
+}
+
+- (NSPoint)positionGlobalXPosition:(BOOL *)globalXPosition globalYPosition:(BOOL *)globalYPosition
+{
+	*globalXPosition = YES;
+	*globalYPosition = YES;
+
+	BOOL normalEditMode = [[[self sceneObjects][0] document] editMode] == KGCDocumentEditModeNormal;
+	NSString *propertyName = normalEditMode ? @"position" : @"initialPosition";
+
+	NSArray *sceneObjects = [self sceneObjects];
+	if ([sceneObjects count] == 1)
+	{
+		return [[(KGCSprite *)sceneObjects[0] valueForKey:propertyName] pointValue];
+	}
+	
+	BOOL firstCheck = YES;
+	BOOL wrongX = NO;
+	BOOL wrongY = NO;
+	NSPoint point = NSZeroPoint;
+	for (KGCSprite *sprite in sceneObjects)
+	{
+		if (firstCheck)
+		{
+			firstCheck = NO;
+			point = [[sprite valueForKey:propertyName] pointValue];
 		}
 		else
 		{
-			[sprite setBackgroundImageURL:url];
+			NSPoint position = [[sprite valueForKey:propertyName] pointValue];
+			if (!wrongX && (position.x != point.x))
+			{
+				wrongX = YES;
+				*globalXPosition = NO;
+			}
+			if (!wrongY && (position.y != point.y))
+			{
+				wrongY = YES;
+				*globalYPosition = NO;
+			}
+			
+			if (wrongX && wrongY)
+			{
+				return NSZeroPoint;
+			}
 		}
-		
-		NSString *spriteImageName = normalImage ? [sprite imageName] : [sprite backgroundImageName];
-		[[self spriteImageNameLabel] setStringValue:spriteImageName ? spriteImageName : NSLocalizedString(@"None", nil)];
+	}
+	
+	return point;
+}
+
+- (void)setPositionX:(CGFloat)x
+{
+	BOOL normalEditMode = [[[self sceneObjects][0] document] editMode] == KGCDocumentEditModeNormal;
+	NSString *propertyName = normalEditMode ? @"position" : @"initialPosition";
+
+	for (KGCSprite *sprite in [self sceneObjects])
+	{
+		NSPoint position = [sprite position];
+		position.x = x;
+		[sprite setValue:[NSValue valueWithPoint:position] forKey:propertyName];
+	}
+}
+
+- (void)setPositionY:(CGFloat)y
+{
+	BOOL normalEditMode = [[[self sceneObjects][0] document] editMode] == KGCDocumentEditModeNormal;
+	NSString *propertyName = normalEditMode ? @"position" : @"initialPosition";
+
+	for (KGCSprite *sprite in [self sceneObjects])
+	{
+		NSPoint position = [sprite position];
+		position.y = y;
+		[sprite setValue:[NSValue valueWithPoint:position] forKey:propertyName];
 	}
 }
 
 #pragma mark - Convenient Methods
 
-- (KGCSprite *)sprite
-{
-	return (KGCSprite *)[self sceneObject];
-}
-
 - (void)updatePosition:(NSNotification *)notification
 {
-	CGPoint position = [[self sprite] position];
+	BOOL globalXPosition, globalYPosition;
+	NSPoint position = [self positionGlobalXPosition:&globalXPosition globalYPosition:&globalYPosition];
+	
+	NSTextField *spriteImagePositionXField = [self spriteImagePositionXField];
+	if (globalXPosition)
+	{
+		[spriteImagePositionXField setDoubleValue:position.x];
+	}
+	else
+	{
+		[spriteImagePositionXField setStringValue:@"--"];
+	}
+	
+	NSTextField *spriteImagePositionYField = [self spriteImagePositionYField];
+	if (globalYPosition)
+	{
+		[spriteImagePositionYField setDoubleValue:position.y];
+	}
+	else
+	{
+		[spriteImagePositionYField setStringValue:@"--"];
+	}
+}
 
+// Is this needed
+
+/*
+
+- (void)updateVisualProperties
+{
+	KGCSprite *sprite = [self sprite];
+	KGCDocumentEditMode editMode = [[sprite document] editMode];
+	BOOL normalMode = (editMode == KGCDocumentEditModeNormal);
+	
+	CGPoint position = normalMode ? [sprite position] : [sprite initialPosition];
 	[[self spriteImagePositionXField] setDoubleValue:position.x];
 	[[self spriteImagePositionYField] setDoubleValue:position.y];
+	
+	[[self spriteScaleField] setDoubleValue:normalMode ? [sprite scale] : [sprite initialScale]];
+	[[self spriteZOrderField] setIntegerValue:normalMode ? [sprite zOrder] : [sprite initialZOrder]];
+	
+	NSWindow *window = [[self view] window];
+	NSEvent *currentEvent = [window currentEvent];
+	if ([currentEvent type] != NSLeftMouseDragged && [window isKeyWindow])
+	{
+		CGFloat alpha = (normalMode ? [sprite alpha] : [sprite initialAlpha]) * 100.0;
+		[[self spriteOpacityField] setDoubleValue:alpha];
+		[[self spriteOpacitySlider] setDoubleValue:alpha];
+	}
 }
+
+*/
 
 @end

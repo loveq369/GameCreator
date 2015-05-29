@@ -49,9 +49,9 @@
 
 #pragma mark - Main Methods
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers
 {
-	[super setupWithSceneLayer:sceneLayer];
+	[super setupWithSceneLayers:sceneLayers];
 	
 	[[self eventsTableView] reloadData];
 	[self updateCurrentEvent];
@@ -66,14 +66,18 @@
 
 - (IBAction)eventAdd:(id)sender
 {
-	KGCEvent *event = [KGCEvent newEventWithDocument:[[self sceneObject] document]];
+	NSArray *sceneObjects = [self sceneObjects];
+
+	KGCEvent *event = [KGCEvent newEventWithDocument:[sceneObjects[0] document]];
 	
-	KGCSceneObject *sceneObject = [self sceneObject];
-	[sceneObject addEvent:event];
+	for (KGCSceneObject *sceneObject in sceneObjects)
+	{
+		[sceneObject addEvent:event];
+	}
 	
 	NSTableView *eventsTableView = [self eventsTableView];
 	[eventsTableView reloadData];
-	NSArray *events = [sceneObject events];
+	NSArray *events = [self events];
 	NSInteger newRow = [events count] - 1;
 	[eventsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:newRow] byExtendingSelection:NO];
 	[eventsTableView editColumn:0 row:newRow withEvent:nil select:YES];
@@ -104,8 +108,10 @@
 	KGCEvent *event = [self currentEvent];	
 	if (event)
 	{
-		KGCSceneObject *sceneObject = [self sceneObject];
-		[sceneObject removeEvent:event];
+		for (KGCSceneObject *sceneObject in [self sceneObjects])
+		{
+			[sceneObject removeEvent:event];
+		}
 		
 		NSTableView *eventsTableView = [self eventsTableView];
 		[eventsTableView deselectAll:nil];
@@ -130,7 +136,7 @@
 		if (type != KGCTemplateActionTypeNone)
 		{
 			KGCEvent *event = [self currentEvent];
-			KGCTemplateAction *newAction = [KGCTemplateAction newActionWithType:type document:[[self sceneObject] document]];
+			KGCTemplateAction *newAction = [KGCTemplateAction newActionWithType:type document:[[self sceneObjects][0] document]];
 			[event addTemplateAction:newAction];
 			[[self eventsActionTableView] reloadData];
 		}
@@ -169,7 +175,7 @@
 {
 	if (tableView == [self eventsTableView])
 	{
-		return [[[self sceneObject] events] count];
+		return [[self events] count];
 	}
 	else if (tableView == [self eventsActionTableView])
 	{
@@ -246,7 +252,7 @@
 		return nil;
 	}
 	
-	return [[self sceneObject] events][row];
+	return [self events][row];
 }
 
 - (void)updateCurrentEvent
@@ -361,7 +367,7 @@
 	
 	[[self delayField] setDoubleValue:[templateAction delay]];
 	
-	NSView *actionInfoView = (NSView *)[templateAction infoViewForLayer:[self sceneLayer]];
+	NSView *actionInfoView = (NSView *)[templateAction infoViewForLayers:[self sceneLayers]];
 	NSRect eventsActionSettingsViewFrame = [eventsActionSettingsView frame];
 	if (actionInfoView)
 	{
@@ -391,6 +397,47 @@
 		KGCTemplateAction *templateAction = templateActions[row];
 		
 		return templateAction;
+	}
+	
+	return nil;
+}
+
+- (NSArray *)events
+{
+	NSArray *sceneObjects = [self sceneObjects];
+	if ([sceneObjects count] == 1)
+	{
+		return [(KGCSceneObject *)sceneObjects[0] events];
+	}
+	else
+	{
+		NSMutableArray *events;
+		for (KGCSceneObject *sceneObject in [self sceneObjects])
+		{
+			if (events)
+			{
+				for (KGCEvent *event in [events copy])
+				{
+					BOOL keepAction = NO;
+					for (KGCEvent *otherEvent in [sceneObject events])
+					{
+						if (event == otherEvent)
+						{
+							keepAction = YES;
+						}
+					}
+					
+					if (!keepAction)
+					{
+						[events removeObject:event];
+					}
+				}
+			}
+			else
+			{
+				events = [[NSMutableArray alloc] initWithArray:[sceneObject events]];
+			}
+		}
 	}
 	
 	return nil;

@@ -14,7 +14,10 @@
 + (instancetype)layerWithImage:(NSImage *)image
 {
 	KGCImageLayer *layer = [KGCImageLayer layer];
+	[CATransaction begin];
+	[CATransaction setAnimationDuration:0.0];
 	[layer setImage:image];
+	[CATransaction commit];
 	
 	return layer;
 }

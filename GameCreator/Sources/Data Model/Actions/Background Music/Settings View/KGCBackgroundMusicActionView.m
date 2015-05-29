@@ -34,9 +34,9 @@
 	[[self iconImageView] setImage:[[NSWorkspace sharedWorkspace] iconForFileType:@"mp3"]];
 }
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer withSettingsObject:(id)object
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers withSettingsObject:(id)object
 {
-	[super setupWithSceneLayer:sceneLayer withSettingsObject:object];
+	[super setupWithSceneLayers:sceneLayers withSettingsObject:object];
 	
 	_action = object;
 	[[self nameField] setStringValue:[_action audioName]];
@@ -62,7 +62,7 @@
 	{
 		[[self playButton] setTitle:@"Stop"];
 	
-		KGCResourceController *resourceController = [[self sceneLayer] resourceController];
+		KGCResourceController *resourceController = [[self sceneLayers][0] resourceController];
 		NSData *data = [resourceController audioDataForName:[_action audioName]];
 		_audioPlayer = [[AVAudioPlayer alloc] initWithData:data error:nil];
 		[_audioPlayer setDelegate:self];

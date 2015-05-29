@@ -24,9 +24,9 @@
 	KGCCombinedAction *_action;
 }
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer withSettingsObject:(id)object
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers withSettingsObject:(id)object
 {
-	[super setupWithSceneLayer:sceneLayer withSettingsObject:object];
+	[super setupWithSceneLayers:sceneLayers withSettingsObject:object];
 	
 	_action = object;
 	
@@ -42,7 +42,7 @@
 	[addPopupButton addItemWithTitle:@""];
 	
 	NSArray *actions = [_action actions];
-	NSArray *spriteActions = [[self sceneObject] actions];
+	NSArray *spriteActions = [self actions];
 	for (KGCAction *action in spriteActions)
 	{
 		if (![actions containsObject:action] && action != _action)
@@ -110,6 +110,47 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
 
+}
+
+- (NSArray *)actions
+{
+	NSArray *sceneObjects = [self sceneObjects];
+	if ([sceneObjects count] == 1)
+	{
+		return [(KGCSceneObject *)sceneObjects[0] actions];
+	}
+	else
+	{
+		NSMutableArray *actions;
+		for (KGCSceneObject *sceneObject in [self sceneObjects])
+		{
+			if (actions)
+			{
+				for (KGCAction *action in [actions copy])
+				{
+					BOOL keepAction = NO;
+					for (KGCAction *otherAction in [sceneObject actions])
+					{
+						if (action == otherAction)
+						{
+							keepAction = YES;
+						}
+					}
+					
+					if (!keepAction)
+					{
+						[actions removeObject:action];
+					}
+				}
+			}
+			else
+			{
+				actions = [[NSMutableArray alloc] initWithArray:[sceneObject actions]];
+			}
+		}
+	}
+	
+	return nil;
 }
 
 @end

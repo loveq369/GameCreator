@@ -9,35 +9,20 @@
 #import "KGCDADSceneController.h"
 #import "KGCDADInspector.h"
 #import "KGCSceneLayer.h"
-#import "KGCFileDropView.h"
 #import "KGCSceneContentView.h"
 #import "KGCScene.h"
-#import <AVFoundation/AVFoundation.h>
 
-@interface KGCDADSceneController () <KGCFileDropViewDelegate, AVAudioPlayerDelegate>
+@interface KGCDADSceneController ()
 
-@property (nonatomic, weak) IBOutlet KGCFileDropView *sceneDropField;
-@property (nonatomic, weak) IBOutlet NSImageView *sceneIconView;
-@property (nonatomic, weak) IBOutlet NSTextField *sceneImageNameLabel;
 @property (nonatomic, weak) IBOutlet NSTextField *sceneRequiredPointsField;
 @property (nonatomic, weak) IBOutlet NSButton *sceneRequireConfirmationButton;
-
-@property (nonatomic, weak) IBOutlet NSPopUpButton *soundTypePopUp;
-@property (nonatomic, weak) IBOutlet NSTableView *soundTableView;
-@property (nonatomic, weak) IBOutlet NSButton *soundPlayButton;
-
-@property (nonatomic, weak) IBOutlet NSTabView *settingsTabView;
 @property (nonatomic, weak) IBOutlet NSTextField *noInteractionDelayField;
-
 @property (nonatomic, weak) IBOutlet NSButton *disableConfirmInteractionButton;
 @property (nonatomic, weak) IBOutlet NSButton *autoMoveBackWrongAnswersButton;
 
 @end
 
 @implementation KGCDADSceneController
-{
-	AVAudioPlayer *_audioPlayer;
-}
 
 #pragma mark - Initial Methods
 
@@ -45,227 +30,74 @@
 {
 	[super awakeFromNib];
 	
-	NSImage *pngIconImage = [[NSWorkspace sharedWorkspace] iconForFileType:@"png"];
-	[[self sceneIconView] setImage:pngIconImage];
-	
-	[[self soundPlayButton] setEnabled:NO];
-	[[self settingsTabView] setHidden:YES];
-	
 	[[self autoMoveBackWrongAnswersButton] setState:NSOffState];
 }
 
 #pragma mark - Main Methods
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers
 {
-	[super setupWithSceneLayer:sceneLayer];
+	[super setupWithSceneLayers:sceneLayers];
 	
-	KGCScene *scene = [self scene];
-	
-	NSString *displayName = @"None";
-	NSString *imageName = [scene imageName];
-	if (imageName)
+	NSNumber *requiredPoints = [self objectForPropertyNamed:@"requiredPoints" inArray:[self sceneObjects]];
+	[self setObjectValue:requiredPoints inTextField:[self sceneRequiredPointsField]];
+		
+	NSArray *properties = @[@"requireConfirmation", @"disableConfirmInteraction", @"autoMoveBackWrongAnswers"];
+	NSArray *checkBoxes = @[[self sceneRequireConfirmationButton], [self disableConfirmInteractionButton], [self autoMoveBackWrongAnswersButton]];
+	for (NSInteger i = 0; i < [properties count]; i ++)
 	{
-		displayName = imageName;
+		NSString *propertyName = properties[i];
+		NSButton *checkBox = checkBoxes[i];
+		id object = [self objectForPropertyNamed:propertyName inArray:[self sceneObjects]];
+		[self setObjectValue:object inCheckBox:checkBox];
 	}
-	
-	[[self sceneImageNameLabel] setStringValue:displayName];
-	[[self sceneRequiredPointsField] setIntegerValue:[scene requiredPoints]];
-	[[self sceneRequireConfirmationButton] setState:[scene requireConfirmation]];
-	
-	NSInteger index = [[NSUserDefaults standardUserDefaults] integerForKey:@"KGCGameSceneSelectedSoundType"];
-	NSPopUpButton *soundTypePopUp = [self soundTypePopUp];
-	[soundTypePopUp selectItemAtIndex:index];
-	
-	[self changeSoundType:soundTypePopUp];
-	[[self soundTableView] reloadData];
-	
-	[[self disableConfirmInteractionButton] setState:[scene isDisableConfirmInteraction]];
-	[[self autoMoveBackWrongAnswersButton] setState:[scene autoMoveBackWrongAnswers]];
 }
 
 #pragma mark - Interface Methods
 
-- (IBAction)chooseSceneImage:(id)sender
-{
-	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-	[openPanel setAllowedFileTypes:@[@"png", @"jpg"]];
-	[openPanel beginSheetModalForWindow:[[self view] window] completionHandler:^ (NSModalResponse returnCode)
-	{
-		if (returnCode == NSOKButton)
-		{
-			KGCScene *scene = [self scene];
-			[scene setImageURL:[openPanel URL]];
-			[[self sceneImageNameLabel] setStringValue:[scene imageName]];
-		}
-	}];
-}
-
 - (IBAction)changeSceneRequiredPoints:(id)sender
 {
-	[[self scene] setRequiredPoints:[sender doubleValue]];
+	[self setObject:[sender objectValue] forPropertyNamed:@"requiredPoints" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changeSceneRequireConfirmation:(id)sender
 {
-	[[self scene] setRequireConfirmation:[sender integerValue]];
-}
-
-- (IBAction)changeSoundType:(id)sender
-{
-	NSInteger index = [sender indexOfSelectedItem];
-	[[self soundTableView] reloadData];
-	
-	[[self settingsTabView] selectTabViewItemAtIndex:index];
-	
-	[[NSUserDefaults standardUserDefaults] setInteger:index forKey:@"KGCGameSceneSelectedSoundType"];
-}
-
-- (IBAction)addSound:(id)sender
-{
-	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-	[openPanel setAllowedFileTypes:@[@"mp3", @"m4a", @"aac"]];
-	[openPanel setAllowsMultipleSelection:YES];
-	[openPanel beginSheetModalForWindow:[[[self sceneObject] document] windowForSheet] completionHandler:^ (NSInteger result)
-	{
-		if (result == NSOKButton)
-		{
-			NSArray *urls = [openPanel URLs];
-			KGCScene *scene = [self scene];
-			NSString *currentSoundKey = [self currentSoundKey];
-			for (NSURL *url in urls)
-			{
-				[scene addSoundAtURL:url forKey:currentSoundKey];
-			}
-			
-			[[self soundTableView] reloadData];
-		}
-	}];
-}
-
-- (IBAction)removeSound:(id)sender
-{
-	NSString *key = [self currentSoundKey];
-	
-	KGCScene *scene = [self scene];
-	NSArray *soundNames = [scene soundsForKey:[self currentSoundKey]];
-	NSTableView *soundTableView = [self soundTableView];
-	NSInteger soundIndex = [soundTableView selectedRow];
-	[scene removeSoundNamed:soundNames[soundIndex] forKey:key];
-	[soundTableView reloadData];
-}
-
-- (IBAction)play:(id)sender
-{
-	KGCScene *scene = [self scene];
-	NSArray *soundNames = [scene soundsForKey:[self currentSoundKey]];
-	NSInteger soundIndex = [[self soundTableView] selectedRow];
-	NSString *soundName = soundNames[soundIndex];
-
-	if (!_audioPlayer)
-	{
-		[sender setTitle:NSLocalizedString(@"Stop", nil)];
-	
-		KGCResourceController *resourceController = [[[self sceneObject] document] resourceController];
-		NSData *data = [resourceController audioDataForName:soundName];
-		_audioPlayer = [[AVAudioPlayer alloc] initWithData:data error:nil];
-		[_audioPlayer setDelegate:self];
-		[_audioPlayer play];
-	}
-	else
-	{
-		[_audioPlayer stop];
-	}
+	[self setObject:[sender objectValue] forPropertyNamed:@"requireConfirmation" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changeNoInteractionDelay:(id)sender
 {
-	NSInteger selectedRow = [[self soundTableView] selectedRow];
-	
-	KGCScene *scene = [self scene];
-	NSMutableDictionary *soundDictionary = [scene soundDictionariesForKey:[self currentSoundKey]][selectedRow];
-	soundDictionary[@"NoInteractionDelay"] = @([sender integerValue]);
-	[scene updateDictionary];
+	[self setObject:[sender objectValue] forPropertyNamed:@"noInteractionDelay" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changeDisableConfirmInteraction:(id)sender
 {
-	[[self scene] setDisableConfirmInteraction:[sender state]];
+	[self setObject:[sender objectValue] forPropertyNamed:@"disableConfirmInteraction" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changeAutoMoveBackAnswers:(id)sender
 {
-	[[self scene] setAutoMoveBackWrongAnswers:[sender state]];
-}
-
-#pragma mark - TableView DataSource Methods
-
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
-{
-	KGCScene *scene = [self scene];
-	NSArray *soundNames = [scene soundsForKey:[self currentSoundKey]];
-
-	return [soundNames count];
-}
-
-- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
-{
-	KGCScene *scene = [self scene];
-	NSArray *soundNames = [scene soundsForKey:[self currentSoundKey]];
-	
-	NSTableCellView *tableCellView = [tableView makeViewWithIdentifier:@"SoundTableCell" owner:nil];
-	[[tableCellView textField] setStringValue:soundNames[row]];
-	
-	return tableCellView;
+	[self setObject:[sender objectValue] forPropertyNamed:@"autoMoveBackWrongNaswers" inArray:[self sceneObjects]];
 }
 
 #pragma mark - TableView Delegate Methods
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
+	[super tableViewSelectionDidChange:notification];
+
 	NSInteger selectedRow = [[self soundTableView] selectedRow];
 	BOOL rowSelected = selectedRow != -1;
-
-	[[self soundPlayButton] setEnabled:rowSelected];
-	
-	NSTabView *settingsTabView = [self settingsTabView];
-	[settingsTabView setHidden:!rowSelected];
 	
 	NSInteger index = [[self soundTypePopUp] indexOfSelectedItem];
 	if (rowSelected && index == 6)
 	{
-		KGCScene *scene = [self scene];
-		NSMutableDictionary *soundDictionary = [scene soundDictionariesForKey:[self currentSoundKey]][selectedRow];
-		[[self noInteractionDelayField] setIntegerValue:[soundDictionary[@"NoInteractionDelay"] integerValue]];
+		NSNumber *noInteractionDelay = [self noInteractionDelay];
+		[self setObjectValue:noInteractionDelay inTextField:[self noInteractionDelayField]];
 	}
 }
 
-#pragma mark - File Drop View Delegate Methods
-
-- (void)fileDropView:(KGCFileDropView *)fileDropView droppedFileWithPaths:(NSArray *)filePaths
-{
-	if ([filePaths count] > 0)
-	{
-		NSURL *url = [[NSURL alloc] initFileURLWithPath:filePaths[0]];
-		KGCScene *scene = [self scene];
-		
-		if (fileDropView == [self sceneDropField])
-		{
-			[scene setImageURL:url];
-			[[self sceneImageNameLabel] setStringValue:[scene imageName]];
-		}
-	}
-}
-
-#pragma mark - AudioPLayer Delegate Methods
-
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
-{
-	[[self soundPlayButton] setTitle:NSLocalizedString(@"Play", nil)];
-	_audioPlayer = nil;
-}
-
-#pragma mark - Convenient Methods
+#pragma mark - Subclass Methods
 
 - (NSString *)currentSoundKey
 {
@@ -274,14 +106,72 @@
 	return soundKeys[index];
 }
 
-- (KGCSceneContentView *)sceneContentView
+- (NSString *)soundPopupSaveKey
 {
-	return [[self sceneLayer] sceneContentView];
+	return @"KGCGameSceneSelectedSoundType";
 }
 
-- (KGCScene *)scene
+#pragma mark - Convenient Methods
+
+- (void)setCurrentNoInteractionDelay:(NSTimeInterval)delay
 {
-	return (KGCScene *)[self sceneObject];
+	NSInteger selectedRow = [[self soundTableView] selectedRow];
+	
+	if (selectedRow == -1)
+	{
+		return;
+	}
+	
+	NSDictionary *soundDictionary = [self sounds][selectedRow];
+	for (KGCScene *scene in [self sceneObjects])
+	{
+		for (NSMutableDictionary *otherSoundDictionary in [scene soundDictionariesForKey:[self currentSoundKey]])
+		{
+			if ([otherSoundDictionary[@"_id"] isEqualToString:soundDictionary[@"_id"]])
+			{
+				otherSoundDictionary[@"NoInteractionDelay"] = @(delay);
+				[scene updateDictionary];
+			}
+		}
+	}
+}
+
+- (NSNumber *)noInteractionDelay
+{
+	NSInteger selectedRow = [[self soundTableView] selectedRow];
+	
+	if (selectedRow == -1)
+	{
+		return @(0);
+	}
+	
+	NSDictionary *soundDictionary = [self sounds][selectedRow];
+	NSTimeInterval interactionDelay = 0.0;
+	BOOL firstCheck = YES;
+	for (KGCScene *scene in [self sceneObjects])
+	{
+		for (NSMutableDictionary *dictionary in [scene soundDictionariesForKey:[self currentSoundKey]])
+		{
+			if ([soundDictionary[@"_id"] isEqualToString:dictionary[@"_id"]])
+			{
+				if (firstCheck)
+				{
+					firstCheck = NO;
+					interactionDelay = [dictionary[@"NoInteractionDelay"] doubleValue];
+				}
+				else
+				{
+					NSTimeInterval otherInteractionDelay = [dictionary[@"NoInteractionDelay"] doubleValue];
+					if (otherInteractionDelay != interactionDelay)
+					{
+						return nil;
+					}
+				}
+			}
+		}
+	}
+	
+	return @(interactionDelay);
 }
 
 @end

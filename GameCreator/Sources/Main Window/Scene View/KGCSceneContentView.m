@@ -108,7 +108,11 @@
 	{
 		KGCResourceController *resourceController = [[self document] resourceController];
 		NSImage *backgroundImage = [resourceController imageNamed:imageName];
+		
+		[CATransaction begin];
+		[CATransaction setAnimationDuration:0.0];
 		[contentLayer setImage:backgroundImage];
+		[CATransaction commit];
 	}
 	else
 	{
@@ -544,14 +548,7 @@
 		if (sceneImage)
 		{
 			[sceneImage setSize:NSMakeSize(160.0, 120.0)];
-			
-			[sceneImage lockFocus] ;
-			NSBitmapImageRep *bitmapRep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0.0, 0.0, [sceneImage size].width, [sceneImage size].height)] ;
-			[sceneImage unlockFocus] ;
-			
-			NSData *data = [bitmapRep representationUsingType:NSJPEGFileType properties: nil];
-			[[self scene] dictionary][@"ThumbnailImage"] = [data base64EncodedStringWithOptions:0];
-			
+			[[self scene] setThumbnailImage:sceneImage];
 			[[self document] reloadScenes];
 		}
 	}

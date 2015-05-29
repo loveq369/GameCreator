@@ -7,10 +7,12 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="KGCMenuSpriteController">
             <connections>
+                <outlet property="soundPlayButton" destination="IiE-YM-5TG" id="V3U-xx-gRU"/>
                 <outlet property="soundTableView" destination="yYb-18-wXs" id="Yup-cH-w4Y"/>
                 <outlet property="soundTypePopUp" destination="aNH-SH-ek7" id="mTu-0X-4NE"/>
                 <outlet property="spriteDropField" destination="Ces-A9-E9G" id="Zkv-Ry-ysW"/>
                 <outlet property="spriteIconView" destination="uMk-0p-PX3" id="ALJ-x0-15P"/>
+                <outlet property="spriteImageClearButton" destination="ddz-id-M9V" id="KA3-aa-hZJ"/>
                 <outlet property="spriteImageNameLabel" destination="Kmt-PS-OIT" id="TS5-c8-CNW"/>
                 <outlet property="spriteImagePositionXField" destination="cFi-u2-Ifw" id="CCG-sp-OKS"/>
                 <outlet property="spriteImagePositionYField" destination="lM2-KB-CfJ" id="b5k-x4-pL0"/>
@@ -94,7 +96,7 @@
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <textField verticalHuggingPriority="750" id="XLl-OX-L26">
-                    <rect key="frame" x="82" y="682" width="192" height="22"/>
+                    <rect key="frame" x="82" y="682" width="199" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Nyi-SF-RVi">
                         <font key="font" metaFont="system"/>
@@ -259,6 +261,17 @@
                         <action selector="chooseSpriteImage:" target="-2" id="MgD-Cf-Flq"/>
                     </connections>
                 </button>
+                <button id="ddz-id-M9V">
+                    <rect key="frame" x="266" y="629" width="15" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ClearButton" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="NpK-Jd-N1p">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="removeSpriteImage:" target="-2" id="T4G-iF-Yb3"/>
+                    </connections>
+                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Sqw-uN-rhy">
                     <rect key="frame" x="150" y="524" width="59" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -413,6 +426,7 @@
         </customView>
     </objects>
     <resources>
+        <image name="ClearButton" width="15" height="16"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
     </resources>
 </document>

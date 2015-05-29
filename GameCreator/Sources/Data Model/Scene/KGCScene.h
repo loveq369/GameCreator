@@ -47,6 +47,8 @@ typedef NS_ENUM(NSUInteger, KGCTemplateType) {
  */
 - (void)setImageURL:(NSURL *)imageURL;
 
+- (void)clearImage;
+
 /** The required points (used by templates) */
 @property (nonatomic) NSInteger requiredPoints;
 
@@ -57,5 +59,13 @@ typedef NS_ENUM(NSUInteger, KGCTemplateType) {
 @property (nonatomic) BOOL autoFadeOut;
 @property (nonatomic, getter = isDisableConfirmInteraction) BOOL disableConfirmInteraction;
 @property (nonatomic) BOOL autoMoveBackWrongAnswers;
+@property (nonatomic, copy) NSImage *thumbnailImage;
+
+// Physics
+@property (nonatomic, getter = isPhysicsEnabled) BOOL physicsEnabled;
+@property (nonatomic) CGPoint gravity;
+@property (nonatomic) CGFloat speed;
+@property (nonatomic) CGFloat updateRate;
+@property (nonatomic) NSInteger subSteps;
 
 @end

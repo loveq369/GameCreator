@@ -18,20 +18,9 @@
 #import "KGCAnswerPointsCell.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface KGCMenuSpriteController () <NSTableViewDataSource, NSTableViewDelegate, KGCFileDropViewDelegate, AVAudioPlayerDelegate>
+@interface KGCMenuSpriteController () <NSTableViewDataSource, NSTableViewDelegate, AVAudioPlayerDelegate>
 
-@property (nonatomic, weak) IBOutlet NSTextField *spriteNameField;
-@property (nonatomic, weak) IBOutlet KGCFileDropView *spriteDropField;
-@property (nonatomic, weak) IBOutlet NSImageView *spriteIconView;
-@property (nonatomic, weak) IBOutlet NSTextField *spriteImageNameLabel;
 @property (nonatomic, weak) IBOutlet NSPopUpButton *spriteTypePopUp;
-@property (nonatomic, weak) IBOutlet NSTextField *spriteImagePositionXField;
-@property (nonatomic, weak) IBOutlet NSTextField *spriteImagePositionYField;
-@property (nonatomic, weak) IBOutlet NSTextField *spriteScaleField;
-@property (nonatomic, weak) IBOutlet NSTextField *spriteZOrderField;
-@property (nonatomic, weak) IBOutlet NSTextField *spriteOpacityField;
-@property (nonatomic, weak) IBOutlet NSSlider *spriteOpacitySlider;
-
 @property (nonatomic, weak) IBOutlet NSPopUpButton *soundTypePopUp;
 @property (nonatomic, weak) IBOutlet NSTableView *soundTableView;
 @property (nonatomic, weak) IBOutlet NSButton *soundPlayButton;
@@ -51,132 +40,38 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)awakeFromNib
-{
-	[super awakeFromNib];
-	
-	NSImage *pngIconImage = [[NSWorkspace sharedWorkspace] iconForFileType:@"png"];
-	[[self spriteIconView] setImage:pngIconImage];
-}
-
 #pragma mark - Main Methods
 
-- (void)setupWithSceneLayer:(KGCSceneLayer *)sceneLayer
+- (void)setupWithSceneLayers:(NSArray *)sceneLayers
 {
-	[super setupWithSceneLayer:sceneLayer];
+	[super setupWithSceneLayers:sceneLayers];
 	[self update];
 }
 
 - (void)update
 {
-	KGCSprite *sprite = [self sprite];	
-	NSInteger spriteType = [sprite spriteType];
-	
-	[[self spriteNameField] setStringValue:[sprite name]];
-	[[self spriteImageNameLabel] setStringValue:[sprite imageName]];
-	[[self spriteTypePopUp] selectItemAtIndex:spriteType == 0 ? 0 : 1];
+	NSNumber *spriteType = [self objectForPropertyNamed:@"spriteType" inArray:[self sceneObjects]];
+	if (spriteType)
+	{
+		[[self spriteTypePopUp] selectItemAtIndex:spriteType == 0 ? 0 : 1];
+	}
+	else
+	{
+		[[self spriteTypePopUp] setTitle:NSLocalizedString(@"Multiple Items Selected", nil)];
+	}
 	
 	[self changeSoundType:[self soundTypePopUp]];
 	[[self soundTableView] reloadData];
-	
-	[self updateVisualProperties];	
 }
 
 #pragma mark - Interface Methods
 
-- (IBAction)changeSpriteIdentifier:(id)sender
-{
-	[[self sprite] setName:[sender stringValue]];
-}
-
-- (IBAction)chooseSpriteImage:(id)sender
-{
-	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-	[openPanel setAllowedFileTypes:@[@"png", @"jpg"]];
-	[openPanel beginSheetModalForWindow:[[self view] window] completionHandler:^ (NSModalResponse returnCode)
-	{
-		[[self sprite] setImageURL:[openPanel URL]];
-	}];
-}
-
 - (IBAction)changeSpriteType:(id)sender
 {	
 	NSInteger spriteType = [sender indexOfSelectedItem];
-	[[self sprite] setSpriteType:spriteType == 0 ? 0 : 3];	
-}
-
-- (IBAction)changeSpritePosition:(id)sender
-{
-	CGFloat x = [[self spriteImagePositionXField] doubleValue];
-	CGFloat y = [[self spriteImagePositionYField] doubleValue];
-	
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	if (editMode == KGCDocumentEditModeNormal)
+	for (KGCSprite *sprite in [self sceneObjects])
 	{
-		[sprite setPosition:CGPointMake(x, y)];
-	}
-	else
-	{
-		[sprite setInitialPosition:CGPointMake(x, y)];
-	}
-}
-
-- (IBAction)changeSpriteScale:(id)sender
-{
-	CGFloat scale = [sender doubleValue];
-	
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	if (editMode == KGCDocumentEditModeNormal)
-	{
-		[sprite setScale:scale];
-	}
-	else
-	{
-		[sprite setInitialScale:scale];
-	}
-}
-
-- (IBAction)changeSpriteZOrder:(id)sender
-{
-	NSInteger zOrder = [sender integerValue];
-	
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	if (editMode == KGCDocumentEditModeNormal)
-	{
-		[sprite setZOrder:zOrder];
-	}
-	else
-	{
-		[sprite setInitialZOrder:zOrder];
-	}
-}
-
-- (IBAction)changeSpriteAlpha:(id)sender
-{
-	CGFloat alpha;
-	if (sender == [self spriteOpacitySlider])
-	{
-		alpha = [[self spriteOpacitySlider] doubleValue];
-		[[self spriteOpacityField] setStringValue:[NSString stringWithFormat:@"%.0f", alpha]];
-	}
-	else
-	{
-		alpha = [[self spriteOpacityField] doubleValue];
-		[[self spriteOpacitySlider] setDoubleValue:alpha];
-	}
-	
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	if (editMode == KGCDocumentEditModeNormal)
-	{
-		[sprite setAlpha:alpha / 100.0];
-	}
-	else
-	{
-		[sprite setInitialAlpha:alpha / 100.0];
+		[sprite setSpriteType:spriteType == 0 ? 0 : 3];	
 	}
 }
 
@@ -189,11 +84,14 @@
 {
 	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
 	[openPanel setAllowedFileTypes:@[@"mp3", @"m4a", @"aac"]];
-	[openPanel beginSheetModalForWindow:[[[self sceneObject] document] windowForSheet] completionHandler:^ (NSInteger result)
+	[openPanel beginSheetModalForWindow:[[[self sceneObjects][0] document] windowForSheet] completionHandler:^ (NSInteger result)
 	{
 		if (result == NSOKButton)
 		{
-			[[self sprite] addSoundAtURL:[openPanel URL] forKey:[self currentSoundKey]];
+			for (KGCSprite *sprite in [self sceneObjects])
+			{
+				[sprite addSoundAtURL:[openPanel URL] forKey:[self currentSoundKey]];
+			}
 			[[self soundTableView] reloadData];
 		}
 	}];
@@ -202,27 +100,29 @@
 - (IBAction)removeSound:(id)sender
 {
 	NSString *key = [self currentSoundKey];
-	
-	KGCSprite *sprite = [self sprite];
-	NSArray *soundNames = [sprite soundsForKey:[self currentSoundKey]];
 	NSTableView *soundTableView = [self soundTableView];
+	
+	NSArray *sounds = [self sounds];
 	NSInteger soundIndex = [soundTableView selectedRow];
-	[sprite removeSoundNamed:soundNames[soundIndex] forKey:key];
+	
+	for (KGCScene *scene in [self sceneObjects])
+	{
+		[scene removeSoundNamed:sounds[soundIndex][@"AudioName"] forKey:key];
+	}
+	
 	[soundTableView reloadData];
 }
 
 - (IBAction)play:(id)sender
 {
-	KGCSprite *sprite = [self sprite];
-	NSArray *soundNames = [sprite soundsForKey:[self currentSoundKey]];
 	NSInteger soundIndex = [[self soundTableView] selectedRow];
-	NSString *soundName = soundNames[soundIndex];
+	NSString *soundName = [self sounds][soundIndex][@"AudioName"];
 
 	if (!_audioPlayer)
 	{
 		[sender setTitle:NSLocalizedString(@"Stop", nil)];
 	
-		KGCResourceController *resourceController = [[[self sceneObject] document] resourceController];
+		KGCResourceController *resourceController = [[[self sceneObjects][0] document] resourceController];
 		NSData *data = [resourceController audioDataForName:soundName];
 		_audioPlayer = [[AVAudioPlayer alloc] initWithData:data error:nil];
 		[_audioPlayer setDelegate:self];
@@ -238,19 +138,13 @@
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-	KGCSprite *sprite = [self sprite];
-	NSArray *soundNames = [sprite soundsForKey:[self currentSoundKey]];
-
-	return [soundNames count];
+	return [[self sounds] count];
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	KGCSprite *sprite = [self sprite];
-	NSArray *soundNames = [sprite soundsForKey:[self currentSoundKey]];
-	
 	NSTableCellView *tableCellView = [tableView makeViewWithIdentifier:@"SoundTableCell" owner:nil];
-	[[tableCellView textField] setStringValue:soundNames[row]];
+	[[tableCellView textField] setStringValue:[self sounds][row][@"AudioName"]];
 	
 	return tableCellView;
 }
@@ -262,21 +156,7 @@
 	[[self soundPlayButton] setEnabled:[[self soundTableView] selectedRow] != -1];
 }
 
-#pragma mark - File Drop View Delegate Methods
-
-- (void)fileDropView:(KGCFileDropView *)fileDropView droppedFileWithPaths:(NSArray *)filePaths
-{
-	if ([filePaths count] > 0)
-	{
-		NSURL *url = [[NSURL alloc] initFileURLWithPath:filePaths[0]];
-		
-		KGCSprite *sprite = [self sprite];
-		[sprite setImageURL:url];
-		[[self spriteImageNameLabel] setStringValue:[sprite imageName]];
-	}
-}
-
-#pragma mark - AudioPLayer Delegate Methods
+#pragma mark - AudioPlayer Delegate Methods
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
@@ -293,41 +173,49 @@
 	return soundKeys[index];
 }
 
-- (KGCSprite *)sprite
+- (NSArray *)sounds
 {
-	return (KGCSprite *)[self sceneObject];
-}
+	NSString *currentSoundKey = [self currentSoundKey];
 
-- (void)updatePosition:(NSNotification *)notification
-{
-	KGCSprite *sprite = [self sprite];
-	CGPoint position = [sprite position];
-
-	[[self spriteImagePositionXField] setDoubleValue:position.x];
-	[[self spriteImagePositionYField] setDoubleValue:position.y];
-}
-
-- (void)updateVisualProperties
-{
-	KGCSprite *sprite = [self sprite];
-	KGCDocumentEditMode editMode = [[sprite document] editMode];
-	BOOL normalMode = (editMode == KGCDocumentEditModeNormal);
-	
-	CGPoint position = normalMode ? [sprite position] : [sprite initialPosition];
-	[[self spriteImagePositionXField] setDoubleValue:position.x];
-	[[self spriteImagePositionYField] setDoubleValue:position.y];
-	
-	[[self spriteScaleField] setDoubleValue:normalMode ? [sprite scale] : [sprite initialScale]];
-	[[self spriteZOrderField] setIntegerValue:normalMode ? [sprite zOrder] : [sprite initialZOrder]];
-	
-	NSWindow *window = [[self view] window];
-	NSEvent *currentEvent = [window currentEvent];
-	if ([currentEvent type] != NSLeftMouseDragged && [window isKeyWindow])
+	NSArray *sceneObjects = [self sceneObjects];
+	if ([sceneObjects count] == 1)
 	{
-		CGFloat alpha = (normalMode ? [sprite alpha] : [sprite initialAlpha]) * 100.0;
-		[[self spriteOpacityField] setDoubleValue:alpha];
-		[[self spriteOpacitySlider] setDoubleValue:alpha];
+		return [(KGCSceneObject *)sceneObjects[0] soundDictionariesForKey:currentSoundKey];
 	}
+	else
+	{
+		NSMutableArray *sounds;
+		for (KGCSceneObject *sceneObject in [self sceneObjects])
+		{
+			if (sounds)
+			{
+				for (NSDictionary *soundDictionary in [sounds copy])
+				{
+					BOOL keepSound = NO;
+					for (NSDictionary *otherSoundDictionary in [sceneObject soundDictionariesForKey:currentSoundKey])
+					{
+						if ([soundDictionary[@"_id"] isEqualToString:otherSoundDictionary[@"_id"]])
+						{
+							keepSound = YES;
+						}
+					}
+					
+					if (!keepSound)
+					{
+						[sounds removeObject:soundDictionary];
+					}
+				}
+			}
+			else
+			{
+				sounds = [[NSMutableArray alloc] initWithArray:[sceneObject soundDictionariesForKey:currentSoundKey]];
+			}
+		}
+	}
+	
+	return nil;
 }
+
+
 
 @end
