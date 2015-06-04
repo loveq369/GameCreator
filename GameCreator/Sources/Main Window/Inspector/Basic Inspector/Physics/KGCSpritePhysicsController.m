@@ -15,6 +15,13 @@
 @property (nonatomic, weak) IBOutlet NSButton *useGravityButton;
 @property (nonatomic, weak) IBOutlet NSTextField *velocityXField;
 @property (nonatomic, weak) IBOutlet NSTextField *velocityYField;
+@property (nonatomic, weak) IBOutlet NSPopUpButton *bodyTypePopUp;
+@property (nonatomic, weak) IBOutlet NSTextField *densityField;
+@property (nonatomic, weak) IBOutlet NSPopUpButton *shapePopUp;
+@property (nonatomic, weak) IBOutlet NSTextField *shapeTopInsetField;
+@property (nonatomic, weak) IBOutlet NSTextField *shapeLeftInsetField;
+@property (nonatomic, weak) IBOutlet NSTextField *shapeBottomInsetField;
+@property (nonatomic, weak) IBOutlet NSTextField *shapeRightInsetField;
 
 @end
 
@@ -34,7 +41,17 @@
 	NSNumber *gravityEnabled = [self objectForPropertyNamed:@"gravityEnabled" inArray:sceneObjects];
 	[[self useGravityButton] setState:[gravityEnabled integerValue]];
 	
+	NSNumber *bodyType = [self objectForPropertyNamed:@"bodyType" inArray:sceneObjects];
+	[[self bodyTypePopUp] selectItemAtIndex:[bodyType integerValue]];
+	
+	NSNumber *density = [self objectForPropertyNamed:@"density" inArray:sceneObjects];
+	[[self densityField] setDoubleValue:[density doubleValue]];
+	
+	NSNumber *shape = [self objectForPropertyNamed:@"shape" inArray:sceneObjects];
+	[[self shapePopUp] selectItemAtIndex:[shape integerValue]];
+	
 	[self updatePosition:nil];
+	[self updateShapeInsets];
 	[self changeEnablePhysics:[self enablePhysicsButton]];
 }
 
@@ -46,6 +63,7 @@
 	[[self useGravityButton] setEnabled:[sender state]];
 	[[self velocityXField] setEnabled:[sender state]];
 	[[self velocityYField] setEnabled:[sender state]];
+	[[self bodyTypePopUp] setEnabled:[sender state]];
 }
 
 - (IBAction)changeUseGravity:(id)sender
@@ -61,6 +79,63 @@
 - (IBAction)changeVelocityY:(id)sender
 {
 	[self setVelocityY:[sender doubleValue]];
+}
+
+- (IBAction)changeBodyType:(id)sender
+{
+	NSInteger bodyType = [sender indexOfSelectedItem];
+	[self setObject:@(bodyType) forPropertyNamed:@"bodyType" inArray:[self sceneObjects]];
+}
+
+- (IBAction)changeDensity:(id)sender
+{
+	[self setObject:[sender objectValue] forPropertyNamed:@"density" inArray:[self sceneObjects]];
+}
+
+- (IBAction)changeShape:(id)sender
+{
+	NSInteger shape = [sender indexOfSelectedItem];
+	[self setObject:@(shape) forPropertyNamed:@"shape" inArray:[self sceneObjects]];
+}
+
+- (IBAction)changeShapeTopInset:(id)sender
+{
+	for (KGCSprite *sprite in [self sceneObjects])
+	{
+		KGCShapeInsets insets = [sprite shapeInsets];
+		insets.top = [sender doubleValue];
+		[sprite setShapeInsets:insets];
+	}
+}
+
+- (IBAction)changeShapeLeftInset:(id)sender
+{
+	for (KGCSprite *sprite in [self sceneObjects])
+	{
+		KGCShapeInsets insets = [sprite shapeInsets];
+		insets.left = [sender doubleValue];
+		[sprite setShapeInsets:insets];
+	}
+}
+
+- (IBAction)changeShapeBottomInset:(id)sender
+{
+	for (KGCSprite *sprite in [self sceneObjects])
+	{
+		KGCShapeInsets insets = [sprite shapeInsets];
+		insets.bottom = [sender doubleValue];
+		[sprite setShapeInsets:insets];
+	}
+}
+
+- (IBAction)changeShapeRightInset:(id)sender
+{
+	for (KGCSprite *sprite in [self sceneObjects])
+	{
+		KGCShapeInsets insets = [sprite shapeInsets];
+		insets.right = [sender doubleValue];
+		[sprite setShapeInsets:insets];
+	}
 }
 
 #pragma mark - Property Methods
@@ -155,6 +230,112 @@
 	{
 		[velocityYField setStringValue:@"--"];
 	}
+}
+
+- (void)updateShapeInsets
+{
+	BOOL globalTopInset, globalLeftInset, globalBottomInset, globalRightInset;
+	KGCShapeInsets shapeInset = [self shapeInsetsGlobalTopInset:&globalTopInset globalLeftInset:&globalLeftInset globalBottomInset:&globalBottomInset globalRightInset:&globalRightInset];
+	
+	NSTextField *shapeTopInsetField = [self shapeTopInsetField];
+	if (globalTopInset)
+	{
+		[shapeTopInsetField setDoubleValue:shapeInset.top];
+	}
+	else
+	{
+		[shapeTopInsetField setStringValue:@"--"];
+	}
+	
+	NSTextField *shapeLeftInsetField = [self shapeLeftInsetField];
+	if (globalLeftInset)
+	{
+		[shapeLeftInsetField setDoubleValue:shapeInset.left];
+	}
+	else
+	{
+		[shapeLeftInsetField setStringValue:@"--"];
+	}
+	
+	NSTextField *shapeBottomInsetField = [self shapeBottomInsetField];
+	if (globalBottomInset)
+	{
+		[shapeBottomInsetField setDoubleValue:shapeInset.bottom];
+	}
+	else
+	{
+		[shapeBottomInsetField setStringValue:@"--"];
+	}
+	
+	NSTextField *shapeRightInsetField = [self shapeRightInsetField];
+	if (globalRightInset)
+	{
+		[shapeRightInsetField setDoubleValue:shapeInset.right];
+	}
+	else
+	{
+		[shapeRightInsetField setStringValue:@"--"];
+	}
+}
+
+- (KGCShapeInsets)shapeInsetsGlobalTopInset:(BOOL *)globalTopInset globalLeftInset:(BOOL *)globalLeftInset globalBottomInset:(BOOL *)globalBottomInset globalRightInset:(BOOL *)globalRightInset
+{
+	*globalTopInset = YES;
+	*globalLeftInset = YES;
+	*globalBottomInset = YES;
+	*globalRightInset = YES;
+
+	NSArray *sceneObjects = [self sceneObjects];
+	if ([sceneObjects count] == 1)
+	{
+		return [(KGCSprite *)sceneObjects[0] shapeInsets];
+	}
+	
+	BOOL firstCheck = YES;
+	BOOL wrongTop = NO;
+	BOOL wrongLeft = NO;
+	BOOL wrongBottom = NO;
+	BOOL wrongRight = NO;
+	KGCShapeInsets shapeInset = KGCShapeInsetsMake(0.0, 0.0, 0.0, 0.0);
+	for (KGCSprite *sprite in sceneObjects)
+	{
+		if (firstCheck)
+		{
+			firstCheck = NO;
+			shapeInset = [sprite shapeInsets];
+		}
+		else
+		{
+			KGCShapeInsets otherShapeInset = [sprite shapeInsets];
+			if (!wrongTop && (otherShapeInset.top != shapeInset.top))
+			{
+				wrongTop = YES;
+				*globalTopInset = NO;
+			}
+			if (!wrongLeft && (otherShapeInset.left != shapeInset.left))
+			{
+				wrongLeft = YES;
+				*globalLeftInset = NO;
+			}
+			if (!wrongBottom && (otherShapeInset.bottom != shapeInset.bottom))
+			{
+				wrongBottom = YES;
+				*globalBottomInset = NO;
+			}
+			if (!wrongRight && (otherShapeInset.right != shapeInset.right))
+			{
+				wrongRight = YES;
+				*globalRightInset = NO;
+			}
+			
+			if (wrongTop && wrongLeft && wrongBottom && wrongRight)
+			{
+				return KGCShapeInsetsMake(0.0, 0.0, 0.0, 0.0);
+			}
+		}
+	}
+	
+	return shapeInset;
 }
 
 @end

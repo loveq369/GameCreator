@@ -517,13 +517,89 @@
 	return [self pointForKey:@"PhysicsVelocity"];
 }
 
+- (void)setBodyType:(NSInteger)bodyType
+{
+	[self setInteger:bodyType forKey:@"PhysicsBodyType"];
+}
+
+- (NSInteger)bodyType
+{
+	return [self integerForKey:@"PhysicsBodyType"];
+}
+
+- (void)setDensity:(NSInteger)density
+{
+	[self setInteger:density forKey:@"PhysicsDensity"];
+}
+
+- (NSInteger)density
+{
+	return [self integerForKey:@"PhysicsDensity"];
+}
+
+- (void)setShape:(NSInteger)shape
+{
+	[self setInteger:shape forKey:@"PhysicsShape"];
+}
+
+- (NSInteger)shape
+{
+	return [self integerForKey:@"PhysicsShape"];
+}
+
+- (void)setShapeInsets:(KGCShapeInsets)shapeInsets
+{
+	[self setObject:@{@"top": @(shapeInsets.top), @"left": @(shapeInsets.left), @"bottom": @(shapeInsets.bottom), @"right": @(shapeInsets.right)} forKey:@"PhysicsShapeInsets"];
+}
+
+- (KGCShapeInsets)shapeInsets
+{
+	NSDictionary *shapeInsetDictionary = [self objectForKey:@"PhysicsShapeInsets"];
+	CGFloat top = [shapeInsetDictionary[@"top"] doubleValue];
+	CGFloat left = [shapeInsetDictionary[@"left"] doubleValue];
+	CGFloat bottom = [shapeInsetDictionary[@"bottom"] doubleValue];
+	CGFloat right = [shapeInsetDictionary[@"right"] doubleValue];
+	return KGCShapeInsetsMake(top, left, bottom, right);
+}
+
+- (void)setRotationDegrees:(CGFloat)rotationDegrees
+{
+	[self setDouble:rotationDegrees forKey:@"RotationDegrees"];
+}
+
+- (CGFloat)rotationDegrees
+{
+	return [self doubleForKey:@"RotationDegrees"];
+}
+
+- (void)setInitialRotationDegrees:(CGFloat)initialRotationDegrees
+{
+	[self setDouble:initialRotationDegrees forKey:@"InitialRotationDegrees"];
+}
+
+- (CGFloat)initialRotationDegrees
+{
+	return [self doubleForKey:@"InitialRotationDegrees"];
+}
+
 - (NSArray *)visualKeys
 {
 	return @[	@"zOrder", @"InitialZOrder", 
 				@"Scale", @"InitialScale", 
 				@"Alpha", @"InitialAlpha",
 				@"Position", @"InitialPosition",
-				@"BackgroundImage"];
+				@"BackgroundImage", @"RotationDegrees",
+				@"InitialRotationDegrees"];
 }
 
 @end
+
+KGCShapeInsets KGCShapeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)
+{
+	KGCShapeInsets shapeInsets;
+	shapeInsets.top = top;
+	shapeInsets.left = left;
+	shapeInsets.bottom = bottom;
+	shapeInsets.right = right;
+	return shapeInsets;
+}

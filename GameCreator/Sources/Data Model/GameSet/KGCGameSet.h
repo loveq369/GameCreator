@@ -27,7 +27,5 @@
 
 @property (nonatomic, copy) NSString *firstGameIdentifier;
 @property (nonatomic, copy) NSString *firstSceneIdentifier;
-@property (nonatomic, copy) NSString *lastSelectedGameIdentifier;
-@property (nonatomic, copy) NSString *lastSelectedSceneIdentifier;
 
 @end

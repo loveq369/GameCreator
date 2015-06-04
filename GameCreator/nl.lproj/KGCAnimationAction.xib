@@ -17,23 +17,23 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="e0E-Gq-z66">
-                    <rect key="frame" x="6" y="43" width="65" height="17"/>
+                    <rect key="frame" x="6" y="46" width="55" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Animatie:" id="aO5-02-jOS">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Animatie:" id="aO5-02-jOS">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="fyG-nD-LeJ">
-                    <rect key="frame" x="75" y="38" width="202" height="26"/>
+                    <rect key="frame" x="64" y="41" width="203" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Mwt-Of-6pI">
+                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="RSG-jH-LHx" id="Mwt-Of-6pI">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" id="Nu1-Jr-jcf">
                             <items>
-                                <menuItem title="Item 1" id="RSG-jH-LHx"/>
+                                <menuItem title="Item 1" state="on" id="RSG-jH-LHx"/>
                                 <menuItem title="Item 2" id="8kI-1O-uHS"/>
                                 <menuItem title="Item 3" id="Y12-yE-4yH"/>
                             </items>
@@ -43,27 +43,27 @@
                         <action selector="chooseAnimation:" target="WDJ-cv-alw" id="B0g-XU-6rq"/>
                     </connections>
                 </popUpButton>
-                <button verticalHuggingPriority="750" id="eDq-HV-b6t">
-                    <rect key="frame" x="147" y="3" width="130" height="32"/>
+                <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="RkS-fF-STh">
+                    <rect key="frame" x="261" y="19" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Voorvertoning" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NiC-5L-FQb">
+                </progressIndicator>
+                <button verticalHuggingPriority="750" id="eDq-HV-b6t">
+                    <rect key="frame" x="146" y="12" width="112" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Voorvertoning" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NiC-5L-FQb">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="preview:" target="WDJ-cv-alw" id="FAg-Bs-EwA"/>
                     </connections>
                 </button>
-                <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="RkS-fF-STh">
-                    <rect key="frame" x="274" y="12" width="16" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </progressIndicator>
                 <button verticalHuggingPriority="750" id="29n-u1-xZq">
-                    <rect key="frame" x="17" y="3" width="130" height="32"/>
+                    <rect key="frame" x="36" y="12" width="112" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Herstel" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dZ6-Wt-OzK">
+                    <buttonCell key="cell" type="push" title="Herstel" bezelStyle="rounded" alignment="center" controlSize="small" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dZ6-Wt-OzK">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="stopPreview:" target="WDJ-cv-alw" id="fyy-sm-EnG"/>

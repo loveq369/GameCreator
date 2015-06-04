@@ -155,26 +155,6 @@
 	return [self objectForKey:@"FirstGameIdentifier"];
 }
 
-- (void)setLastSelectedGameIdentifier:(NSString *)lastSelectedGameIdentifier
-{
-	[self setObject:lastSelectedGameIdentifier forKey:@"LastSelectedGameIdentifier"];
-}
-
-- (NSString *)lastSelectedGameIdentifier
-{
-	return	[self objectForKey:@"LastSelectedGameIdentifier"];
-}
-
-- (void)setLastSelectedSceneIdentifier:(NSString *)lastSelectedSceneIdentifier
-{
-	[self setObject:lastSelectedSceneIdentifier forKey:@"LastSelectedSceneIdentifier"];
-}
-
-- (NSString *)lastSelectedSceneIdentifier
-{
-	return [self objectForKey:@"LastSelectedSceneIdentifier"];
-}
-
 - (NSArray *)scenes
 {
 	NSMutableArray *scenes = [[NSMutableArray alloc] init];

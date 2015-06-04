@@ -13,24 +13,24 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="WDJ-cv-alw" userLabel="Settings" customClass="KGCPathAnimationView">
-            <rect key="frame" x="0.0" y="0.0" width="294" height="304"/>
+            <rect key="frame" x="0.0" y="2" width="294" height="280"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="e0E-Gq-z66">
-                    <rect key="frame" x="6" y="250" width="46" height="17"/>
+                    <rect key="frame" x="6" y="232" width="46" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Shape:" id="aO5-02-jOS">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Shape:" id="aO5-02-jOS">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="fyG-nD-LeJ">
-                    <rect key="frame" x="56" y="245" width="113" height="26"/>
+                    <rect key="frame" x="55" y="227" width="114" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="Free Form" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Y12-yE-4yH" id="Mwt-Of-6pI">
+                    <popUpButtonCell key="cell" type="push" title="Free Form" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Y12-yE-4yH" id="Mwt-Of-6pI">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" id="Nu1-Jr-jcf">
                             <items>
                                 <menuItem title="Circle" id="RSG-jH-LHx">
@@ -46,20 +46,20 @@
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="xrU-jI-pas">
-                    <rect key="frame" x="6" y="280" width="64" height="17"/>
+                    <rect key="frame" x="6" y="259" width="54" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Duration:" id="cJ9-eC-SrI">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Duration:" id="cJ9-eC-SrI">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ZcC-vY-X8M">
-                    <rect key="frame" x="76" y="277" width="64" height="22"/>
+                    <rect key="frame" x="66" y="256" width="54" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0.00" drawsBackground="YES" id="2Ee-Tt-UjX">
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0.00" drawsBackground="YES" id="2Ee-Tt-UjX">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="3" id="yV4-US-1XV"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -68,7 +68,7 @@
                     </connections>
                 </textField>
                 <tabView drawsBackground="NO" type="noTabsNoBorder" id="7o7-R2-uac">
-                    <rect key="frame" x="1" y="-45" width="293" height="287"/>
+                    <rect key="frame" x="1" y="-66" width="293" height="287"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
@@ -78,7 +78,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="S0H-7l-zr0">
-                                        <rect key="frame" x="157" y="229" width="10" height="11"/>
+                                        <rect key="frame" x="157" y="234" width="10" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Y" id="umF-ZF-Pkv">
                                             <font key="font" metaFont="miniSystem"/>
@@ -87,7 +87,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="VRg-RK-eiR">
-                                        <rect key="frame" x="80" y="229" width="13" height="11"/>
+                                        <rect key="frame" x="80" y="234" width="13" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="X" id="LEh-AI-rc2">
                                             <font key="font" metaFont="miniSystem"/>
@@ -96,11 +96,11 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="Pl9-9k-lui">
-                                        <rect key="frame" x="132" y="243" width="60" height="22"/>
+                                        <rect key="frame" x="132" y="248" width="60" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="gTg-mc-qoG">
+                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="gTg-mc-qoG">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="wjc-YO-8af"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -109,11 +109,11 @@
                                         </connections>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="6es-Om-Xqh">
-                                        <rect key="frame" x="58" y="243" width="60" height="22"/>
+                                        <rect key="frame" x="58" y="248" width="60" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Y08-62-M9g">
+                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Y08-62-M9g">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="YxE-95-It5"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -122,7 +122,7 @@
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mGD-Fl-P5D">
-                                        <rect key="frame" x="130" y="185" width="64" height="11"/>
+                                        <rect key="frame" x="130" y="196" width="64" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="height" id="jyU-Vq-Vmt">
                                             <font key="font" metaFont="miniSystem"/>
@@ -131,7 +131,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="C66-Fz-qv7">
-                                        <rect key="frame" x="56" y="185" width="64" height="11"/>
+                                        <rect key="frame" x="56" y="196" width="64" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="width" id="znL-8u-ebl">
                                             <font key="font" metaFont="miniSystem"/>
@@ -140,11 +140,11 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="E1T-yg-6qn">
-                                        <rect key="frame" x="132" y="199" width="60" height="22"/>
+                                        <rect key="frame" x="132" y="211" width="60" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="KNs-2m-VUA">
+                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="KNs-2m-VUA">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="gBw-dt-hQD"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -153,11 +153,11 @@
                                         </connections>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="bMc-r1-8IC">
-                                        <rect key="frame" x="58" y="199" width="60" height="22"/>
+                                        <rect key="frame" x="58" y="211" width="60" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Qfl-Qf-BJC">
+                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Qfl-Qf-BJC">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="05Z-Oy-Cak"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -166,16 +166,16 @@
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="A50-CK-Lgv">
-                                        <rect key="frame" x="5" y="246" width="47" height="17"/>
+                                        <rect key="frame" x="5" y="250" width="47" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Frame:" id="YXG-xt-9Hb">
-                                            <font key="font" metaFont="system"/>
+                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Frame:" id="YXG-xt-9Hb">
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Cyb-WO-jU3">
-                                        <rect key="frame" x="65" y="141" width="43" height="11"/>
+                                        <rect key="frame" x="65" y="155" width="43" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="degrees" id="scE-Gr-pFb">
                                             <font key="font" metaFont="miniSystem"/>
@@ -184,11 +184,11 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="hlq-my-aAe">
-                                        <rect key="frame" x="58" y="155" width="60" height="22"/>
+                                        <rect key="frame" x="58" y="170" width="60" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="nPh-d1-2X1">
+                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="nPh-d1-2X1">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="p2D-FV-g9H"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -197,11 +197,11 @@
                                         </connections>
                                     </textField>
                                     <button id="1QX-dx-AR1">
-                                        <rect key="frame" x="56" y="271" width="84" height="18"/>
+                                        <rect key="frame" x="55" y="272" width="75" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="check" title="Clockwise" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="CfX-sK-Qnt">
+                                        <buttonCell key="cell" type="check" title="Clockwise" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="CfX-sK-Qnt">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="changeClockWise:" target="WDJ-cv-alw" id="p4C-xp-HFU"/>
@@ -215,41 +215,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="293" height="287"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" id="X6Z-nA-PMo">
-                                        <rect key="frame" x="180" y="109" width="99" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bPJ-vu-6Dy">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="add:" target="WDJ-cv-alw" id="eVr-78-Su8"/>
-                                        </connections>
-                                    </button>
-                                    <button verticalHuggingPriority="750" id="ryc-fN-ihy">
-                                        <rect key="frame" x="86" y="109" width="99" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="Delete" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wrG-jZ-Bms">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="delete:" target="WDJ-cv-alw" id="3zf-Y5-ltW"/>
-                                        </connections>
-                                    </button>
-                                    <button verticalHuggingPriority="750" id="SFO-yk-Ie4">
-                                        <rect key="frame" x="78" y="52" width="136" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="Start Edit Mode" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3ep-yI-d3C">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="startInteractiveMode:" target="WDJ-cv-alw" id="pX7-5c-ulk"/>
-                                        </connections>
-                                    </button>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="vKY-a0-FgT">
-                                        <rect key="frame" x="5" y="146" width="268" height="135"/>
+                                        <rect key="frame" x="-1" y="127" width="294" height="159"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" id="r0R-Ht-bqC">
                                             <rect key="frame" x="1" y="17" width="238" height="117"/>
@@ -261,7 +228,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn width="263" minWidth="40" maxWidth="1000" id="dzx-PD-NsS">
+                                                        <tableColumn width="289" minWidth="40" maxWidth="1000" id="dzx-PD-NsS">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Points">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -275,14 +242,14 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView id="5En-sg-A7Y">
-                                                                    <rect key="frame" x="1" y="1" width="263" height="17"/>
+                                                                    <rect key="frame" x="1" y="1" width="289" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="zec-bz-nIQ">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="263" height="17"/>
+                                                                            <rect key="frame" x="0.0" y="3" width="289" height="14"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="VEK-mR-Orp">
-                                                                                <font key="font" metaFont="system"/>
+                                                                            <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="VEK-mR-Orp">
+                                                                                <font key="font" metaFont="smallSystem"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
@@ -316,26 +283,59 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableHeaderView>
                                     </scrollView>
+                                    <button verticalHuggingPriority="750" id="vYy-Dh-yVO">
+                                        <rect key="frame" x="247" y="104" width="24" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="smallSquare" title="-" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="izZ-jg-Vun">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                    </button>
+                                    <button verticalHuggingPriority="750" id="481-7t-shZ">
+                                        <rect key="frame" x="-1" y="104" width="249" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ckk-4k-Phd">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                    </button>
+                                    <button verticalHuggingPriority="750" id="itt-vu-Zhz">
+                                        <rect key="frame" x="269" y="104" width="24" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="smallSquare" title="+" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MQZ-Oy-aYZ">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                    </button>
+                                    <button verticalHuggingPriority="750" id="SFO-yk-Ie4">
+                                        <rect key="frame" x="79" y="73" width="134" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="Start Edit Mode" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3ep-yI-d3C">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="startInteractiveMode:" target="WDJ-cv-alw" id="pX7-5c-ulk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </view>
                         </tabViewItem>
                     </tabViewItems>
                 </tabView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uzd-U0-Y9N">
-                    <rect key="frame" x="146" y="280" width="55" height="17"/>
+                    <rect key="frame" x="126" y="259" width="47" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="seconds" id="TJ0-oK-sT4">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="seconds" id="TJ0-oK-sT4">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
             </subviews>
             <connections>
-                <outlet property="addButton" destination="X6Z-nA-PMo" id="ay7-84-HZL"/>
                 <outlet property="clockWiseButton" destination="1QX-dx-AR1" id="Ffo-xE-ia8"/>
                 <outlet property="degreesField" destination="hlq-my-aAe" id="XVZ-Gk-Kxc"/>
-                <outlet property="deleteButton" destination="ryc-fN-ihy" id="nKQ-NM-pSh"/>
                 <outlet property="durationField" destination="ZcC-vY-X8M" id="Cwo-Zo-bOW"/>
                 <outlet property="frameHeightField" destination="E1T-yg-6qn" id="J0r-Ie-x4u"/>
                 <outlet property="frameWidthField" destination="bMc-r1-8IC" id="R4k-zH-xkh"/>
@@ -346,7 +346,7 @@
                 <outlet property="startInteractiveModeButton" destination="SFO-yk-Ie4" id="PTO-Ss-gs8"/>
                 <outlet property="subSettingsTabView" destination="7o7-R2-uac" id="65M-AN-QiT"/>
             </connections>
-            <point key="canvasLocation" x="-76" y="-914"/>
+            <point key="canvasLocation" x="-76" y="-926"/>
         </customView>
     </objects>
 </document>

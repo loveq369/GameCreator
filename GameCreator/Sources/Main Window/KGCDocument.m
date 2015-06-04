@@ -304,7 +304,6 @@ struct Pixel
 	{
 		NSInteger index = [gamesPopUpButton indexOfSelectedItem];
 		_currentGame = [[self gameSet] games][index];
-		[_gameSet setLastSelectedGameIdentifier:[_currentGame identifier]];
 		[[self sceneTableView] reloadData];
 		[self tableViewSelectionDidChange:nil];
 	}
@@ -487,7 +486,6 @@ struct Pixel
 	{
 		KGCSceneContentView *sceneView = [self sceneView];
 		KGCScene *scene = [_currentGame scenes][selectedRow];
-		[_gameSet setLastSelectedSceneIdentifier:[scene identifier]];
 		[sceneView setupWithScene:scene];
 		[[self inspectorController] setupWithSceneLayers:@[[sceneView contentLayer]]];
 	}

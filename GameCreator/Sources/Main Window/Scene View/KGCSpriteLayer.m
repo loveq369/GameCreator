@@ -14,6 +14,9 @@
 #import "KGCSceneContentView.h"
 #import "KGCHelperMethods.h"
 #import "KGCResourceController.h"
+#import "CALayer+Animation.h"
+
+#define DEG2RAD (3.1415926/180.0)
 
 @interface KGCSpriteLayer () <KGCDataObjectDelegate>
 
@@ -23,6 +26,7 @@
 {
 	NSSize _imageSize;
 	BOOL _keepPosition;
+	CGFloat _rotationDegrees;
 }
 
 - (void)setupWithSceneObject:(KGCSceneObject *)sceneObject
@@ -57,6 +61,7 @@
 		[self updateBoundsWithScale:normalMode ? [sprite scale] : [sprite initialScale] notify:YES];
 		[self setZPosition:normalMode ? [sprite zOrder] : [sprite initialScale]];
 		[self setOpacity:normalMode ? [sprite alpha] : [sprite initialAlpha]];
+		[self addAnimationForRotationAngle:normalMode ? [sprite rotationDegrees] * DEG2RAD : [sprite initialRotationDegrees] * DEG2RAD withKey:@"Rotation"];
 	}
 }
 

@@ -1010,7 +1010,7 @@
 				FEEBE50B1AC2C4F7002370D9 /* KGCBasicInspector.h */,
 				FEEBE50C1AC2C4F7002370D9 /* KGCBasicInspector.m */,
 				FE479E261AC2D146008CD28E /* KGCBasicInspector.xib */,
-				FEEBE5031AC2C4F7002370D9 /* Action */,
+				FEEBE5031AC2C4F7002370D9 /* Actions */,
 				FEEBE5071AC2C4F7002370D9 /* Animations */,
 				FEEBE50E1AC2C4F7002370D9 /* Scene */,
 				FEEBE5121AC2C4F7002370D9 /* Sprite */,
@@ -1019,13 +1019,14 @@
 			path = "Basic Inspector";
 			sourceTree = "<group>";
 		};
-		FEEBE5031AC2C4F7002370D9 /* Action */ = {
+		FEEBE5031AC2C4F7002370D9 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
 				FEEBE5041AC2C4F7002370D9 /* KGCActionController.h */,
 				FEEBE5051AC2C4F7002370D9 /* KGCActionController.m */,
 				FE479E1A1AC2D146008CD28E /* KGCActionController.xib */,
 			);
+			name = Actions;
 			path = Action;
 			sourceTree = "<group>";
 		};

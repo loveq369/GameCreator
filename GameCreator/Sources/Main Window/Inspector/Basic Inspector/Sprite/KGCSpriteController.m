@@ -26,6 +26,7 @@
 @property (nonatomic, weak) IBOutlet NSSlider *spriteOpacitySlider;
 @property (nonatomic, weak) IBOutlet NSButton *spriteDraggableCheckBox;
 @property (nonatomic, weak) IBOutlet NSButton *spriteInteractionDisabledCheckBox;
+@property (nonatomic, weak) IBOutlet NSTextField *spriteRotationDegreesField;
 
 @end
 
@@ -66,12 +67,21 @@
 	
 	BOOL normalEditMode = [[[self sceneObjects][0] document] editMode] == KGCDocumentEditModeNormal;
 	
-	NSArray *properties = @[normalEditMode ? @"scale" : @"initialScale", normalEditMode ? @"zOrder" : @"initialZOrder", normalEditMode ? @"alpha" : @"initialAlpha"];
-	NSArray *textFields = @[[self spriteScaleField], [self spriteZOrderField], [self spriteOpacityField]];
-	for (NSInteger i = 0; i < [properties count]; i ++)
+	NSArray *properties = @[normalEditMode ? @"scale" : @"initialScale", normalEditMode ? @"zOrder" : @"initialZOrder", normalEditMode ? @"rotationDegrees" : @"initialRotationDegrees"];
+	NSArray *textFields = @[[self spriteScaleField], [self spriteZOrderField]];
+	for (NSInteger i = 0; i < [properties count]   -1; i ++)
 	{
 		NSString *propertyName = properties[i];
 		NSTextField *textField = textFields[i];
+		id object = [self objectForPropertyNamed:propertyName inArray:[self sceneObjects]];
+		[self setObjectValue:object inTextField:textField];
+	}
+	
+	// TMP
+	if ([self spriteRotationDegreesField])
+	{
+		NSString *propertyName = properties[2];
+		NSTextField *textField = [self spriteRotationDegreesField];
 		id object = [self objectForPropertyNamed:propertyName inArray:[self sceneObjects]];
 		[self setObjectValue:object inTextField:textField];
 	}
@@ -89,8 +99,11 @@
 		}
 	}
 	
-	id object = [self objectForPropertyNamed:@"alpha" inArray:[self sceneObjects]];
-	[[self spriteOpacitySlider] setDoubleValue:object ? [object doubleValue] * 100.0 : 0.0];
+	NSString *alphaKey = normalEditMode ? @"alpha" : @"initialAlpha";
+	id object = [self objectForPropertyNamed:alphaKey inArray:[self sceneObjects]];
+	CGFloat alpha = object ? [object doubleValue] * 100.0 : 0.0;
+	[[self spriteOpacitySlider] setDoubleValue:alpha];
+	[[self spriteOpacityField] setDoubleValue:alpha];
 }
 
 - (void)awakeFromNib
@@ -204,6 +217,12 @@
 	[self setObject:[sender objectValue] forPropertyNamed:@"interactionDisabled" inArray:[self sceneObjects]];
 }
 
+- (IBAction)changeRotationDegrees:(id)sender
+{
+	BOOL normalEditMode = [[[self sceneObjects][0] document] editMode] == KGCDocumentEditModeNormal;
+	[self setObject:[sender objectValue] forPropertyNamed:normalEditMode ? @"rotationDegrees" : @"initialRotationDegrees" inArray:[self sceneObjects]];
+}
+
 #pragma mark - File Drop View Delegate Methods
 
 - (void)fileDropView:(KGCFileDropView *)fileDropView droppedFileWithPaths:(NSArray *)filePaths
@@ -251,7 +270,7 @@
 - (void)setImageAtURL:(NSURL *)imageURL
 {
 	BOOL normalImage = [[self spriteImageTypePopUp] indexOfSelectedItem] == 0;
-	SEL selector = normalImage ? @selector(setImageAtURL:) : @selector(setBackgroundImageURL:);
+	SEL selector = normalImage ? @selector(setImageURL:) : @selector(setBackgroundImageURL:);
 	[[self sceneObjects] makeObjectsPerformSelector:selector withObject:imageURL];
 }
 

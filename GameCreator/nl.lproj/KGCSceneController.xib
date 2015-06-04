@@ -24,62 +24,55 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6wI-Sk-wLR">
-                    <rect key="frame" x="18" y="656" width="77" height="17"/>
+                    <rect key="frame" x="6" y="661" width="77" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Afbeelding:" id="XpA-eI-ULa">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Afbeelding:" id="XpA-eI-ULa">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1pr-ca-5Dh">
-                    <rect key="frame" x="18" y="685" width="58" height="17"/>
+                    <rect key="frame" x="6" y="688" width="58" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Naam:" id="Xwu-44-Ipb">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Naam:" id="Xwu-44-Ipb">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="jXk-bn-ExM">
-                    <rect key="frame" x="98" y="656" width="16" height="16"/>
+                    <rect key="frame" x="76" y="660" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="hWL-IM-Rvk"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="fn8-Y0-QYs">
-                    <rect key="frame" x="118" y="656" width="174" height="17"/>
+                    <rect key="frame" x="96" y="661" width="169" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Image File.png" id="Nln-mS-z4x">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Image File.png" id="Nln-mS-z4x">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="bgm-PP-0JO">
-                    <rect key="frame" x="18" y="713" width="225" height="17"/>
+                    <rect key="frame" x="6" y="712" width="225" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Scène Instellingen:" id="mhE-7m-eHC">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Scène Instellingen:" id="mhE-7m-eHC">
+                        <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <customView id="s9I-D4-vly" customClass="KGCFileDropView">
-                    <rect key="frame" x="2" y="618" width="292" height="112"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <connections>
-                        <outlet property="delegate" destination="-2" id="lEe-c7-b00"/>
-                    </connections>
-                </customView>
                 <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="l5H-SP-9Oy">
-                    <rect key="frame" x="0.0" y="619" width="294" height="5"/>
+                    <rect key="frame" x="0.0" y="615" width="294" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <button verticalHuggingPriority="750" id="Mef-OG-xzn">
-                    <rect key="frame" x="77" y="624" width="98" height="28"/>
+                    <rect key="frame" x="98" y="631" width="98" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Kies…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Alf-SK-G0t">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -90,7 +83,7 @@
                     </connections>
                 </button>
                 <button id="fCc-Vc-Iav">
-                    <rect key="frame" x="259" y="655" width="15" height="16"/>
+                    <rect key="frame" x="271" y="660" width="15" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ClearButton" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="eyy-qR-WmG">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -101,10 +94,10 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" id="i7C-9U-UPH">
-                    <rect key="frame" x="82" y="682" width="192" height="22"/>
+                    <rect key="frame" x="76" y="685" width="210" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="c1v-3v-Tdk">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="c1v-3v-Tdk">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -113,27 +106,34 @@
                     </connections>
                 </textField>
                 <button id="cDk-kA-xCi">
-                    <rect key="frame" x="18" y="594" width="258" height="18"/>
+                    <rect key="frame" x="5" y="592" width="259" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Fade in bij het openen" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qdI-iG-EZC">
+                    <buttonCell key="cell" type="check" title="Fade in bij het openen" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="qdI-iG-EZC">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="changeAutoFadeIn:" target="-2" id="ayv-IA-p0z"/>
                     </connections>
                 </button>
                 <button id="n5z-gY-jKH">
-                    <rect key="frame" x="18" y="574" width="258" height="18"/>
+                    <rect key="frame" x="5" y="572" width="259" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Fade uit bij het verlaten" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2qM-AO-fza">
+                    <buttonCell key="cell" type="check" title="Fade uit bij het verlaten" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="2qM-AO-fza">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="changeAutoFadeOut:" target="-2" id="IWK-YR-6t8"/>
                     </connections>
                 </button>
+                <customView id="s9I-D4-vly" customClass="KGCFileDropView">
+                    <rect key="frame" x="1" y="618" width="292" height="112"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="-2" id="lEe-c7-b00"/>
+                    </connections>
+                </customView>
             </subviews>
             <point key="canvasLocation" x="-1973" y="-3367"/>
         </customView>

@@ -13,23 +13,23 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Dn0-57-Q2J">
-                    <rect key="frame" x="10" y="47" width="45" height="17"/>
+                    <rect key="frame" x="16" y="50" width="30" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Spel:" id="AyB-ee-Hpm">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Spel:" id="AyB-ee-Hpm">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="o9H-Jc-844">
-                    <rect key="frame" x="59" y="42" width="218" height="26"/>
+                    <rect key="frame" x="49" y="45" width="219" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="MdD-Qs-5Ab">
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="MdD-Qs-5Ab">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" id="8GP-Dd-h1A">
                             <items>
-                                <menuItem title="Item 1" state="on" id="e2K-Ip-kfC"/>
+                                <menuItem title="Item 1" id="e2K-Ip-kfC"/>
                                 <menuItem title="Item 2" id="KLN-ab-Xwb"/>
                                 <menuItem title="Item 3" id="lQF-yn-rGU"/>
                             </items>
@@ -40,23 +40,23 @@
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="FM3-4z-B2F">
-                    <rect key="frame" x="10" y="20" width="45" height="17"/>
+                    <rect key="frame" x="7" y="24" width="39" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Scene:" id="u04-Fq-Hht">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Scene:" id="u04-Fq-Hht">
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="21d-xk-qtf">
-                    <rect key="frame" x="59" y="15" width="218" height="26"/>
+                    <rect key="frame" x="49" y="19" width="219" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="dxf-X2-ALo">
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="dxf-X2-ALo">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" id="SvO-9q-O3b">
                             <items>
-                                <menuItem title="Item 1" state="on" id="xxh-xG-smc"/>
+                                <menuItem title="Item 1" id="xxh-xG-smc"/>
                                 <menuItem title="Item 2" id="fN8-Fk-HGO"/>
                                 <menuItem title="Item 3" id="jkP-Yd-3Ks"/>
                             </items>

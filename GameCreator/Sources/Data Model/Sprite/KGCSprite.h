@@ -20,6 +20,11 @@
 //    KGCSpriteTypeButton,
 //};
 
+typedef struct
+{
+	CGFloat top, left , bottom, right;
+} KGCShapeInsets;
+
 /** A sprite data object */
 @interface KGCSprite : KGCSceneObject
 
@@ -148,6 +153,14 @@
 @property (nonatomic, getter = isPhysicsEnabled) BOOL physicsEnabled;
 @property (nonatomic, getter = isGravityEnabled) BOOL gravityEnabled;
 @property (nonatomic) CGPoint velocity;
+@property (nonatomic) NSInteger bodyType;
+@property (nonatomic) NSInteger density;
+@property (nonatomic) NSInteger shape;
+@property (nonatomic) KGCShapeInsets shapeInsets;
 
+@property (nonatomic) CGFloat rotationDegrees;
+@property (nonatomic) CGFloat initialRotationDegrees;
 
 @end
+
+KGCShapeInsets KGCShapeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
