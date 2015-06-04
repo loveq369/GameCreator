@@ -20,51 +20,6 @@
 	{
 		_dictionary = dictionary;
 		_document = document;
-		
-//		NSArray *soundKeys = @[@"BackgroundSounds", @"IntroSounds", @"NoInteractionSounds", @"HintSounds", @"LeaveSounds", @"MouseEnterSounds", @"MouseClickSounds", @"DraggableSpriteMouseClick", @"DraggableSpriteMouseDrag", @"Achievement", @"SameAnswerSounds", @"CorrectAnswerSounds", @"WrongAnswerSounds", @"AutoAnswerSounds"];
-//		
-//		NSMutableArray *sounds = [[NSMutableArray alloc] init];
-//		for (NSString *key in [dictionary allKeys])
-//		{
-//			for (NSString *soundKey in soundKeys)
-//			{
-//				if ([key isEqualToString:soundKey])
-//				{
-//					NSString *newKey = key;
-//					if ([key isEqualToString:@"DraggableSpriteMouseClick"])
-//					{
-//						newKey = @"DraggableSpriteMouseClickSounds";
-//					}
-//					else if ([key isEqualToString:@"DraggableSpriteMouseDrag"])
-//					{
-//						newKey = @"DraggableSpriteMouseDragSounds";
-//					}
-//					else if ([key isEqualToString:@"Achievement"])
-//					{
-//						newKey = @"AchievementSounds";
-//					}
-//					
-//					NSMutableDictionary *newDictionary = [[NSMutableDictionary alloc] init];
-//					newDictionary[@"Name"] = newKey;
-//					newDictionary[@"Sounds"] = dictionary[key];
-//					
-//					[sounds addObject:newDictionary];
-//					[dictionary removeObjectForKey:key];
-//				}
-//			}
-//		}
-//		dictionary[@"SoundSets"] = sounds;
-//		[self updateDictionary];
-
-		NSMutableArray *soundSets = [self dictionary][@"SoundSets"];
-		for (id object in [soundSets copy])
-		{
-			for (NSMutableDictionary *soundDictionary in object[@"Sounds"])
-			{
-				soundDictionary[@"_id"] = [[NSUUID UUID] UUIDString];
-			}
-		}
-
 	}
 	
 	return self;
