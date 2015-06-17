@@ -11,10 +11,8 @@
 		FE19CAD91B1753B6000BB172 /* KGCGlobalSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE19CAD71B1753B6000BB172 /* KGCGlobalSceneController.m */; };
 		FE19CADC1B184A28000BB172 /* ClearButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FE19CADA1B184A28000BB172 /* ClearButton.png */; };
 		FE19CADD1B184A28000BB172 /* ClearButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE19CADB1B184A28000BB172 /* ClearButton@2x.png */; };
-		FE19CAE21B187360000BB172 /* KGCScenePhysicsController.h in Sources */ = {isa = PBXBuildFile; fileRef = FE19CAE01B187360000BB172 /* KGCScenePhysicsController.h */; };
 		FE19CAE31B187360000BB172 /* KGCScenePhysicsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE19CAE11B187360000BB172 /* KGCScenePhysicsController.m */; };
 		FE19CAE61B187388000BB172 /* KGCScenePhysicsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE19CAE41B187388000BB172 /* KGCScenePhysicsController.xib */; };
-		FE19CAEA1B18848E000BB172 /* KGCSpritePhysicsController.h in Sources */ = {isa = PBXBuildFile; fileRef = FE19CAE81B18848E000BB172 /* KGCSpritePhysicsController.h */; };
 		FE19CAEB1B18848E000BB172 /* KGCSpritePhysicsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE19CAE91B18848E000BB172 /* KGCSpritePhysicsController.m */; };
 		FE19CAEE1B1884B1000BB172 /* KGCSpritePhysicsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE19CAEC1B1884B1000BB172 /* KGCSpritePhysicsController.xib */; };
 		FE241F9E1AC97E060095F76B /* KGCDADShapeInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = FE241F8D1AC97E060095F76B /* KGCDADShapeInspector.m */; };
@@ -117,6 +115,8 @@
 		FE87B6981AF74D5F00A0DBB1 /* KGCGameTransitionTemplateAction.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE87B6961AF74D5F00A0DBB1 /* KGCGameTransitionTemplateAction.xib */; };
 		FE9182571ABC03B4001D2682 /* KGCTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9182551ABC03B4001D2682 /* KGCTableView.m */; };
 		FED00F631ABDC8C60059D0A2 /* KGCTableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FED00F621ABDC8C60059D0A2 /* KGCTableTextField.m */; };
+		FED02FDD1B21E2BD009494AC /* KGCActionTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FED02FDC1B21E2BD009494AC /* KGCActionTableCell.m */; };
+		FED02FE01B21E7F2009494AC /* KGCActionTargetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FED02FDE1B21E7F2009494AC /* KGCActionTargetView.xib */; };
 		FED0FF361AC85F9B00ABC3D7 /* KGCGameSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FED0FF351AC85F9B00ABC3D7 /* KGCGameSet.m */; };
 		FEEBE5321AC2C4F7002370D9 /* KGCActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5051AC2C4F7002370D9 /* KGCActionController.m */; };
 		FEEBE5351AC2C4F7002370D9 /* KGCAnimationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5091AC2C4F7002370D9 /* KGCAnimationsController.m */; };
@@ -199,11 +199,11 @@
 		FE19CAD71B1753B6000BB172 /* KGCGlobalSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCGlobalSceneController.m; sourceTree = "<group>"; };
 		FE19CADA1B184A28000BB172 /* ClearButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClearButton.png; sourceTree = "<group>"; };
 		FE19CADB1B184A28000BB172 /* ClearButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClearButton@2x.png"; sourceTree = "<group>"; };
-		FE19CAE01B187360000BB172 /* KGCScenePhysicsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCScenePhysicsController.h; sourceTree = "<group>"; };
+		FE19CAE01B187360000BB172 /* KGCScenePhysicsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCScenePhysicsController.h; sourceTree = "<group>"; };
 		FE19CAE11B187360000BB172 /* KGCScenePhysicsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCScenePhysicsController.m; sourceTree = "<group>"; };
 		FE19CAE51B187388000BB172 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCScenePhysicsController.xib; sourceTree = "<group>"; };
 		FE19CAE71B18738C000BB172 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCScenePhysicsController.xib; sourceTree = "<group>"; };
-		FE19CAE81B18848E000BB172 /* KGCSpritePhysicsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSpritePhysicsController.h; sourceTree = "<group>"; };
+		FE19CAE81B18848E000BB172 /* KGCSpritePhysicsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCSpritePhysicsController.h; sourceTree = "<group>"; };
 		FE19CAE91B18848E000BB172 /* KGCSpritePhysicsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSpritePhysicsController.m; sourceTree = "<group>"; };
 		FE19CAED1B1884B1000BB172 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCSpritePhysicsController.xib; sourceTree = "<group>"; };
 		FE19CAEF1B1884B4000BB172 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCSpritePhysicsController.xib; sourceTree = "<group>"; };
@@ -402,6 +402,10 @@
 		FE9182551ABC03B4001D2682 /* KGCTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCTableView.m; sourceTree = "<group>"; };
 		FED00F611ABDC8C60059D0A2 /* KGCTableTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCTableTextField.h; sourceTree = "<group>"; };
 		FED00F621ABDC8C60059D0A2 /* KGCTableTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCTableTextField.m; sourceTree = "<group>"; };
+		FED02FDB1B21E2BD009494AC /* KGCActionTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCActionTableCell.h; sourceTree = "<group>"; };
+		FED02FDC1B21E2BD009494AC /* KGCActionTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCActionTableCell.m; sourceTree = "<group>"; };
+		FED02FDF1B21E7F2009494AC /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCActionTargetView.xib; sourceTree = "<group>"; };
+		FED02FE11B21E7F8009494AC /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCActionTargetView.xib; sourceTree = "<group>"; };
 		FED0FF341AC85F9B00ABC3D7 /* KGCGameSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KGCGameSet.h; path = GameSet/KGCGameSet.h; sourceTree = "<group>"; };
 		FED0FF351AC85F9B00ABC3D7 /* KGCGameSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KGCGameSet.m; path = GameSet/KGCGameSet.m; sourceTree = "<group>"; };
 		FEEBE5041AC2C4F7002370D9 /* KGCActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCActionController.h; sourceTree = "<group>"; };
@@ -990,6 +994,16 @@
 			path = "Settings View";
 			sourceTree = "<group>";
 		};
+		FED02FDA1B21E2BD009494AC /* Table Cell Views */ = {
+			isa = PBXGroup;
+			children = (
+				FED02FDB1B21E2BD009494AC /* KGCActionTableCell.h */,
+				FED02FDC1B21E2BD009494AC /* KGCActionTableCell.m */,
+				FED02FDE1B21E7F2009494AC /* KGCActionTargetView.xib */,
+			);
+			path = "Table Cell Views";
+			sourceTree = "<group>";
+		};
 		FEEBE5011AC2C4F7002370D9 /* Inspector */ = {
 			isa = PBXGroup;
 			children = (
@@ -1025,6 +1039,7 @@
 				FEEBE5041AC2C4F7002370D9 /* KGCActionController.h */,
 				FEEBE5051AC2C4F7002370D9 /* KGCActionController.m */,
 				FE479E1A1AC2D146008CD28E /* KGCActionController.xib */,
+				FED02FDA1B21E2BD009494AC /* Table Cell Views */,
 			);
 			name = Actions;
 			path = Action;
@@ -1702,7 +1717,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = KGC;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Kiwi Fruitware";
 				TargetAttributes = {
 					FE2C90FA1AB4B925004FD211 = {
@@ -1787,6 +1802,7 @@
 				FE479E691AC2D146008CD28E /* KGCPathAnimation.xib in Resources */,
 				FE479E6D1AC2D146008CD28E /* KGCScaleAnimation.xib in Resources */,
 				FE479E6B1AC2D146008CD28E /* KGCPropertiesAction.xib in Resources */,
+				FED02FE01B21E7F2009494AC /* KGCActionTargetView.xib in Resources */,
 				FE19CADD1B184A28000BB172 /* ClearButton@2x.png in Resources */,
 				FE479E661AC2D146008CD28E /* KGCFadeAnimation.xib in Resources */,
 				FE479EA81AC2E4B3008CD28E /* Localizable.strings in Resources */,
@@ -1820,7 +1836,6 @@
 				FEEBE6001AC2C791002370D9 /* KGCAnimationActionView.m in Sources */,
 				FE2C91E41AB4BAA8004FD211 /* KGCHelperMethods.m in Sources */,
 				FEEBE65D1AC2C791002370D9 /* KGCSprite.m in Sources */,
-				FE19CAE21B187360000BB172 /* KGCScenePhysicsController.h in Sources */,
 				FEEBE5FD1AC2C791002370D9 /* KGCAnimationAction.m in Sources */,
 				FEEBE6431AC2C791002370D9 /* KGCPositionAnimation.m in Sources */,
 				FE2C91F21AB4BAA8004FD211 /* KGCSceneTableCell.m in Sources */,
@@ -1847,7 +1862,7 @@
 				FEEBE66D1AC2C791002370D9 /* KGCSoundTemplateAction.m in Sources */,
 				FE2C91EE1AB4BAA8004FD211 /* KGCImageView.m in Sources */,
 				FE9182571ABC03B4001D2682 /* KGCTableView.m in Sources */,
-				FE19CAEA1B18848E000BB172 /* KGCSpritePhysicsController.h in Sources */,
+				FED02FDD1B21E2BD009494AC /* KGCActionTableCell.m in Sources */,
 				FE2C91ED1AB4BAA8004FD211 /* KGCImageLayer.m in Sources */,
 				FEEBE61D1AC2C791002370D9 /* KGCPropertiesActionView.m in Sources */,
 				FE4B15FD1AF0A84D009A2147 /* KGCMenuSceneController.m in Sources */,
@@ -2407,6 +2422,16 @@
 			path = ../../../../..;
 			sourceTree = "<group>";
 		};
+		FED02FDE1B21E7F2009494AC /* KGCActionTargetView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FED02FDF1B21E7F2009494AC /* English */,
+				FED02FE11B21E7F8009494AC /* nl */,
+			);
+			name = KGCActionTargetView.xib;
+			path = ../../../../../..;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -2430,6 +2455,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2501,6 +2527,7 @@
 				IBC_WARNINGS = NO;
 				INFOPLIST_FILE = GameCreator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kiwifruitware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2514,6 +2541,7 @@
 				IBC_WARNINGS = NO;
 				INFOPLIST_FILE = GameCreator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kiwifruitware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -2533,6 +2561,7 @@
 				);
 				INFOPLIST_FILE = GameCreatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kiwifruitware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameCreator.app/Contents/MacOS/GameCreator";
 			};
@@ -2549,6 +2578,7 @@
 				);
 				INFOPLIST_FILE = GameCreatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kiwifruitware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameCreator.app/Contents/MacOS/GameCreator";
 			};

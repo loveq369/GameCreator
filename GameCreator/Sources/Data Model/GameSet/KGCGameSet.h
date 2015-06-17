@@ -16,6 +16,8 @@
 + (KGCGameSet *)gameSetForDocument:(KGCDocument *)document;
 
 @property (nonatomic) NSSize screenSize;
+@property (nonatomic, copy) NSString *firstGameIdentifier;
+@property (nonatomic, copy) NSString *firstSceneIdentifier;
 
 - (NSArray *)scenes;
 
@@ -24,8 +26,5 @@
 - (void)removeGame:(KGCGame *)game;
 
 - (void)imageNames:(NSMutableArray *)imageNames audioNames:(NSMutableArray *)audioNames;
-
-@property (nonatomic, copy) NSString *firstGameIdentifier;
-@property (nonatomic, copy) NSString *firstSceneIdentifier;
 
 @end

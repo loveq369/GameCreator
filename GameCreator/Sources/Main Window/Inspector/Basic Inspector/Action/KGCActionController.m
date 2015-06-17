@@ -18,19 +18,10 @@
 @property (nonatomic, weak) IBOutlet NSButton *actionBarButton;
 @property (nonatomic, weak) IBOutlet NSButton *actionAddButton;
 @property (nonatomic, weak) IBOutlet NSPopUpButton *actionAddPopUp;
-@property (nonatomic, weak) IBOutlet NSTextField *nameTextField;
-@property (nonatomic, weak) IBOutlet NSPopUpButton *triggerPopupButton;
-@property (nonatomic, weak) IBOutlet NSTabView *triggerOptionsTabView;
 @property (nonatomic, weak) IBOutlet NSTextField *triggerNotificationNameField;
 @property (nonatomic, weak) IBOutlet NSPopUpButton *actionLinkPopup;
-@property (nonatomic, weak) IBOutlet NSTextField *actionTypeField;
 @property (nonatomic, weak) IBOutlet NSTextField *delayTextField;
 @property (nonatomic, weak) IBOutlet NSView *actionSettingsView;
-@property (nonatomic, strong) IBOutlet NSView *actionTriggerSpritesView;
-@property (nonatomic, weak) IBOutlet NSButton *actionTriggerSpritesEditButton;
-@property (nonatomic, weak) IBOutlet NSTableView *actionTriggerSpritesTableView;
-@property (nonatomic, weak) IBOutlet NSButton *actionTriggerSpritesAddButton;
-@property (nonatomic, weak) IBOutlet NSPopUpButton *actionTriggerSpritesAddPopUp;
 @property (nonatomic, weak) IBOutlet NSTextField *actionPointsField;
 @property (nonatomic, weak) IBOutlet NSTextField *actionMaximumPointsField;
 @property (nonatomic, weak) IBOutlet NSTextField *actionRequiredPointsField;
@@ -93,124 +84,6 @@
 	else
 	{
 		NSBeep();
-	}
-}
-
-- (IBAction)changeActionIdentifier:(id)sender
-{
-	[[self currentAction] setName:[sender stringValue]];
-}
-
-- (IBAction)changeActionTrigger:(id)sender
-{
-	KGCActionTrigger actionTrigger = [sender indexOfSelectedItem];
-	[[self currentAction] setActionTrigger:actionTrigger];
-	[[self actionTriggerSpritesEditButton] setEnabled:actionTrigger == KGCActionTriggerDrop || actionTrigger == KGCActionTriggerDropped || actionTrigger == KGCActionTriggerLink || actionTrigger == KGCActionTriggerUnlink];
-}
-
-- (IBAction)showActionTriggerSpriteView:(id)sender
-{
-	if (!_inspectorWindow)
-	{
-		[[self actionTriggerSpritesTableView] reloadData];
-		NSView *actionTriggerSpritesView = [self actionTriggerSpritesView];
-		
-		NSRect senderFrame = [sender convertRect:[sender bounds] toView:nil];
-		senderFrame = [[[self view] window] convertRectToScreen:senderFrame];
-		NSRect actionTriggerSpritesViewFrame = [actionTriggerSpritesView frame];
-		
-		_inspectorWindow = [[KGCInspectorWindow alloc] initWithView:[self actionTriggerSpritesView] arrowLocation:0.0];
-		
-		NSRect windowFrame = [_inspectorWindow frame];
-		CGFloat x = (senderFrame.origin.x + senderFrame.size.width / 2.0) - actionTriggerSpritesViewFrame.size.width / 2.0;
-		CGFloat y = senderFrame.origin.y - windowFrame.size.height;
-		NSPoint position = NSMakePoint(round(x), round(y));
-		[_inspectorWindow setFrameOrigin:position];
-		[_inspectorWindow showAnimated:YES];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeTriggerWindow) name:NSWindowDidResignKeyNotification object:_inspectorWindow];
-	}
-}
-
-- (void)removeTriggerWindow
-{
-	[[NSOperationQueue mainQueue] addOperationWithBlock:^
-	{
-		[[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResignKeyNotification object:_inspectorWindow];
-	
-		[_inspectorWindow orderOut:nil];
-		_inspectorWindow = nil;
-	}];
-}
-
-- (IBAction)addActionTriggerSprite:(id)sender
-{
-	NSPopUpButton *actionTriggerSpritesAddPopUp = [self actionTriggerSpritesAddPopUp];
-	if (sender == [self actionTriggerSpritesAddButton])
-	{
-		[actionTriggerSpritesAddPopUp removeAllItems];
-		[actionTriggerSpritesAddPopUp addItemWithTitle:@""];
-		
-		NSArray *sceneObjects = [self sceneObjects];
-		KGCSceneObject *sceneObject = sceneObjects[0];
-		KGCScene *scene;
-		if ([sceneObject isKindOfClass:[KGCScene class]])
-		{
-			scene = (KGCScene *)sceneObject;
-		}
-		else
-		{
-			scene = (KGCScene *)[sceneObject parentObject];
-		}
-		
-		NSArray *sprites = [scene sprites];
-		NSArray *triggerKeys = [[self currentAction] triggerKeys];
-		
-		BOOL titleAdded = NO;
-		for (KGCSprite *sprite in sprites)
-		{
-			NSString *identifier = [sprite identifier];
-			if (![triggerKeys containsObject:identifier] && ![sceneObjects containsObject:sprite])
-			{
-				[actionTriggerSpritesAddPopUp addItemWithTitle:[sprite name]];
-				titleAdded = YES;
-			}
-		}
-		
-		if (!titleAdded)
-		{
-			NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"No Available Sprites" action:NULL keyEquivalent:@""];
-			[item setEnabled:NO];
-			[[actionTriggerSpritesAddPopUp menu] addItem:item];
-		}
-	
-		[actionTriggerSpritesAddPopUp performClick:nil];
-	}
-	else
-	{
-		KGCAction *action = [self currentAction];
-		NSMutableArray *triggerKeys = [action triggerKeys];
-		if (!triggerKeys)
-		{
-			triggerKeys = [[NSMutableArray alloc] init];
-			[action setTriggerKeys:triggerKeys];
-		}
-	
-		[triggerKeys addObject:[sender titleOfSelectedItem]];
-		[[self actionTriggerSpritesTableView] reloadData];
-	}
-}
-
-- (IBAction)deleteActionTriggerSprite:(id)sender
-{
-	NSMutableArray *triggerKeys = [[self currentAction] triggerKeys];
-	NSTableView *actionTriggerSpritesTableView = [self actionTriggerSpritesTableView];
-	NSInteger index = [actionTriggerSpritesTableView selectedRow];
-	
-	if (index > -1)
-	{
-		[triggerKeys removeObjectAtIndex:index];
-		[actionTriggerSpritesTableView reloadData];
 	}
 }
 
@@ -295,34 +168,7 @@
 	{
 		KGCAction *spriteAction = [self currentAction];
 		
-		NSTextField *nameTextField = [self nameTextField];
-		[nameTextField setStringValue:[spriteAction name]];
-		[nameTextField setEnabled:YES];
-		
-		NSPopUpButton *triggerPopupButon = [self triggerPopupButton];
-		KGCActionTrigger actionTrigger = [spriteAction actionTrigger];
-		[triggerPopupButon selectItemAtIndex:actionTrigger];
-		[triggerPopupButon setEnabled:YES];
-		
-		NSTabView *triggerOptionsTabView = [self triggerOptionsTabView];
-		[triggerOptionsTabView setHidden:NO];
-		
-		if (actionTrigger == KGCActionTriggerDrop || actionTrigger == KGCActionTriggerDropped || actionTrigger == KGCActionTriggerLink || actionTrigger == KGCActionTriggerUnlink)
-		{
-			[triggerOptionsTabView selectTabViewItemAtIndex:1];
-		}
-		else if (actionTrigger == KGCActionTriggerNotification)
-		{
-			[triggerOptionsTabView selectTabViewItemAtIndex:2];
-			[[self triggerNotificationNameField] setStringValue:[spriteAction actionTriggerNotificationName]];
-		}
-		else
-		{
-			[triggerOptionsTabView selectTabViewItemAtIndex:0];
-		}
-		
-		[[self actionTypeField] setStringValue:[spriteAction actionTypeDisplayName]];
-		[[self actionTriggerSpritesEditButton] setEnabled:actionTrigger == KGCActionTriggerDrop || actionTrigger == KGCActionTriggerDropped || actionTrigger == KGCActionTriggerLink || actionTrigger == KGCActionTriggerUnlink];
+		[[self triggerNotificationNameField] setStringValue:[spriteAction actionTriggerNotificationName]];
 		
 		NSPopUpButton *actionLinkPopup = [self actionLinkPopup];
 		[actionLinkPopup selectItemAtIndex:[spriteAction actionLinkType]];
@@ -359,20 +205,6 @@
 	}
 	else
 	{
-		NSTextField *nameTextField = [self nameTextField];
-		[nameTextField setStringValue:@""];
-		[nameTextField setEnabled:NO];
-		
-		NSPopUpButton *triggerPopupButon = [self triggerPopupButton];
-		[triggerPopupButon selectItemAtIndex:0];
-		[triggerPopupButon setEnabled:NO];
-		
-		NSTabView *triggerOptionsTabView = [self triggerOptionsTabView];
-		[triggerOptionsTabView setHidden:YES];
-		
-		[[self actionTypeField] setStringValue:@""];
-		[[self actionTriggerSpritesEditButton] setEnabled:NO];
-		
 		[[self actionLinkPopup] setEnabled:NO];
 		
 		NSTextField *actionPointsField = [self actionPointsField];

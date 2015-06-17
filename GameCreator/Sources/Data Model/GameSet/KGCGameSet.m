@@ -14,6 +14,7 @@
 {
 	NSMutableArray *_games;
 	NSMutableArray *_gameInfoDictionaries;
+	NSMutableDictionary *_gameInfoDictionariesDictionary;
 }
 
 #pragma mark - Initial Methods
@@ -44,16 +45,22 @@
 		
 		NSDictionary *gameFileWrappers = [mainFileWrapper fileWrappers];
 		_gameInfoDictionaries = dictionary[@"Games"];
-		for (NSDictionary *gameInfoDictionary in _gameInfoDictionaries)
+		_gameInfoDictionariesDictionary = [[NSMutableDictionary alloc] init];
+		for (NSMutableDictionary *gameInfoDictionary in _gameInfoDictionaries)
 		{
 			NSString *gameFileName = gameInfoDictionary[@"FileName"];
 			NSFileWrapper *gameFileWrapper = gameFileWrappers[gameFileName];
 			NSMutableDictionary *gameDictionary = [NSJSONSerialization JSONObjectWithData:[gameFileWrapper regularFileContents] options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
 			
 			KGCGame *game = [[KGCGame alloc] initWithDictionary:gameDictionary document:document];
+			gameInfoDictionary[@"Name"] = [game name];
 			[game setParentObject:self];
 			[_games addObject:game];
+			
+			_gameInfoDictionariesDictionary[[game identifier]] = gameInfoDictionary;
 		}
+		
+		[self updateDictionary];
 	}
 	
 	return self;
@@ -94,7 +101,9 @@
 		NSFileWrapper *mainFileWrapper = [[self document] mainFileWrapper];
 		[mainFileWrapper addFileWrapper:gameFileWrapper];
 		
-		[_gameInfoDictionaries addObject:@{@"FileName": gameFileName, @"Name": [game name]}];
+		NSMutableDictionary *gameInfoDictionary = [@{@"FileName": gameFileName, @"Name": [game name]} mutableCopy];
+		[_gameInfoDictionaries addObject:gameInfoDictionary];
+		_gameInfoDictionariesDictionary[[game identifier]] = gameInfoDictionary;
 
 		[self notifyDelegateAboutKeyChange:@"Scenes"];
 		[self updateDictionary];
@@ -105,18 +114,12 @@
 {
 	if ([_games containsObject:game])
 	{
-		NSString *gameFileName = [[game identifier] stringByAppendingPathExtension:@"json"];
+		NSString *gameIdentifier = [game identifier];
+		NSString *gameFileName = [gameIdentifier stringByAppendingPathExtension:@"json"];
 		NSFileWrapper *mainFileWrapper = [[self document] mainFileWrapper];
 		[mainFileWrapper removeFileWrapper:[mainFileWrapper fileWrappers][gameFileName]];
 		
-		for (NSDictionary *_gameInfoDictionary in [_gameInfoDictionaries copy])
-		{
-			NSString *fileName = _gameInfoDictionary[@"FileName"];
-			if ([fileName isEqualToString:gameFileName])
-			{
-				[_gameInfoDictionaries removeObject:_gameInfoDictionary];
-			}
-		}
+		[_gameInfoDictionaries removeObject:_gameInfoDictionariesDictionary[gameIdentifier]];
 		
 		[_games removeObject:game];
 		[self notifyDelegateAboutKeyChange:@"Scenes"];
@@ -164,6 +167,19 @@
 	}
 	
 	return [NSArray arrayWithArray:scenes];
+}
+
+#pragma mark - Data Object Methods
+
+- (void)notifyDelegateAboutKeyChange:(NSString *)key inChildObject:(KGCDataObject *)childObject
+{
+	[super notifyDelegateAboutKeyChange:key inChildObject:childObject];
+	
+	if ([childObject isKindOfClass:[KGCGame class]] && [key isEqualToString:@"Name"])
+	{
+		NSMutableDictionary *gameInfoDictionary = _gameInfoDictionariesDictionary[[childObject identifier]];
+		gameInfoDictionary[@"Name"] = [childObject name];
+	}
 }
 
 #pragma mark - Convenient Methods

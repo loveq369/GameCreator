@@ -151,12 +151,13 @@ typedef struct
 
 // Physics
 @property (nonatomic, getter = isPhysicsEnabled) BOOL physicsEnabled;
-@property (nonatomic, getter = isGravityEnabled) BOOL gravityEnabled;
 @property (nonatomic) CGPoint velocity;
 @property (nonatomic) NSInteger bodyType;
 @property (nonatomic) NSInteger density;
 @property (nonatomic) NSInteger shape;
 @property (nonatomic) KGCShapeInsets shapeInsets;
+@property (nonatomic) CGFloat friction;
+@property (nonatomic) CGFloat restitution;
 
 @property (nonatomic) CGFloat rotationDegrees;
 @property (nonatomic) CGFloat initialRotationDegrees;

@@ -61,14 +61,13 @@
 			dictionary[@"HintSounds"] = _hintSounds;
 		}
 		
-		NSString *thumbnailImageString = dictionary[@"ThumbnailImage"];
-		if (thumbnailImageString)
+		NSFileWrapper *sceneFileWrapper = [document sceneFileWrapper];
+		NSString *fileName = [[self identifier] stringByAppendingPathExtension:@"jpg"];
+		NSDictionary *fileWrappers = [sceneFileWrapper fileWrappers];
+		if ([[fileWrappers allKeys] containsObject:fileName])
 		{
-			NSData *data = [[NSData alloc] initWithBase64EncodedString:thumbnailImageString options:0];
-			if (data)
-			{
-				_thumbnailImage = [[NSImage alloc] initWithData:data];
-			}
+			NSData *data = [fileWrappers[fileName] regularFileContents];
+			_thumbnailImage = [[NSImage alloc] initWithData:data];
 		}
 	}
 	
@@ -311,36 +310,6 @@
 	[self setPoint:gravity forKey:@"PhysicsGravity"];
 }
 
-- (CGFloat)speed
-{
-	return [self doubleForKey:@"PhysicsSpeed"];
-}
-
-- (void)setSpeed:(CGFloat)speed
-{
-	[self setDouble:speed forKey:@"PhysicsSpeed"];
-}
-
-- (CGFloat)updateRate
-{
-	return [self doubleForKey:@"PhysicsUpdateRate"];
-}
-
-- (void)setUpdateRate:(CGFloat)updateRate
-{
-	[self setDouble:updateRate forKey:@"PhysicsUpdateRate"];
-}
-
-- (NSInteger)subSteps
-{
-	return [self integerForKey:@"PhysicsSubSteps"];
-}
-
-- (void)setSubSteps:(NSInteger)subSteps
-{
-	[self setInteger:subSteps forKey:@"PhysicsSubSteps"];
-}
-
 - (void)setThumbnailImage:(NSImage *)thumbnailImage
 {
 	_thumbnailImage = thumbnailImage;
@@ -351,8 +320,18 @@
 	NSBitmapImageRep *bitmapRep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0.0, 0.0, imageSize.width, imageSize.height)] ;
 	[thumbnailImage unlockFocus];
 	
-	NSData *data = [bitmapRep representationUsingType:NSJPEGFileType properties: nil];
-	[self setObject:[data base64EncodedStringWithOptions:0] forKey:@"ThumbnailImage"];
+	NSFileWrapper *sceneFileWrapper = [[self document] sceneFileWrapper];
+	NSString *fileName = [[self identifier] stringByAppendingPathExtension:@"jpg"];
+	NSDictionary *fileWrappers = [sceneFileWrapper fileWrappers];
+	if ([[fileWrappers allKeys] containsObject:fileName])
+	{
+		[sceneFileWrapper removeFileWrapper:fileWrappers[fileName]];
+	}
+	
+	NSData *data = [bitmapRep representationUsingType:NSJPEGFileType properties:@{}];
+	NSFileWrapper *newFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:data];
+	[newFileWrapper setPreferredFilename:fileName];
+	[sceneFileWrapper addFileWrapper:newFileWrapper];
 }
 
 #pragma mark - Class Methods

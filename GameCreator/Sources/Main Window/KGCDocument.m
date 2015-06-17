@@ -798,12 +798,12 @@ struct Pixel
 						
 						NSImage *shadowImage = [self shadowImageWithImage:image excludeImage:image blurRadius:2.0];
 						NSBitmapImageRep *imageRep = [[NSBitmapImageRep alloc] initWithData:[shadowImage TIFFRepresentation]];
-						NSData *shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
+						NSData *shadowData = [imageRep representationUsingType:NSPNGFileType properties:@{}];
 						NSFileWrapper *shadowFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
 						
 						NSImage *largeRadiusShadowImage = [self shadowImageWithImage:image excludeImage:image blurRadius:6.0];
 						imageRep = [[NSBitmapImageRep alloc] initWithData:[largeRadiusShadowImage TIFFRepresentation]];
-						shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
+						shadowData = [imageRep representationUsingType:NSPNGFileType properties:@{}];
 						NSFileWrapper *largeRadiusShadowFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
 						
 						NSFileWrapper *redOutlineImageFileWrapper;
@@ -812,7 +812,7 @@ struct Pixel
 						{
 							NSImage *redOutlineImage = [self redOutlineImageWithImage:image excludeImage:image outlineSize:2.0];
 							imageRep = [[NSBitmapImageRep alloc] initWithData:[redOutlineImage TIFFRepresentation]];
-							shadowData = [imageRep representationUsingType:NSPNGFileType properties:nil];
+							shadowData = [imageRep representationUsingType:NSPNGFileType properties:@{}];
 							redOutlineImageFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:shadowData];
 						}
 						

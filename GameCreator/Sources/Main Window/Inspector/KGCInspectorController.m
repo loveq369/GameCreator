@@ -25,13 +25,11 @@
 @implementation KGCInspectorController
 {
 	KGCInspector *_inspector;
+	Class _lastClass;
 }
 
 - (void)setupWithSceneLayers:(NSArray *)sceneLayers
 {
-	NSView *inspectorContainerView = [self inspectorContainerView];
-	[[inspectorContainerView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
-
 	if (sceneLayers && (![sceneLayers[0] isKindOfClass:[KGCScene class]] || ([sceneLayers[0] isKindOfClass:[KGCScene class]] && [sceneLayers count] == 1)))
 	{
 		[[self noScenesField] setHidden:YES];
@@ -50,17 +48,29 @@
 		
 		Class inspectorClasses[4] = {[KGCBasicInspector class], [KGCDADInspector class], [KGCDADShapeInspector class], [KGCMenuInspector class]};
 		Class inspectorClass = inspectorClasses[[scene templateType]];
-		_inspector = [[inspectorClass alloc] init];
-		[_inspector setWindow:[self window]];
 		
-		NSView *inspectorView = [_inspector inspectorView];
-		[inspectorView setFrame:[inspectorContainerView bounds]];
-		[inspectorContainerView addSubview:inspectorView];
+		if (inspectorClass != _lastClass)
+		{
+			NSView *inspectorContainerView = [self inspectorContainerView];
+			[[inspectorContainerView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+		
+			_inspector = [[inspectorClass alloc] init];
+			[_inspector setWindow:[self window]];
+			
+			NSView *inspectorView = [_inspector inspectorView];
+			[inspectorView setFrame:[inspectorContainerView bounds]];
+			[inspectorContainerView addSubview:inspectorView];
+			
+			_lastClass = inspectorClass;
+		}
 		
 		[_inspector setupWithSceneLayers:sceneLayers];
 	}
 	else
 	{
+		NSView *inspectorContainerView = [self inspectorContainerView];
+		[[inspectorContainerView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+	
 		[[self noScenesField] setHidden:NO];
 	}
 }
