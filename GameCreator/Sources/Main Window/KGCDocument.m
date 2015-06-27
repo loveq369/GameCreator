@@ -522,6 +522,8 @@ struct Pixel
 			jsonData = [game copyData];
 		}
 		
+		
+		
 		NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
 		[pasteBoard clearContents];
 		NSPasteboardItem *item = [[NSPasteboardItem alloc] init];
@@ -794,7 +796,7 @@ struct Pixel
 							continue;
 						}
 					
-						NSImage *image = [[self resourceController] imageNamed:imageName];
+						NSImage *image = [[self resourceController] imageNamed:imageName isTransparent:NO];
 						
 						NSImage *shadowImage = [self shadowImageWithImage:image excludeImage:image blurRadius:2.0];
 						NSBitmapImageRep *imageRep = [[NSBitmapImageRep alloc] initWithData:[shadowImage TIFFRepresentation]];

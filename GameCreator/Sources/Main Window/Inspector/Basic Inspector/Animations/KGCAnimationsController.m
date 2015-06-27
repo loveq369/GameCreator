@@ -197,7 +197,7 @@
 
 #pragma mark - Convenient Methods
 
-- (KGCAnimation *)animationForRow:(NSUInteger)row
+- (KGCAnimation *)animationForRow:(NSInteger)row
 {
 	if (row == -1)
 	{

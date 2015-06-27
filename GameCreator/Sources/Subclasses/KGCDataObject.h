@@ -34,9 +34,10 @@
  */
 - (instancetype)initWithDictionary:(NSMutableDictionary *)dictionary document:(KGCDocument *)document;
 
-
+- (instancetype)initWithCopyDictionary:(NSMutableDictionary *)copyDictionary document:(KGCDocument *)document;
 - (instancetype)initWithCopyData:(NSData *)copyData document:(KGCDocument *)document;
 - (NSData *)copyData;
+- (NSDictionary *)copyDictionary;
 
 /** The associated dictionary */
 @property (nonatomic, strong, readonly) NSMutableDictionary *dictionary;

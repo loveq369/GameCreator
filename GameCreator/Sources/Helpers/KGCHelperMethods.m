@@ -232,13 +232,37 @@ struct Pixel
 	}
 }
 
-//+ (NSBezierPath *)bezierPathFromImage:(NSImage *)image
-//{
-//	CGImageRef imageRef = [image CGImageForProposedRect:NULL context:NULL hints:nil];
-//	
-//	CGSize imageSize = CGSizeMake((double)CGImageGetWidth(imageRef), (double)CGImageGetHeight(imageRef));
-//	
-//	struct Pixel *pixels = (struct Pixel *) calloc(1, imageSize.width * imageSize.height * sizeof(struct Pixel));
-//}
++ (BOOL)isImageTransparent:(NSImage *)image
+{
+	CGImageRef imageRef = [image CGImageForProposedRect:NULL context:NULL hints:nil];
+	CGSize imageSize = CGSizeMake((double)CGImageGetWidth(imageRef), (double)CGImageGetHeight(imageRef));
+	struct Pixel *pixels = (struct Pixel *) calloc(1, imageSize.width * imageSize.height * sizeof(struct Pixel));
+	
+	CGContextRef context = CGBitmapContextCreate(	(void *)pixels,
+														 imageSize.width,
+														 imageSize.height,
+														 8,
+														 imageSize.width * 4,
+														 CGImageGetColorSpace(imageRef),
+														 (CGBitmapInfo)kCGImageAlphaPremultipliedLast
+													 );
+	
+	CGContextDrawImage(context, CGRectMake(0.0, 0.0, imageSize.width, imageSize.height), imageRef);
+	CGContextRelease(context);
+	
+	uint numberOfPixels = imageSize.width * imageSize.height;
+	for (int i = 0; i < numberOfPixels; i ++)
+	{
+		struct Pixel pixel = pixels[i];
+		if (pixel.a != 0)
+		{
+			free(pixels);
+			return NO;
+		}
+	}
+	
+	free(pixels);
+	return YES;
+}
 
 @end
