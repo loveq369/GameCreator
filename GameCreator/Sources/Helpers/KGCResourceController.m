@@ -9,6 +9,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <AVFoundation/AVFoundation.h>
 #import "KGCResourceController.h"
+#import "KGCHelperMethods.h"
 
 @implementation KGCResourceController
 {
@@ -17,6 +18,8 @@
 	
 	NSFileWrapper *_audioFileWrapper;
 	NSMutableDictionary *_audioInfoObjects;
+	
+	NSMutableArray *_ignoreFiles;
 }
 
 #pragma mark - Iniitial Methods
@@ -27,6 +30,8 @@
 	
 	if (self)
 	{
+		_ignoreFiles = [[NSMutableArray alloc] init];
+	
 		_imageFileWrapper = imageFileWrapper;
 		_imageInfoObjects = [[NSMutableDictionary alloc] init];
 		
@@ -38,7 +43,6 @@
 			[imageInfoFileWrapper setPreferredFilename:@"ImageInfo.json"];
 			[_imageFileWrapper addFileWrapper:imageInfoFileWrapper];
 		}
-		else
 		
 		for (NSFileWrapper *imageWrapper in [imageFileWrappers allValues])
 		{
@@ -46,6 +50,17 @@
 			
 			if ([name isEqualToString:@"ImageInfo.json"])
 			{
+				continue;
+			}
+			else if ([name isEqualToString:@".ignoreFiles.json"])
+			{
+				NSData *data = [imageWrapper regularFileContents];
+				NSDictionary *fileDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+				if ([[fileDictionary allKeys] containsObject:@"Files"])
+				{
+					[_ignoreFiles addObjectsFromArray:fileDictionary[@"Files"]];
+				}
+				
 				continue;
 			}
 			
@@ -75,6 +90,17 @@
 			
 			if ([name isEqualToString:@"AudioInfo.json"])
 			{
+				continue;
+			}
+			else if ([name isEqualToString:@".ignoreFiles.json"])
+			{
+				NSData *data = [audioWrapper regularFileContents];
+				NSDictionary *fileDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+				if ([[fileDictionary allKeys] containsObject:@"Files"])
+				{
+					[_ignoreFiles addObjectsFromArray:fileDictionary[@"Files"]];
+				}
+				
 				continue;
 			}
 		
@@ -146,7 +172,15 @@
 	
 	if (type == KGCResourceInfoTypeImage)
 	{
-		[resourceInfo setContent:[[NSImage alloc] initWithData:data]];
+		NSImage *image = [[NSImage alloc] initWithData:data];
+		[resourceInfo setContent:image];
+		
+		BOOL isTransparent = [KGCHelperMethods isImageTransparent:image];
+		if (isTransparent)
+		{
+			[resourceInfo setTransparent:YES];
+		}
+		
 		_imageInfoObjects[name] = resourceInfo;
 		[_imageFileWrapper addFileWrapper:fileWrapper];
 	}
@@ -162,11 +196,15 @@
 	return name;
 }
 
-- (NSImage *)imageNamed:(NSString *)imageName
+- (NSImage *)imageNamed:(NSString *)imageName isTransparent:(BOOL *)isTransparent
 {
 	if ([[_imageInfoObjects allKeys] containsObject:imageName])
 	{
 		KGCResourceInfo *resourceInfo = _imageInfoObjects[imageName];
+		if (isTransparent)
+		{
+			*isTransparent = [resourceInfo isTransparent];
+		}
 		return [resourceInfo content];
 	}
 
@@ -268,6 +306,8 @@
 
 - (void)updateImagesWithImageNames:(NSArray *)imageNames
 {
+	NSArray *ignoreFiles = [self ignoreFiles];
+
 	NSMutableArray *imageNamesArray = [imageNames mutableCopy];
 	for (NSString *resourceInfoKey in [_imageInfoObjects copy])
 	{
@@ -280,7 +320,7 @@
 	
 		NSString *name = [resourceInfo name];
 		
-		if (![imageNames containsObject:name])
+		if (![imageNames containsObject:name] && ![ignoreFiles containsObject:name])
 		{
 			[resourceInfo prepareForRemoval];
 			[_imageFileWrapper removeFileWrapper:[resourceInfo fileWrapper]];
@@ -308,6 +348,8 @@
 
 - (void)updateAudioWithAudioNames:(NSArray *)audioNames
 {
+	NSArray *ignoreFiles = [self ignoreFiles];
+
 	NSMutableArray *audioNamesArray = [audioNames mutableCopy];
 	for (NSString *resourceInfoKey in [_audioInfoObjects copy])
 	{
@@ -329,7 +371,7 @@
 			[resourceInfo setMd5String:md5String];
 		}
 		
-		if (![audioNamesArray containsObject:name])
+		if (![audioNamesArray containsObject:name] && ![ignoreFiles containsObject:name])
 		{
 			[resourceInfo prepareForRemoval];
 			[_audioFileWrapper removeFileWrapper:[resourceInfo fileWrapper]];
@@ -353,6 +395,11 @@
 	
 		NSLog(@"WARNING: Orphan audio name: %@", audioNamesArray);
 	}
+}
+
+- (NSArray *)ignoreFiles
+{
+	return [NSArray arrayWithArray:_ignoreFiles];
 }
 
 @end

@@ -82,6 +82,16 @@
 	return [[self infoDictionary][@"Length"] doubleValue];
 }
 
+- (void)setTransparent:(BOOL)transparent
+{
+	[self setObject:@(transparent) forKey:@"Transparent"];
+}
+
+- (BOOL)isTransparent
+{
+	return [[self infoDictionary][@"Transparent"] boolValue];
+}
+
 - (NSMutableDictionary *)infoDictionary
 {
 	NSMutableArray *infoDictionaries = [self infoDictionaries];

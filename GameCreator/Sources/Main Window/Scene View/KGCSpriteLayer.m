@@ -66,7 +66,7 @@
 		[CATransaction begin];
 		[CATransaction setAnimationDuration:animated ? 0.25 : 0.0];
 		[self updateBoundsWithScale:normalMode ? [sprite scale] : [sprite initialScale] notify:YES];
-		[self setZPosition:normalMode ? [sprite zOrder] : [sprite initialScale]];
+		[self setZPosition:normalMode ? [sprite zOrder] : [sprite initialZOrder]];
 		[self setOpacity:normalMode ? [sprite alpha] : [sprite initialAlpha]];
 		[self addAnimationForRotationAngle:normalMode ? [sprite rotationDegrees] * DEG2RAD : [sprite initialRotationDegrees] * DEG2RAD withKey:@"Rotation"];
 		[CATransaction commit];
@@ -140,8 +140,9 @@
 	KGCResourceController *resourceController = [self resourceController];
 
 	KGCSprite *sprite = [self sprite];
-	NSImage *backgroundImage = [resourceController imageNamed:[sprite backgroundImageName]];
-	NSImage *normalImage = [resourceController imageNamed:[sprite imageName]];
+	NSImage *backgroundImage = [resourceController imageNamed:[sprite backgroundImageName] isTransparent:NO];
+	BOOL isTransparent = NO;
+	NSImage *normalImage = [resourceController imageNamed:[sprite imageName] isTransparent:&isTransparent];
 	
 	NSImage *image;
 	if (backgroundImage)
@@ -165,9 +166,32 @@
 		
 		[image unlockFocus];
 	}
-	else
+	else if (!isTransparent)
 	{
 		image = normalImage;
+	}
+	else
+	{
+		NSSize imageSize = [normalImage size];
+		image = [[NSImage alloc] initWithSize:imageSize];
+		NSImage *imageIcon = [[NSWorkspace sharedWorkspace] iconForFileType:@"png"];
+		NSSize imageIconSize = [imageIcon size];
+		
+		[image lockFocus];
+		
+		NSBezierPath *path = [NSBezierPath bezierPathWithRect:NSMakeRect(0.0, 0.0, imageSize.width, imageSize.height)];
+		[[NSColor colorWithRed:220.0 / 255.0 green:220.0 / 255.0 blue:220.0 / 255.0 alpha:0.8] set];
+		[path fill];
+		[[NSColor grayColor] set];
+		[path stroke];
+		
+		NSRect iconRect = NSZeroRect;
+		iconRect.origin.x = imageSize.width / 2.0 - imageIconSize.width / 2.0 + 0.5;
+		iconRect.origin.y = imageSize.height / 2.0 - imageIconSize.height / 2.0 + 0.5;
+		iconRect.size = imageIconSize;
+		[imageIcon drawInRect:iconRect];
+		
+		[image unlockFocus];
 	}
 	
 	return image;

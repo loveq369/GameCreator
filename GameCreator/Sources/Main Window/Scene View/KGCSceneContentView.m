@@ -107,7 +107,7 @@
 	if (imageName)
 	{
 		KGCResourceController *resourceController = [[self document] resourceController];
-		NSImage *backgroundImage = [resourceController imageNamed:imageName];
+		NSImage *backgroundImage = [resourceController imageNamed:imageName isTransparent:NO];
 		
 		[CATransaction begin];
 		[CATransaction setAnimationDuration:0.0];
@@ -197,7 +197,7 @@
 	if (visualChange)
 	{	
 		KGCScene *scene = [self scene];
-		NSImage *image = [[[scene document] resourceController] imageNamed:[scene imageName]];
+		NSImage *image = [[[scene document] resourceController] imageNamed:[scene imageName] isTransparent:NO];
 		KGCImageLayer *contentLayer = [self contentLayer];
 		[contentLayer setContents:(id)[image CGImageForProposedRect:NULL context:[NSGraphicsContext currentContext] hints:nil]];
 		[self updateThumbnailImage];
@@ -459,6 +459,90 @@
 	{
 		[delegate sceneViewSpriteSelectionChanged:self];
 	}
+}
+
+#pragma mark - Copy Methods
+
+- (IBAction)copy:(id)sender
+{
+	NSMutableArray *copyDictionaries = [[NSMutableArray alloc] init];
+	for (KGCSpriteLayer *spriteLayer in [self selectedSpriteLayers])
+	{
+		KGCSprite *sprite = (KGCSprite *)[spriteLayer sceneObject];
+		[copyDictionaries addObject:[sprite copyDictionary]];
+	}
+	
+	NSDictionary *infoDictionary = @{@"Type": @"KGCSpritePasteBoard", @"SceneIdentifier": [[self scene] identifier], @"CopyDictionaries": copyDictionaries};
+	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:infoDictionary options:0 error:nil];
+	
+	NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
+	[pasteBoard clearContents];
+	NSPasteboardItem *item = [[NSPasteboardItem alloc] init];
+	[item setData:jsonData forType:@"public.json"];
+	[pasteBoard writeObjects:@[item]];
+}
+
+- (IBAction)paste:(id)sender
+{
+	CALayer *contentLayer = [self contentLayer];
+	KGCScene *scene = [self scene];
+
+	NSInteger highestZOrder = 0;
+	for (KGCSpriteLayer *spriteLayer in [contentLayer sublayers])
+	{
+		KGCSprite *sprite = (KGCSprite *)[spriteLayer sceneObject];
+	
+		[spriteLayer setSelected:NO];
+		
+		NSInteger zOrder = [sprite zOrder];
+		if (zOrder > highestZOrder)
+		{
+			highestZOrder = zOrder;
+		}
+	}
+
+	NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
+	NSData *data = [pasteBoard dataForType:@"public.json"];
+	NSMutableDictionary *infoDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+	NSString *sceneIdentifier = infoDictionary[@"SceneIdentifier"];
+	BOOL sameScene = [[scene identifier] isEqualToString:sceneIdentifier];
+	
+	NSMutableArray *copyDictionaries = infoDictionary[@"CopyDictionaries"];
+	for (NSMutableDictionary *copyDictionary in copyDictionaries)
+	{
+		KGCSprite *sprite = [[KGCSprite alloc] initWithCopyDictionary:copyDictionary document:[self document]];
+		highestZOrder += 1;
+		[sprite setZOrder:highestZOrder];
+		
+		if (sameScene)
+		{
+			NSPoint spritePosition = [sprite position];
+			spritePosition.x += 20.0;
+			spritePosition.y -= 20.0;
+			[sprite setPosition:spritePosition];
+		}
+		
+		KGCSpriteLayer *newSpriteLayer = [KGCSpriteLayer layerWithSceneObject:sprite sceneContentView:self];
+		[contentLayer addSublayer:newSpriteLayer];
+		[newSpriteLayer setSelected:YES];
+		[[self scene] addSprite:sprite];
+	}
+}
+
+- (BOOL)respondsToSelector:(SEL)aSelector
+{
+	if (aSelector == @selector(copy:))
+	{
+		return [[self selectedSpriteLayers] count] > 0;
+	}
+	else if (aSelector == @selector(paste:))
+	{
+		NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
+		NSData *data = [pasteBoard dataForType:@"public.json"];
+		return data != nil;
+	}
+	
+	return [super respondsToSelector:aSelector];
 }
 
 #pragma mark - Drawing Method

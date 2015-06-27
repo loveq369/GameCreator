@@ -28,5 +28,6 @@ typedef NS_ENUM(NSUInteger, KGCResourceInfoType)
 @property (nonatomic) NSTimeInterval duration; // Only audio (maybe video in the future)
 @property (nonatomic, strong) id content;
 @property (nonatomic, readonly) KGCResourceInfoType type;
+@property (nonatomic, getter = isTransparent) BOOL transparent;
 
 @end

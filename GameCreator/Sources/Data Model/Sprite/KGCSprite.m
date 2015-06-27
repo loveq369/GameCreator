@@ -217,6 +217,11 @@
 	KGCResourceController *resourceController = [[self document] resourceController];
 	NSString *resourceName = [resourceController resourceNameForURL:imageURL type:KGCResourceInfoTypeImage];
 	[self setObject:resourceName forKey:@"ImageName"];
+	
+	NSData *imageData = [resourceController imageDataForImageName:resourceName];
+	NSImage *image = [[NSImage alloc] initWithData:imageData];
+	NSSize imageSize = [image size];
+	[self setObject: @{@"width": @(imageSize.width), @"height": @(imageSize.height)} forKey:@"ImageSize"];
 }
 
 - (void)clearImage
@@ -240,7 +245,10 @@
 {
 	KGCResourceController *resourceController = [[self document] resourceController];
 	NSString *resourceName = [resourceController resourceNameForURL:imageURL type:KGCResourceInfoTypeImage];
-	[self setObject:@{@"ImageName": resourceName} forKey:@"BackgroundImage"];
+	NSData *imageData = [resourceController imageDataForImageName:resourceName];
+	NSImage *image = [[NSImage alloc] initWithData:imageData];
+	NSSize imageSize = [image size];
+	[self setObject:@{@"ImageName": resourceName, @"ImageSize": @{@"width": @(imageSize.width), @"height": @(imageSize.height)}} forKey:@"BackgroundImage"];
 }
 
 - (void)clearBackgroundImage

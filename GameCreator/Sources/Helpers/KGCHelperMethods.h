@@ -17,4 +17,6 @@
 + (void)getMediaFromDictionary:(NSDictionary *)dictionary soundNames:(NSMutableArray *)soundNames imageNames:(NSMutableArray *)imageNames;
 + (void)updateUUIDsInDictionary:(NSMutableDictionary *)dictionary imageMappings:(NSDictionary *)imageMappings audioMappings:(NSDictionary *)audioMappings;
 
++ (BOOL)isImageTransparent:(NSImage *)image;
+
 @end

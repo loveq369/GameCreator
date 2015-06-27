@@ -17,7 +17,7 @@
 - (NSString *)resourceNameForFileWrapper:(NSFileWrapper *)fileWrapper type:(KGCResourceInfoType)type;
 - (NSString *)resourceNameForData:(NSData *)data md5String:(NSString *)md5String proposedName:(NSString *)proposedName type:(KGCResourceInfoType)type;
 
-- (NSImage *)imageNamed:(NSString *)imageName;
+- (NSImage *)imageNamed:(NSString *)imageName isTransparent:(BOOL *)isTransparent;
 - (NSData *)imageDataForImageName:(NSString *)imageName;
 - (NSData *)audioDataForName:(NSString *)audioName;
 
@@ -26,5 +26,7 @@
 
 - (void)updateImagesWithImageNames:(NSArray *)imageNames;
 - (void)updateAudioWithAudioNames:(NSArray *)audioNames;
+
+- (NSArray *)ignoreFiles;
 
 @end
