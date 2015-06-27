@@ -12,16 +12,17 @@
 @interface KGCSpritePhysicsController ()
 
 @property (nonatomic, weak) IBOutlet NSButton *enablePhysicsButton;
-@property (nonatomic, weak) IBOutlet NSButton *useGravityButton;
-@property (nonatomic, weak) IBOutlet NSTextField *velocityXField;
-@property (nonatomic, weak) IBOutlet NSTextField *velocityYField;
 @property (nonatomic, weak) IBOutlet NSPopUpButton *bodyTypePopUp;
-@property (nonatomic, weak) IBOutlet NSTextField *densityField;
 @property (nonatomic, weak) IBOutlet NSPopUpButton *shapePopUp;
 @property (nonatomic, weak) IBOutlet NSTextField *shapeTopInsetField;
 @property (nonatomic, weak) IBOutlet NSTextField *shapeLeftInsetField;
 @property (nonatomic, weak) IBOutlet NSTextField *shapeBottomInsetField;
 @property (nonatomic, weak) IBOutlet NSTextField *shapeRightInsetField;
+@property (nonatomic, weak) IBOutlet NSTextField *velocityXField;
+@property (nonatomic, weak) IBOutlet NSTextField *velocityYField;
+@property (nonatomic, weak) IBOutlet NSTextField *densityField;
+@property (nonatomic, weak) IBOutlet NSTextField *frictionField;
+@property (nonatomic, weak) IBOutlet NSTextField *restitutionField;
 
 @end
 
@@ -35,17 +36,21 @@
 	
 	NSArray *sceneObjects = [self sceneObjects];
 	
+	NSArray *properties = @[@"density", @"friction", @"restitution"];
+	NSArray *textFields = @[[self densityField], [self frictionField], [self restitutionField]];
+	for (NSInteger i = 0; i < [properties count]; i ++)
+	{
+		NSString *propertyName = properties[i];
+		NSTextField *textField = textFields[i];
+		id object = [self objectForPropertyNamed:propertyName inArray:sceneObjects];
+		[self setObjectValue:object inTextField:textField];
+	}
+	
 	NSNumber *physicsEnabled = [self objectForPropertyNamed:@"physicsEnabled" inArray:sceneObjects];
 	[[self enablePhysicsButton] setState:[physicsEnabled integerValue]];
 	
-	NSNumber *gravityEnabled = [self objectForPropertyNamed:@"gravityEnabled" inArray:sceneObjects];
-	[[self useGravityButton] setState:[gravityEnabled integerValue]];
-	
 	NSNumber *bodyType = [self objectForPropertyNamed:@"bodyType" inArray:sceneObjects];
 	[[self bodyTypePopUp] selectItemAtIndex:[bodyType integerValue]];
-	
-	NSNumber *density = [self objectForPropertyNamed:@"density" inArray:sceneObjects];
-	[[self densityField] setDoubleValue:[density doubleValue]];
 	
 	NSNumber *shape = [self objectForPropertyNamed:@"shape" inArray:sceneObjects];
 	[[self shapePopUp] selectItemAtIndex:[shape integerValue]];
@@ -60,15 +65,9 @@
 - (IBAction)changeEnablePhysics:(id)sender
 {
 	[self setObject:[sender objectValue] forPropertyNamed:@"physicsEnabled" inArray:[self sceneObjects]];
-	[[self useGravityButton] setEnabled:[sender state]];
 	[[self velocityXField] setEnabled:[sender state]];
 	[[self velocityYField] setEnabled:[sender state]];
 	[[self bodyTypePopUp] setEnabled:[sender state]];
-}
-
-- (IBAction)changeUseGravity:(id)sender
-{
-	[self setObject:[sender objectValue] forPropertyNamed:@"gravityEnabled" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changeVelocityX:(id)sender
@@ -90,6 +89,16 @@
 - (IBAction)changeDensity:(id)sender
 {
 	[self setObject:[sender objectValue] forPropertyNamed:@"density" inArray:[self sceneObjects]];
+}
+
+- (IBAction)changeFriction:(id)sender
+{
+	[self setObject:[sender objectValue] forPropertyNamed:@"friction" inArray:[self sceneObjects]];
+}
+
+- (IBAction)changeRestitution:(id)sender
+{
+	[self setObject:[sender objectValue] forPropertyNamed:@"restitution" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changeShape:(id)sender

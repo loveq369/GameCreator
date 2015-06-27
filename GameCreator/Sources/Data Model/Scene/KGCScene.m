@@ -311,36 +311,6 @@
 	[self setPoint:gravity forKey:@"PhysicsGravity"];
 }
 
-- (CGFloat)speed
-{
-	return [self doubleForKey:@"PhysicsSpeed"];
-}
-
-- (void)setSpeed:(CGFloat)speed
-{
-	[self setDouble:speed forKey:@"PhysicsSpeed"];
-}
-
-- (CGFloat)updateRate
-{
-	return [self doubleForKey:@"PhysicsUpdateRate"];
-}
-
-- (void)setUpdateRate:(CGFloat)updateRate
-{
-	[self setDouble:updateRate forKey:@"PhysicsUpdateRate"];
-}
-
-- (NSInteger)subSteps
-{
-	return [self integerForKey:@"PhysicsSubSteps"];
-}
-
-- (void)setSubSteps:(NSInteger)subSteps
-{
-	[self setInteger:subSteps forKey:@"PhysicsSubSteps"];
-}
-
 - (void)setThumbnailImage:(NSImage *)thumbnailImage
 {
 	_thumbnailImage = thumbnailImage;

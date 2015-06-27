@@ -66,36 +66,6 @@
 			[gridAnswer setParentObject:self];
 			[_gridAnswers addObject:gridAnswer];
 		}
-		
-//		NSMutableArray *sounds = [[NSMutableArray alloc] init];
-//		
-//		if ([[dictionary allKeys] containsObject:@"MouseEnterSounds"])
-//		{
-//			NSMutableDictionary *newDictionary = [[NSMutableDictionary alloc] init];
-//			newDictionary[@"Name"] = @"MouseEnterSounds";
-//			newDictionary[@"Sounds"] = dictionary[@"MouseEnterSounds"];
-//			[sounds addObject:newDictionary];
-//			[dictionary removeObjectForKey:@"MouseEnterSounds"];
-//			NSLog(@"Moving enter sounds...");
-//		}
-//		
-//		if ([[dictionary allKeys] containsObject:@"MouseClickSounds"])
-//		{
-//			NSMutableDictionary *newDictionary = [[NSMutableDictionary alloc] init];
-//			newDictionary[@"Name"] = @"MouseClickSounds";
-//			newDictionary[@"Sounds"] = dictionary[@"MouseClickSounds"];
-//			[sounds addObject:newDictionary];
-//			[dictionary removeObjectForKey:@"MouseClickSounds"];
-//			NSLog(@"Moving click sounds...");
-//		}
-//		
-//		if ([sounds count] > 0)
-//		{
-//			dictionary[@"SoundSets"] = sounds;
-//			NSLog(@"Setting the new sounds");
-//		}
-		
-//		[self updateDictionary];
 	}
 	
 	return self;
@@ -497,16 +467,6 @@
 	[self setBool:physicsEnabled forKey:@"PhysicsEnabled"];
 }
 
-- (BOOL)isGravityEnabled
-{
-	return [self boolForKey:@"PhysicsGravityEnabled"];
-}
-
-- (void)setGravityEnabled:(BOOL)gravityEnabled
-{
-	[self setBool:gravityEnabled forKey:@"PhysicsGravityEnabled"];
-}
-
 - (void)setVelocity:(CGPoint)velocity
 {
 	[self setPoint:velocity forKey:@"PhysicsVelocity"];
@@ -560,6 +520,26 @@
 	CGFloat bottom = [shapeInsetDictionary[@"bottom"] doubleValue];
 	CGFloat right = [shapeInsetDictionary[@"right"] doubleValue];
 	return KGCShapeInsetsMake(top, left, bottom, right);
+}
+
+- (void)setFriction:(CGFloat)friction
+{
+	[self setDouble:friction forKey:@"PhysicsFriction"];
+}
+
+- (CGFloat)friction
+{
+	return [self doubleForKey:@"PhysicsFriction"];
+}
+
+- (void)setRestitution:(CGFloat)restitution
+{
+	[self setDouble:restitution forKey:@"PhysicsRestitution"];
+}
+
+- (CGFloat)restitution
+{
+	return [self doubleForKey:@"PhysicsRestitution"];
 }
 
 - (void)setRotationDegrees:(CGFloat)rotationDegrees

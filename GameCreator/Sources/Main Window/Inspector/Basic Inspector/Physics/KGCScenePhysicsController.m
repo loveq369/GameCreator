@@ -12,9 +12,6 @@
 @interface KGCScenePhysicsController ()
 
 @property (nonatomic, weak) IBOutlet NSButton *enablePhysicsButton;
-@property (nonatomic, weak) IBOutlet NSTextField *speedField;
-@property (nonatomic, weak) IBOutlet NSTextField *updateRateField;
-@property (nonatomic, weak) IBOutlet NSTextField *subStepsField;
 @property (nonatomic, weak) IBOutlet NSTextField *gravityXField;
 @property (nonatomic, weak) IBOutlet NSTextField *gravityYField;
 
@@ -32,16 +29,6 @@
 	NSNumber *physicsEnabled = [self objectForPropertyNamed:@"physicsEnabled" inArray:sceneObjects];
 	[[self enablePhysicsButton] setState:[physicsEnabled integerValue]];
 	
-	NSArray *properties = @[@"speed", @"updateRate", @"subSteps"];
-	NSArray *textFields = @[[self speedField], [self updateRateField], [self subStepsField]];
-	for (NSInteger i = 0; i < [properties count]; i ++)
-	{
-		NSString *propertyName = properties[i];
-		NSTextField *textField = textFields[i];
-		id object = [self objectForPropertyNamed:propertyName inArray:sceneObjects];
-		[self setObjectValue:object inTextField:textField];
-	}
-	
 	[self changeEnablePhysics:[self enablePhysicsButton]];
 	[self updatePosition:nil];
 }
@@ -51,26 +38,11 @@
 - (IBAction)changeEnablePhysics:(id)sender
 {
 	[self setObject:[sender objectValue] forPropertyNamed:@"physicsEnabled" inArray:[self sceneObjects]];
-	NSArray *textFields = @[[self gravityXField], [self gravityYField], [self speedField], [self updateRateField], [self subStepsField]];
+	NSArray *textFields = @[[self gravityXField], [self gravityYField]];
 	for (NSTextField *textField in textFields)
 	{
 		[textField setEnabled:[sender state]];
 	}	
-}
-
-- (IBAction)changeSpeed:(id)sender
-{
-	[self setObject:[sender objectValue] forPropertyNamed:@"speed" inArray:[self sceneObjects]];
-}
-
-- (IBAction)changeUpdateRate:(id)sender
-{
-	[self setObject:[sender objectValue] forPropertyNamed:@"updateRate" inArray:[self sceneObjects]];
-}
-
-- (IBAction)changeSubStepsField:(id)sender
-{
-	[self setObject:[sender objectValue] forPropertyNamed:@"subSteps" inArray:[self sceneObjects]];
 }
 
 - (IBAction)changeGravityX:(id)sender

@@ -28,7 +28,8 @@ typedef NS_ENUM(NSInteger, KGCActionTrigger)
 	KGCActionTriggerMouseHover,
 	KGCActionTriggerMouseEnter,
 	KGCActionTriggerMouseExit,
-	KGCActionTriggerSceneTransition
+	KGCActionTriggerSceneTransition,
+  KGCActionTriggerCollision
 };
 
 /** An action type */

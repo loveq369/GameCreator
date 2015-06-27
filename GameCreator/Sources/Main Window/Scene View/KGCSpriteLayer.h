@@ -17,6 +17,5 @@
 @property (nonatomic, getter = isSelected) BOOL selected;
 
 - (void)setPosition:(CGPoint)position animated:(BOOL)animated;
-- (void)setRotationDegrees:(CGFloat)degrees animated:(BOOL)animated;
 
 @end

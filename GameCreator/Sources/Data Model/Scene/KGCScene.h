@@ -64,8 +64,5 @@ typedef NS_ENUM(NSUInteger, KGCTemplateType) {
 // Physics
 @property (nonatomic, getter = isPhysicsEnabled) BOOL physicsEnabled;
 @property (nonatomic) CGPoint gravity;
-@property (nonatomic) CGFloat speed;
-@property (nonatomic) CGFloat updateRate;
-@property (nonatomic) NSInteger subSteps;
 
 @end

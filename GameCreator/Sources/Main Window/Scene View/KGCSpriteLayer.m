@@ -38,12 +38,17 @@
 	
 	[self setImage:[self combinedImage]];
 	
-	[self update];
+	[self updateAnimated:NO];
 }
 
 #pragma mark - Main Methods
 
 - (void)update
+{
+	[self updateAnimated:YES];
+}
+
+- (void)updateAnimated:(BOOL)animated
 {
 	KGCSprite *sprite = [self sprite];
 	if (sprite)
@@ -58,10 +63,13 @@
 			[super setPosition:position];
 		}
 		
+		[CATransaction begin];
+		[CATransaction setAnimationDuration:animated ? 0.25 : 0.0];
 		[self updateBoundsWithScale:normalMode ? [sprite scale] : [sprite initialScale] notify:YES];
 		[self setZPosition:normalMode ? [sprite zOrder] : [sprite initialScale]];
 		[self setOpacity:normalMode ? [sprite alpha] : [sprite initialAlpha]];
 		[self addAnimationForRotationAngle:normalMode ? [sprite rotationDegrees] * DEG2RAD : [sprite initialRotationDegrees] * DEG2RAD withKey:@"Rotation"];
+		[CATransaction commit];
 	}
 }
 
