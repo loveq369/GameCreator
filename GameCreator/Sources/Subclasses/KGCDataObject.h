@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "KGCDocument.h"
 
+/** An action link type */
+typedef NS_ENUM(NSInteger, KGCSoundPlayMode)
+{
+	KGCSoundPlayModeCarousel,
+	KGCSoundPlayModeSequence,
+	KGCSoundPlayModeCombined,
+	KGCSoundPlayModeMultiple
+};
+
 @class KGCDataObject;
 
 /** A data object delegate gets informed about changes to the dictionary */
@@ -91,6 +100,8 @@
 
 - (BOOL)hasObjectForKey:(NSString *)key;
 
+- (void)setSoundPlayMode:(KGCSoundPlayMode)soundPlayMode forKey:(NSString *)key;
+- (KGCSoundPlayMode)soundPlayModeForKey:(NSString *)key;
 - (NSArray *)soundsForKey:(NSString *)key;
 - (NSArray *)soundDictionariesForKey:(NSString *)key;
 - (void)addSoundAtURL:(NSURL *)soundURL forKey:(NSString *)key;

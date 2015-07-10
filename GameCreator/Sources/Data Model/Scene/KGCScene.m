@@ -211,6 +211,16 @@
 	[self setPoint:gravity forKey:@"PhysicsGravity"];
 }
 
+- (void)setShouldHighlightQuestionSprites:(BOOL)shouldHighlightQuestionsSprites
+{
+	[self setBool:shouldHighlightQuestionsSprites forKey:@"ShouldHighlightQuestionSprites"];
+}
+
+- (BOOL)shouldHighlightQuestionSprites
+{
+	return [self boolForKey:@"ShouldHighlightQuestionSprites"];
+}
+
 - (void)setThumbnailImage:(NSImage *)thumbnailImage
 {
 	_thumbnailImage = thumbnailImage;

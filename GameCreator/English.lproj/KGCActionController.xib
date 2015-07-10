@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="KGCActionController">
@@ -16,13 +16,8 @@
                 <outlet property="actionRequiredPointsField" destination="8W4-PL-taP" id="86O-Y7-ZsP"/>
                 <outlet property="actionSettingsView" destination="Jwx-60-Bl5" id="usa-Q7-OgU"/>
                 <outlet property="actionTableView" destination="SUr-5g-5uJ" id="lcR-5o-lTf"/>
-                <outlet property="actionTriggerSpritesEditButton" destination="v1C-FV-TZb" id="xwR-4N-1F0"/>
-                <outlet property="actionTypeField" destination="20C-7N-wt6" id="YHi-sK-VZD"/>
                 <outlet property="delayTextField" destination="a62-Ab-5nr" id="A3q-UE-fM9"/>
-                <outlet property="nameTextField" destination="6z2-PD-FKW" id="BHU-yT-NJ8"/>
                 <outlet property="triggerNotificationNameField" destination="Ms0-PF-7dE" id="o5S-2w-O8M"/>
-                <outlet property="triggerOptionsTabView" destination="wj9-Uz-4hI" id="Mz8-49-SdS"/>
-                <outlet property="triggerPopupButton" destination="XRB-0c-H5z" id="a12-xy-GE2"/>
                 <outlet property="view" destination="7iF-3A-oej" id="xIj-36-pjX"/>
             </connections>
         </customObject>
@@ -123,12 +118,15 @@
                                 <menuItem title="After Scene Transition" id="wBs-kK-1VK">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                 </menuItem>
+                                <menuItem title="After Draggable Sprite Enters" id="RwZ-jS-S8O">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem title="After Draggable Sprite Exits" id="7hS-Mf-GV0">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
                             </items>
                         </menu>
                     </popUpButtonCell>
-                    <connections>
-                        <action selector="changeActionTrigger:" target="-2" id="Sv7-Km-mKH"/>
-                    </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1hi-T5-8ej">
                     <rect key="frame" x="6" y="445" width="52" height="14"/>
@@ -174,9 +172,6 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
-                    <connections>
-                        <action selector="changeActionIdentifier:" target="-2" id="JCZ-z7-zcw"/>
-                    </connections>
                 </textField>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="6Og-J5-x5o">
                     <rect key="frame" x="0.0" y="541" width="294" height="189"/>
@@ -186,9 +181,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="CfE-94-DFd" viewBased="YES" id="SUr-5g-5uJ">
+                                <rect key="frame" x="0.0" y="0.0" width="292" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
                                     <tableColumn width="289" minWidth="40" maxWidth="1000" id="QTb-3L-vIC">
@@ -255,7 +251,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="JkF-cj-odQ">
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="JkF-cj-odQ">
                     <rect key="frame" x="-1" y="315" width="294" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -408,9 +404,6 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
-                                        <connections>
-                                            <action selector="showActionTriggerSpriteView:" target="-2" id="xVb-Lq-dBg"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </view>

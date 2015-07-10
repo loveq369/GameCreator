@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="KGCDADSceneController">
             <connections>
                 <outlet property="autoMoveBackWrongAnswersButton" destination="xuh-h6-PhG" id="OA6-zb-DrH"/>
                 <outlet property="disableConfirmInteractionButton" destination="McK-Mk-g4p" id="7QJ-yi-kcS"/>
-                <outlet property="noInteractionDelayField" destination="oki-Kz-SzD" id="GLS-EQ-xdK"/>
                 <outlet property="sceneDropField" destination="ORX-eo-Mtu" id="3hm-sV-lgt"/>
                 <outlet property="sceneIconView" destination="eId-pt-A76" id="vvS-Iu-lgt"/>
                 <outlet property="sceneImageClearButton" destination="EF6-lD-CAv" id="fQz-vV-rvV"/>
@@ -17,10 +16,7 @@
                 <outlet property="sceneNameField" destination="cju-Vy-88o" id="ORh-WS-A0M"/>
                 <outlet property="sceneRequireConfirmationButton" destination="AtJ-qk-ZGj" id="YBI-Yu-amX"/>
                 <outlet property="sceneRequiredPointsField" destination="mER-yz-WiE" id="G0X-gc-sYr"/>
-                <outlet property="settingsTabView" destination="U46-ao-hi8" id="FNW-Ol-GzQ"/>
-                <outlet property="soundPlayButton" destination="W1K-Vn-6g5" id="rzi-Rg-qhv"/>
-                <outlet property="soundTableView" destination="5In-XH-uvQ" id="bGd-Mg-iUx"/>
-                <outlet property="soundTypePopUp" destination="s8B-oY-83r" id="BFr-vB-ySW"/>
+                <outlet property="shouldHighlightSpriteButton" destination="CIq-tw-2nx" id="vci-03-ZD2"/>
                 <outlet property="view" destination="uAk-tx-R8B" id="dRw-oD-QXe"/>
             </connections>
         </customObject>
@@ -66,17 +62,6 @@
                     <rect key="frame" x="-1" y="657" width="297" height="73"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <button verticalHuggingPriority="750" id="0Cd-Cj-C7P">
-                    <rect key="frame" x="73" y="305" width="176" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gvY-2I-70q">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="removeSound:" target="-2" id="77X-G2-Dga"/>
-                    </connections>
-                </button>
                 <button id="EF6-lD-CAv">
                     <rect key="frame" x="275" y="691" width="15" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -88,7 +73,7 @@
                         <action selector="removeSpriteImage:" target="-2" id="M2o-gD-JTX"/>
                     </connections>
                 </button>
-                <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="3x9-7D-57W">
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="3x9-7D-57W">
                     <rect key="frame" x="0.0" y="655" width="294" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -128,13 +113,6 @@
                         <action selector="changeSceneRequiredPoints:" target="-2" id="ap5-UL-8Fj"/>
                     </connections>
                 </textField>
-                <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="iAS-TN-yNP">
-                    <rect key="frame" x="0.0" y="557" width="296" height="5"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <font key="titleFont" metaFont="system"/>
-                </box>
                 <button id="McK-Mk-g4p">
                     <rect key="frame" x="3" y="585" width="281" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -157,220 +135,6 @@
                         <action selector="changeAutoMoveBackAnswers:" target="-2" id="6xp-GA-a7c"/>
                     </connections>
                 </button>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="LFN-E0-WL3">
-                    <rect key="frame" x="-1" y="329" width="296" height="174"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <clipView key="contentView" id="GBw-IZ-EvP">
-                        <rect key="frame" x="1" y="17" width="238" height="117"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" rowSizeStyle="automatic" headerView="jXc-S4-nWn" viewBased="YES" id="5In-XH-uvQ">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <size key="intercellSpacing" width="3" height="2"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                <tableColumns>
-                                    <tableColumn identifier="answer" width="291" minWidth="40" maxWidth="1000" id="XB2-uo-hFV">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Geluiden">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="qUM-9n-CQL">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        <prototypeCellViews>
-                                            <tableCellView identifier="SoundTableCell" id="l4y-XW-of8">
-                                                <rect key="frame" x="1" y="1" width="291" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="oIU-tO-Wsv">
-                                                        <rect key="frame" x="1" y="3" width="247" height="14"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Een geluid" id="bVT-Pc-sbd">
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                </subviews>
-                                                <connections>
-                                                    <outlet property="textField" destination="oIU-tO-Wsv" id="Qg7-l2-svT"/>
-                                                </connections>
-                                            </tableCellView>
-                                        </prototypeCellViews>
-                                    </tableColumn>
-                                </tableColumns>
-                                <connections>
-                                    <outlet property="dataSource" destination="-2" id="AGA-qt-xhp"/>
-                                    <outlet property="delegate" destination="-2" id="uNb-CV-JOb"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="crc-Mm-zHN">
-                        <rect key="frame" x="1" y="119" width="223" height="15"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="pjD-CF-MgP">
-                        <rect key="frame" x="224" y="17" width="15" height="102"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <tableHeaderView key="headerView" id="jXc-S4-nWn">
-                        <rect key="frame" x="0.0" y="0.0" width="238" height="17"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </tableHeaderView>
-                </scrollView>
-                <button verticalHuggingPriority="750" id="W1K-Vn-6g5">
-                    <rect key="frame" x="0.0" y="305" width="74" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="smallSquare" title="Speel af" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yEP-6O-MCb">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="play:" target="-2" id="jmS-uP-AZq"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" id="pen-pw-DRf">
-                    <rect key="frame" x="248" y="305" width="24" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="smallSquare" title="-" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XgH-EJ-SQ6">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="removeSound:" target="-2" id="auR-Rf-A4X"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" id="Sdv-Ph-xAJ">
-                    <rect key="frame" x="270" y="305" width="24" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="smallSquare" title="+" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ukW-3l-adM">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="addSound:" target="-2" id="RXR-uh-pc3"/>
-                    </connections>
-                </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="M3U-bA-UGl">
-                    <rect key="frame" x="4" y="537" width="280" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Geluiden:" id="H0b-JG-MH9">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <popUpButton verticalHuggingPriority="750" id="s8B-oY-83r">
-                    <rect key="frame" x="3" y="508" width="190" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="Intro geluid" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="5AX-br-CGC" id="nfw-hS-9dZ">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" id="TGn-ah-kff">
-                            <items>
-                                <menuItem title="Intro geluid" state="on" id="5AX-br-CGC"/>
-                                <menuItem title="Hint geluiden" id="MhU-W4-TKb"/>
-                                <menuItem title="Hetzelfde antwoord geluid" id="XeS-CD-Hjq"/>
-                                <menuItem title="Goede antwoord geluid" id="GMw-ia-aHK"/>
-                                <menuItem title="Fout antwoord geluid" id="TiV-5n-9ra"/>
-                                <menuItem title="Automatisch antwoord geluid" id="xpz-x0-TSZ"/>
-                                <menuItem title="Geen interactie geluid" id="2UD-on-ez1"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                    <connections>
-                        <action selector="changeSoundType:" target="-2" id="rbc-Gg-FHL"/>
-                    </connections>
-                </popUpButton>
-                <tabView drawsBackground="NO" type="noTabsNoBorder" id="U46-ao-hi8">
-                    <rect key="frame" x="0.0" y="0.0" width="296" height="291"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <font key="font" metaFont="system"/>
-                    <tabViewItems>
-                        <tabViewItem label="Tab" identifier="1" id="Mwh-P1-BKU" userLabel="Intro Sounds Settings">
-                            <view key="view" id="QKd-hL-gN2">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="291"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </view>
-                        </tabViewItem>
-                        <tabViewItem label="Tab" identifier="1" id="HbT-3l-kgP" userLabel="Hint Sounds Settings">
-                            <view key="view" id="QHb-JH-Czp">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="291"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </view>
-                        </tabViewItem>
-                        <tabViewItem label="Tab" identifier="1" id="4iT-BR-JU9" userLabel="Same Answer Sounds Settings">
-                            <view key="view" id="82f-Fi-7jE">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="291"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </view>
-                        </tabViewItem>
-                        <tabViewItem label="View" identifier="2" id="dHH-NA-Z8d" userLabel="Right Answer Sounds Settings">
-                            <view key="view" id="HQl-Zx-cfM">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="291"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </view>
-                        </tabViewItem>
-                        <tabViewItem label="View" identifier="2" id="Q1j-Bj-3VP" userLabel="Wrong Answer Sounds Settings">
-                            <view key="view" id="VXl-V6-ttS">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="291"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </view>
-                        </tabViewItem>
-                        <tabViewItem label="View" identifier="2" id="pVx-92-2bz" userLabel="Auto Answer Sounds Settings">
-                            <view key="view" id="M1j-8F-Xr0">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="291"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </view>
-                        </tabViewItem>
-                        <tabViewItem label="View" identifier="2" id="Dc6-hW-Npo" userLabel="No Interaction Sounds Settings">
-                            <view key="view" id="Cn7-z7-hyw">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="291"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hMY-Yq-0Hk">
-                                        <rect key="frame" x="4" y="253" width="147" height="14"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Geen interactie vertraging:" id="a2p-pJ-2bw">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField verticalHuggingPriority="750" id="oki-Kz-SzD">
-                                        <rect key="frame" x="157" y="251" width="54" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="oiK-np-fK6">
-                                            <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" id="j1K-HT-KHo"/>
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <connections>
-                                            <action selector="changeNoInteractionDelay:" target="-2" id="Ieb-k6-ERR"/>
-                                        </connections>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BED-i0-QsV">
-                                        <rect key="frame" x="4" y="275" width="109" height="14"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Geluidsinstellingen:" id="4wK-cr-INb">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                            </view>
-                        </tabViewItem>
-                    </tabViewItems>
-                </tabView>
                 <button verticalHuggingPriority="750" id="ALW-WW-tHk">
                     <rect key="frame" x="66" y="660" width="98" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -380,6 +144,17 @@
                     </buttonCell>
                     <connections>
                         <action selector="chooseSceneImage:" target="-2" id="fL9-oZ-zUA"/>
+                    </connections>
+                </button>
+                <button id="CIq-tw-2nx">
+                    <rect key="frame" x="3" y="545" width="282" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Licht vraag sprite op (bij het inslepen van sprites)" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="SdG-UO-8JI">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="changeShouldHighlightSprites:" target="-2" id="JEy-7q-VRY"/>
                     </connections>
                 </button>
             </subviews>

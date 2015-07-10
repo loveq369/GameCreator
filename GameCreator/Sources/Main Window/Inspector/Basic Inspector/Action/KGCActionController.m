@@ -146,7 +146,9 @@
 
 - (KGCAction *)actionForRow:(NSUInteger)row
 {
-	if (row == -1)
+	NSArray *actions = [self actions];
+
+	if (row == -1 || row + 1 > [actions count])
 	{
 		return nil;
 	}

@@ -16,9 +16,9 @@
 
 @property (nonatomic, weak) IBOutlet NSTextField *sceneRequiredPointsField;
 @property (nonatomic, weak) IBOutlet NSButton *sceneRequireConfirmationButton;
-@property (nonatomic, weak) IBOutlet NSTextField *noInteractionDelayField;
 @property (nonatomic, weak) IBOutlet NSButton *disableConfirmInteractionButton;
 @property (nonatomic, weak) IBOutlet NSButton *autoMoveBackWrongAnswersButton;
+@property (nonatomic, weak) IBOutlet NSButton *shouldHighlightSpriteButton;
 
 @end
 
@@ -42,8 +42,8 @@
 	NSNumber *requiredPoints = [self objectForPropertyNamed:@"requiredPoints" inArray:[self sceneObjects]];
 	[self setObjectValue:requiredPoints inTextField:[self sceneRequiredPointsField]];
 		
-	NSArray *properties = @[@"requireConfirmation", @"disableConfirmInteraction", @"autoMoveBackWrongAnswers"];
-	NSArray *checkBoxes = @[[self sceneRequireConfirmationButton], [self disableConfirmInteractionButton], [self autoMoveBackWrongAnswersButton]];
+	NSArray *properties = @[@"requireConfirmation", @"disableConfirmInteraction", @"autoMoveBackWrongAnswers", @"shouldHighlightQuestionSprites"];
+	NSArray *checkBoxes = @[[self sceneRequireConfirmationButton], [self disableConfirmInteractionButton], [self autoMoveBackWrongAnswersButton], [self shouldHighlightSpriteButton]];
 	for (NSInteger i = 0; i < [properties count]; i ++)
 	{
 		NSString *propertyName = properties[i];
@@ -65,11 +65,6 @@
 	[self setObject:[sender objectValue] forPropertyNamed:@"requireConfirmation" inArray:[self sceneObjects]];
 }
 
-- (IBAction)changeNoInteractionDelay:(id)sender
-{
-	[self setObject:[sender objectValue] forPropertyNamed:@"noInteractionDelay" inArray:[self sceneObjects]];
-}
-
 - (IBAction)changeDisableConfirmInteraction:(id)sender
 {
 	[self setObject:[sender objectValue] forPropertyNamed:@"disableConfirmInteraction" inArray:[self sceneObjects]];
@@ -80,98 +75,9 @@
 	[self setObject:[sender objectValue] forPropertyNamed:@"autoMoveBackWrongNaswers" inArray:[self sceneObjects]];
 }
 
-#pragma mark - TableView Delegate Methods
-
-- (void)tableViewSelectionDidChange:(NSNotification *)notification
+- (IBAction)changeShouldHighlightSprites:(id)sender
 {
-	[super tableViewSelectionDidChange:notification];
-
-	NSInteger selectedRow = [[self soundTableView] selectedRow];
-	BOOL rowSelected = selectedRow != -1;
-	
-	NSInteger index = [[self soundTypePopUp] indexOfSelectedItem];
-	if (rowSelected && index == 6)
-	{
-		NSNumber *noInteractionDelay = [self noInteractionDelay];
-		[self setObjectValue:noInteractionDelay inTextField:[self noInteractionDelayField]];
-	}
-}
-
-#pragma mark - Subclass Methods
-
-- (NSString *)currentSoundKey
-{
-	NSArray *soundKeys = @[@"IntroSounds", @"HintSounds", @"SameAnswerSounds", @"CorrectAnswerSounds", @"WrongAnswerSounds", @"AutoAnswerSounds", @"NoInteractionSounds"];
-	NSInteger index = [[self soundTypePopUp] indexOfSelectedItem];
-	return soundKeys[index];
-}
-
-- (NSString *)soundPopupSaveKey
-{
-	return @"KGCGameSceneSelectedSoundType";
-}
-
-#pragma mark - Convenient Methods
-
-- (void)setCurrentNoInteractionDelay:(NSTimeInterval)delay
-{
-	NSInteger selectedRow = [[self soundTableView] selectedRow];
-	
-	if (selectedRow == -1)
-	{
-		return;
-	}
-	
-	NSDictionary *soundDictionary = [self sounds][selectedRow];
-	for (KGCScene *scene in [self sceneObjects])
-	{
-		for (NSMutableDictionary *otherSoundDictionary in [scene soundDictionariesForKey:[self currentSoundKey]])
-		{
-			if ([otherSoundDictionary[@"_id"] isEqualToString:soundDictionary[@"_id"]])
-			{
-				otherSoundDictionary[@"NoInteractionDelay"] = @(delay);
-				[scene updateDictionary];
-			}
-		}
-	}
-}
-
-- (NSNumber *)noInteractionDelay
-{
-	NSInteger selectedRow = [[self soundTableView] selectedRow];
-	
-	if (selectedRow == -1)
-	{
-		return @(0);
-	}
-	
-	NSDictionary *soundDictionary = [self sounds][selectedRow];
-	NSTimeInterval interactionDelay = 0.0;
-	BOOL firstCheck = YES;
-	for (KGCScene *scene in [self sceneObjects])
-	{
-		for (NSMutableDictionary *dictionary in [scene soundDictionariesForKey:[self currentSoundKey]])
-		{
-			if ([soundDictionary[@"_id"] isEqualToString:dictionary[@"_id"]])
-			{
-				if (firstCheck)
-				{
-					firstCheck = NO;
-					interactionDelay = [dictionary[@"NoInteractionDelay"] doubleValue];
-				}
-				else
-				{
-					NSTimeInterval otherInteractionDelay = [dictionary[@"NoInteractionDelay"] doubleValue];
-					if (otherInteractionDelay != interactionDelay)
-					{
-						return nil;
-					}
-				}
-			}
-		}
-	}
-	
-	return @(interactionDelay);
+	[self setObject:[sender objectValue] forPropertyNamed:@"shouldHighlightQuestionSprites" inArray:[self sceneObjects]];
 }
 
 @end

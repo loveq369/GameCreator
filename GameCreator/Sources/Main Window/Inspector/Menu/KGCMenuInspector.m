@@ -13,6 +13,7 @@
 #import "KGCMenuSpriteController.h"
 #import "KGCDADEventsController.h"
 #import "KGCAnimationsController.h"
+#import "KGCMenuSoundsInspectorViewController.h"
 
 @interface KGCMenuInspector ()
 
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) KGCMenuSpriteController *spriteController;
 @property (nonatomic, strong) KGCDADEventsController *eventController;
 @property (nonatomic, strong) KGCAnimationsController *animationsController;
+@property (nonatomic, strong) KGCMenuSoundsInspectorViewController *soundsViewController;
 
 @end
 
@@ -33,6 +35,7 @@
 	_spriteController = [[KGCMenuSpriteController alloc] initWithNibName:nil bundle:nil];
 	_eventController = [[KGCDADEventsController alloc] initWithNibName:nil bundle:nil];
 	_animationsController = [[KGCAnimationsController alloc] initWithNibName:nil bundle:nil];
+	_soundsViewController = [[KGCMenuSoundsInspectorViewController alloc] initWithNibName:@"KGCSoundInspectorViewController" bundle:nil];
 }
 
 - (void)dealloc
@@ -44,7 +47,7 @@
 
 - (NSArray *)inspectorControllers
 {
-	return @[[self generalController], [self eventController], [self animationsController]];
+	return @[[self generalController], [self eventController], [self animationsController], [self soundsViewController]];
 }
 
 #pragma mark - Convenient Methods

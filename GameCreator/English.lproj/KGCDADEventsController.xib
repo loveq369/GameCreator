@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="KGCDADEventsController">
@@ -68,9 +68,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" emptySelection="NO" autosaveColumns="NO" rowHeight="58" rowSizeStyle="automatic" headerView="d0n-W8-iGA" viewBased="YES" id="bGR-pw-hxS">
+                                <rect key="frame" x="0.0" y="0.0" width="292" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
                                     <tableColumn width="289" minWidth="40" maxWidth="1000" id="pLQ-ja-CUf">
@@ -105,7 +106,7 @@
                                                     <popUpButton verticalHuggingPriority="750" id="42s-9e-tPN" userLabel="Event Type PopUp">
                                                         <rect key="frame" x="58" y="8" width="150" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <popUpButtonCell key="cell" type="push" title="After Scene Transition" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Czq-mR-zn0" id="wie-kD-GQ6">
+                                                        <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="q9V-1E-zuJ" id="wie-kD-GQ6">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <menu key="menu" id="kzt-0R-eYH">
@@ -124,7 +125,9 @@
                                                                     <menuItem title="After Notification" id="S3h-N4-mQe"/>
                                                                     <menuItem title="Correct Answer" id="r8w-Dq-xCg"/>
                                                                     <menuItem title="Wrong Answer" id="Mj8-Dl-Jox"/>
-                                                                    <menuItem title="After Scene Transition" state="on" id="Czq-mR-zn0"/>
+                                                                    <menuItem title="Scene Transition" id="Czq-mR-zn0"/>
+                                                                    <menuItem title="Spriter Enters" id="ugL-5m-PdS"/>
+                                                                    <menuItem title="Spriter Exits" id="nNc-DE-G4c"/>
                                                                 </items>
                                                             </menu>
                                                         </popUpButtonCell>
@@ -196,7 +199,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="294" height="175"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="Ccd-te-X7a">
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="Ccd-te-X7a">
                     <rect key="frame" x="0.0" y="234" width="294" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -234,9 +237,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="20" rowSizeStyle="automatic" headerView="wXZ-3G-9PU" viewBased="YES" id="DV1-Rn-1Oa">
+                                <rect key="frame" x="0.0" y="0.0" width="292" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
                                     <tableColumn identifier="action" width="289" minWidth="40" maxWidth="1000" id="OUA-uC-GZh">

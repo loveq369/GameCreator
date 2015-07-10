@@ -65,4 +65,6 @@ typedef NS_ENUM(NSUInteger, KGCTemplateType) {
 @property (nonatomic, getter = isPhysicsEnabled) BOOL physicsEnabled;
 @property (nonatomic) CGPoint gravity;
 
+@property (nonatomic) BOOL shouldHighlightQuestionSprites;
+
 @end

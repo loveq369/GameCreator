@@ -26,7 +26,6 @@
 	return self;
 }
 
-
 - (instancetype)initWithCopyData:(NSData *)copyData document:(KGCDocument *)document
 {
 	NSMutableDictionary *copyDictionary = [NSJSONSerialization JSONObjectWithData:copyData options:NSJSONReadingMutableLeaves | NSJSONReadingMutableContainers error:nil];
@@ -325,6 +324,23 @@
 	return [[[self dictionary] allKeys] containsObject:key];
 }
 
+#pragma mark - Soundset Methods
+
+- (void)setSoundPlayMode:(KGCSoundPlayMode)soundPlayMode forKey:(NSString *)key
+{
+	NSMutableDictionary *soundDictionary = [self _soundDictionaryForKey:key];
+	soundDictionary[@"SoundPlayMode"] = @(soundPlayMode);
+	[self notifyDelegateAboutKeyChange:key];
+	[self updateDictionary];
+}
+
+- (KGCSoundPlayMode)soundPlayModeForKey:(NSString *)key
+{
+	NSMutableDictionary *soundDictionary = [self _soundDictionaryForKey:key];
+
+	return [soundDictionary[@"SoundPlayMode"] integerValue];
+}
+
 - (NSArray *)soundsForKey:(NSString *)key
 {
 	NSMutableArray *soundDictionaries = [self _soundDictionariesForKey:key];
@@ -395,11 +411,17 @@
 		soundDictionaries = [[NSMutableArray alloc] init];
 		soundDictionary[@"Sounds"] = soundDictionaries;
 		NSMutableArray *soundSets = [self dictionary][@"SoundSets"];
+		if (!soundSets)
+		{
+			soundSets = [[NSMutableArray alloc] init];
+			[self dictionary][@"SoundSets"] = soundSets;
+		}
 		[soundSets addObject:soundDictionary];
 	}
 	
 	NSMutableDictionary *soundDictionary = [[NSMutableDictionary alloc] init];
 	soundDictionary[@"AudioName"] = resourceName;
+	soundDictionary[@"_id"] = [[NSUUID UUID] UUIDString];
 	[soundDictionaries addObject:soundDictionary];
 	
 	[self notifyDelegateAboutKeyChange:key];
@@ -429,9 +451,16 @@
 	NSMutableArray *soundDictionaries = [[NSMutableArray alloc] init];
 	NSMutableDictionary *newSoundDictionary = [[NSMutableDictionary alloc] init];
 	newSoundDictionary[@"AudioName"] = resourceName;
+	newSoundDictionary[@"_id"] = [[NSUUID UUID] UUIDString];
 	[soundDictionaries addObject:newSoundDictionary];
 	
 	NSMutableArray *soundSets = [self dictionary][@"SoundSets"];
+	if (!soundSets)
+	{
+		soundSets = [[NSMutableArray alloc] init];
+		[self dictionary][@"SoundSets"] = soundSets;
+	}
+	
 	NSMutableDictionary *soundDictionary = [self _soundDictionaryForKey:key];
 	if (soundDictionary)
 	{

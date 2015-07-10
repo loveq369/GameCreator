@@ -1,32 +1,30 @@
 //
-//	KGCGlobalSceneController.m
-//	GameCreator
+//  KGCSoundInspectorViewController.m
+//  GameCreator
 //
-//	Created by Maarten Foukhar on 22-03-15.
-//	Copyright (c) 2015 Kiwi Fruitware. All rights reserved.
+//  Created by Maarten Foukhar on 07-07-15.
+//  Copyright (c) 2015 Kiwi Fruitware. All rights reserved.
 //
 
-#import "KGCGlobalSceneController.h"
-#import "KGCMenuInspector.h"
-#import "KGCSceneLayer.h"
-#import "KGCFileDropView.h"
-#import "KGCSceneContentView.h"
-#import "KGCScene.h"
+#import "KGCSoundInspectorViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "KGCSceneObject.h"
 
-@interface KGCGlobalSceneController () <AVAudioPlayerDelegate>
+@interface KGCSoundInspectorViewController () <AVAudioPlayerDelegate>
 
 @property (nonatomic, weak) IBOutlet NSPopUpButton *soundTypePopUp;
+@property (nonatomic, weak) IBOutlet NSPopUpButton *soundPlayModePopUp;
 @property (nonatomic, weak) IBOutlet NSTableView *soundTableView;
 @property (nonatomic, weak) IBOutlet NSButton *soundPlayButton;
-
-@property (nonatomic, weak) IBOutlet NSTabView *settingsTabView;
+@property (nonatomic, weak) IBOutlet NSView *settingsView;
+@property (nonatomic, weak) IBOutlet NSView *advancedSettingsView;
 
 @end
 
-@implementation KGCGlobalSceneController
+@implementation KGCSoundInspectorViewController
 {
 	AVAudioPlayer *_audioPlayer;
+	NSView *_currentSettingsView;
 }
 
 #pragma mark - Initial Methods
@@ -36,7 +34,8 @@
 	[super awakeFromNib];
   
 	[[self soundPlayButton] setEnabled:NO];
-	[[self settingsTabView] setHidden:YES];
+	[[self settingsView] setHidden:YES];
+	[[self advancedSettingsView] setHidden:YES];
 }
 
 #pragma mark - Main Methods
@@ -46,8 +45,15 @@
 	[super setupWithSceneLayers:sceneLayers];
 	
 	NSPopUpButton *soundTypePopUp = [self soundTypePopUp];
-	NSString *soundPopupSaveKey = [self soundPopupSaveKey];
+	[soundTypePopUp removeAllItems];
 	
+	NSArray *soundSets = [self soundSets];
+	for (NSDictionary *soundSet in soundSets)
+	{
+		[soundTypePopUp addItemWithTitle:soundSet[@"Name"]];
+	}
+	
+	NSString *soundPopupSaveKey = [self soundPopupSaveKey];
 	if (soundPopupSaveKey)
 	{
 		NSInteger index = [[NSUserDefaults standardUserDefaults] integerForKey:soundPopupSaveKey];
@@ -63,14 +69,55 @@
 - (IBAction)changeSoundType:(id)sender
 {
 	NSInteger index = [sender indexOfSelectedItem];
-
-	[[self soundTableView] reloadData];
-	[[self settingsTabView] selectTabViewItemAtIndex:index];
+	NSDictionary *soundSet = [self soundSets][index];
+	
+	NSView *advancedSettingsView = [self advancedSettingsView];
+	[[advancedSettingsView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+	
+	_currentSettingsView = [self viewForSoundSet:soundSet];
+	if (_currentSettingsView)
+	{
+		NSRect advancedSettingsViewFrame = [advancedSettingsView frame];
+		NSRect settingsViewFrame = [advancedSettingsView frame];
+		settingsViewFrame.origin.x = 0.0;
+		settingsViewFrame.origin.y = 0.0;
+		settingsViewFrame.size.width = advancedSettingsViewFrame.size.width;
+		settingsViewFrame.size.height = advancedSettingsViewFrame.size.height;
+	
+		[_currentSettingsView setFrame:settingsViewFrame];
+		[advancedSettingsView addSubview:_currentSettingsView];
+	}
 	
 	NSString *soundPopupSaveKey = [self soundPopupSaveKey];
 	if (soundPopupSaveKey)
 	{
 		[[NSUserDefaults standardUserDefaults] setInteger:index forKey:soundPopupSaveKey];
+	}
+	
+	[[self soundTableView] reloadData];
+	
+	KGCSoundPlayMode soundPlayMode = [self soundPlayMode];
+	NSPopUpButton *soundPlayModePopUp = [self soundPlayModePopUp];
+	[soundPlayModePopUp setEnabled:[[self sounds] count] > 0];
+	
+	if (soundPlayMode == KGCSoundPlayModeMultiple)
+	{
+		[soundPlayModePopUp setTitle:NSLocalizedString(@"Multple", nil)];
+	}
+	else
+	{
+		[soundPlayModePopUp selectItemAtIndex:soundPlayMode];
+	}
+}
+
+- (IBAction)changeSoundPlayMode:(id)sender
+{
+	KGCSoundPlayMode soundPlayMode = [sender indexOfSelectedItem];
+	NSString *currentSoundKey = [self currentSoundKey];
+	
+	for (KGCSceneObject *sceneObject in [self sceneObjects])
+	{
+		[sceneObject setSoundPlayMode:soundPlayMode forKey:currentSoundKey];
 	}
 }
 
@@ -82,11 +129,14 @@
 	{
 		if (result == NSOKButton)
 		{
-			for (KGCScene *scene in [self sceneObjects])
+			for (KGCSceneObject *sceneObject in [self sceneObjects])
 			{
-				[scene addSoundAtURL:[openPanel URL] forKey:[self currentSoundKey]];
+				[sceneObject addSoundAtURL:[openPanel URL] forKey:[self currentSoundKey]];
 			}
 			[[self soundTableView] reloadData];
+			
+			NSPopUpButton *soundPlayModePopUp = [self soundPlayModePopUp];
+			[soundPlayModePopUp setEnabled:[[self sounds] count] > 0];
 		}
 	}];
 }
@@ -99,12 +149,15 @@
 	NSArray *sounds = [self sounds];
 	NSInteger soundIndex = [soundTableView selectedRow];
 	
-	for (KGCScene *scene in [self sceneObjects])
+	for (KGCSceneObject *sceneObject in [self sceneObjects])
 	{
-		[scene removeSoundNamed:sounds[soundIndex][@"AudioName"] forKey:key];
+		[sceneObject removeSoundNamed:sounds[soundIndex][@"AudioName"] forKey:key];
 	}
 	
 	[soundTableView reloadData];
+	
+	NSPopUpButton *soundPlayModePopUp = [self soundPlayModePopUp];
+	[soundPlayModePopUp setEnabled:[[self sounds] count] > 0];
 }
 
 - (IBAction)play:(id)sender
@@ -151,9 +204,8 @@
 	BOOL rowSelected = selectedRow != -1;
 
 	[[self soundPlayButton] setEnabled:rowSelected];
-	
-	NSTabView *settingsTabView = [self settingsTabView];
-	[settingsTabView setHidden:!rowSelected];
+	[[self advancedSettingsView] setHidden:_currentSettingsView ? !rowSelected : YES];
+	[[self settingsView] setHidden:_currentSettingsView ? !rowSelected : YES];
 }
 
 #pragma mark - AudioPLayer Delegate Methods
@@ -166,15 +218,57 @@
 
 #pragma mark - Convenient Methods
 
-// Implement in subclasses
-- (NSString *)currentSoundKey
+// Implement in subclasses (required)
+- (NSArray *)soundSets
 {
-	return nil;
+	return @[];
 }
 
 - (NSString *)soundPopupSaveKey
 {
 	return nil;
+}
+
+- (NSView *)viewForSoundSet:(NSDictionary *)soundSet
+{
+	return nil;
+}
+
+- (NSString *)currentSoundKey
+{
+	NSArray *soundSets = [self soundSets];
+	NSInteger index = [[self soundTypePopUp] indexOfSelectedItem];
+	return soundSets[index][@"Key"];
+}
+
+- (KGCSoundPlayMode)soundPlayMode
+{	
+	NSString *currentSoundKey = [self currentSoundKey];
+	KGCSoundPlayMode soundPlayMode = KGCSoundPlayModeCarousel;
+
+	NSArray *sceneObjects = [self sceneObjects];
+	if ([sceneObjects count] == 0)
+	{
+		soundPlayMode = [sceneObjects[0] soundPlayModeForKey:currentSoundKey];
+	}
+	else
+	{
+		for (NSInteger i = 0; i < [sceneObjects count]; i ++)
+		{
+			KGCSceneObject *sceneObject = sceneObjects[i];
+		
+			if (i == 0)
+			{
+				soundPlayMode = [sceneObject soundPlayModeForKey:currentSoundKey];
+			}
+			else if (soundPlayMode != [sceneObject soundPlayModeForKey:currentSoundKey])
+			{
+				return KGCSoundPlayModeMultiple;
+			}
+		}
+	}
+	
+	return soundPlayMode;
 }
 
 - (NSArray *)sounds

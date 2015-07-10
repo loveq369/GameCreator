@@ -25,7 +25,9 @@ typedef NS_ENUM(NSUInteger, KGCEventType)
 	KGCEventTypeNotification,
 	KGCEventTypeRightAnswer,
 	KGCEventTypeWrongAnswer,
-	KGCEventTypeSceneTransition
+	KGCEventTypeSceneTransition,
+  KGCEventTypeDraggableSpriteEnter,
+  KGCEventTypeDraggableSpriteExit
 };
 
 /** An event object */

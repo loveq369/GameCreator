@@ -212,3 +212,42 @@
 
 /* No comment provided by engineer. */
 "Multiple Items Selected" = "Meerdere geselecteerd";
+
+/* No comment provided by engineer. */
+"Intro Sounds" = "Intro geluiden";
+
+/* No comment provided by engineer. */
+"Hint Sounds" = "Hint geluiden";
+
+/* No comment provided by engineer. */
+"Same Answer Sounds" = "Zelfde antwoord geluiden";
+
+/* No comment provided by engineer. */
+"Correct Answer Sounds" = "Juiste antwoord geluiden";
+
+/* No comment provided by engineer. */
+"Wrong Answer Sounds" = "Foute antwoord geluiden";
+
+/* No comment provided by engineer. */
+"Auto Answer Sounds" = "Auto antwoord geluiden";
+
+/* No comment provided by engineer. */
+"No Interaction Sounds" = "Geen interactie geluiden";
+
+/* No comment provided by engineer. */
+"Background Sounds" = "Achtergrondgeluiden";
+
+/* No comment provided by engineer. */
+"Mouse Enter Sounds" = "Muis binnen geluiden";
+
+/* No comment provided by engineer. */
+"Mouse Click Sounds" = "Muis klik geluiden";
+
+/* No comment provided by engineer. */
+"Empty Location Sounds" = "Lege locatie geluiden";
+
+/* No comment provided by engineer. */
+"Wrong Location Sounds" = "Verkeerde locatie geluiden";
+
+/* No comment provided by engineer. */
+"Correct Location Sounds" = "Juiste locatie geluiden";

@@ -215,3 +215,42 @@
 
 /* No comment provided by engineer. */
 "Multiple Items Selected" = "Multiple Items Selected";
+
+/* No comment provided by engineer. */
+"Intro Sounds" = "Intro Sounds";
+
+/* No comment provided by engineer. */
+"Hint Sounds" = "Hint Sounds";
+
+/* No comment provided by engineer. */
+"Same Answer Sounds" = "Same Answer Sounds";
+
+/* No comment provided by engineer. */
+"Correct Answer Sounds" = "Correct Answer Sounds";
+
+/* No comment provided by engineer. */
+"Wrong Answer Sounds" = "Wrong Answer Sounds";
+
+/* No comment provided by engineer. */
+"Auto Answer Sounds" = "Auto Answer Sounds";
+
+/* No comment provided by engineer. */
+"No Interaction Sounds" = "No Interaction Sounds";
+
+/* No comment provided by engineer. */
+"Background Sounds" = "Background Sounds";
+
+/* No comment provided by engineer. */
+"Mouse Enter Sounds" = "Mouse Enter Sounds";
+
+/* No comment provided by engineer. */
+"Mouse Click Sounds" = "Mouse Click Sounds";
+
+/* No comment provided by engineer. */
+"Empty Location Sounds" = "Empty Location Sounds";
+
+/* No comment provided by engineer. */
+"Wrong Location Sounds" = "Wrong Location Sounds";
+
+/* No comment provided by engineer. */
+"Correct Location Sounds" = "Correct Location Sounds";

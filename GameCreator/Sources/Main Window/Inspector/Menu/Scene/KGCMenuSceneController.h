@@ -6,8 +6,8 @@
 //	Copyright (c) 2015 Kiwi Fruitware. All rights reserved.
 //
 
-#import "KGCGlobalSceneController.h"
+#import "KGCSceneController.h"
 
-@interface KGCMenuSceneController : KGCGlobalSceneController
+@interface KGCMenuSceneController : KGCSceneController
 
 @end
