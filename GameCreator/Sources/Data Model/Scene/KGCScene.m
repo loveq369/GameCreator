@@ -74,6 +74,23 @@
 	return self;
 }
 
+- (void)setParentObject:(KGCDataObject *)parentObject
+{
+	[super setParentObject:parentObject];
+	
+	NSString *sceneFileName = [[self identifier] stringByAppendingPathExtension:@"json"];
+	for (NSDictionary *scene in [parentObject dictionary][@"Scenes"])
+	{
+		if ([scene[@"FileName"] isEqualToString:sceneFileName])
+		{
+			if (scene[@"Group"])
+			{
+				[self setGroupName:scene[@"Group"]];
+			}
+		}
+	}
+}
+
 #pragma mark - Main Methods
 
 - (NSArray *)sprites
@@ -219,6 +236,16 @@
 - (BOOL)shouldHighlightQuestionSprites
 {
 	return [self boolForKey:@"ShouldHighlightQuestionSprites"];
+}
+
+- (void)setGroupName:(NSString *)groupName
+{
+	[self setObject:groupName forKey:@"Group"];
+}
+
+- (NSString *)groupName
+{
+	return [self objectForKey:@"Group"];
 }
 
 - (void)setThumbnailImage:(NSImage *)thumbnailImage

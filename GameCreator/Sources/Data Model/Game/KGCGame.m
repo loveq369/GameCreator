@@ -129,6 +129,36 @@
 	}
 }
 
+- (void)insertScene:(KGCScene *)scene atIndex:(NSInteger)index
+{
+	if (scene)
+	{
+		[scene setParentObject:self];
+	
+		[_scenes insertObject:scene atIndex:index];
+		
+		NSData *data = [NSJSONSerialization dataWithJSONObject:[scene dictionary] options:NSJSONWritingPrettyPrinted error:nil];
+		NSFileWrapper *sceneFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:data];
+		NSString *sceneFileName = [[scene identifier] stringByAppendingPathExtension:@"json"];
+		[sceneFileWrapper setPreferredFilename:sceneFileName];
+		
+		NSFileWrapper *scenesFileWrapper = [[self document] sceneFileWrapper];
+		[scenesFileWrapper addFileWrapper:sceneFileWrapper];
+		
+		NSMutableDictionary *sceneInfoDictionary = [@{@"FileName": sceneFileName, @"Name": [scene name]} mutableCopy];
+		NSString *sceneImageName = [scene imageName];
+		if (sceneImageName)
+		{
+			sceneInfoDictionary[@"BackgroundImage"] = sceneImageName;
+		}
+		
+		[_sceneInfoDictionaries insertObject:sceneInfoDictionary atIndex:index];
+
+		[self notifyDelegateAboutKeyChange:@"Scenes"];
+		[self updateDictionary];
+	}
+}
+
 - (void)removeScene:(KGCScene *)scene
 {
 	if ([_scenes containsObject:scene])
@@ -184,7 +214,7 @@
 {
 	[super notifyDelegateAboutKeyChange:key inChildObject:childObject];
 	
-	if ([childObject isKindOfClass:[KGCScene class]] && ([key isEqualToString:@"ImageName"] || [key isEqualToString:@"AutoFadeIn"] || [key isEqualToString:@"Name"]))
+	if ([childObject isKindOfClass:[KGCScene class]] && ([key isEqualToString:@"ImageName"] || [key isEqualToString:@"AutoFadeIn"] || [key isEqualToString:@"Name"] || [key isEqualToString:@"Group"]))
 	{
 		NSString *sceneFileName = [[childObject identifier] stringByAppendingPathExtension:@"json"];
 		for (NSMutableDictionary *sceneInfoDictionary in [_sceneInfoDictionaries copy])
@@ -194,25 +224,21 @@
 			{
 				if ([key isEqualToString:@"Name"])
 				{
-					sceneInfoDictionary[@"Name"] = [childObject name];
+					[self setObject:[childObject name] forKey:@"Name"];
 				}
 				else if ([key isEqualToString:@"ImageName"])
 				{
 					NSString *imageName = [(KGCScene *)childObject imageName];
-					
-					if (imageName)
-					{
-						sceneInfoDictionary[@"BackgroundImage"] = imageName;
-					}
-					else
-					{
-						[sceneInfoDictionary removeObjectForKey:@"BackgroundImage"];
-					}
+					[self setObject:imageName forKey:@"BackgroundImage"];
 				}
 				else if ([key isEqualToString:@"AutoFadeIn"])
 				{
 					BOOL autoFadeIn = [(KGCScene *)childObject autoFadeIn];
-					sceneInfoDictionary[@"AutoFadeIn"] = @(autoFadeIn);
+					[self setBool:autoFadeIn forKey:@"AutoFadeIn"];
+				}
+				else if ([key isEqualToString:@"Group"])
+				{
+					[self setObject:[(KGCScene *)childObject groupName] forKey:@"Group"];
 				}
 			}
 		}

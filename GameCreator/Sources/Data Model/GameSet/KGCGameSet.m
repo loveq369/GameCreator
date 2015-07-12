@@ -110,6 +110,31 @@
 	}
 }
 
+- (void)insertGame:(KGCGame *)game atIndex:(NSInteger)index
+{
+	if (game)
+	{
+		[game setParentObject:self];
+	
+		[_games insertObject:game atIndex:index];
+		
+		NSData *data = [NSJSONSerialization dataWithJSONObject:[game dictionary] options:NSJSONWritingPrettyPrinted error:nil];
+		NSFileWrapper *gameFileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:data];
+		NSString *gameFileName = [[game identifier] stringByAppendingPathExtension:@"json"];
+		[gameFileWrapper setPreferredFilename:gameFileName];
+		
+		NSFileWrapper *mainFileWrapper = [[self document] mainFileWrapper];
+		[mainFileWrapper addFileWrapper:gameFileWrapper];
+		
+		NSMutableDictionary *gameInfoDictionary = [@{@"FileName": gameFileName, @"Name": [game name]} mutableCopy];
+		[_gameInfoDictionaries insertObject:gameInfoDictionary atIndex:index];
+		_gameInfoDictionariesDictionary[[game identifier]] = gameInfoDictionary;
+
+		[self notifyDelegateAboutKeyChange:@"Scenes"];
+		[self updateDictionary];
+	}
+}
+
 - (void)removeGame:(KGCGame *)game
 {
 	if ([_games containsObject:game])

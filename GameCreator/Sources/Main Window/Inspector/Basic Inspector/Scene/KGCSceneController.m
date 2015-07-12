@@ -80,7 +80,7 @@
 - (IBAction)chooseSceneImage:(id)sender
 {
 	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-	[openPanel setAllowedFileTypes:@[@"png"]];
+	[openPanel setAllowedFileTypes:@[@"png", @"jpg"]];
 	[openPanel beginSheetModalForWindow:[[self view] window] completionHandler:^ (NSModalResponse returnCode)
 	{
 		if (returnCode == NSOKButton)

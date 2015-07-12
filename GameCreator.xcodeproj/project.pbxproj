@@ -7,15 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE040C811B4BAA72003C2049 /* KGCSoundInspectorViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = FE040C7F1B4BAA72003C2049 /* KGCSoundInspectorViewController.h */; };
 		FE040C821B4BAA72003C2049 /* KGCSoundInspectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE040C801B4BAA72003C2049 /* KGCSoundInspectorViewController.m */; };
 		FE040C851B4BAACB003C2049 /* KGCSoundInspectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE040C831B4BAACB003C2049 /* KGCSoundInspectorViewController.xib */; };
-		FE040C8A1B4BB02A003C2049 /* KGCDADSoundInspectorViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = FE040C881B4BB02A003C2049 /* KGCDADSoundInspectorViewController.h */; };
 		FE040C8B1B4BB02A003C2049 /* KGCDADSoundInspectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE040C891B4BB02A003C2049 /* KGCDADSoundInspectorViewController.m */; };
-		FE040C8F1B4BB8F4003C2049 /* KGCMenuSoundsInspectorViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = FE040C8D1B4BB8F4003C2049 /* KGCMenuSoundsInspectorViewController.h */; };
 		FE040C901B4BB8F4003C2049 /* KGCMenuSoundsInspectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE040C8E1B4BB8F4003C2049 /* KGCMenuSoundsInspectorViewController.m */; };
 		FE040C931B4BCE82003C2049 /* KGCNoInteractionDelayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE040C911B4BCE82003C2049 /* KGCNoInteractionDelayView.xib */; };
-		FE040C971B4BD0AA003C2049 /* KGCNoInteractionSoundInspectorViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = FE040C951B4BD0AA003C2049 /* KGCNoInteractionSoundInspectorViewController.h */; };
 		FE040C981B4BD0AA003C2049 /* KGCNoInteractionSoundInspectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE040C961B4BD0AA003C2049 /* KGCNoInteractionSoundInspectorViewController.m */; };
 		FE0B74151AC29396005E6CD2 /* KGCDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0B74131AC29396005E6CD2 /* KGCDataObject.m */; };
 		FE19CADC1B184A28000BB172 /* ClearButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FE19CADA1B184A28000BB172 /* ClearButton.png */; };
@@ -190,7 +186,6 @@
 		FEEBE66D1AC2C791002370D9 /* KGCSoundTemplateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5F71AC2C791002370D9 /* KGCSoundTemplateAction.m */; };
 		FEEBE6701AC2C791002370D9 /* KGCSoundTemplateActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEBE5FB1AC2C791002370D9 /* KGCSoundTemplateActionView.m */; };
 		FEFF68FE1B4ED65E006014F1 /* KGCDADShapeLocationSoundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEFF68FC1B4ED65E006014F1 /* KGCDADShapeLocationSoundView.xib */; };
-		FEFF69021B4ED7EB006014F1 /* KGCDADShapeSoundViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = FEFF69001B4ED7EB006014F1 /* KGCDADShapeSoundViewController.h */; };
 		FEFF69031B4ED7EB006014F1 /* KGCDADShapeSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFF69011B4ED7EB006014F1 /* KGCDADShapeSoundViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -205,17 +200,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FE040C7F1B4BAA72003C2049 /* KGCSoundInspectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCSoundInspectorViewController.h; sourceTree = "<group>"; };
+		FE040C7F1B4BAA72003C2049 /* KGCSoundInspectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCSoundInspectorViewController.h; sourceTree = "<group>"; };
 		FE040C801B4BAA72003C2049 /* KGCSoundInspectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSoundInspectorViewController.m; sourceTree = "<group>"; };
 		FE040C841B4BAACB003C2049 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCSoundInspectorViewController.xib; sourceTree = "<group>"; };
 		FE040C861B4BAAD6003C2049 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCSoundInspectorViewController.xib; sourceTree = "<group>"; };
-		FE040C881B4BB02A003C2049 /* KGCDADSoundInspectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADSoundInspectorViewController.h; sourceTree = "<group>"; };
+		FE040C881B4BB02A003C2049 /* KGCDADSoundInspectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCDADSoundInspectorViewController.h; sourceTree = "<group>"; };
 		FE040C891B4BB02A003C2049 /* KGCDADSoundInspectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADSoundInspectorViewController.m; sourceTree = "<group>"; };
-		FE040C8D1B4BB8F4003C2049 /* KGCMenuSoundsInspectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCMenuSoundsInspectorViewController.h; sourceTree = "<group>"; };
+		FE040C8D1B4BB8F4003C2049 /* KGCMenuSoundsInspectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCMenuSoundsInspectorViewController.h; sourceTree = "<group>"; };
 		FE040C8E1B4BB8F4003C2049 /* KGCMenuSoundsInspectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCMenuSoundsInspectorViewController.m; sourceTree = "<group>"; };
 		FE040C921B4BCE82003C2049 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCNoInteractionDelayView.xib; sourceTree = "<group>"; };
 		FE040C941B4BCE87003C2049 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCNoInteractionDelayView.xib; sourceTree = "<group>"; };
-		FE040C951B4BD0AA003C2049 /* KGCNoInteractionSoundInspectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCNoInteractionSoundInspectorViewController.h; sourceTree = "<group>"; };
+		FE040C951B4BD0AA003C2049 /* KGCNoInteractionSoundInspectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCNoInteractionSoundInspectorViewController.h; sourceTree = "<group>"; };
 		FE040C961B4BD0AA003C2049 /* KGCNoInteractionSoundInspectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCNoInteractionSoundInspectorViewController.m; sourceTree = "<group>"; };
 		FE0B74121AC29396005E6CD2 /* KGCDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDataObject.h; sourceTree = "<group>"; };
 		FE0B74131AC29396005E6CD2 /* KGCDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDataObject.m; sourceTree = "<group>"; };
@@ -556,7 +551,7 @@
 		FEEBE5FB1AC2C791002370D9 /* KGCSoundTemplateActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCSoundTemplateActionView.m; sourceTree = "<group>"; };
 		FEFF68FD1B4ED65E006014F1 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/KGCDADShapeLocationSoundView.xib; sourceTree = "<group>"; };
 		FEFF68FF1B4ED7C8006014F1 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/KGCDADShapeLocationSoundView.xib; sourceTree = "<group>"; };
-		FEFF69001B4ED7EB006014F1 /* KGCDADShapeSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = KGCDADShapeSoundViewController.h; sourceTree = "<group>"; };
+		FEFF69001B4ED7EB006014F1 /* KGCDADShapeSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCDADShapeSoundViewController.h; sourceTree = "<group>"; };
 		FEFF69011B4ED7EB006014F1 /* KGCDADShapeSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCDADShapeSoundViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1950,7 +1945,6 @@
 				FEFF69031B4ED7EB006014F1 /* KGCDADShapeSoundViewController.m in Sources */,
 				FEEBE5441AC2C4F7002370D9 /* KGCEventTableCell.m in Sources */,
 				FE5DACAB1AC0814900525550 /* KGCBasicTableCell.m in Sources */,
-				FE040C8A1B4BB02A003C2049 /* KGCDADSoundInspectorViewController.h in Sources */,
 				FEEBE6071AC2C791002370D9 /* KGCBackgroundMusicAction.m in Sources */,
 				FEEBE63E1AC2C791002370D9 /* KGCPathAnimation.m in Sources */,
 				FE19CAEB1B18848E000BB172 /* KGCSpritePhysicsController.m in Sources */,
@@ -1961,7 +1955,6 @@
 				FE4B15FF1AF0A84D009A2147 /* KGCMenuSpriteController.m in Sources */,
 				FE2C91EA1AB4BAA8004FD211 /* KGCSceneContentView.m in Sources */,
 				FEEBE5381AC2C4F7002370D9 /* KGCBasicInspector.m in Sources */,
-				FE040C971B4BD0AA003C2049 /* KGCNoInteractionSoundInspectorViewController.h in Sources */,
 				FEEBE6021AC2C791002370D9 /* KGCAudioEffectAction.m in Sources */,
 				FEEBE6481AC2C791002370D9 /* KGCRotationAnimation.m in Sources */,
 				FE49CA6A1AFCBF7F009A0CA2 /* KGCDelayTemplateAction.m in Sources */,
@@ -1974,7 +1967,6 @@
 				FE30AC0C1AE3CA1F00093338 /* KGCStopAnimationAction.m in Sources */,
 				FEEBE63C1AC2C791002370D9 /* KGCMoveBackAnimation.m in Sources */,
 				FEEBE6261AC2C791002370D9 /* KGCSequenceAction.m in Sources */,
-				FE040C8F1B4BB8F4003C2049 /* KGCMenuSoundsInspectorViewController.h in Sources */,
 				FEEBE5471AC2C4F7002370D9 /* KGCDADInspector.m in Sources */,
 				FE2C91F01AB4BAA8004FD211 /* KGCInspectorContentView.m in Sources */,
 				FEEBE6181AC2C791002370D9 /* KGCNotificationActionView.m in Sources */,
@@ -1991,11 +1983,9 @@
 				FE30AC1D1AE3CB9500093338 /* KGCRandomPositionAnimationView.m in Sources */,
 				FE30AC1C1AE3CB9500093338 /* KGCRandomPositionAnimation.m in Sources */,
 				FE040C821B4BAA72003C2049 /* KGCSoundInspectorViewController.m in Sources */,
-				FEFF69021B4ED7EB006014F1 /* KGCDADShapeSoundViewController.h in Sources */,
 				FE4B15FB1AF0A84D009A2147 /* KGCMenuInspector.m in Sources */,
 				FEEBE61F1AC2C791002370D9 /* KGCRemoveSpriteAction.m in Sources */,
 				FEEBE60F1AC2C791002370D9 /* KGCCombinedActionView.m in Sources */,
-				FE040C811B4BAA72003C2049 /* KGCSoundInspectorViewController.h in Sources */,
 				FE2ED2511AD544F20086BB84 /* KGCTPlayHintemplateAction.m in Sources */,
 				FEEBE6131AC2C791002370D9 /* KGCAction.m in Sources */,
 				FE0B74151AC29396005E6CD2 /* KGCDataObject.m in Sources */,

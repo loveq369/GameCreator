@@ -94,7 +94,14 @@
 {
 	if (objectValue)
 	{
-		[textField setObjectValue:objectValue];
+		if ([objectValue isKindOfClass:[NSString class]])
+		{
+			[textField setStringValue:objectValue];
+		}
+		else
+		{
+			[textField setObjectValue:objectValue];
+		}
 	}
 	else
 	{

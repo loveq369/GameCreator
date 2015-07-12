@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="KGCDADSceneController">
             <connections>
                 <outlet property="autoMoveBackWrongAnswersButton" destination="xuh-h6-PhG" id="OA6-zb-DrH"/>
                 <outlet property="disableConfirmInteractionButton" destination="McK-Mk-g4p" id="7QJ-yi-kcS"/>
+                <outlet property="groupNameField" destination="NMm-fF-eJV" id="kJN-co-OI4"/>
                 <outlet property="sceneDropField" destination="ORX-eo-Mtu" id="3hm-sV-lgt"/>
                 <outlet property="sceneIconView" destination="eId-pt-A76" id="vvS-Iu-lgt"/>
                 <outlet property="sceneImageClearButton" destination="EF6-lD-CAv" id="fQz-vV-rvV"/>
@@ -157,6 +158,28 @@
                         <action selector="changeShouldHighlightSprites:" target="-2" id="JEy-7q-VRY"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qAY-Jw-fFE">
+                    <rect key="frame" x="4" y="523" width="40" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Groep:" id="dlC-f9-C9h">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="NMm-fF-eJV">
+                    <rect key="frame" x="50" y="521" width="133" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="9ns-fQ-cyy">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="Vy5-gJ-cFN"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="changeGroupName:" target="-2" id="hrl-OS-9po"/>
+                    </connections>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="-2535" y="-3792"/>
         </customView>

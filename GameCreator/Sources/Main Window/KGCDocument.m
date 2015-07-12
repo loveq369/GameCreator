@@ -534,6 +534,8 @@ struct Pixel
 
 - (void)tableView:(KGCTableView *)tableView paste:(id)sender
 {
+	NSInteger selectedRow = [tableView selectedRow];
+
 	NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
 	NSData *data = [pasteBoard dataForType:@"public.json"];
 	if (data)
@@ -551,17 +553,29 @@ struct Pixel
 
 			NSString *identifier = [KGCHelperMethods uniqueNameWithProposedName:[scene name] inArray:sceneNames];
 			[scene setName:identifier];
-			[_currentGame addScene:scene];
+			
+			NSInteger index = 0;
+			if (selectedRow == -1 || selectedRow == [scenes count] -1)
+			{
+				[_currentGame addScene:scene];
+				index = [sceneNames count];
+			}
+			else
+			{
+				[_currentGame insertScene:scene atIndex:selectedRow + 1];
+				index = selectedRow + 1;
+			}
 			
 			[tableView reloadData];
-			[tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:[sceneNames count]] byExtendingSelection:NO];
-			[tableView scrollRowToVisible:[sceneNames count]];
+			[tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];
+			[tableView scrollRowToVisible:index];
 		}
 		else if (tableView == [self gamesManageTableView])
 		{
+			KGCGameSet *gameSet = [self gameSet];
 			KGCGame *game = [[KGCGame alloc] initWithCopyData:data document:self];
 			
-			NSArray *games = [[self gameSet] games];
+			NSArray *games = [gameSet games];
 			NSMutableArray *gameNames = [[NSMutableArray alloc] init];
 			for (KGCGame *game in games)
 			{
@@ -570,11 +584,21 @@ struct Pixel
 
 			NSString *identifier = [KGCHelperMethods uniqueNameWithProposedName:[game name] inArray:gameNames];
 			[game setName:identifier];
-			[[self gameSet] addGame:game];
+			
+			NSInteger index = 0;
+			if (selectedRow == -1 || selectedRow == [gameNames count] -1)
+			{
+				[gameSet addGame:game];
+				index = [gameNames count];
+			}
+			else
+			{
+				[gameSet insertGame:game atIndex:selectedRow + 1];
+			}
 			
 			[tableView reloadData];
-			[tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:[gameNames count]] byExtendingSelection:NO];
-			[tableView scrollRowToVisible:[gameNames count]];
+			[tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];
+			[tableView scrollRowToVisible:index];
 		}
 	}
 }

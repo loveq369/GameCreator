@@ -66,5 +66,6 @@ typedef NS_ENUM(NSUInteger, KGCTemplateType) {
 @property (nonatomic) CGPoint gravity;
 
 @property (nonatomic) BOOL shouldHighlightQuestionSprites;
+@property (nonatomic, copy) NSString *groupName;
 
 @end

@@ -23,6 +23,7 @@
 
 - (NSArray *)games;
 - (void)addGame:(KGCGame *)game;
+- (void)insertGame:(KGCGame *)game atIndex:(NSInteger)index;
 - (void)removeGame:(KGCGame *)game;
 
 - (void)imageNames:(NSMutableArray *)imageNames audioNames:(NSMutableArray *)audioNames;

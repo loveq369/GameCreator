@@ -19,6 +19,7 @@
 @property (nonatomic, weak) IBOutlet NSButton *disableConfirmInteractionButton;
 @property (nonatomic, weak) IBOutlet NSButton *autoMoveBackWrongAnswersButton;
 @property (nonatomic, weak) IBOutlet NSButton *shouldHighlightSpriteButton;
+@property (nonatomic, weak) IBOutlet NSTextField *groupNameField;
 
 @end
 
@@ -51,6 +52,9 @@
 		id object = [self objectForPropertyNamed:propertyName inArray:[self sceneObjects]];
 		[self setObjectValue:object inCheckBox:checkBox];
 	}
+	
+	NSString *groupName = [self objectForPropertyNamed:@"groupName" inArray:[self sceneObjects]];
+	[self setObjectValue:groupName inTextField:[self groupNameField]];
 }
 
 #pragma mark - Interface Methods
@@ -78,6 +82,11 @@
 - (IBAction)changeShouldHighlightSprites:(id)sender
 {
 	[self setObject:[sender objectValue] forPropertyNamed:@"shouldHighlightQuestionSprites" inArray:[self sceneObjects]];
+}
+
+- (IBAction)changeGroupName:(id)sender
+{
+	[self setObject:[sender stringValue] forPropertyNamed:@"groupName" inArray:[self sceneObjects]];
 }
 
 @end
